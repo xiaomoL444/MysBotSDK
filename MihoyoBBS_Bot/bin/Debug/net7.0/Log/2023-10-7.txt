@@ -1,0 +1,226 @@
+2023/10/7 0:04:12 +08:00:=========================================================
+2023/10/7 0:04:12 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 0:04:20 +08:00:Commond:/Test
+2023/10/7 0:04:20 +08:00:收到一条消息
+2023/10/7 0:04:21 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"0c0243e1-f29a-758e-3599-f2a03cc41696"}}
+2023/10/7 12:45:38 +08:00:=========================================================
+2023/10/7 12:45:38 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 13:06:53 +08:00:Commond:/Test
+2023/10/7 13:06:53 +08:00:收到一条消息
+2023/10/7 13:06:55 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"9ca0e297-d5e7-77e2-7488-ef8e9f6e5f1b"}}
+2023/10/7 15:01:20 +08:00:=========================================================
+2023/10/7 15:01:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 15:03:33 +08:00:Commond:/Test
+2023/10/7 15:03:33 +08:00:解析消息失败   at Mihoyo.TestMethod.Execute(MessageReceiver MessageReceiver)
+   at MihoyoBBS_Bot.Program.<>c__DisplayClass0_2.<Main>b__12(IMysPluginModule method) in E:\code\Mirai\MihoyoBBS_Bot\Program.cs:line 89
+   at System.Array.ForEach[T](T[] array, Action`1 action)
+   at MihoyoBBS_Bot.Program.<>c__DisplayClass0_0.<Main>b__11(MessageReceiver data) in E:\code\Mirai\MihoyoBBS_Bot\Program.cs:line 81
+   at MysBotSDK.MysBot.<>c__DisplayClass49_0.<Initail>b__0() in E:\code\Mirai\MysBotSDK\MysBot.cs:line 91
+2023/10/7 15:04:38 +08:00:=========================================================
+2023/10/7 15:04:38 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 15:04:42 +08:00:Commond:/Test
+2023/10/7 15:04:42 +08:00:收到一条消息
+2023/10/7 15:04:43 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"ae892df1-71c4-5f45-acd0-c6dd2fc9de8c"}}
+2023/10/7 15:30:12 +08:00:=========================================================
+2023/10/7 15:30:12 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 15:30:29 +08:00:Commond:/Test
+2023/10/7 15:30:29 +08:00:解析消息失败   at Mihoyo.TestMethod.Execute(MessageReceiver MessageReceiver)
+   at MihoyoBBS_Bot.Program.<>c__DisplayClass0_2.<Main>b__12(IMysPluginModule method) in E:\code\Mirai\MihoyoBBS_Bot\Program.cs:line 89
+   at System.Array.ForEach[T](T[] array, Action`1 action)
+   at MihoyoBBS_Bot.Program.<>c__DisplayClass0_0.<Main>b__11(MessageReceiver data) in E:\code\Mirai\MihoyoBBS_Bot\Program.cs:line 81
+   at MysBotSDK.MysBot.<>c__DisplayClass49_0.<Initail>b__0() in E:\code\Mirai\MysBotSDK\MysBot.cs:line 91
+2023/10/7 15:30:40 +08:00:=========================================================
+2023/10/7 15:30:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 15:30:43 +08:00:Commond:/Test
+2023/10/7 15:30:43 +08:00:收到一条消息
+2023/10/7 15:30:43 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"199097d8-b4d7-b643-a36b-d403ca3d1b7c"}}
+2023/10/7 16:09:28 +08:00:=========================================================
+2023/10/7 16:09:28 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:09:28 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:13:05 +08:00:Commond:/Test
+2023/10/7 16:13:05 +08:00:收到一条消息
+2023/10/7 16:13:05 +08:00:Commond:/TestAt
+2023/10/7 16:13:05 +08:00:测试At用户
+2023/10/7 16:13:26 +08:00:=========================================================
+2023/10/7 16:13:26 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:13:26 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:13:30 +08:00:Commond:/Test
+2023/10/7 16:13:30 +08:00:收到一条消息
+2023/10/7 16:13:30 +08:00:Commond:/TestAt
+2023/10/7 16:13:30 +08:00:测试At用户
+2023/10/7 16:13:31 +08:00:获取用户信息Method Not Allowed
+
+2023/10/7 16:17:12 +08:00:=========================================================
+2023/10/7 16:17:12 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:17:12 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:17:22 +08:00:Commond:/TestAt
+2023/10/7 16:17:22 +08:00:测试At用户
+2023/10/7 16:17:22 +08:00:获取用户信息{"data":null,"message":"机器人鉴权失败","retcode":10322005}
+2023/10/7 16:17:46 +08:00:=========================================================
+2023/10/7 16:17:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:17:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:17:50 +08:00:Commond:/TestAt
+2023/10/7 16:17:50 +08:00:测试At用户
+2023/10/7 16:17:53 +08:00:获取用户信息{"data":null,"message":"机器人鉴权失败","retcode":10322005}
+2023/10/7 16:20:32 +08:00:=========================================================
+2023/10/7 16:20:32 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:20:32 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:20:34 +08:00:Commond:/TestAt
+2023/10/7 16:20:34 +08:00:测试At用户
+2023/10/7 16:20:34 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:20:48 +08:00:=========================================================
+2023/10/7 16:20:48 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:20:48 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:20:49 +08:00:Commond:/TestAt
+2023/10/7 16:20:49 +08:00:测试At用户
+2023/10/7 16:20:50 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:21:06 +08:00:=========================================================
+2023/10/7 16:21:06 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:21:06 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:21:07 +08:00:Commond:/TestAt
+2023/10/7 16:21:07 +08:00:测试At用户
+2023/10/7 16:21:18 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:22:09 +08:00:=========================================================
+2023/10/7 16:22:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:22:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:22:13 +08:00:Commond:/Test
+2023/10/7 16:22:13 +08:00:收到一条消息
+2023/10/7 16:22:13 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"4da0715f-cb5c-28b2-9f6a-5317048a509e"}}
+2023/10/7 16:23:27 +08:00:=========================================================
+2023/10/7 16:23:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:23:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:23:33 +08:00:Commond:/TestAt
+2023/10/7 16:23:33 +08:00:测试At用户
+2023/10/7 16:23:35 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:24:02 +08:00:=========================================================
+2023/10/7 16:24:02 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:24:02 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:24:06 +08:00:Commond:/TestAt
+2023/10/7 16:24:06 +08:00:测试At用户
+2023/10/7 16:24:20 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:25:11 +08:00:=========================================================
+2023/10/7 16:25:11 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:25:11 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:25:13 +08:00:Commond:/TestAt
+2023/10/7 16:25:13 +08:00:测试At用户
+2023/10/7 16:25:16 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:44:17 +08:00:=========================================================
+2023/10/7 16:44:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:44:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:44:22 +08:00:Commond:/TestAt
+2023/10/7 16:44:22 +08:00:测试At用户
+2023/10/7 16:44:24 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:44:30 +08:00:=========================================================
+2023/10/7 16:44:30 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:44:30 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:44:32 +08:00:Commond:/TestAt
+2023/10/7 16:44:32 +08:00:测试At用户
+2023/10/7 16:44:35 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:44:44 +08:00:=========================================================
+2023/10/7 16:44:44 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:44:44 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:44:48 +08:00:Commond:/TestAt
+2023/10/7 16:44:48 +08:00:测试At用户
+2023/10/7 16:44:51 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:45:41 +08:00:=========================================================
+2023/10/7 16:45:41 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:45:41 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:45:42 +08:00:Commond:/TestAt
+2023/10/7 16:45:42 +08:00:测试At用户
+2023/10/7 16:45:42 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:47:18 +08:00:=========================================================
+2023/10/7 16:47:18 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:47:18 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:47:19 +08:00:Commond:/TestAt
+2023/10/7 16:47:19 +08:00:测试At用户
+2023/10/7 16:47:20 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:48:01 +08:00:=========================================================
+2023/10/7 16:48:01 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:48:01 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:48:01 +08:00:Commond:/TestAt
+2023/10/7 16:48:01 +08:00:测试At用户
+2023/10/7 16:48:02 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:48:02 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"cb55bb02-ea73-20cb-3ffa-a5a5729e3e75"}}
+2023/10/7 16:48:18 +08:00:=========================================================
+2023/10/7 16:48:18 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:48:18 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:48:28 +08:00:Commond:/TestAt
+2023/10/7 16:48:28 +08:00:测试At用户
+2023/10/7 16:48:29 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:48:29 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"b4d7c385-f3aa-3f2d-cbad-cfa59cf08d6e"}}
+2023/10/7 16:50:17 +08:00:=========================================================
+2023/10/7 16:50:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:50:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:50:22 +08:00:Commond:/TestAt
+2023/10/7 16:50:22 +08:00:测试At用户
+2023/10/7 16:50:22 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:50:23 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"0ee1a2fa-195a-6935-5116-164fb3e63bb9"}}
+2023/10/7 16:54:41 +08:00:=========================================================
+2023/10/7 16:54:42 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:54:42 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:54:51 +08:00:Commond:/TestAt
+2023/10/7 16:54:51 +08:00:解析消息失败   at Mihoyo.TestAtMethod.Execute(MessageReceiver MessageReceiver)
+   at System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start[TStateMachine](TStateMachine& stateMachine)
+   at Mihoyo.TestAtMethod.Execute(MessageReceiver MessageReceiver)
+   at MihoyoBBS_Bot.Program.<>c__DisplayClass0_2.<Main>b__12(IMysPluginModule method) in E:\code\Mirai\MihoyoBBS_Bot\Program.cs:line 90
+   at System.Array.ForEach[T](T[] array, Action`1 action)
+   at MihoyoBBS_Bot.Program.<>c__DisplayClass0_0.<Main>b__11(MessageReceiver data) in E:\code\Mirai\MihoyoBBS_Bot\Program.cs:line 81
+   at MysBotSDK.MysBot.<>c__DisplayClass49_0.<Initail>b__0() in E:\code\Mirai\MysBotSDK\MysBot.cs:line 91
+2023/10/7 16:55:12 +08:00:=========================================================
+2023/10/7 16:55:12 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:55:12 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:55:19 +08:00:Commond:/TestAt
+2023/10/7 16:55:19 +08:00:测试At用户
+2023/10/7 16:55:19 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:55:19 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"bdbafe0e-1fbc-bb85-93cc-0a449efaacd2"}}
+2023/10/7 16:55:19 +08:00:{ bot_msg_id = bdbafe0e-1fbc-bb85-93cc-0a449efaacd2 }
+2023/10/7 16:55:49 +08:00:Commond:/TestAt
+2023/10/7 16:55:49 +08:00:测试At用户
+2023/10/7 16:55:49 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:57:10 +08:00:=========================================================
+2023/10/7 16:57:10 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:57:10 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:57:15 +08:00:Commond:/TestAt
+2023/10/7 16:57:15 +08:00:测试At用户
+2023/10/7 16:57:15 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:57:19 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"a41aa575-a635-7d98-5bc1-4433b7daa1d3"}}
+2023/10/7 16:57:19 +08:00:{ bot_msg_id = a41aa575-a635-7d98-5bc1-4433b7daa1d3 }
+2023/10/7 16:58:02 +08:00:=========================================================
+2023/10/7 16:58:02 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:58:02 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:58:06 +08:00:Commond:/TestAt
+2023/10/7 16:58:06 +08:00:测试At用户
+2023/10/7 16:58:07 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:58:07 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"c2ae7713-508a-f7b1-5c43-6f26d799341a"}}
+2023/10/7 16:58:07 +08:00:{ bot_msg_id = c2ae7713-508a-f7b1-5c43-6f26d799341a }
+2023/10/7 16:59:05 +08:00:=========================================================
+2023/10/7 16:59:05 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:59:05 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:59:08 +08:00:Commond:/TestAt
+2023/10/7 16:59:08 +08:00:测试At用户
+2023/10/7 16:59:08 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:59:08 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"76957a23-6493-876e-6fb0-a2b3a672b3c2"}}
+2023/10/7 16:59:08 +08:00:{ bot_msg_id = 76957a23-6493-876e-6fb0-a2b3a672b3c2 }
+2023/10/7 16:59:19 +08:00:Commond:/TestAt
+2023/10/7 16:59:19 +08:00:测试At用户
+2023/10/7 16:59:19 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:59:41 +08:00:=========================================================
+2023/10/7 16:59:41 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 16:59:41 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 16:59:45 +08:00:Commond:/TestAt
+2023/10/7 16:59:45 +08:00:测试At用户
+2023/10/7 16:59:46 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/7 16:59:53 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"5682f13b-da00-cf9a-6062-c24c55d6330f"}}
+2023/10/7 16:59:53 +08:00:{ bot_msg_id = 5682f13b-da00-cf9a-6062-c24c55d6330f }
+2023/10/7 17:10:55 +08:00:Commond:/Test
+2023/10/7 17:10:55 +08:00:收到一条消息
+2023/10/7 17:10:56 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"51b38894-7bb1-58e3-684f-794ff977c0c7"}}
+2023/10/7 17:25:42 +08:00:Commond:/TestAt
+2023/10/7 17:25:42 +08:00:测试At用户
+2023/10/7 17:25:42 +08:00:获取用户信息{"data":null,"message":"用户不在大别野内","retcode":-1}
+2023/10/7 17:26:00 +08:00:=========================================================
+2023/10/7 17:26:00 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/7 17:26:00 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/7 17:26:02 +08:00:Commond:/TestAt
+2023/10/7 17:26:02 +08:00:测试At用户
+2023/10/7 17:26:03 +08:00:获取用户信息{"data":null,"message":"用户不在大别野内","retcode":-1}

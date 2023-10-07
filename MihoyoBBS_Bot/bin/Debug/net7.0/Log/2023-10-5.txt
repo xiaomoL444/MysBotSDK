@@ -1,0 +1,70 @@
+2023/10/5 0:42:09 +08:00:=========================================================
+2023/10/5 0:42:09 +08:00:gG8Fx5xbh1FMVLPteFXQfcvr4BogpNDzSVgMKYGVTFgfXVcp7OnKvDGkTQlw1ezBKNII0Vm8UETAPybZQbQwLDGk6HWGyeIXq/qtYanwVW7NttbRCT9iVZNni5vtpg6ntRykHHEfFwQGcCOsUfoIYxrnxxAljLOykRpWis02G1Y=
+2023/10/5 0:42:09 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /Test \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"别野房东\\\",\\\"color\\\":\\\"#EB7F89\\\",\\\"web_color\\\":\\\"#E08F8F\\\",\\\"role_font_color\\\":\\\"#E75C8E\\\",\\\"role_bg_color\\\":\\\"#FAE2EA\\\",\\\"color_scheme_id\\\":1003},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /Test \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696437727526,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CAVE-8N29-H0L9-KFNT","villa_id":8489}}},"created_at":1696437727,"id":"f4ed4685-e424-ed2d-bbd0-9cff93c7a015","send_at":1696437728}}
+
+2023/10/5 1:12:28 +08:00:=========================================================
+2023/10/5 1:12:28 +08:00:rf0heQMpqpGSR3aOolmTwGRrsj38/h++p/A7GvHPX/7UzTqS74oEKWSJTKMGWpRsvzaPyWhpexcXy1tMwUlPL2N2xkAbf1o67Z2sY9Llgfu819gs2GwfqtpC6NQQBPjj8ezKKbtCHlwJbEobTTBV8sy5Zwrc5HVqu7P2rZr50hA=
+2023/10/5 1:12:29 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /Test \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /Test \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696439546010,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CAVE-MJ16-LR19-KFNT","villa_id":8489}}},"created_at":1696439546,"id":"7259814d-ab04-1ae9-d931-6676c3e2faf1","send_at":1696439547}}
+
+2023/10/5 1:28:29 +08:00:=========================================================
+2023/10/5 1:28:29 +08:00:X-Forwarded-For: 101.132.156.116
+CF-RAY: 810f2444498f886d-LHR
+X-Forwarded-Proto: http
+CF-Visitor: {"scheme":"http"}
+X-Rpc-Bot_id: bot_D0Vo7OZqT0LZR3MQUkTZ
+X-Rpc-Bot_sign: naifIos68d3UnOuDRyj1ahA02yyIrnNyDAtNZc8x0SfJ50fAdT0u7MdKa14npvH92UNFqsR8Iha/EEDTY1Ff2F0GI27OmwstePnKvsLoXEpTcbxkVeJJ0OQNYY4uxFGFwwBBN6VsMGZhH+8eMXgFHybDKOffAQQfYRsrU0QF2KQ=
+X-Trace-Id: 37ceb008922f8e7c:759a579868c492f:1fd6aab26e471784:1
+CDN-Loop: cloudflare
+CF-Connecting-IP: 101.132.156.116
+CF-IPCountry: CN
+Connection: Keep-Alive
+Content-Length: 1415
+Content-Type: application/json
+Accept-Encoding: gzip
+Host: xiaomol444.xyz
+User-Agent: Go-http-client/1.1
+
+
+2023/10/5 1:28:29 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /Test \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /Test \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696440508669,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CAVE-TU1V-8FD9-KFNT","villa_id":8489}}},"created_at":1696440508,"id":"c652272b-9968-208d-4334-fddfd4a0adf6","send_at":1696440509}}
+
+2023/10/5 16:12:48 +08:00:=========================================================
+2023/10/5 16:12:48 +08:00:
+2023/10/5 16:12:48 +08:00:解析消息失败   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Parse(String json, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Parse(String json)
+   at MysBotSDK.MessageReceiver..ctor(String message) in E:\code\Mirai\MysBotSDK\MessageReceiver.cs:line 25
+   at MysBotSDK.MysBot.<>c__DisplayClass29_0.<Initail>b__0() in E:\code\Mirai\MysBotSDK\MysBot.cs:line 74
+2023/10/5 16:14:30 +08:00:=========================================================
+2023/10/5 16:14:30 +08:00:
+2023/10/5 16:15:22 +08:00:=========================================================
+2023/10/5 16:15:22 +08:00:
+2023/10/5 16:15:22 +08:00:解析消息失败   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Parse(String json, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Parse(String json)
+   at MysBotSDK.MessageReceiver..ctor(String message) in E:\code\Mirai\MysBotSDK\MessageReceiver.cs:line 25
+   at MysBotSDK.MysBot.<>c__DisplayClass29_0.<Initail>b__0() in E:\code\Mirai\MysBotSDK\MysBot.cs:line 74
+2023/10/5 16:15:27 +08:00:
+2023/10/5 16:15:27 +08:00:解析消息失败   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Parse(String json, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Parse(String json)
+   at MysBotSDK.MessageReceiver..ctor(String message) in E:\code\Mirai\MysBotSDK\MessageReceiver.cs:line 25
+   at MysBotSDK.MysBot.<>c__DisplayClass29_0.<Initail>b__0() in E:\code\Mirai\MysBotSDK\MysBot.cs:line 74
+2023/10/5 16:15:46 +08:00:
+2023/10/5 16:17:59 +08:00:=========================================================
+2023/10/5 16:17:59 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /Test \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /Test \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696493876180,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CAVR-L37L-5CN9-KFNT","villa_id":8489}}},"created_at":1696493876,"id":"759db0c4-44d5-794e-ae15-ea662c2f0060","send_at":1696493876}}
+
+2023/10/5 20:56:40 +08:00:=========================================================
+2023/10/5 20:56:40 +08:00:不存在路径./Plugins/，即将创建文件夹
+2023/10/5 22:31:47 +08:00:=========================================================
+2023/10/5 22:31:47 +08:00:搜索到方法[System.Attribute[]] MysModules
+2023/10/5 22:33:20 +08:00:=========================================================
+2023/10/5 22:33:20 +08:00:搜索到方法[MysBotSDK.ExtendDataAttribute[]] MysModules
+2023/10/5 22:35:10 +08:00:=========================================================
+2023/10/5 22:35:10 +08:00:搜索到方法[AutoLayout, AnsiClass, Class, Public, BeforeFieldInit] MysModules
+2023/10/5 22:35:33 +08:00:=========================================================
+2023/10/5 22:35:33 +08:00:搜索到方法[System.Collections.ObjectModel.ReadOnlyCollection`1[System.Reflection.CustomAttributeData]] MysModules
+2023/10/5 22:36:51 +08:00:=========================================================
+2023/10/5 22:36:51 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("Test")]] MysModules
+2023/10/5 22:37:32 +08:00:=========================================================
+2023/10/5 22:37:32 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("Test")]] MysModules
+2023/10/5 22:37:56 +08:00:收到一条消息
