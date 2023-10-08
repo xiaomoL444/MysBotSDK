@@ -79,6 +79,8 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 						continue;
 					}
 
+					Logger.Debug(data);
+
 					//解析消息
 					try
 					{

@@ -29,7 +29,7 @@ public static class Logger
 		Error = 0,
 		Warning = 1,
 		Log = 2,
-		Debug = 3
+		Debug = 3,
 	}
 
 	public static void CheckAvaliable()
