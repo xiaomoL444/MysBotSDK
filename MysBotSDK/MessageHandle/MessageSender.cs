@@ -8,7 +8,7 @@ namespace MysBotSDK.MessageHandle;
 public static class MessageSender
 {
 	public static string header { get; internal set; } = "";//没有x-rpc-bot_villa_id
-	public static string FormatHeader(string villa_id) { return header + $"\nx-rpc-bot_villa_id:{villa_id}"; }
+	public static string FormatHeader(int villa_id) { return header + $"\nx-rpc-bot_villa_id:{villa_id}"; }
 	private static MysBot mysBot;
 	internal static MysBot MysBot
 	{
@@ -30,7 +30,7 @@ Content-Type: application/json";
 		msgContentInfo.content = new MsgContent() { text = msg_content.text_, entities = msg_content.entities_ };
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
-		httpRequestMessage.AddHeaders(FormatHeader($"{villa_id}"));
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id, object_name, msg_content = JsonConvert.SerializeObject(msgContentInfo) });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -43,10 +43,22 @@ Content-Type: application/json";
 		};
 		return JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType).data;
 	}
-	public static async void SendImage(int villa_id, ulong room_id)
+	public static async Task<object> SendImage(int villa_id, ulong room_id, string url, PicContentInfo.Size size = null, int file_size = 0)
 	{
-		MsgContentInfo msgContentInfo = new MsgContentInfo();
 		string object_name = "MHY:Image";
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+
+		httpRequestMessage.Content = JsonContent.Create(new { villa_id, room_id, object_name, msg_content = JsonConvert.SerializeObject(new { content = new PicContentInfo() { url = url, size = size, file_size = file_size } }) });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { bot_msg_id = "" }
+		};
+		return JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType).data;
 	}
 	public static async void SendPost(int villa_id, ulong room_id)
 	{
@@ -64,7 +76,7 @@ Content-Type: application/json";
 	public static async Task<Member> GetUserInformation(int villa_id, UInt64 user_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetUserInformation);
-		httpRequestMessage.AddHeaders(FormatHeader($"{villa_id}"));
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { uid = user_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"获取用户信息{res.Content.ReadAsStringAsync().Result}");
@@ -80,7 +92,7 @@ Content-Type: application/json";
 	{
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaInformation);
-		httpRequestMessage.AddHeaders(FormatHeader($"{villa_id}"));
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { villa_id = villa_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -97,7 +109,7 @@ Content-Type: application/json";
 	{
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetRoomInformation);
-		httpRequestMessage.AddHeaders(FormatHeader($"{villa_id}"));
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);

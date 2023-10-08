@@ -383,3 +383,79 @@
 [DEBUG] [Execute] 2023/10/8 20:57:58 +08:00:测试外部链接信息
 [DEBUG] [SendText] 2023/10/8 20:57:58 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"00cfee2c-1e96-559b-17be-93e75ef0eb45"}}
 [DEBUG] [Execute] 2023/10/8 20:57:58 +08:00:{ bot_msg_id = 00cfee2c-1e96-559b-17be-93e75ef0eb45 }
+2023/10/8 22:56:11 +08:00:=========================================================
+2023/10/8 22:56:11 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 22:56:11 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 22:56:11 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/8 22:56:11 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/8 23:06:16 +08:00:=========================================================
+2023/10/8 23:06:16 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 23:06:16 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 23:06:16 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/8 23:06:16 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/8 23:06:16 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/8 23:06:51 +08:00:Commond:/TestPic
+[DEBUG] [Execute] 2023/10/8 23:06:51 +08:00:测试图片发送信息
+[DEBUG] [SendImage] 2023/10/8 23:06:52 +08:00:{"data":null,"message":"Something went wrong...please retry later","retcode":-502}
+2023/10/8 23:07:30 +08:00:=========================================================
+2023/10/8 23:07:30 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 23:07:30 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 23:07:30 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/8 23:07:30 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/8 23:07:30 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/8 23:07:37 +08:00:Commond:/TestPic
+[DEBUG] [Execute] 2023/10/8 23:07:37 +08:00:测试图片发送信息
+[DEBUG] [SendImage] 2023/10/8 23:07:37 +08:00:{"data":null,"message":"Something went wrong...please retry later","retcode":-502}
+2023/10/8 23:08:07 +08:00:=========================================================
+2023/10/8 23:08:07 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 23:08:07 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 23:08:07 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/8 23:08:07 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/8 23:08:07 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/8 23:08:10 +08:00:Commond:/TestPic
+[DEBUG] [Execute] 2023/10/8 23:08:10 +08:00:测试图片发送信息
+2023/10/8 23:09:32 +08:00:=========================================================
+2023/10/8 23:09:32 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 23:09:32 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 23:09:32 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/8 23:09:32 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/8 23:09:32 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/8 23:09:34 +08:00:Commond:/TestPic
+[DEBUG] [Execute] 2023/10/8 23:09:34 +08:00:测试图片发送信息
+[DEBUG] [SendImage] 2023/10/8 23:09:34 +08:00:{"data":null,"message":"Something went wrong...please retry later","retcode":-502}
+2023/10/8 23:10:46 +08:00:=========================================================
+2023/10/8 23:10:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 23:10:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 23:10:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/8 23:10:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/8 23:10:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/8 23:10:47 +08:00:Commond:/TestPic
+[DEBUG] [Execute] 2023/10/8 23:10:47 +08:00:测试图片发送信息
+[DEBUG] [SendImage] 2023/10/8 23:10:47 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"d9c45964-772e-61e6-27d8-ad6bc82881e4"}}
+[DEBUG] [Execute] 2023/10/8 23:10:47 +08:00:{ bot_msg_id = d9c45964-772e-61e6-27d8-ad6bc82881e4 }
+2023/10/8 23:12:46 +08:00:=========================================================
+2023/10/8 23:12:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 23:12:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 23:12:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/8 23:12:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/8 23:12:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/8 23:12:50 +08:00:Commond:/TestPic
+[DEBUG] [Execute] 2023/10/8 23:12:50 +08:00:测试图片发送信息
+[DEBUG] [SendImage] 2023/10/8 23:12:50 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"10ded6f8-c767-515c-efee-8dc7f88f50cf"}}
+[DEBUG] [Execute] 2023/10/8 23:12:50 +08:00:{ bot_msg_id = 10ded6f8-c767-515c-efee-8dc7f88f50cf }
+2023/10/8 23:13:14 +08:00:=========================================================
+2023/10/8 23:13:14 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 23:13:14 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 23:13:14 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/8 23:13:14 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/8 23:13:14 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/8 23:13:22 +08:00:=========================================================
+2023/10/8 23:13:22 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 23:13:22 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 23:13:22 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/8 23:13:22 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/8 23:13:22 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/8 23:13:25 +08:00:Commond:/TestPic
+[DEBUG] [Execute] 2023/10/8 23:13:25 +08:00:测试图片发送信息
+[DEBUG] [SendImage] 2023/10/8 23:13:25 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"08da8e47-5903-6c66-6884-f463a664cbbd"}}
+[DEBUG] [Execute] 2023/10/8 23:13:25 +08:00:{ bot_msg_id = 08da8e47-5903-6c66-6884-f463a664cbbd }

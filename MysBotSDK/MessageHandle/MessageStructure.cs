@@ -1,11 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static MysBotSDK.MessageHandle.MemberRole;
 
 namespace MysBotSDK.MessageHandle
 {
@@ -307,6 +301,25 @@ namespace MysBotSDK.MessageHandle
 		public MsgContent content { get; set; }
 		public MentionedInfo mentionedInfo { get; set; }
 		public QuoteInfo quote { get; set; }
+	}
+	/// <summary>
+	/// 图片
+	/// </summary>
+	public class PicContentInfo
+	{
+		public string url { get; set; }
+		public Size size { get; set; }
+		public class Size
+		{
+			public Size(int width, int height)
+			{
+				this.width = width;
+				this.height = height;
+			}
+			public int width { get; set; }
+			public int height { get; set; }
+		}
+		public int file_size { get; set; }
 	}
 	#region 用户
 	public class MemberBasic
