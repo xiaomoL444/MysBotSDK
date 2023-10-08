@@ -76,10 +76,10 @@ uktHkKy3hPOs5V9HuwIDAQAB
 		AddQuickEmoticon.AddRange(mysPluginModules.Where(q => q.GetType().GetCustomAttributes<AddQuickEmoticonAttribute>() != null));
 		AuditCallback.AddRange(mysPluginModules.Where(q => q.GetType().GetCustomAttributes<AuditCallbackAttribute>() != null));
 
-		mysBot.JoinVilla += (data) => { Array.ForEach(JoinVilla.ToArray(), method => { if (method.Enable) { method.Execute(data); } }); };
+		mysBot.JoinVilla += (data) => { Array.ForEach(JoinVilla.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
 		mysBot.SendMessage += (data) =>
 		{
-			Array.ForEach(SendMessage.ToArray(), method =>
+			Array.ForEach(SendMessage.ToArray(), async method =>
 			{
 				if (method.Enable)
 				{
@@ -88,16 +88,16 @@ uktHkKy3hPOs5V9HuwIDAQAB
 					if (commond[0] == $"/{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}" || commond[0] == $"{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}")
 					{
 						Logger.Log($"Commond:{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}");
-						method.Execute(data);
+						await method.Execute(data);
 					}
 
 				}
 			});
 		};
-		mysBot.CreateRobot += (data) => { Array.ForEach(CreateRobot.ToArray(), method => { if (method.Enable) { method.Execute(data); } }); };
-		mysBot.DeleteRobot += (data) => { Array.ForEach(DeleteRobot.ToArray(), method => { if (method.Enable) { method.Execute(data); } }); };
-		mysBot.AddQuickEmoticon += (data) => { Array.ForEach(AddQuickEmoticon.ToArray(), method => { if (method.Enable) { method.Execute(data); } }); };
-		mysBot.AuditCallback += (data) => { Array.ForEach(AuditCallback.ToArray(), method => { if (method.Enable) { method.Execute(data); } }); };
+		mysBot.CreateRobot += (data) => { Array.ForEach(CreateRobot.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
+		mysBot.DeleteRobot += (data) => { Array.ForEach(DeleteRobot.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
+		mysBot.AddQuickEmoticon += (data) => { Array.ForEach(AddQuickEmoticon.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
+		mysBot.AuditCallback += (data) => { Array.ForEach(AuditCallback.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
 
 		await Commond();
 	}

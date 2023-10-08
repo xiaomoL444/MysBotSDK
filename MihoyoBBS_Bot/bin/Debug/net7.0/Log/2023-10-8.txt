@@ -374,3 +374,12 @@
 [DEBUG] [GetRoomInformation] 2023/10/8 20:43:25 +08:00:获取房间信息{"retcode":0,"message":"OK","data":{"room":{"room_id":"129608","room_name":"堆满吼姆的卧室~","room_type":"BOT_PLATFORM_ROOM_TYPE_CHAT_ROOM","group_id":"0","room_default_notify_type":"BOT_PLATFORM_DEFAULT_NOTIFY_TYPE_NOTIFY","send_msg_auth_range":{"is_all_send_msg":true,"roles":[]}}}}
 2023/10/8 20:43:25 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"1ea9f588-656f-9b90-6c7b-ec64c6409c8e"}}
 2023/10/8 20:43:25 +08:00:{ bot_msg_id = 1ea9f588-656f-9b90-6c7b-ec64c6409c8e }
+2023/10/8 20:57:10 +08:00:=========================================================
+2023/10/8 20:57:10 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 20:57:10 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 20:57:10 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/8 20:57:10 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/8 20:57:58 +08:00:Commond:/TestLink
+[DEBUG] [Execute] 2023/10/8 20:57:58 +08:00:测试外部链接信息
+[DEBUG] [SendText] 2023/10/8 20:57:58 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"00cfee2c-1e96-559b-17be-93e75ef0eb45"}}
+[DEBUG] [Execute] 2023/10/8 20:57:58 +08:00:{ bot_msg_id = 00cfee2c-1e96-559b-17be-93e75ef0eb45 }

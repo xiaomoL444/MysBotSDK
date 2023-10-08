@@ -76,6 +76,19 @@ namespace MysBotSDK.MessageHandle
 			}));
 			return this;
 		}
+		public MessageChain Url_Link(string url, bool requires_bot_access_token = false)
+		{
+			IDs.Add((text.Count - 1, new Entity()
+			{
+				entity = new Entity.entity_detail()
+				{
+					type = Entity.entity_detail.EntityType.link,
+					url = url,
+					requires_bot_access_token = requires_bot_access_token
+				}
+			}));
+			return this;
+		}
 		public async Task<MessageChain> Bulid()
 		{
 			for (int i = 0; i < text.Count; i++)
@@ -119,6 +132,13 @@ namespace MysBotSDK.MessageHandle
 							text_ += $"#{room.room_name.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity.entity_detail.EntityType.link:
+							entities_.Add(new Entity()
+							{
+								entity = entity.entity.entity,
+								length = (ulong)entity.entity.entity.url.Length,
+								offset = (ulong)text_.Length
+							});
+							text_ += entity.entity.entity.url.ConvertUTF8ToUTF16();
 							break;
 						default:
 							break;
