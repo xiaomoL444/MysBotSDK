@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
@@ -17,28 +18,93 @@ namespace MysBotSDK.MessageHandle
 	}
 	public class MessageChain
 	{
-		internal string text { get; set; }
-		internal List<Entity> entities { get; set; }
+		[JsonProperty("text")]
+		internal string text_ { get; set; }
+		[JsonProperty("entites")]
+		internal List<Entity> entities_ { get; set; }
+
+		private List<string> text { get; set; }
+		private List<(int index, Entity entity)> IDs { get; set; }
+
 		public MessageChain()
 		{
-			text = string.Empty.ConvertUTF8ToUTF16();
-			entities = new List<Entity>();
+			text_ = string.Empty;
+			entities_ = new List<Entity>();
+			text = new List<string>();
+			Text("");
+			IDs = new List<(int, Entity)>();
 		}
 		public MessageChain Text(string text)
 		{
-			this.text += text.ConvertUTF8ToUTF16();
+			this.text.Add(text.ConvertUTF8ToUTF16());
 			return this;
 		}
-		public async Task<MessageChain> At(int villa_id, UInt64 id)
+		public MessageChain At(int villa_id, UInt64 id)
 		{
-			var member = await MessageSender.GetUserInformation(villa_id, id);
-			entities.Add(new Entity()
+			IDs.Add((text.Count - 1, new Entity()
 			{
-				entity = new Entity.entity_detail() { type = Entity.entity_detail.EntityType.mentioned_user, user_id = id.ToString() },
-				length = (ulong)$"@{member.basic.nickname.ConvertUTF8ToUTF16()}".Length,
-				offset = (ulong)text.Length
-			});
-			Text($"@{member.basic.nickname}");
+				entity = new Entity.entity_detail()
+				{
+					type = Entity.entity_detail.EntityType.mentioned_user,
+					villa_id = villa_id.ToString(),
+					user_id = id.ToString()
+				}
+			}));
+			return this;
+		}
+		public MessageChain AtAll()
+		{
+			IDs.Add((text.Count - 1, new Entity()
+			{
+				entity = new Entity.entity_detail()
+				{
+					type = Entity.entity_detail.EntityType.mentioned_all
+				}
+			}));
+			return this;
+		}
+		public async Task<MessageChain> Bulid()
+		{
+			for (int i = 0; i < text.Count; i++)
+			{
+				text_ += text[i].ConvertUTF8ToUTF16();
+				//添加entites
+				var entities = IDs.Where(q => q.index == i);//获取某个index下需要entity，switch判断
+				foreach (var entity in entities)
+				{
+					switch (entity.entity.entity.type)
+					{
+						case Entity.entity_detail.EntityType.mentioned_robot:
+							break;
+						case Entity.entity_detail.EntityType.mentioned_user:
+							var member = await MessageSender.GetUserInformation(int.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.user_id));
+							entities_.Add(new Entity()
+							{
+								entity = new Entity.entity_detail() { type = Entity.entity_detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
+								length = (ulong)$"@{member.basic.nickname.ConvertUTF8ToUTF16()} ".Length,
+								offset = (ulong)text_.Length
+							});
+							text_ += $"@{member.basic.nickname.ConvertUTF8ToUTF16()} ";
+							break;
+						case Entity.entity_detail.EntityType.mentioned_all:
+							entities_.Add(new Entity()
+							{
+								entity = new Entity.entity_detail() { type = Entity.entity_detail.EntityType.mentioned_user },
+								length = (ulong)"@全体成员 ".Length,
+								offset = (ulong)text_.Length
+							});
+							text_ += "@全体成员 ";
+							break;
+						case Entity.entity_detail.EntityType.villa_room_link:
+							break;
+						case Entity.entity_detail.EntityType.link:
+							break;
+						default:
+							break;
+					}
+				}
+
+			}
 			return this;
 		}
 	}

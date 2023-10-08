@@ -21,9 +21,11 @@ Content-Type: application/json";
 	}
 	public static async Task<object> SendText(int villa_id, ulong room_id, MessageChain msg_content)
 	{
+		await msg_content.Bulid();
+
 		MsgContentInfo msgContentInfo = new MsgContentInfo();
 		string object_name = "MHY:Text";
-		msgContentInfo.content = new MsgContent() { text = msg_content.text, entities = msg_content.entities };
+		msgContentInfo.content = new MsgContent() { text = msg_content.text_, entities = msg_content.entities_ };
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
 		httpRequestMessage.AddHeaders(header);

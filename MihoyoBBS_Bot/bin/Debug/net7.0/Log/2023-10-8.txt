@@ -1,0 +1,22 @@
+2023/10/8 14:50:42 +08:00:=========================================================
+2023/10/8 14:50:42 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 14:50:42 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 14:51:09 +08:00:Commond:/TestAt
+2023/10/8 14:51:09 +08:00:测试At用户
+2023/10/8 14:51:09 +08:00:获取用户信息{"retcode":0,"message":"OK","data":{"member":{"basic":{"uid":"257585750","nickname":"曉末L444","introduce":"阿咧？","avatar":"30024","avatar_url":"https://bbs-static.miyoushe.com/avatar/avatar30024.png"},"role_id_list":["68947","67068"],"joined_at":"1696156991","role_list":[{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0},{"id":"67068","name":"别野房东","color":"#EB7F89","role_type":"MEMBER_ROLE_TYPE_OWNER","villa_id":"8489","web_color":"#E08F8F","font_color":"#E75C8E","bg_color":"#FAE2EA","is_all_room":true,"room_ids":[],"color_scheme_id":1003,"priority":0}]}}}
+2023/10/8 14:51:10 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"8c3873ec-695a-0a86-1c3d-054b85996d51"}}
+2023/10/8 14:51:10 +08:00:{ bot_msg_id = 8c3873ec-695a-0a86-1c3d-054b85996d51 }
+2023/10/8 15:01:19 +08:00:=========================================================
+2023/10/8 15:01:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 15:01:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 15:01:26 +08:00:Commond:/TestAt
+2023/10/8 15:01:26 +08:00:测试At用户
+2023/10/8 15:01:27 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"547a5067-8a52-ce57-be5b-01b9b3b8f2bf"}}
+2023/10/8 15:01:27 +08:00:{ bot_msg_id = 547a5067-8a52-ce57-be5b-01b9b3b8f2bf }
+2023/10/8 15:08:06 +08:00:=========================================================
+2023/10/8 15:08:06 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 15:08:06 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 15:08:39 +08:00:Commond:/TestAt
+2023/10/8 15:08:39 +08:00:测试At用户
+2023/10/8 15:08:40 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"a5128f75-5a0c-5073-1d95-df2d2ba875ef"}}
+2023/10/8 15:08:40 +08:00:{ bot_msg_id = a5128f75-5a0c-5073-1d95-df2d2ba875ef }
