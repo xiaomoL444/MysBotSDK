@@ -59,27 +59,28 @@ public static class Logger
 			File.Create($"./Log/{date}.txt").Close();
 		}
 	}
-	public static string Debug(string? mes)
+	public static string Debug(string? mes, [System.Runtime.CompilerServices.CallerMemberNameAttribute] string nameAttribute = "")
 	{
 		CheckAvaliable();
+		string log = $"[DEBUG] [{nameAttribute}] {time}:{mes}";
 		lock (logLock)
 		{
 			StreamWriter sw = new StreamWriter($"./Log/{date}.txt", true);
-			sw.WriteLine($"[DEBUG]{time}:{mes}");
+			sw.WriteLine(log);
 			sw.Close();
 		}
 		if ((int)loggerLevel >= 3)
 		{
 			if (isWindow)
 			{
-				Colorful.Console.WriteLine($"[DEBUG]{time}:{mes}", Color.LightSkyBlue);
+				Colorful.Console.WriteLine(log, Color.LightSkyBlue);
 			}
 			else
 			{
-				Console.WriteLine($"[DEBUG]{time}:{mes}");
+				Console.WriteLine(log);
 			}
 		}
-		return "[DEBUG]" + mes + "\n";
+		return log + "\n";
 	}
 	public static string Log(string? mes)
 	{

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,8 +49,7 @@ namespace MysBotSDK.MessageHandle
 		public class Content
 		{
 			public MsgContent content { get; set; }
-			//public user
-			//public mentionInfo
+			public MentionedInfo mentionedInfo { get; set; }
 		}
 		/// <summary>
 		/// 发送者 id
@@ -218,6 +218,7 @@ namespace MysBotSDK.MessageHandle
 	/// </summary>
 	public class MentionedInfo
 	{
+		//[JsonConverter(typeof(int))]
 		public MentionType type { get; set; }
 		public enum MentionType
 		{
@@ -247,6 +248,7 @@ namespace MysBotSDK.MessageHandle
 		public entity_detail entity { get; set; }
 		public class entity_detail
 		{
+			[JsonConverter(typeof(StringEnumConverter))]
 			public EntityType type { get; set; }
 			public enum EntityType
 			{
@@ -366,6 +368,7 @@ namespace MysBotSDK.MessageHandle
 		/// <summary>
 		/// 身份组类型
 		/// </summary>
+		[JsonConverter(typeof(StringEnumConverter))]
 		public Role_type role_type { get; set; }
 		public enum Role_type
 		{
@@ -423,6 +426,7 @@ namespace MysBotSDK.MessageHandle
 	{
 		public UInt64 room_id { get; set; }
 		public string room_name { get; set; }
+		[JsonConverter(typeof(StringEnumConverter))]
 		public Room_Type room_type { get; set; }
 		public enum Room_Type
 		{
@@ -432,6 +436,7 @@ namespace MysBotSDK.MessageHandle
 			BOT_PLATFORM_ROOM_TYPE_INVALID = 3
 		}
 		public UInt64 group_id { get; set; }
+		[JsonConverter(typeof(StringEnumConverter))]
 		public Room_Default_Notify_Type room_default_notify_type { get; set; }
 		public enum Room_Default_Notify_Type
 		{

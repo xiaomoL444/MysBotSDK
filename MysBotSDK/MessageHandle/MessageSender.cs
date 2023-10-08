@@ -8,7 +8,7 @@ namespace MysBotSDK.MessageHandle;
 public static class MessageSender
 {
 	public static string header { get; internal set; } = "";//没有x-rpc-bot_villa_id
-	public static string FormatHeader(string villa_id) { return header += $"\n{villa_id}"; }
+	public static string FormatHeader(string villa_id) { return header + $"\nx-rpc-bot_villa_id:{villa_id}"; }
 	private static MysBot mysBot;
 	internal static MysBot MysBot
 	{
@@ -20,6 +20,7 @@ x-rpc-bot_secret:{Authentication.HmacSHA256(mysBot.secret, mysBot.pub_key)}
 Content-Type: application/json";
 		}
 	}
+	#region 消息发送方法
 	public static async Task<object> SendText(int villa_id, ulong room_id, MessageChain msg_content)
 	{
 		await msg_content.Bulid();
@@ -33,7 +34,7 @@ Content-Type: application/json";
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id, object_name, msg_content = JsonConvert.SerializeObject(msgContentInfo) });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Log("Back" + res.Content.ReadAsStringAsync().Result);
+		Logger.Debug(res.Content.ReadAsStringAsync().Result);
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -52,6 +53,8 @@ Content-Type: application/json";
 		MsgContentInfo msgContentInfo = new MsgContentInfo();
 		string object_name = "MHY:Post";
 	}
+	#endregion
+	#region API获取信息
 	/// <summary>
 	/// 获取用户信息
 	/// </summary>
@@ -64,7 +67,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader($"{villa_id}"));
 		httpRequestMessage.Content = JsonContent.Create(new { uid = user_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Log($"获取用户信息{res.Content.ReadAsStringAsync().Result}");
+		Logger.Debug($"获取用户信息{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -81,7 +84,7 @@ Content-Type: application/json";
 		httpRequestMessage.Content = JsonContent.Create(new { villa_id = villa_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Log($"获取大别野信息{res.Content.ReadAsStringAsync().Result}");
+		Logger.Debug($"获取大别野信息{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -98,7 +101,7 @@ Content-Type: application/json";
 		httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Log($"获取房间信息{res.Content.ReadAsStringAsync().Result}");
+		Logger.Debug($"获取房间信息{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -107,4 +110,5 @@ Content-Type: application/json";
 		};
 		return JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType).data.room;
 	}
+	#endregion
 }

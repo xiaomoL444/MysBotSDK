@@ -63,15 +63,15 @@ namespace MysBotSDK.MessageHandle
 			}));
 			return this;
 		}
-		public MessageChain Room_Link(int villa_id, int room_id)
+		public MessageChain Room_Link(int villa_id, UInt64 room_id)
 		{
 			IDs.Add((text.Count - 1, new Entity()
 			{
 				entity = new Entity.entity_detail()
 				{
 					type = Entity.entity_detail.EntityType.villa_room_link,
-					villa_id=villa_id.ToString(),
-					room_id=room_id.ToString()
+					villa_id = villa_id.ToString(),
+					room_id = room_id.ToString()
 				}
 			}));
 			return this;
@@ -106,9 +106,17 @@ namespace MysBotSDK.MessageHandle
 								length = (ulong)"@全体成员 ".Length,
 								offset = (ulong)text_.Length
 							});
-							text_ += "@全体成员 ";
+							text_ += "@全体成员 ".ConvertUTF8ToUTF16();
 							break;
 						case Entity.entity_detail.EntityType.villa_room_link:
+							var room = await MessageSender.GetRoomInformation(int.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.room_id));
+							entities_.Add(new Entity()
+							{
+								entity = new Entity.entity_detail() { type = Entity.entity_detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
+								length = (ulong)$"#{room.room_name.ConvertUTF8ToUTF16()} ".Length,
+								offset = (ulong)text_.Length
+							});
+							text_ += $"#{room.room_name.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity.entity_detail.EntityType.link:
 							break;
