@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http.Json;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -60,10 +61,22 @@ Content-Type: application/json";
 		};
 		return JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType).data;
 	}
-	public static async void SendPost(int villa_id, ulong room_id)
+	public static async Task<object> SendPost(int villa_id, ulong room_id, string post_id)
 	{
-		MsgContentInfo msgContentInfo = new MsgContentInfo();
 		string object_name = "MHY:Post";
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+
+		httpRequestMessage.Content = JsonContent.Create(new { villa_id, room_id, object_name, msg_content = JsonConvert.SerializeObject(new { content = new { post_id = post_id } }) });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { bot_msg_id = "" }
+		};
+		return JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType).data;
 	}
 	#endregion
 	#region API获取信息
