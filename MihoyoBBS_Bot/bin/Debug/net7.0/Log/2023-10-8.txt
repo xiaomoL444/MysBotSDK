@@ -142,3 +142,7 @@
 2023/10/8 19:21:46 +08:00:MysBotSDK.MessageHandle.Room
 2023/10/8 19:21:47 +08:00:Back{"retcode":0,"message":"OK","data":{"bot_msg_id":"d5386906-24cf-3eee-3f93-5f41e918a84d"}}
 2023/10/8 19:21:47 +08:00:{ bot_msg_id = d5386906-24cf-3eee-3f93-5f41e918a84d }
+2023/10/8 19:44:15 +08:00:=========================================================
+2023/10/8 19:44:15 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/8 19:44:15 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/8 19:44:15 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod

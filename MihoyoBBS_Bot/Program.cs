@@ -13,6 +13,7 @@ static class Program
 		//初始化Bot
 		MysBot mysBot = new MysBot()
 		{
+			loggerLevel = Logger.LoggerLevel.Debug,
 			callback_Adress = "http://127.0.0.1:12328/",
 			bot_id = "bot_D0Vo7OZqT0LZR3MQUkTZ",
 			secret = "mIC6cdoSjOXCxkFijqa905S1bqdMVoIdHAQzFf5GnKb9e",

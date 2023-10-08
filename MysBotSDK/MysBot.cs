@@ -11,12 +11,13 @@ using System.Threading.Tasks;
 
 namespace MysBotSDK
 {
-    public class MysBot
+	public class MysBot
 	{
 		public string callback_Adress { private get; init; }
 		public string bot_id { internal get; init; }
 		public string secret { internal get; init; }
 		public string pub_key { internal get; init; }
+		public Logger.LoggerLevel loggerLevel { get { return Logger.loggerLevel; } set { Logger.loggerLevel = value; } }
 
 		public CancellationTokenSource CancellationTokenSource { get; private init; }
 

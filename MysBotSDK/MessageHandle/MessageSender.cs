@@ -7,7 +7,8 @@ namespace MysBotSDK.MessageHandle;
 
 public static class MessageSender
 {
-	public static string header { get; internal set; } = "";
+	public static string header { get; internal set; } = "";//没有x-rpc-bot_villa_id
+	public static string FormatHeader(string villa_id) { return header += $"\n{villa_id}"; }
 	private static MysBot mysBot;
 	internal static MysBot MysBot
 	{
@@ -28,8 +29,7 @@ Content-Type: application/json";
 		msgContentInfo.content = new MsgContent() { text = msg_content.text_, entities = msg_content.entities_ };
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
-		httpRequestMessage.AddHeaders(header);
-		httpRequestMessage.AddHeaders($"x-rpc-bot_villa_id:{villa_id}");
+		httpRequestMessage.AddHeaders(FormatHeader($"{villa_id}"));
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id, object_name, msg_content = JsonConvert.SerializeObject(msgContentInfo) });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -61,8 +61,7 @@ Content-Type: application/json";
 	public static async Task<Member> GetUserInformation(int villa_id, UInt64 user_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetUserInformation);
-		httpRequestMessage.AddHeaders(header);
-		httpRequestMessage.AddHeaders($"x-rpc-bot_villa_id:{villa_id}");
+		httpRequestMessage.AddHeaders(FormatHeader($"{villa_id}"));
 		httpRequestMessage.Content = JsonContent.Create(new { uid = user_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Log($"获取用户信息{res.Content.ReadAsStringAsync().Result}");
@@ -78,8 +77,7 @@ Content-Type: application/json";
 	{
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaInformation);
-		httpRequestMessage.AddHeaders(header);
-		httpRequestMessage.AddHeaders($"x-rpc-bot_villa_id:{villa_id}");
+		httpRequestMessage.AddHeaders(FormatHeader($"{villa_id}"));
 		httpRequestMessage.Content = JsonContent.Create(new { villa_id = villa_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -96,8 +94,7 @@ Content-Type: application/json";
 	{
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetRoomInformation);
-		httpRequestMessage.AddHeaders(header);
-		httpRequestMessage.AddHeaders($"x-rpc-bot_villa_id:{villa_id}");
+		httpRequestMessage.AddHeaders(FormatHeader($"{villa_id}"));
 		httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
