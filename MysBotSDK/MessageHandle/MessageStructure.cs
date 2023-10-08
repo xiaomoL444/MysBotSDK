@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static MysBotSDK.MessageHandle.MemberRole;
 
 namespace MysBotSDK.MessageHandle
 {
@@ -246,47 +247,14 @@ namespace MysBotSDK.MessageHandle
 		public entity_detail entity { get; set; }
 		public class entity_detail
 		{
-			[JsonProperty("type")]
-			private string type_ { get; set; }
-			[JsonIgnore]
-			public EntityType type
-			{
-				get
-				{
-
-					return (EntityType)Enum.Parse(typeof(EntityType), type_);
-				}
-				set
-				{
-					switch (value)
-					{
-						case EntityType.mentioned_robot:
-							type_ = "mentioned_robot";
-							break;
-						case EntityType.mentioned_user:
-							type_ = "mentioned_user";
-							break;
-						case EntityType.mentioned_all:
-							type_ = "mentioned_all";
-							break;
-						case EntityType.villa_room_link:
-							type_ = "villa_room_link";
-							break;
-						case EntityType.link:
-							type_ = "link";
-							break;
-						default:
-							break;
-					}
-				}
-			}
+			public EntityType type { get; set; }
 			public enum EntityType
 			{
-				mentioned_robot = 1,
-				mentioned_user = 2,
-				mentioned_all = 3,
-				villa_room_link = 4,
-				link = 5
+				mentioned_robot = 0,
+				mentioned_user = 1,
+				mentioned_all = 2,
+				villa_room_link = 3,
+				link = 4
 			}
 			public string bot_id { get; set; }
 			public string user_id { get; set; }
@@ -395,20 +363,17 @@ namespace MysBotSDK.MessageHandle
 		/// 身份组颜色
 		/// </summary>
 		public string color { get; set; }
-		[JsonProperty("role_type")]
-		public string role_type_ { get; set; }
 		/// <summary>
 		/// 身份组类型
 		/// </summary>
-		[JsonIgnore]
-		public Role_type role_type { get { return (Role_type)Enum.Parse(typeof(Role_type), role_type_); } set { role_type_ = Enum.GetName(typeof(Role_type), value); } }
+		public Role_type role_type { get; set; }
 		public enum Role_type
 		{
-			MEMBER_ROLE_TYPE_ALL_MEMBER = 1,//所有人身份组
-			MEMBER_ROLE_TYPE_ADMIN = 2,//管理员身份组
-			MEMBER_ROLE_TYPE_OWNER = 3,//大别野房主身份组
-			MEMBER_ROLE_TYPE_CUSTOM = 4,//其他自定义身份组
-			MEMBER_ROLE_TYPE_UNKNOWN = 5//未知
+			MEMBER_ROLE_TYPE_ALL_MEMBER = 0,//所有人身份组
+			MEMBER_ROLE_TYPE_ADMIN = 1,//管理员身份组
+			MEMBER_ROLE_TYPE_OWNER = 2,//大别野房主身份组
+			MEMBER_ROLE_TYPE_CUSTOM = 3,//其他自定义身份组
+			MEMBER_ROLE_TYPE_UNKNOWN = 4//未知
 		}
 		/// <summary>
 		/// 是否选择全部房间
@@ -419,6 +384,67 @@ namespace MysBotSDK.MessageHandle
 		/// </summary>
 		public UInt64 rool_ids { get; set; }
 		#endregion
-		#endregion
 	}
+	#region 大别野
+	public class Villa
+	{
+		/// <summary>
+		/// 大别野id
+		/// </summary>
+		public UInt64 villa_id { get; set; }
+		/// <summary>
+		/// 名称
+		/// </summary>
+		public string name { get; set; }
+		/// <summary>
+		/// 别野头像链接
+		/// </summary>
+		public string villa_avatar_url { get; set; }
+		/// <summary>
+		/// 别野主人id
+		/// </summary>
+		public UInt64 owner_uid { get; set; }
+		/// <summary>
+		/// 是否是官方别野
+		/// </summary>
+		public bool is_official { get; set; }
+		/// <summary>
+		/// 介绍
+		/// </summary>
+		public string introduce { get; set; }
+		public UInt32 category_id { get; set; }
+		/// <summary>
+		/// 标签
+		/// </summary>
+		public List<string> tags { get; set; }
+	}
+	#endregion
+	public class Room
+	{
+		public UInt64 room_id { get; set; }
+		public string room_name { get; set; }
+		public Room_Type room_type { get; set; }
+		public enum Room_Type
+		{
+			BOT_PLATFORM_ROOM_TYPE_CHAT_ROOM = 0,
+			BOT_PLATFORM_ROOM_TYPE_POST_ROOM = 1,
+			BOT_PLATFORM_ROOM_TYPE_SCENE_ROOM = 2,
+			BOT_PLATFORM_ROOM_TYPE_INVALID = 3
+		}
+		public UInt64 group_id { get; set; }
+		public Room_Default_Notify_Type room_default_notify_type { get; set; }
+		public enum Room_Default_Notify_Type
+		{
+			BOT_PLATFORM_DEFAULT_NOTIFY_TYPE_NOTIFY = 0,
+			BOT_PLATFORM_DEFAULT_NOTIFY_TYPE_IGNORE = 1,
+			BOT_PLATFORM_DEFAULT_NOTIFY_TYPE_INVALID = 2
+		}
+		public SendMsgAuthRange send_msg_auth_range { get; set; }
+		public class SendMsgAuthRange
+		{
+			public bool is_all_send_msg { get; set; }
+			public List<UInt64> roles { get; set; }
+		}
+	}
+	#endregion
 }

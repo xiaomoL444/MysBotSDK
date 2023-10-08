@@ -63,6 +63,19 @@ namespace MysBotSDK.MessageHandle
 			}));
 			return this;
 		}
+		public MessageChain Room_Link(int villa_id, int room_id)
+		{
+			IDs.Add((text.Count - 1, new Entity()
+			{
+				entity = new Entity.entity_detail()
+				{
+					type = Entity.entity_detail.EntityType.villa_room_link,
+					villa_id=villa_id.ToString(),
+					room_id=room_id.ToString()
+				}
+			}));
+			return this;
+		}
 		public async Task<MessageChain> Bulid()
 		{
 			for (int i = 0; i < text.Count; i++)
@@ -89,7 +102,7 @@ namespace MysBotSDK.MessageHandle
 						case Entity.entity_detail.EntityType.mentioned_all:
 							entities_.Add(new Entity()
 							{
-								entity = new Entity.entity_detail() { type = Entity.entity_detail.EntityType.mentioned_user },
+								entity = entity.entity.entity,
 								length = (ulong)"@全体成员 ".Length,
 								offset = (ulong)text_.Length
 							});
