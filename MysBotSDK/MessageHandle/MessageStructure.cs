@@ -515,6 +515,11 @@ namespace MysBotSDK.MessageHandle
 		live_room_order = 4096,
 		manage_spotlight_collection = 8192,
 	}
-
+	public class Emoticon
+	{
+		public string describe_text { get; set; }
+		public string icon { get; set; }
+		public UInt64 emoticon_id { get; set; }
+	}
 	#endregion
 }

@@ -351,6 +351,22 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json.message, retcode = json.retcode, access_info = json.data.access_info, member = json.data.member };
 	}
+	public static async Task<(string message, int retcode, List<Emoticon> emoticons)> GetAllEmoticons(int villa_id)
+	{
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetAllEmoticon);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"获取表情{res.Content.ReadAsStringAsync().Result}");
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { list = new List<Emoticon>() }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+		return new() { message = json.message, retcode = json.retcode, emoticons = json.data.list };
+	}
 	#endregion
 	#region 身份组
 	public static async Task<(string message, int retcode)> OperateMemberToRole(int villa_id, UInt64 user_id, UInt64 role_id, bool is_add)
