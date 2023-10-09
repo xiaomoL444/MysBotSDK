@@ -404,6 +404,23 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json.message, retcode = json.retcode };
 	}
+	public static async Task<(string message, int retcode)> DeleteMemberRole(int villa_id, UInt64 id)
+	{
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.DeleteMemberRole);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.Content = JsonContent.Create(new { id });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"删除身份组{res.Content.ReadAsStringAsync().Result}");
+
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+		return new() { message = json.message, retcode = json.retcode };
+	}
 	public static async Task<(string message, int retcode, MemberRole member_role)> GetVillaMemberRoleInfo(int villa_id, UInt64 role_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMemberRoleInfo);
