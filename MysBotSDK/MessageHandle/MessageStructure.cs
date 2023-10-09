@@ -464,5 +464,10 @@ namespace MysBotSDK.MessageHandle
 			public List<UInt64> roles { get; set; }
 		}
 	}
+	public class Group
+	{
+		public string group_name { get; set; }
+		public UInt64 group_id { get; set; }
+	}
 	#endregion
 }

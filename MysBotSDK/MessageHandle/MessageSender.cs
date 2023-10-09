@@ -3,7 +3,6 @@ using System;
 using System.Diagnostics;
 using System.Net.Http.Json;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
 namespace MysBotSDK.MessageHandle;
 
@@ -240,6 +239,23 @@ Content-Type: application/json";
 			result_count = json.data.list.Count;
 		} while (result_count== size_count);
 		return members;
+	}
+	public static async Task<List<Group>> GetGroupList(int villa_id)
+	{
+
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetGroupList);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		//httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
+
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"获取大别野分组列表信息{res.Content.ReadAsStringAsync().Result}");
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { list = new List<Group>() }
+		};
+		return JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType).data.list;
 	}
 	public static async Task<List<Room>> GetRoomList(int villa_id)
 	{

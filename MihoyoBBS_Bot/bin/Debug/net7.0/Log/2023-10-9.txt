@@ -254,3 +254,79 @@
 [DEBUG] [Execute] 2023/10/9 11:38:58 +08:00:测试删除房组
 [DEBUG] [DeleteGroup] 2023/10/9 11:38:58 +08:00:{"retcode":0,"message":"OK","data":{}}
 [DEBUG] [Execute] 2023/10/9 11:38:58 +08:00:{ }
+2023/10/9 11:48:17 +08:00:=========================================================
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/9 11:48:17 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList ")]] TestGetGroupListMethod
+[DEBUG] [Initail] 2023/10/9 11:49:15 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/GetList","desc":"测试获取房间列表"},{"name":"/CreateG","desc":"测试创建房间"},{"name":"/EditGroup","desc":"测试编辑分组"},{"name":"/DeleteG","desc":"测试删除分组"},{"name":"/GroupList","desc":"测试获取房间分组列表"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /GroupList \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /GroupList \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696823357963,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2A-6R42-SKV9-KFNT","villa_id":8489}}},"created_at":1696823357,"id":"acf1b6eb-ccd7-10a3-1436-19bb00e45509","send_at":1696823358}}
+
+2023/10/9 11:50:08 +08:00:=========================================================
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/9 11:50:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+[DEBUG] [Initail] 2023/10/9 11:50:12 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/GetList","desc":"测试获取房间列表"},{"name":"/CreateG","desc":"测试创建房间"},{"name":"/EditGroup","desc":"测试编辑分组"},{"name":"/DeleteG","desc":"测试删除分组"},{"name":"/GroupList","desc":"测试获取房间分组列表"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /GroupList \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /GroupList \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696823416131,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2A-79AG-T7H9-KFNT","villa_id":8489}}},"created_at":1696823416,"id":"7e658748-5d96-9281-2fc3-5db1f269f226","send_at":1696823416}}
+
+2023/10/9 11:50:13 +08:00:Commond:/GroupList
+[DEBUG] [Execute] 2023/10/9 11:50:13 +08:00:测试获取分组列表
+[DEBUG] [GetGroupList] 2023/10/9 11:50:13 +08:00:获取大别野分组列表信息{"retcode":0,"message":"OK","data":{"list":[{"group_id":"0","group_name":"未分组的房间"}]}}
+2023/10/9 11:54:40 +08:00:=========================================================
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/9 11:54:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+[DEBUG] [Initail] 2023/10/9 11:54:45 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/GetList","desc":"测试获取房间列表"},{"name":"/CreateG","desc":"测试创建房间"},{"name":"/EditGroup","desc":"测试编辑分组"},{"name":"/DeleteG","desc":"测试删除分组"},{"name":"/GroupList","desc":"测试获取房间分组列表"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /GroupList \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /GroupList \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696823688370,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2A-9BPC-NR19-KFNT","villa_id":8489}}},"created_at":1696823688,"id":"13e9897f-9829-3287-b4fd-09afdd3b92ef","send_at":1696823688}}
+
+2023/10/9 11:54:45 +08:00:Commond:/GroupList
+2023/10/9 11:55:53 +08:00:=========================================================
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/9 11:55:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+[DEBUG] [Initail] 2023/10/9 11:55:55 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/GetList","desc":"测试获取房间列表"},{"name":"/CreateG","desc":"测试创建房间"},{"name":"/EditGroup","desc":"测试编辑分组"},{"name":"/DeleteG","desc":"测试删除分组"},{"name":"/GroupList","desc":"测试获取房间分组列表"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /GroupList \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /GroupList \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696823759072,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2A-9T1O-0CJ9-KFNT","villa_id":8489}}},"created_at":1696823759,"id":"38309f5a-3edc-4617-0351-e2baf027da12","send_at":1696823759}}
+
+2023/10/9 11:55:56 +08:00:Commond:/GroupList
+[DEBUG] [Execute] 2023/10/9 11:55:56 +08:00:测试获取分组列表
+[DEBUG] [GetGroupList] 2023/10/9 11:55:56 +08:00:获取大别野分组列表信息{"retcode":0,"message":"OK","data":{"list":[{"group_id":"0","group_name":"未分组的房间"}]}}
+[DEBUG] [Execute] 2023/10/9 11:55:56 +08:00:System.Collections.Generic.List`1[MysBotSDK.MessageHandle.Group]
