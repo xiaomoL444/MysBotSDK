@@ -521,5 +521,10 @@ namespace MysBotSDK.MessageHandle
 		public string icon { get; set; }
 		public UInt64 emoticon_id { get; set; }
 	}
+	public enum Content_Type
+	{
+		AuditContentTypeText = 0,
+		AuditContentTypeImage = 1
+	}
 	#endregion
 }

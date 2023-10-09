@@ -38,4 +38,7 @@ public class Setting
 	public const string GetVillaMemberRole = mys_domain + "/vila/api/bot/platform/getVillaMemberRoles";//Get
 
 	public const string GetAllEmoticon = mys_domain + "/vila/api/bot/platform/getAllEmoticons";//Get
+
+	public const string Audit = mys_domain + "/vila/api/bot/platform/audit";//Post
+	public const string TransferImage = mys_domain + "/vila/api/bot/platform/transferImage";//Post
 }

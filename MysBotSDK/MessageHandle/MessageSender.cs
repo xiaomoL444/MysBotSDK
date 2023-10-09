@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Reflection;
+using System.Security.Cryptography;
 using static MysBotSDK.MessageHandle.MemberRole;
 
 namespace MysBotSDK.MessageHandle;
@@ -470,6 +472,42 @@ Content-Type: application/json";
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json.message, retcode = json.retcode, member_roles = json.data.list };
+	}
+	#endregion
+	#region 审核
+	public static async Task<(string message, int retcode)> Audit(int villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0)
+	{
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.Audit);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.Content = JsonContent.Create(new { audit_content, uid, content_type = Enum.GetName(typeof(Content_Type), content_type), pass_through, room_id });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"获取表情{res.Content.ReadAsStringAsync().Result}");
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+		return new() { message = json.message, retcode = json.retcode };
+	}
+	#endregion
+	#region 图片转存
+	public static async Task<(string message, int retcode, string new_url)> Transferimage(int villa_id, string url)
+	{
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.TransferImage);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.Content = JsonContent.Create(new { url });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"转换床图{res.Content.ReadAsStringAsync().Result}");
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { new_url = "" }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+		return new() { message = json.message, retcode = json.retcode, new_url = json.data.new_url };
 	}
 	#endregion
 }
