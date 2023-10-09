@@ -399,7 +399,7 @@ Content-Type: application/json";
 		{
 			retcode = 0,
 			message = "",
-			data = new {  }
+			data = new { }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json.message, retcode = json.retcode };
