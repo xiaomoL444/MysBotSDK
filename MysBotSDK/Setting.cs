@@ -16,6 +16,7 @@ public class Setting
 	public const string CreateGroup = mys_domain + "/vila/api/bot/platform/createGroup";//Post
 	public const string EditGroup = mys_domain + "/vila/api/bot/platform/editGroup";//Post
 	public const string DeleteGroup = mys_domain + "/vila/api/bot/platform/deleteGroup";//Post
+	public const string EditRoom = mys_domain + "/vila/api/bot/platform/editRoom";//Post
 
 	public const string GetUserInformation = mys_domain + "/vila/api/bot/platform/getMember";//Get
 	public const string GetVillaInformation = mys_domain + "/vila/api/bot/platform/getVilla";//Gei
