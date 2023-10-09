@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.Net.Http.Json;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -167,5 +168,31 @@ Content-Type: application/json";
 		};
 		return JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType).data.room;
 	}
+	public static async Task<List<Member>> GetVillaMember(int villa_id)
+	{
+		int size_count = 10;
+		int result_count = 0;
+		List<Member> members = new List<Member>();
+		do
+		{
+			HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMember);
+			httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+			httpRequestMessage.Content = JsonContent.Create(new { size = 10, offset_str = "" });
+
+			var res = await HttpClass.SendAsync(httpRequestMessage);
+			Logger.Debug($"获取大别野成员信息{res.Content.ReadAsStringAsync().Result}");
+			var AnonymousType = new
+			{
+				retcode = 0,
+				message = "",
+				data = new { next_offset_str = "", list = new List<Member>() }
+			};
+			var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+			members.AddRange(json.data.list);
+			result_count = json.data.list.Count;
+		} while (result_count== size_count);
+		return members;
+	}
+
 	#endregion
 }
