@@ -30,6 +30,7 @@ public class Setting
 	public const string CheckMemberBotAccessToken = mys_domain + "/vila/api/bot/platform/checkMemberBotAccessToken";//Get
 
 	public const string OperateMemberToRole = mys_domain + "/vila/api/bot/platform/operateMemberToRole";//Post
+	public const string CreateMemberRole = mys_domain + "/vila/api/bot/platform/createMemberRole";//Post
 
 	public const string GetVillaMemberRoleInfo = mys_domain + "/vila/api/bot/platform/getMemberRoleInfo";//Get
 	public const string GetVillaMemberRole = mys_domain + "/vila/api/bot/platform/getVillaMemberRoles";//Get

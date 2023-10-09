@@ -26,7 +26,7 @@ uktHkKy3hPOs5V9HuwIDAQAB
 -----END PUBLIC KEY-----
 "
 		}.Initail();
-		var a =await MessageSender.GetVillaMemberRoleInfo(8489,68947);
+
 		//读取程序集
 		List<IMysPluginModule> plugins = new List<IMysPluginModule>();
 
