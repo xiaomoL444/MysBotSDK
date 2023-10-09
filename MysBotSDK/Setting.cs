@@ -17,4 +17,5 @@ public class Setting
 	public const string GetVillaInformation = mys_domain + "/vila/api/bot/platform/getVilla";//Gei
 	public const string GetRoomInformation = mys_domain + "/vila/api/bot/platform/getRoom";//Get
 	public const string GetVillaMember = mys_domain + "/vila/api/bot/platform/getVillaMembers";//Get
+	public const string GetRoomList = mys_domain + "/vila/api/bot/platform/getVillaGroupRoomList";//Get
 }

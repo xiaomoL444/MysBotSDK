@@ -193,6 +193,22 @@ Content-Type: application/json";
 		} while (result_count== size_count);
 		return members;
 	}
+	public static async Task<List<Room>> GetRoomList(int villa_id)
+	{
 
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetRoomList);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		//httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
+
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"获取房间列表信息{res.Content.ReadAsStringAsync().Result}");
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { list = new List<Room>() }
+		};
+		return JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType).data.list;
+	}
 	#endregion
 }
