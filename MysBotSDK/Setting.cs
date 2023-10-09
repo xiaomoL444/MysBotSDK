@@ -31,5 +31,6 @@ public class Setting
 
 	public const string OperateMemberToRole = mys_domain + "/vila/api/bot/platform/operateMemberToRole";//Post
 
+	public const string GetVillaMemberRoleInfo = mys_domain + "/vila/api/bot/platform/getMemberRoleInfo";//Get
 	public const string GetVillaMemberRole = mys_domain + "/vila/api/bot/platform/getVillaMemberRoles";//Get
 }

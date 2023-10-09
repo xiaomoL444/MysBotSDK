@@ -412,6 +412,13 @@ namespace MysBotSDK.MessageHandle
 		private int member_num_ { get; set; }
 		[JsonIgnore]
 		public string member_num { get { return member_num_.ToString(); } set { member_num_ = int.Parse(value); } }
+		public List<Permissions> permissions { get; set; }
+		public class Permissions
+		{ 
+		    public string key { get; set; }
+			public string name { get; set; }
+			public string describe { get; set; }
+		}
 		#endregion
 	}
 	#region 大别野
