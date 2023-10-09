@@ -107,10 +107,10 @@ namespace MysBotSDK.MessageHandle
 							entities_.Add(new Entity()
 							{
 								entity = new Entity.entity_detail() { type = Entity.entity_detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
-								length = (ulong)$"@{member.basic.nickname.ConvertUTF8ToUTF16()} ".Length,
+								length = (ulong)$"@{member.member.basic.nickname.ConvertUTF8ToUTF16()} ".Length,
 								offset = (ulong)text_.Length
 							});
-							text_ += $"@{member.basic.nickname.ConvertUTF8ToUTF16()} ";
+							text_ += $"@{member.member.basic.nickname.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity.entity_detail.EntityType.mentioned_all:
 							entities_.Add(new Entity()
@@ -126,10 +126,10 @@ namespace MysBotSDK.MessageHandle
 							entities_.Add(new Entity()
 							{
 								entity = new Entity.entity_detail() { type = Entity.entity_detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
-								length = (ulong)$"#{room.room_name.ConvertUTF8ToUTF16()} ".Length,
+								length = (ulong)$"#{room.room.room_name.ConvertUTF8ToUTF16()} ".Length,
 								offset = (ulong)text_.Length
 							});
-							text_ += $"#{room.room_name.ConvertUTF8ToUTF16()} ";
+							text_ += $"#{room.room.room_name.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity.entity_detail.EntityType.link:
 							entities_.Add(new Entity()

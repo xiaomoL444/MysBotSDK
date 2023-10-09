@@ -434,7 +434,6 @@ namespace MysBotSDK.MessageHandle
 		/// </summary>
 		public List<string> tags { get; set; }
 	}
-	#endregion
 	public class Room
 	{
 		public UInt64 room_id { get; set; }
@@ -469,5 +468,15 @@ namespace MysBotSDK.MessageHandle
 		public string group_name { get; set; }
 		public UInt64 group_id { get; set; }
 	}
+	#endregion
+
+	public class BotMemberAccessInfo
+	{
+		public UInt64 uid { get; set; }
+		public UInt64 villa_id { get; set; }
+		public string member_access_token { get; set; }
+		public string bot_tpl_id { get; set; }
+	}
+
 	#endregion
 }
