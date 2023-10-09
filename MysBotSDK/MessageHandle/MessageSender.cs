@@ -174,6 +174,22 @@ Content-Type: application/json";
 		};
 		return JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType).data;
 	}
+	public static async Task<object> DeleteRoom(int villa_id, UInt64 room_id)
+	{
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.DeleteRoom);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+
+		httpRequestMessage.Content = JsonContent.Create(new { room_id });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { }
+		};
+		return JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType).data;
+	}
 	#endregion
 	#region API获取信息
 	/// <summary>
