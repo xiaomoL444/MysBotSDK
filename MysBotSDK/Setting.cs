@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,4 +28,8 @@ public class Setting
 	public const string GetRoomList = mys_domain + "/vila/api/bot/platform/getVillaGroupRoomList";//Get
 
 	public const string CheckMemberBotAccessToken = mys_domain + "/vila/api/bot/platform/checkMemberBotAccessToken";//Get
+
+	public const string OperateMemberToRole = mys_domain + "/vila/api/bot/platform/operateMemberToRole";//Post
+
+	public const string GetVillaMemberRole = mys_domain + "/vila/api/bot/platform/getVillaMemberRoles";//Get
 }

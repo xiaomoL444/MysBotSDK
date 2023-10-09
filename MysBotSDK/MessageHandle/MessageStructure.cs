@@ -365,7 +365,10 @@ namespace MysBotSDK.MessageHandle
 		/// <summary>
 		/// 身份组id
 		/// </summary>
-		public UInt64 id { get; set; }
+		[JsonProperty("id")]
+		private object id_ { get; set; }
+		[JsonIgnore]
+		public UInt64 id { get { return UInt64.Parse(id_.ToString()); } set { id_ = (object)value; } }
 		/// <summary>
 		/// 身份组名称
 		/// </summary>
@@ -373,7 +376,10 @@ namespace MysBotSDK.MessageHandle
 		/// <summary>
 		/// 大别野id
 		/// </summary>
-		public UInt64 villa_id { get; set; }
+		[JsonProperty("villa_id")]
+		private object  villa_id_ { get; set; }
+		[JsonIgnore]
+		public UInt64 villa_id { get { return UInt64.Parse(villa_id_.ToString()); } set { villa_id_ = (object)value; } }
 		/// <summary>
 		/// 身份组颜色
 		/// </summary>
@@ -399,6 +405,13 @@ namespace MysBotSDK.MessageHandle
 		/// 指定的房间列表
 		/// </summary>
 		public UInt64 rool_ids { get; set; }
+		/// <summary>
+		/// 该身份组下的成员数量
+		/// </summary>
+		[JsonProperty("member_num")]
+		private int member_num_ { get; set; }
+		[JsonIgnore]
+		public string member_num { get { return member_num_.ToString(); } set { member_num_ = int.Parse(value); } }
 		#endregion
 	}
 	#region 大别野

@@ -505,3 +505,33 @@
 2023/10/9 13:58:51 +08:00:Commond:/Test
 [DEBUG] [Execute] 2023/10/9 13:58:51 +08:00:收到一条消息
 [DEBUG] [SendText] 2023/10/9 13:58:51 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"82f8cbcb-ae27-d5ed-6582-a8640eaf97a1"}}
+2023/10/9 15:39:04 +08:00:=========================================================
+[DEBUG] [GetVillaMemberRoleList] 2023/10/9 15:39:04 +08:00:获取身份组列表{"retcode":0,"message":"OK","data":{"list":[{"group_id":"0","group_name":"未分组的房间","room_list":[{"room_id":"132642","room_name":"城堡天台~","room_type":"BOT_PLATFORM_ROOM_TYPE_LIVE_ROOM","group_id":"0"},{"room_id":"132433","room_name":"城堡一隅","room_type":"BOT_PLATFORM_ROOM_TYPE_CHAT_ROOM","group_id":"0"},{"room_id":"129608","room_name":"堆满吼姆的卧室~","room_type":"BOT_PLATFORM_ROOM_TYPE_CHAT_ROOM","group_id":"0"}]}]}}
+2023/10/9 16:19:07 +08:00:=========================================================
+[DEBUG] [GetVillaMemberRoleList] 2023/10/9 16:19:07 +08:00:获取身份组列表{"retcode":0,"message":"OK","data":{"list":[{"group_id":"0","group_name":"未分组的房间","room_list":[{"room_id":"132642","room_name":"城堡天台~","room_type":"BOT_PLATFORM_ROOM_TYPE_LIVE_ROOM","group_id":"0"},{"room_id":"132433","room_name":"城堡一隅","room_type":"BOT_PLATFORM_ROOM_TYPE_CHAT_ROOM","group_id":"0"},{"room_id":"129608","room_name":"堆满吼姆的卧室~","room_type":"BOT_PLATFORM_ROOM_TYPE_CHAT_ROOM","group_id":"0"}]}]}}
+2023/10/9 16:21:36 +08:00:=========================================================
+[DEBUG] [GetVillaMemberRoleList] 2023/10/9 16:21:36 +08:00:获取身份组列表{"retcode":0,"message":"OK","data":{"list":[{"id":"67069","name":"所有人","color":"#8F9BBF","role_type":"MEMBER_ROLE_TYPE_ALL_MEMBER","villa_id":"8489","member_num":"1","web_color":"#96ADFF","font_color":"#6173AB","bg_color":"#E3E7F4","has_manage_perm":false,"is_all_room":true,"room_ids":[],"color_scheme_id":1002,"priority":0},{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","member_num":"1","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","has_manage_perm":false,"is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0}]}}
+2023/10/9 16:25:23 +08:00:=========================================================
+[DEBUG] [GetVillaMemberRoleList] 2023/10/9 16:25:23 +08:00:获取身份组列表{"retcode":0,"message":"OK","data":{"list":[{"id":"67069","name":"所有人","color":"#8F9BBF","role_type":"MEMBER_ROLE_TYPE_ALL_MEMBER","villa_id":"8489","member_num":"1","web_color":"#96ADFF","font_color":"#6173AB","bg_color":"#E3E7F4","has_manage_perm":false,"is_all_room":true,"room_ids":[],"color_scheme_id":1002,"priority":0},{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","member_num":"1","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","has_manage_perm":false,"is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0}]}}
+2023/10/9 16:25:50 +08:00:=========================================================
+[DEBUG] [GetVillaMemberRoleList] 2023/10/9 16:25:50 +08:00:获取身份组列表{"retcode":0,"message":"OK","data":{"list":[{"id":"67069","name":"所有人","color":"#8F9BBF","role_type":"MEMBER_ROLE_TYPE_ALL_MEMBER","villa_id":"8489","member_num":"1","web_color":"#96ADFF","font_color":"#6173AB","bg_color":"#E3E7F4","has_manage_perm":false,"is_all_room":true,"room_ids":[],"color_scheme_id":1002,"priority":0},{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","member_num":"1","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","has_manage_perm":false,"is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0}]}}
+2023/10/9 16:28:25 +08:00:=========================================================
+[DEBUG] [GetVillaMemberRoleList] 2023/10/9 16:28:25 +08:00:获取身份组列表{"retcode":0,"message":"OK","data":{"list":[{"id":"67069","name":"所有人","color":"#8F9BBF","role_type":"MEMBER_ROLE_TYPE_ALL_MEMBER","villa_id":"8489","member_num":"1","web_color":"#96ADFF","font_color":"#6173AB","bg_color":"#E3E7F4","has_manage_perm":false,"is_all_room":true,"room_ids":[],"color_scheme_id":1002,"priority":0},{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","member_num":"1","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","has_manage_perm":false,"is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0}]}}
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRoom")]] TestEditRoomMethod
+2023/10/9 16:28:27 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRoom")]] TestDeleteRoomMethod
+2023/10/9 16:28:45 +08:00:=========================================================
+[DEBUG] [GetVillaMemberRoleList] 2023/10/9 16:28:45 +08:00:获取身份组列表{"retcode":0,"message":"OK","data":{"list":[{"id":"67069","name":"所有人","color":"#8F9BBF","role_type":"MEMBER_ROLE_TYPE_ALL_MEMBER","villa_id":"8489","member_num":"1","web_color":"#96ADFF","font_color":"#6173AB","bg_color":"#E3E7F4","has_manage_perm":false,"is_all_room":true,"room_ids":[],"color_scheme_id":1002,"priority":0},{"id":"68947","name":"月与星出现之日","color":"#F485D8","role_type":"MEMBER_ROLE_TYPE_CUSTOM","villa_id":"8489","member_num":"1","web_color":"#C689DC","font_color":"#B85ABA","bg_color":"#F5E2F5","has_manage_perm":false,"is_all_room":true,"room_ids":[],"color_scheme_id":6,"priority":0}]}}

@@ -351,4 +351,40 @@ Content-Type: application/json";
 		return new() { message = json.message, retcode = json.retcode, access_info = json.data.access_info, member = json.data.member };
 	}
 	#endregion
+	#region 身份组
+	public static async Task<(string message, int retcode)> OperateMemberToRole(int villa_id, UInt64 user_id, UInt64 role_id, bool is_add)
+	{
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.OperateMemberToRole);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.Content = JsonContent.Create(new { uid = user_id, role_id, is_add });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"获取向身份组添加用户{res.Content.ReadAsStringAsync().Result}");
+
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+		return new() { message = json.message, retcode = json.retcode };
+	}
+	public static async Task<(string message, int retcode, List<MemberRole> member_roles)> GetVillaMemberRoleList(int villa_id)
+	{
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMemberRole);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"获取身份组列表{res.Content.ReadAsStringAsync().Result}");
+
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new {list = new List<MemberRole>() }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+		return new() { message = json.message, retcode = json.retcode,member_roles=json.data.list };
+	}
+	#endregion
 }
