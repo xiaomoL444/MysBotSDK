@@ -627,3 +627,29 @@
 [DEBUG] [Execute] 2023/10/9 18:15:51 +08:00:测试新增身分组
 [DEBUG] [CreateMemberRole] 2023/10/9 18:15:52 +08:00:创建身份组{"retcode":0,"message":"OK","data":{"id":"70939"}}
 [DEBUG] [Execute] 2023/10/9 18:15:52 +08:00:(OK, 0)
+2023/10/9 18:23:42 +08:00:=========================================================
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRoom")]] TestEditRoomMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRoom")]] TestDeleteRoomMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/OpRole")]] TestOpRoleMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateRole")]] TestCreateRoleMethod
+2023/10/9 18:23:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRole")]] TestEditRoleMethod
+[DEBUG] [Initail] 2023/10/9 18:23:50 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/DeleteRoom","desc":"测试删除房间"},{"name":"/CreateRole","desc":"测试新增身份组"},{"name":"/EditRole","desc":"测试编辑身份组"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /EditRole \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /EditRole \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696847030073,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2F-REEE-9J99-KFNT","villa_id":8489}}},"created_at":1696847030,"id":"e91cf0dc-8e71-3a1d-ebe0-761fc4ae3d44","send_at":1696847030}}
+
+2023/10/9 18:23:50 +08:00:Commond:/EditRole
+[DEBUG] [Execute] 2023/10/9 18:23:50 +08:00:测试新增身分组
+[DEBUG] [EditMemberRole] 2023/10/9 18:23:51 +08:00:编辑身份组{"retcode":0,"message":"OK","data":{}}
+[DEBUG] [Execute] 2023/10/9 18:23:51 +08:00:(OK, 0)

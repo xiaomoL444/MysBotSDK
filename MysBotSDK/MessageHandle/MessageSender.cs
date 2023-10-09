@@ -370,7 +370,7 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json.message, retcode = json.retcode };
 	}
-	public static async Task<(string message, int retcode)> CreateMemberRole(int villa_id, string name, string color, Permission permission)
+	public static async Task<(string message, int retcode, string id)> CreateMemberRole(int villa_id, string name, string color, Permission permission)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.CreateMemberRole);
 		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
@@ -382,7 +382,24 @@ Content-Type: application/json";
 		{
 			retcode = 0,
 			message = "",
-			data = new {id = "" }
+			data = new { id = "" }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+		return new() { message = json.message, retcode = json.retcode, id = json.data.id };
+	}
+	public static async Task<(string message, int retcode)> EditMemberRole(int villa_id, UInt64 id, string new_name, string new_color, Permission new_permission)
+	{
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.EditMemberRole);
+		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.Content = JsonContent.Create(new { id, name = new_name, color = new_color, permissions = new_permission.ToString().Split(",") });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"编辑身份组{res.Content.ReadAsStringAsync().Result}");
+
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new {  }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json.message, retcode = json.retcode };
