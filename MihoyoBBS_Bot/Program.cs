@@ -1,17 +1,31 @@
 ﻿using MysBotSDK;
 using MysBotSDK.MessageHandle;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
+using System.Threading;
 
 namespace MihoyoBBS_Bot;
 static class Program
 {
+	//初始化Bot
+
+	public static List<IMysPluginModule> mysPluginModules = new List<IMysPluginModule>();
+	public static List<IProgramPluginModule> programPluginMoudles = new List<IProgramPluginModule>();
+	public static List<IProgramPluginModule> Start = new List<IProgramPluginModule>();
+
+	public static List<IMysPluginModule> JoinVilla = new List<IMysPluginModule>();
+	public static List<IMysPluginModule> SendMessage = new List<IMysPluginModule>();
+	public static List<IMysPluginModule> CreateRobot = new List<IMysPluginModule>();
+	public static List<IMysPluginModule> DeleteRobot = new List<IMysPluginModule>();
+	public static List<IMysPluginModule> AddQuickEmoticon = new List<IMysPluginModule>();
+	public static List<IMysPluginModule> AuditCallback = new List<IMysPluginModule>();
 	public static async Task Main()
 	{
-		//初始化Bot
 		MysBot mysBot = new MysBot()
 		{
 			loggerLevel = Logger.LoggerLevel.Debug,
@@ -27,6 +41,7 @@ uktHkKy3hPOs5V9HuwIDAQAB
 "
 		}.Initail();
 
+
 		//读取程序集
 		List<IMysPluginModule> plugins = new List<IMysPluginModule>();
 
@@ -37,7 +52,8 @@ uktHkKy3hPOs5V9HuwIDAQAB
 			Logger.Log("不存在路径./Plugins/，即将创建文件夹");
 			Directory.CreateDirectory("Plugins");
 		}
-		var assemblies_path = Directory.EnumerateFiles("./Plugins", "*.dll");
+		var assemblies_path = Directory.EnumerateFiles("./Plugins", "*.dll").ToList();
+		//assemblies_path.AddRange(Directory.EnumerateFiles("./", "*.dll").ToList());
 		foreach (var assembly_path in assemblies_path)
 		{
 			try
@@ -51,32 +67,44 @@ uktHkKy3hPOs5V9HuwIDAQAB
 				Logger.LogError($"加载{assembly_path}失败");
 			}
 		}
-		List<IMysPluginModule> mysPluginModules = new List<IMysPluginModule>();
-		List<IMysPluginModule> JoinVilla = new List<IMysPluginModule>();
-		List<IMysPluginModule> SendMessage = new List<IMysPluginModule>();
-		List<IMysPluginModule> CreateRobot = new List<IMysPluginModule>();
-		List<IMysPluginModule> DeleteRobot = new List<IMysPluginModule>();
-		List<IMysPluginModule> AddQuickEmoticon = new List<IMysPluginModule>();
-		List<IMysPluginModule> AuditCallback = new List<IMysPluginModule>();
+
 
 		//加载插件
 		foreach (var assembly in assemblyLoadContext.Assemblies)
 		{
-			var rawModules = assembly.GetTypes().Where(x => x.GetInterfaces().Any(i => i == typeof(IMysPluginModule))).ToList();
+			var rawModules = assembly.GetTypes().Where(x => x.GetInterfaces().Any(i => i == typeof(IMysPluginModule) || i == typeof(IProgramPluginModule))).ToList();
 			if (rawModules.Count == 0) continue;
-			mysPluginModules.AddRange(rawModules.Select(Activator.CreateInstance).Select(m => (m as IMysPluginModule)!));
+			mysPluginModules.AddRange(rawModules.Where(q => q.GetInterfaces().Any(i => i == typeof(IMysPluginModule))).Select(Activator.CreateInstance).Select(m => (m as IMysPluginModule)!));
+			programPluginMoudles.AddRange(rawModules.Where(q => q.GetInterfaces().Any(i => i == typeof(IProgramPluginModule))).Select(Activator.CreateInstance).Select(m => (m as IProgramPluginModule)!));
 		}
 		foreach (var mysPluginModule in mysPluginModules)
 		{
 			Logger.Log($"搜索到方法[{String.Join("", mysPluginModule.GetType().CustomAttributes)}] {mysPluginModule.GetType().Name}");
 		}
-		JoinVilla.AddRange(mysPluginModules.Where(q => q.GetType().GetCustomAttributes<JoinVillaAttribute>() != null));
-		SendMessage.AddRange(mysPluginModules.Where(q => q.GetType().GetCustomAttributes<SendMessageAttribute>() != null));
-		CreateRobot.AddRange(mysPluginModules.Where(q => q.GetType().GetCustomAttributes<CreateRobotAttribute>() != null));
-		DeleteRobot.AddRange(mysPluginModules.Where(q => q.GetType().GetCustomAttributes<DeleteRobotAttribute>() != null));
-		AddQuickEmoticon.AddRange(mysPluginModules.Where(q => q.GetType().GetCustomAttributes<AddQuickEmoticonAttribute>() != null));
-		AuditCallback.AddRange(mysPluginModules.Where(q => q.GetType().GetCustomAttributes<AuditCallbackAttribute>() != null));
+		foreach (var programPluginModule in programPluginMoudles)
+		{
+			Logger.Log($"搜索到方法[{String.Join("", programPluginModule.GetType().CustomAttributes)}] {programPluginModule.GetType().Name}");
 
+		}
+
+
+		if (programPluginMoudles.Count > 0)
+		{
+			Start = new List<IProgramPluginModule>(programPluginMoudles.Where(q => q.GetType().GetCustomAttributes<StartAttribute>() != null));
+			programPluginMoudles.Clear();
+		}
+		if (mysPluginModules.Count > 0)
+		{
+			JoinVilla = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<JoinVillaAttribute>() != null));
+			SendMessage = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<SendMessageAttribute>() != null));
+			CreateRobot = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<CreateRobotAttribute>() != null));
+			DeleteRobot = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<DeleteRobotAttribute>() != null));
+			AddQuickEmoticon = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<AddQuickEmoticonAttribute>() != null));
+			AuditCallback = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<AuditCallbackAttribute>() != null));
+			mysPluginModules.Clear();
+		}
+
+		mysBot.Start += () => { Array.ForEach(Start.ToArray(), async method => { if (method.Enable) { await method.Execute(); } }); };
 		mysBot.JoinVilla += (data) => { Array.ForEach(JoinVilla.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
 		mysBot.SendMessage += (data) =>
 		{
@@ -99,9 +127,11 @@ uktHkKy3hPOs5V9HuwIDAQAB
 		mysBot.DeleteRobot += (data) => { Array.ForEach(DeleteRobot.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
 		mysBot.AddQuickEmoticon += (data) => { Array.ForEach(AddQuickEmoticon.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
 		mysBot.AuditCallback += (data) => { Array.ForEach(AuditCallback.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
+		mysBot.Start.Invoke();
 
 		await Commond();
 	}
+
 	/// <summary>
 	/// 终端命令
 	/// </summary>

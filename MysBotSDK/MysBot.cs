@@ -21,12 +21,13 @@ namespace MysBotSDK
 
 		public CancellationTokenSource CancellationTokenSource { get; private init; }
 
-		public Action<MessageReceiver> JoinVilla { get; set; }
-		public Action<MessageReceiver> SendMessage { get; set; }
-		public Action<MessageReceiver> CreateRobot { get; set; }
-		public Action<MessageReceiver> DeleteRobot { get; set; }
-		public Action<MessageReceiver> AddQuickEmoticon { get; set; }
-		public Action<MessageReceiver> AuditCallback { get; set; }
+		public Action Start { get; set; } = new Action(() => { });
+		public Action<MessageReceiver> JoinVilla { get; set; } = new Action<MessageReceiver>((p) => { });
+		public Action<MessageReceiver> SendMessage { get; set; } = new Action<MessageReceiver>((p) => { });
+		public Action<MessageReceiver> CreateRobot { get; set; } = new Action<MessageReceiver>((p) => { });
+		public Action<MessageReceiver> DeleteRobot { get; set; } = new Action<MessageReceiver>((p) => { });
+		public Action<MessageReceiver> AddQuickEmoticon { get; set; } = new Action<MessageReceiver>((p) => { });
+		public Action<MessageReceiver> AuditCallback { get; set; } = new Action<MessageReceiver>((p) => { });
 		private string Certificate_Header { get; set; }
 
 		public MysBot()

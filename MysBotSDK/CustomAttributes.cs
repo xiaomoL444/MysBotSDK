@@ -4,6 +4,10 @@ public abstract class ExtendDataAttribute : Attribute
 {
 
 }
+public abstract class ProgramAttribute : Attribute
+{
+
+}
 public class JoinVillaAttribute : ExtendDataAttribute
 {
 
@@ -37,6 +41,10 @@ public class AddQuickEmoticonAttribute : ExtendDataAttribute
 
 }
 public class AuditCallbackAttribute : ExtendDataAttribute
+{
+
+}
+public class StartAttribute : ProgramAttribute
 {
 
 }

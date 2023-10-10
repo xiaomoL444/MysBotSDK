@@ -7,3 +7,8 @@ public interface IMysPluginModule
 	public abstract bool Enable { get; set; }
 	public abstract Task Execute(MessageReceiver MessageReceiver);
 }
+public interface IProgramPluginModule
+{
+	public abstract bool Enable { get; set; }
+	public abstract Task Execute();
+}
