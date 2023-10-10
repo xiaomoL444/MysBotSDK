@@ -32,6 +32,8 @@ Content-Type: application/json";
 		MsgContentInfo msgContentInfo = new MsgContentInfo();
 		string object_name = "MHY:Text";
 		msgContentInfo.content = new MsgContent() { text = msg_content.text_, entities = msg_content.entities_ };
+		msgContentInfo.mentionedInfo = new MentionedInfo() { type = msg_content.MentionType, userIdList = msg_content.entities_.Where(q => q.entity.type == Entity.entity_detail.EntityType.mentioned_user).Select(q => q.entity.user_id).ToList() };
+		msgContentInfo.quote = msg_content.quote;
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
 		httpRequestMessage.AddHeaders(FormatHeader(villa_id));

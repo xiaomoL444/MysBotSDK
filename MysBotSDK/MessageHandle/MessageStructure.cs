@@ -44,6 +44,7 @@ namespace MysBotSDK.MessageHandle
 		{
 			public MsgContent content { get; set; }
 			public MentionedInfo mentionedInfo { get; set; }
+			public QuoteInfo QuoteInfo { get; set; }
 		}
 		/// <summary>
 		/// 发送者 id
@@ -216,6 +217,7 @@ namespace MysBotSDK.MessageHandle
 		public MentionType type { get; set; }
 		public enum MentionType
 		{
+			None = 0,
 			All = 1,
 			Partof = 2,
 		}
@@ -228,9 +230,9 @@ namespace MysBotSDK.MessageHandle
 	public class QuoteInfo
 	{
 		public string quoted_message_id { get; set; }
-		public int quoted_message_send_time { get; set; }
+		public Int64 quoted_message_send_time { get; set; }
 		public string original_message_id { get; set; }
-		public int original_message_send_time { get; set; }
+		public Int64 original_message_send_time { get; set; }
 	}
 	public class MsgContent
 	{

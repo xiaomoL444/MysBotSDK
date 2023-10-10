@@ -109,3 +109,346 @@
 [DEBUG] [Execute] 2023/10/10 11:08:50 +08:00:Start
 [DEBUG] [Execute] 2023/10/10 11:08:51 +08:00:Start
 [DEBUG] [Execute] 2023/10/10 11:08:52 +08:00:Start
+2023/10/10 11:34:09 +08:00:=========================================================
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRoom")]] TestEditRoomMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRoom")]] TestDeleteRoomMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/OpRole")]] TestOpRoleMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateRole")]] TestCreateRoleMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRole")]] TestEditRoleMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/AddRole")]] TestAddRoleMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRole")]] TestDeleteRoleMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetE")]] TestDGetEmoticonMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TImage")]] TestTransferImageMethod
+2023/10/10 11:34:09 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] TestStart
+[DEBUG] [Execute] 2023/10/10 11:34:09 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:10 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:11 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:12 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:13 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:14 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:15 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:16 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:17 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:18 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:19 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:20 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:21 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:22 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:23 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:24 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:25 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:26 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:27 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:28 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:29 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:30 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:31 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:32 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:33 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:34 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:35 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:36 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:37 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:38 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:39 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:40 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:41 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:42 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:43 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:44 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:45 +08:00:Start
+[DEBUG] [Initail] 2023/10/10 11:34:45 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /TestAt 257585750\",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /TestAt 257585750\",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696908886554,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2U-JC46-NR39-KFNT","villa_id":8489}}},"created_at":1696908886,"id":"41a1eb16-ab3b-e965-0aef-ef9e3cca2eaf","send_at":1696908887}}
+
+[ERROR]2023/10/10 11:34:46 +08:00:解析消息失败   at Newtonsoft.Json.Serialization.JsonTypeReflector.GetJsonConverter(Object attributeProvider)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.SetPropertySettingsFromAttributes(JsonProperty property, Object attributeProvider, String name, Type declaringType, MemberSerialization memberSerialization, Boolean& allowNonPublicAccess)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.CreateProperties(Type type, MemberSerialization memberSerialization)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.CreateObjectContract(Type objectType)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.CreateContract(Type objectType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Newtonsoft.Json.Utilities.ThreadSafeStore`2.Get(TKey key)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.ResolveContract(Type type)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.GetContract(Type type)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.GetContractSafe(Type type)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at MysBotSDK.MessageHandle.SendMessage.get_content() in E:\code\MysBotSDK\MysBotSDK\MessageHandle\MessageStructure.cs:line 42
+   at MysBotSDK.MessageHandle.MessageReceiver..ctor(String message) in E:\code\MysBotSDK\MysBotSDK\MessageHandle\MessageReceiver.cs:line 40
+   at MysBotSDK.MysBot.<>c__DisplayClass56_0.<Initail>b__0() in E:\code\MysBotSDK\MysBotSDK\MysBot.cs:line 88
+[DEBUG] [Execute] 2023/10/10 11:34:46 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:47 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:48 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:34:49 +08:00:Start
+2023/10/10 11:35:19 +08:00:=========================================================
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRoom")]] TestEditRoomMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRoom")]] TestDeleteRoomMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/OpRole")]] TestOpRoleMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateRole")]] TestCreateRoleMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRole")]] TestEditRoleMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/AddRole")]] TestAddRoleMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRole")]] TestDeleteRoleMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetE")]] TestDGetEmoticonMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TImage")]] TestTransferImageMethod
+2023/10/10 11:35:20 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] TestStart
+[DEBUG] [Execute] 2023/10/10 11:35:20 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:21 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:22 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:23 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:24 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:25 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:26 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:27 +08:00:Start
+[DEBUG] [Initail] 2023/10/10 11:35:27 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /TestAt 257585750\",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /TestAt 257585750\",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696908928119,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2U-JM8T-OBT9-KFNT","villa_id":8489}}},"created_at":1696908928,"id":"022b79d1-5b01-9092-bd72-b6ba81d3ce67","send_at":1696908928}}
+
+[ERROR]2023/10/10 11:35:27 +08:00:解析消息失败   at Newtonsoft.Json.Serialization.JsonTypeReflector.GetJsonConverter(Object attributeProvider)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.SetPropertySettingsFromAttributes(JsonProperty property, Object attributeProvider, String name, Type declaringType, MemberSerialization memberSerialization, Boolean& allowNonPublicAccess)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.CreateProperties(Type type, MemberSerialization memberSerialization)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.CreateObjectContract(Type objectType)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.CreateContract(Type objectType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Newtonsoft.Json.Utilities.ThreadSafeStore`2.Get(TKey key)
+   at Newtonsoft.Json.Serialization.DefaultContractResolver.ResolveContract(Type type)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.GetContract(Type type)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.GetContractSafe(Type type)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at MysBotSDK.MessageHandle.SendMessage.get_content() in E:\code\MysBotSDK\MysBotSDK\MessageHandle\MessageStructure.cs:line 42
+   at MysBotSDK.MessageHandle.MessageReceiver..ctor(String message) in E:\code\MysBotSDK\MysBotSDK\MessageHandle\MessageReceiver.cs:line 40
+   at MysBotSDK.MysBot.<>c__DisplayClass56_0.<Initail>b__0() in E:\code\MysBotSDK\MysBotSDK\MysBot.cs:line 88
+[DEBUG] [Execute] 2023/10/10 11:35:28 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:29 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:30 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:31 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:32 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:33 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:34 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:35:35 +08:00:Start
+2023/10/10 11:35:56 +08:00:=========================================================
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRoom")]] TestEditRoomMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRoom")]] TestDeleteRoomMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/OpRole")]] TestOpRoleMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateRole")]] TestCreateRoleMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRole")]] TestEditRoleMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/AddRole")]] TestAddRoleMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRole")]] TestDeleteRoleMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetE")]] TestDGetEmoticonMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TImage")]] TestTransferImageMethod
+2023/10/10 11:35:56 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] TestStart
+[DEBUG] [Execute] 2023/10/10 11:35:56 +08:00:Start
+[DEBUG] [Initail] 2023/10/10 11:35:56 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /TestAt 257585750\",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /TestAt 257585750\",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696908957404,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2U-JTDN-0KB9-KFNT","villa_id":8489}}},"created_at":1696908957,"id":"8b287abb-f03a-e5e1-88fb-6f9b53255b38","send_at":1696908958}}
+
+2023/10/10 11:35:56 +08:00:Commond:/TestAt
+[DEBUG] [Execute] 2023/10/10 11:35:56 +08:00:测试At用户
+[DEBUG] [Execute] 2023/10/10 11:36:02 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:36:10 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:36:12 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:36:14 +08:00:Start
+[DEBUG] [SendText] 2023/10/10 11:36:14 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"10e1d1fc-4959-3872-8c84-5960a378a6ef"}}
+2023/10/10 11:36:14 +08:00:(OK, 0, 10e1d1fc-4959-3872-8c84-5960a378a6ef)
+[DEBUG] [Execute] 2023/10/10 11:36:15 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:36:16 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:36:17 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:36:18 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 11:36:19 +08:00:Start
+2023/10/10 12:21:52 +08:00:=========================================================
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRoom")]] TestEditRoomMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRoom")]] TestDeleteRoomMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/OpRole")]] TestOpRoleMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateRole")]] TestCreateRoleMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRole")]] TestEditRoleMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/AddRole")]] TestAddRoleMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRole")]] TestDeleteRoleMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetE")]] TestDGetEmoticonMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TImage")]] TestTransferImageMethod
+2023/10/10 12:21:52 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] TestStart
+[DEBUG] [Execute] 2023/10/10 12:21:52 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:21:53 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:21:54 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:21:55 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:21:56 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:21:57 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:21:58 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:21:59 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:22:00 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:22:01 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:22:02 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:22:03 +08:00:Start
+[DEBUG] [Initail] 2023/10/10 12:22:03 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /Test \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /Test \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696911725027,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2V-913O-SPH9-KFNT","villa_id":8489}}},"created_at":1696911725,"id":"e881b26a-dee9-2644-f276-3b3bbd533590","send_at":1696911726}}
+
+2023/10/10 12:22:04 +08:00:Commond:/Test
+[DEBUG] [Execute] 2023/10/10 12:22:04 +08:00:收到一条消息
+[DEBUG] [Execute] 2023/10/10 12:22:04 +08:00:Start
+[DEBUG] [SendText] 2023/10/10 12:22:04 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"93bf2407-35d4-4133-2e79-f4b52d4ae29f"}}
+[DEBUG] [Execute] 2023/10/10 12:22:05 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:22:06 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:22:07 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:22:08 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:22:10 +08:00:Start
+2023/10/10 12:23:19 +08:00:=========================================================
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRoom")]] TestEditRoomMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRoom")]] TestDeleteRoomMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/OpRole")]] TestOpRoleMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateRole")]] TestCreateRoleMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRole")]] TestEditRoleMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/AddRole")]] TestAddRoleMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRole")]] TestDeleteRoleMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetE")]] TestDGetEmoticonMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TImage")]] TestTransferImageMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestQuote")]] TestQuoteMethod
+2023/10/10 12:23:19 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] TestStart
+[DEBUG] [Execute] 2023/10/10 12:23:19 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:23:20 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:23:21 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:23:22 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:23:23 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:23:24 +08:00:Start
+[DEBUG] [Initail] 2023/10/10 12:23:24 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"},{"name":"/TestQuote","desc":"测试引用"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /TestQuote \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /TestQuote \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696911806689,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2V-9L1O-DQN9-KFNT","villa_id":8489}}},"created_at":1696911806,"id":"9e14de19-ed80-1ae4-ada2-61753e335bd8","send_at":1696911807}}
+
+2023/10/10 12:23:25 +08:00:Commond:/TestQuote
+[DEBUG] [Execute] 2023/10/10 12:23:25 +08:00:测试引用信息
+2023/10/10 12:23:53 +08:00:=========================================================
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] TestMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestAt")]] TestAtMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRoom")]] TestRoomMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestLink")]] TestLinkMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPic")]] TestPicMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPost")]] TestPostMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestRecall")]] TestRecallMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestPin")]] TestPinMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetMember")]] TestGetMemberMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetList")]] TestGetRoomListMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateG")]] TestCreateGroupMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditGroup")]] TestEditGroupMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteG")]] TestDeleteGroupMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GroupList")]] TestGetGroupListMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRoom")]] TestEditRoomMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRoom")]] TestDeleteRoomMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/OpRole")]] TestOpRoleMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/CreateRole")]] TestCreateRoleMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/EditRole")]] TestEditRoleMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/AddRole")]] TestAddRoleMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/DeleteRole")]] TestDeleteRoleMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/GetE")]] TestDGetEmoticonMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TImage")]] TestTransferImageMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/TestQuote")]] TestQuoteMethod
+2023/10/10 12:23:53 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] TestStart
+[DEBUG] [Execute] 2023/10/10 12:23:53 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:23:54 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:23:55 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:23:56 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:23:57 +08:00:Start
+[DEBUG] [Initail] 2023/10/10 12:23:57 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"},{"name":"/TestQuote","desc":"测试引用"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /TestQuote \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /TestQuote \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696911839309,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2V-9T0J-EE39-KFNT","villa_id":8489}}},"created_at":1696911839,"id":"1282f50d-8192-5dad-4d46-e4fcd849ba11","send_at":1696911839}}
+
+2023/10/10 12:23:57 +08:00:Commond:/TestQuote
+[DEBUG] [Execute] 2023/10/10 12:23:57 +08:00:测试引用信息
+[DEBUG] [SendText] 2023/10/10 12:23:58 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"8e32a298-48f8-e515-2d59-98ca99fb499b"}}
+[DEBUG] [Execute] 2023/10/10 12:23:58 +08:00:(OK, 0, 8e32a298-48f8-e515-2d59-98ca99fb499b)
+[DEBUG] [Execute] 2023/10/10 12:23:58 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:23:59 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:00 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:01 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:02 +08:00:Start
+[DEBUG] [Initail] 2023/10/10 12:24:03 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末酱","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"},{"name":"/TestQuote","desc":"测试引用"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末酱 /TestQuote \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末酱 /TestQuote \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1696911844779,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB2V-9UBA-UGR9-KFNT","villa_id":8489}}},"created_at":1696911844,"id":"6ef8f768-807c-bd49-9229-65f0fd8ad2b9","send_at":1696911845}}
+
+2023/10/10 12:24:03 +08:00:Commond:/TestQuote
+[DEBUG] [Execute] 2023/10/10 12:24:03 +08:00:测试引用信息
+[DEBUG] [Execute] 2023/10/10 12:24:03 +08:00:Start
+[DEBUG] [SendText] 2023/10/10 12:24:03 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"d205912c-9b9d-ce13-6772-873a3ccb9b72"}}
+[DEBUG] [Execute] 2023/10/10 12:24:03 +08:00:(OK, 0, d205912c-9b9d-ce13-6772-873a3ccb9b72)
+[DEBUG] [Execute] 2023/10/10 12:24:04 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:05 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:06 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:07 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:08 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:09 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:10 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:11 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:12 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:13 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:14 +08:00:Start
+[DEBUG] [Execute] 2023/10/10 12:24:15 +08:00:Start

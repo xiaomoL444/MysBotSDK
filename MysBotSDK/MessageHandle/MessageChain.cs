@@ -18,11 +18,10 @@ namespace MysBotSDK.MessageHandle
 	}
 	public class MessageChain
 	{
-		[JsonProperty("text")]
 		internal string text_ { get; set; }
-		[JsonProperty("entites")]
 		internal List<Entity> entities_ { get; set; }
-
+		internal MentionedInfo.MentionType MentionType { get; set; }
+		internal QuoteInfo quote { get; set; }
 		private List<string> text { get; set; }
 		private List<(int index, Entity entity)> IDs { get; set; }
 
@@ -61,6 +60,15 @@ namespace MysBotSDK.MessageHandle
 					type = Entity.entity_detail.EntityType.mentioned_all
 				}
 			}));
+			return this;
+		}
+		public MessageChain Quote(string message_id, Int64 message_send_time)
+		{
+			quote = new QuoteInfo();
+			quote.quoted_message_id = message_id;
+			quote.quoted_message_send_time = message_send_time;
+			quote.original_message_id = message_id;
+			quote.original_message_send_time = message_send_time;
 			return this;
 		}
 		public MessageChain Room_Link(int villa_id, UInt64 room_id)
@@ -103,6 +111,7 @@ namespace MysBotSDK.MessageHandle
 						case Entity.entity_detail.EntityType.mentioned_robot:
 							break;
 						case Entity.entity_detail.EntityType.mentioned_user:
+							MentionType = MentionedInfo.MentionType.Partof;
 							var member = await MessageSender.GetUserInformation(int.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.user_id));
 							entities_.Add(new Entity()
 							{
@@ -110,9 +119,11 @@ namespace MysBotSDK.MessageHandle
 								length = (ulong)$"@{member.member.basic.nickname.ConvertUTF8ToUTF16()} ".Length,
 								offset = (ulong)text_.Length
 							});
+
 							text_ += $"@{member.member.basic.nickname.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity.entity_detail.EntityType.mentioned_all:
+							MentionType = MentionedInfo.MentionType.All;
 							entities_.Add(new Entity()
 							{
 								entity = entity.entity.entity,
