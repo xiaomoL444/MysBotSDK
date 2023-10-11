@@ -128,25 +128,25 @@ namespace MysBotSDK.MessageHandle
 		/// <summary>
 		/// 大别野 id
 		/// </summary>
-		public int villa_id { get; set; }
+		public UInt64 villa_id { get; set; }
 	}
 	public class DeleteRobot : IExtendData
 	{
 		/// <summary>
 		/// 大别野 id
 		/// </summary>
-		public int villa_id { get; set; }
+		public UInt64 villa_id { get; set; }
 	}
 	public class AddQuickEmoticon : IExtendData
 	{
 		/// <summary>
 		/// 大别野 id
 		/// </summary>
-		public int villa_id { get; set; }
+		public UInt64 villa_id { get; set; }
 		/// <summary>
 		/// 房间 id
 		/// </summary>
-		public int room_id { get; set; }
+		public UInt64 room_id { get; set; }
 		/// <summary>
 		/// 发送表情的用户 id
 		/// </summary>
@@ -170,7 +170,7 @@ namespace MysBotSDK.MessageHandle
 		/// <summary>
 		/// 是否是取消表情
 		/// </summary>
-		public string is_cancel { get; set; }
+		public bool is_cancel { get; set; }
 	}
 	public class AuditCallback : IExtendData
 	{
@@ -185,15 +185,15 @@ namespace MysBotSDK.MessageHandle
 		/// <summary>
 		/// 大别野 id
 		/// </summary>
-		public int villa_id { get; set; }
+		public UInt64 villa_id { get; set; }
 		/// <summary>
 		/// 房间 id（和审核接口调用方传入的值一致）
 		/// </summary>
-		public int room_id { get; set; }
+		public UInt64 room_id { get; set; }
 		/// <summary>
 		/// 用户 id（和审核接口调用方传入的值一致）
 		/// </summary>
-		public int user_id { get; set; }
+		public UInt64 user_id { get; set; }
 		/// <summary>
 		/// 透传数据（和审核接口调用方传入的值一致）
 		/// </summary>
