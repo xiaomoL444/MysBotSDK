@@ -25,7 +25,7 @@ namespace MysBotSDK.MessageHandle
 		/// <summary>
 		/// 大别野 id
 		/// </summary>
-		public string? villa_id { get; set; }
+		public UInt64 villa_id { get; set; }
 	}
 	public class SendMessage : IExtendData
 	{

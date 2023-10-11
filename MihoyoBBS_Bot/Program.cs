@@ -1,5 +1,6 @@
 ﻿using MysBotSDK;
 using MysBotSDK.MessageHandle;
+using MysBotSDK.MessageHandle.Receiver;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

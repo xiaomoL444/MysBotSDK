@@ -65,7 +65,3 @@ public enum EventType
 	AddQuickEmoticon = 5,
 	AuditCallback = 6,
 }
-
-
-
-
