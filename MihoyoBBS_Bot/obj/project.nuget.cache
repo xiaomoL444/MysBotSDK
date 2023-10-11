@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VA0mB16k9D60HqTfPT0ZGjzopBhGbSePSKbOHgifNY8lKFXaIZqyfe94mb88zaPUPNFO/5W7zSAjFCE4jUoKkA==",
+  "dgSpecHash": "PM0jIBWFr+z5Ez9ok2qfufRkssvZ2JX45ljTfQcPN7IBweyMqcfmw1rqoBtMxNjHH+CX7D3pvIPvexvqoDgJuw==",
   "success": true,
   "projectFilePath": "E:\\code\\MysBotSDK\\MihoyoBBS_Bot\\MihoyoBBS_Bot.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\月下初拥\\.nuget\\packages\\system.linq\\4.1.0\\system.linq.4.1.0.nupkg.sha512",
     "C:\\Users\\月下初拥\\.nuget\\packages\\system.linq.expressions\\4.1.0\\system.linq.expressions.4.1.0.nupkg.sha512",
     "C:\\Users\\月下初拥\\.nuget\\packages\\system.objectmodel\\4.0.12\\system.objectmodel.4.0.12.nupkg.sha512",
+    "C:\\Users\\月下初拥\\.nuget\\packages\\system.reactive\\6.0.0\\system.reactive.6.0.0.nupkg.sha512",
     "C:\\Users\\月下初拥\\.nuget\\packages\\system.reflection\\4.1.0\\system.reflection.4.1.0.nupkg.sha512",
     "C:\\Users\\月下初拥\\.nuget\\packages\\system.reflection.emit\\4.0.1\\system.reflection.emit.4.0.1.nupkg.sha512",
     "C:\\Users\\月下初拥\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.0.1\\system.reflection.emit.ilgeneration.4.0.1.nupkg.sha512",

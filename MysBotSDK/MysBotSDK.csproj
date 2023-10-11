@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Colorful.Console" Version="1.2.15" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Reactive" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Security.Cryptography;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,21 +21,10 @@ namespace MysBotSDK
 		public string pub_key { internal get; init; }
 		public Logger.LoggerLevel loggerLevel { get { return Logger.loggerLevel; } set { Logger.loggerLevel = value; } }
 
-		public CancellationTokenSource CancellationTokenSource { get; private init; }
+		public IObservable<MessageReceiverBase> MessageReceiver => messageReceiver.AsObservable();
+		private Subject<MessageReceiverBase> messageReceiver = new();
 
-		public Action Start { get; set; } = new Action(() => { });
-		public Action<MessageReceiver> JoinVilla { get; set; } = new Action<MessageReceiver>((p) => { });
-		public Action<MessageReceiver> SendMessage { get; set; } = new Action<MessageReceiver>((p) => { });
-		public Action<MessageReceiver> CreateRobot { get; set; } = new Action<MessageReceiver>((p) => { });
-		public Action<MessageReceiver> DeleteRobot { get; set; } = new Action<MessageReceiver>((p) => { });
-		public Action<MessageReceiver> AddQuickEmoticon { get; set; } = new Action<MessageReceiver>((p) => { });
-		public Action<MessageReceiver> AuditCallback { get; set; } = new Action<MessageReceiver>((p) => { });
 		private string Certificate_Header { get; set; }
-
-		public MysBot()
-		{
-			CancellationTokenSource = new CancellationTokenSource();
-		}
 
 		public MysBot Initail()
 		{
@@ -85,26 +76,28 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 					//解析消息
 					try
 					{
-						MessageReceiver messageReceiver = new MessageReceiver(data);
-						switch (messageReceiver.EventType)
+						MessageReceiverBase messageReceiverBase = new MessageReceiverBase(data);
+						//MessageReceiver应该是一个抽象类(父类)，然后下面就替换成事件触发器
+
+						switch (messageReceiverBase.EventType)
 						{
 							case EventType.JoinVilla:
-								JoinVilla.Invoke(messageReceiver);
+								messageReceiver.OnNext((JoinVillaReceiver)messageReceiverBase.receiver);
 								break;
 							case EventType.SendMessage:
-								SendMessage.Invoke(messageReceiver);
+								messageReceiver.OnNext((SendMessageReceiver)messageReceiverBase.receiver);
 								break;
 							case EventType.CreateRobot:
-								CreateRobot.Invoke(messageReceiver);
+								messageReceiver.OnNext((CreateRobotReceiver)messageReceiverBase.receiver);
 								break;
 							case EventType.DeleteRobot:
-								DeleteRobot.Invoke(messageReceiver);
+								messageReceiver.OnNext((DeleteRobotReceiver)messageReceiverBase.receiver);
 								break;
 							case EventType.AddQuickEmoticon:
-								AddQuickEmoticon.Invoke(messageReceiver);
+								messageReceiver.OnNext((AddQuickEmoticonReceiver)messageReceiverBase.receiver);
 								break;
 							case EventType.AuditCallback:
-								AuditCallback.Invoke(messageReceiver);
+								messageReceiver.OnNext((AuditCallbackReceiver)messageReceiverBase.receiver);
 								break;
 							default:
 								break;
@@ -117,7 +110,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 					}
 					HttpRespond(response, new ResponseData() { message = "", retcode = 0 });
 				}
-			}, CancellationTokenSource.Token);
+			});
 			return this;
 		}
 

@@ -29,7 +29,7 @@ namespace MysBotSDK.MessageHandle
 	}
 	public class SendMessage : IExtendData
 	{
-		public List<string> args { get; set; }
+		public List<string> args { get; set; } = new List<string>();
 		/// <summary>
 		/// 消息内容string
 		/// </summary>
@@ -528,5 +528,52 @@ namespace MysBotSDK.MessageHandle
 		AuditContentTypeText = 0,
 		AuditContentTypeImage = 1
 	}
+	public class Robot
+	{
+		/// <summary>
+		/// Bot信息
+		/// </summary>
+		public Template template { get; set; }
+		/// <summary>
+		/// 大别野ID
+		/// </summary>
+		public int villa_id { get; set; }
+	}
+	public class Template
+	{
+		/// <summary>
+		/// BotID
+		/// </summary>
+		public string id { get; set; }
+		/// <summary>
+		/// Bot名字
+		/// </summary>
+		public string name { get; set; }
+		/// <summary>
+		/// Bot描述
+		/// </summary>
+		public string desc { get; set; }
+		/// <summary>
+		/// Bot头像
+		/// </summary>
+		public string icon { get; set; }
+		/// <summary>
+		/// 用户使用的快捷命令
+		/// </summary>
+		public List<CommandsItem> commands { get; set; }
+	}
+	public class CommandsItem
+	{
+		/// <summary>
+		/// commond命令
+		/// </summary>
+		public string name { get; set; }
+		/// <summary>
+		/// commond描述
+		/// </summary>
+		public string desc { get; set; }
+	}
+
+
 	#endregion
 }

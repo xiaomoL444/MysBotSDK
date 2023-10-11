@@ -4,28 +4,15 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
-using System.Threading;
 
 namespace MihoyoBBS_Bot;
 static class Program
 {
-	//初始化Bot
-
-	public static List<IMysPluginModule> mysPluginModules = new List<IMysPluginModule>();
-	public static List<IProgramPluginModule> programPluginMoudles = new List<IProgramPluginModule>();
-	public static List<IProgramPluginModule> Start = new List<IProgramPluginModule>();
-
-	public static List<IMysPluginModule> JoinVilla = new List<IMysPluginModule>();
-	public static List<IMysPluginModule> SendMessage = new List<IMysPluginModule>();
-	public static List<IMysPluginModule> CreateRobot = new List<IMysPluginModule>();
-	public static List<IMysPluginModule> DeleteRobot = new List<IMysPluginModule>();
-	public static List<IMysPluginModule> AddQuickEmoticon = new List<IMysPluginModule>();
-	public static List<IMysPluginModule> AuditCallback = new List<IMysPluginModule>();
 	public static async Task Main()
-	{
+	{   //初始化Bot
 		MysBot mysBot = new MysBot()
 		{
 			loggerLevel = Logger.LoggerLevel.Debug,
@@ -68,6 +55,16 @@ uktHkKy3hPOs5V9HuwIDAQAB
 			}
 		}
 
+		List<IMysPluginModule> mysPluginModules = new List<IMysPluginModule>();
+		List<IProgramPluginModule> programPluginMoudles = new List<IProgramPluginModule>();
+		List<IProgramPluginModule> Start = new List<IProgramPluginModule>();
+
+		List<IMysPluginModule> JoinVilla = new List<IMysPluginModule>();
+		List<IMysPluginModule> SendMessage = new List<IMysPluginModule>();
+		List<IMysPluginModule> CreateRobot = new List<IMysPluginModule>();
+		List<IMysPluginModule> DeleteRobot = new List<IMysPluginModule>();
+		List<IMysPluginModule> AddQuickEmoticon = new List<IMysPluginModule>();
+		List<IMysPluginModule> AuditCallback = new List<IMysPluginModule>();
 
 		//加载插件
 		foreach (var assembly in assemblyLoadContext.Assemblies)
@@ -103,31 +100,28 @@ uktHkKy3hPOs5V9HuwIDAQAB
 			AuditCallback = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<AuditCallbackAttribute>() != null));
 			mysPluginModules.Clear();
 		}
-
-		mysBot.Start += () => { Array.ForEach(Start.ToArray(), async method => { if (method.Enable) { await method.Execute(); } }); };
-		mysBot.JoinVilla += (data) => { Array.ForEach(JoinVilla.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
-		mysBot.SendMessage += (data) =>
+		Array.ForEach(JoinVilla.ToArray(), method => { mysBot.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
+		Array.ForEach(SendMessage.ToArray(), method =>
 		{
-			Array.ForEach(SendMessage.ToArray(), async method =>
+			mysBot.MessageReceiver.OfType<SendMessageReceiver>().Subscribe(async (receiver) =>
 			{
 				if (method.Enable)
 				{
-					var commond = data.SendMessage.content.content.text.Split(" ").ToList();
+					var commond = receiver.sendMessage.content.content.text.Split(" ").ToList();//!!!!!!!!!!!!!!!!!快给我改
 					commond.RemoveAt(0);
 					if (commond[0] == $"/{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}" || commond[0] == $"{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}")
 					{
 						Logger.Log($"Commond:{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}");
-						await method.Execute(data);
+						await method.Execute(receiver);
 					}
 
 				}
 			});
-		};
-		mysBot.CreateRobot += (data) => { Array.ForEach(CreateRobot.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
-		mysBot.DeleteRobot += (data) => { Array.ForEach(DeleteRobot.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
-		mysBot.AddQuickEmoticon += (data) => { Array.ForEach(AddQuickEmoticon.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
-		mysBot.AuditCallback += (data) => { Array.ForEach(AuditCallback.ToArray(), async method => { if (method.Enable) { await method.Execute(data); } }); };
-		mysBot.Start.Invoke();
+		});
+		Array.ForEach(CreateRobot.ToArray(), method => { mysBot.MessageReceiver.OfType<CreateRobotReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
+		Array.ForEach(DeleteRobot.ToArray(), method => { mysBot.MessageReceiver.OfType<DeleteRobotReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
+		Array.ForEach(AddQuickEmoticon.ToArray(), method => { mysBot.MessageReceiver.OfType<AddQuickEmoticonReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
+		Array.ForEach(AuditCallback.ToArray(), method => { mysBot.MessageReceiver.OfType<AuditCallbackReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
 
 		await Commond();
 	}

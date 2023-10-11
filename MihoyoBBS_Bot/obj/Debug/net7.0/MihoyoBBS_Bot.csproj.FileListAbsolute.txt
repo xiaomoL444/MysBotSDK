@@ -38,3 +38,4 @@ E:\code\MysBotSDK\MihoyoBBS_Bot\obj\Debug\net7.0\refint\MihoyoBBS_Bot.dll
 E:\code\MysBotSDK\MihoyoBBS_Bot\obj\Debug\net7.0\MihoyoBBS_Bot.pdb
 E:\code\MysBotSDK\MihoyoBBS_Bot\obj\Debug\net7.0\MihoyoBBS_Bot.genruntimeconfig.cache
 E:\code\MysBotSDK\MihoyoBBS_Bot\obj\Debug\net7.0\ref\MihoyoBBS_Bot.dll
+E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\System.Reactive.dll
