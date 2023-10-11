@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MysBotSDK.MessageHandle.Receiver
 {
 	/// <summary>
-	/// 消息被贴上表情接收器
+	/// 消息被贴上表情事件接收器
 	/// </summary>
 	public class AddQuickEmoticonReceiver : MessageReceiverBase
 	{

@@ -108,7 +108,7 @@ uktHkKy3hPOs5V9HuwIDAQAB
 			{
 				if (method.Enable)
 				{
-					var commond = receiver.sendMessage.content.content.text.Split(" ").ToList();//!!!!!!!!!!!!!!!!!快给我改
+					var commond = receiver.Text.Split(" ").ToList();
 					commond.RemoveAt(0);
 					if (commond[0] == $"/{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}" || commond[0] == $"{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}")
 					{

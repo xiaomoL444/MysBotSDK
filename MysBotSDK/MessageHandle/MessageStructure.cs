@@ -49,11 +49,11 @@ namespace MysBotSDK.MessageHandle
 		/// <summary>
 		/// 发送者 id
 		/// </summary>
-		public uint from_user_id { get; set; }
+		public UInt64 from_user_id { get; set; }
 		/// <summary>
 		/// 发送时间的时间戳
 		/// </summary>
-		public long send_at { get; set; }
+		public Int64 send_at { get; set; }
 		/// <summary>
 		/// 房间 id
 		/// </summary>
@@ -77,7 +77,7 @@ namespace MysBotSDK.MessageHandle
 		/// <summary>
 		/// 大别野 id
 		/// </summary>
-		public int villa_id { get; set; }
+		public UInt64 villa_id { get; set; }
 		/// <summary>
 		/// 引用信息
 		/// </summary>
@@ -107,7 +107,14 @@ namespace MysBotSDK.MessageHandle
 			/// <summary>
 			/// 消息类型，包括"文本"，"图片"，"帖子卡片"等
 			/// </summary>
-			public string? msg_type { get; set; }
+			[JsonConverter(typeof(StringEnumConverter))] public Msg_Type msg_type { get; set; }
+
+			public enum Msg_Type
+			{
+				文本 = 0,
+				图片 = 1,
+				帖子卡片 = 2
+			}
 			/// <summary>
 			/// 发送者 id（整型）
 			/// </summary>
