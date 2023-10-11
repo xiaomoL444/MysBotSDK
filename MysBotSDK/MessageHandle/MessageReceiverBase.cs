@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using MysBotSDK.MessageHandle.Receiver;
 
 namespace MysBotSDK.MessageHandle;
 
@@ -66,76 +66,6 @@ public enum EventType
 	AuditCallback = 6,
 }
 
-public class JoinVillaReceiver : MessageReceiverBase
-{
-	public JoinVilla? joinVilla { get; set; }
-	public JoinVillaReceiver(string message) : base(message)
-	{
 
-	}
-	public override void Initialize(string message)
-	{
-		joinVilla = JsonConvert.DeserializeObject<JoinVilla>(message)!;
-	}
-}
-public class SendMessageReceiver : MessageReceiverBase
-{
-	public SendMessage? sendMessage { get; set; }
-	public List<string> args => sendMessage.args;
 
-	public SendMessageReceiver(string message) : base(message)
-	{
-	}
-	public override void Initialize(string message)
-	{
-		sendMessage = JsonConvert.DeserializeObject<SendMessage>(message)!;
-		var args = sendMessage!.content.content.text.Split(" ").ToList();
-		args.RemoveRange(0, 2);
-		sendMessage.args = args;
-	}
-}
-public class CreateRobotReceiver : MessageReceiverBase
-{
-	public CreateRobot? createRobot { get; set; }
-	public CreateRobotReceiver(string message) : base(message)
-	{
-	}
-	public override void Initialize(string message)
-	{
-		createRobot = JsonConvert.DeserializeObject<CreateRobot>(message)!;
-	}
-}
-public class DeleteRobotReceiver : MessageReceiverBase
-{
-	public DeleteRobot? deleteRobot { get; set; }
-	public DeleteRobotReceiver(string message) : base(message)
-	{
-	}
-	public override void Initialize(string message)
-	{
-		deleteRobot = JsonConvert.DeserializeObject<DeleteRobot>(message)!;
-	}
-}
-public class AddQuickEmoticonReceiver : MessageReceiverBase
-{
-	public AddQuickEmoticon addQuickEmoticon { get; set; }
-	public AddQuickEmoticonReceiver(string message) : base(message)
-	{
-	}
-	public override void Initialize(string message)
-	{
-		addQuickEmoticon = JsonConvert.DeserializeObject<AddQuickEmoticon>(message)!;
-	}
-}
-public class AuditCallbackReceiver : MessageReceiverBase
-{
-	public AuditCallback? auditCallback { get; set; }
-	public AuditCallbackReceiver(string message) : base(message)
-	{
-	}
-	public override void Initialize(string message)
-	{
-		auditCallback = JsonConvert.DeserializeObject<AuditCallback>(message);
-	}
-}
 
