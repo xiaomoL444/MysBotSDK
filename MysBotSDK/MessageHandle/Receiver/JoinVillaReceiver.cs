@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MysBotSDK.MessageHandle.ExtendData;
+using Newtonsoft.Json;
 
 namespace MysBotSDK.MessageHandle.Receiver
 {

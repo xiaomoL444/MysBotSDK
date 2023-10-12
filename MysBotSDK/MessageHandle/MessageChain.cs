@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MysBotSDK.MessageHandle.Info;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace MysBotSDK.MessageHandle
 	{
 		internal string text_ { get; set; }
 		internal List<Entity> entities_ { get; set; }
-		internal MentionedInfo.MentionType MentionType { get; set; }
+		internal MentionType MentionType { get; set; }
 		internal QuoteInfo quote { get; set; }
 		private List<string> text { get; set; }
 		private List<(int index, Entity entity)> IDs { get; set; }
@@ -43,9 +44,9 @@ namespace MysBotSDK.MessageHandle
 		{
 			IDs.Add((text.Count - 1, new Entity()
 			{
-				entity = new Entity.entity_detail()
+				entity = new Entity_Detail()
 				{
-					type = Entity.entity_detail.EntityType.mentioned_user,
+					type = Entity_Detail.EntityType.mentioned_user,
 					villa_id = villa_id.ToString(),
 					user_id = id.ToString()
 				}
@@ -56,9 +57,9 @@ namespace MysBotSDK.MessageHandle
 		{
 			IDs.Add((text.Count - 1, new Entity()
 			{
-				entity = new Entity.entity_detail()
+				entity = new Entity_Detail()
 				{
-					type = Entity.entity_detail.EntityType.mentioned_all
+					type = Entity_Detail.EntityType.mentioned_all
 				}
 			}));
 			return this;
@@ -76,9 +77,9 @@ namespace MysBotSDK.MessageHandle
 		{
 			IDs.Add((text.Count - 1, new Entity()
 			{
-				entity = new Entity.entity_detail()
+				entity = new Entity_Detail()
 				{
-					type = Entity.entity_detail.EntityType.villa_room_link,
+					type = Entity_Detail.EntityType.villa_room_link,
 					villa_id = villa_id.ToString(),
 					room_id = room_id.ToString()
 				}
@@ -89,9 +90,9 @@ namespace MysBotSDK.MessageHandle
 		{
 			IDs.Add((text.Count - 1, new Entity()
 			{
-				entity = new Entity.entity_detail()
+				entity = new Entity_Detail()
 				{
-					type = Entity.entity_detail.EntityType.link,
+					type = Entity_Detail.EntityType.link,
 					url = url,
 					requires_bot_access_token = requires_bot_access_token
 				}
@@ -109,22 +110,22 @@ namespace MysBotSDK.MessageHandle
 				{
 					switch (entity.entity.entity.type)
 					{
-						case Entity.entity_detail.EntityType.mentioned_robot:
+						case Entity_Detail.EntityType.mentioned_robot:
 							break;
-						case Entity.entity_detail.EntityType.mentioned_user:
-							MentionType = MentionedInfo.MentionType.Partof;
+						case Entity_Detail.EntityType.mentioned_user:
+							MentionType = MentionType.Partof;
 							var member = await MessageSender.GetUserInformation(int.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.user_id));
 							entities_.Add(new Entity()
 							{
-								entity = new Entity.entity_detail() { type = Entity.entity_detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
+								entity = new Entity_Detail() { type =Entity_Detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
 								length = (ulong)$"@{member.member.basic.nickname.ConvertUTF8ToUTF16()} ".Length,
 								offset = (ulong)text_.Length
 							});
 
 							text_ += $"@{member.member.basic.nickname.ConvertUTF8ToUTF16()} ";
 							break;
-						case Entity.entity_detail.EntityType.mentioned_all:
-							MentionType = MentionedInfo.MentionType.All;
+						case Entity_Detail.EntityType.mentioned_all:
+							MentionType = MentionType.All;
 							entities_.Add(new Entity()
 							{
 								entity = entity.entity.entity,
@@ -133,17 +134,17 @@ namespace MysBotSDK.MessageHandle
 							});
 							text_ += "@全体成员 ".ConvertUTF8ToUTF16();
 							break;
-						case Entity.entity_detail.EntityType.villa_room_link:
+						case Entity_Detail.EntityType.villa_room_link:
 							var room = await MessageSender.GetRoomInformation(int.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.room_id));
 							entities_.Add(new Entity()
 							{
-								entity = new Entity.entity_detail() { type = Entity.entity_detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
+								entity = new Entity_Detail() { type = Entity_Detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
 								length = (ulong)$"#{room.room.room_name.ConvertUTF8ToUTF16()} ".Length,
 								offset = (ulong)text_.Length
 							});
 							text_ += $"#{room.room.room_name.ConvertUTF8ToUTF16()} ";
 							break;
-						case Entity.entity_detail.EntityType.link:
+						case Entity_Detail.EntityType.link:
 							entities_.Add(new Entity()
 							{
 								entity = entity.entity.entity,

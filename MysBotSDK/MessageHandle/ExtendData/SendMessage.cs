@@ -20,7 +20,7 @@ namespace MysBotSDK.MessageHandle.ExtendData
 		/// 消息内容(反序列化)
 		/// </summary>
 		[JsonIgnore]
-		public Content_Msg content { get { return JsonConvert.DeserializeObject<Content>(content_); } }
+		public Content_Msg content { get { return JsonConvert.DeserializeObject<Content_Msg>(content_); } }
 		/// <summary>
 		/// 发送者 id
 		/// </summary>

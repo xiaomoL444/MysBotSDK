@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using MysBotSDK.MessageHandle.Receiver;
+using MysBotSDK.MessageHandle.Info;
 
 namespace MysBotSDK.MessageHandle;
 

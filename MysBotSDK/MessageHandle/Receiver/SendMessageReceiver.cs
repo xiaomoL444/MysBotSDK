@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using MysBotSDK.MessageHandle.ExtendData;
+using MysBotSDK.MessageHandle.Info;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 反序列化后的content消息，非必要不使用，里面似乎还有类没实现...
 		/// </summary>
-		public SendMessage.Content content => sendMessage.content;
+		public Content_Msg content => sendMessage.content;
 		/// <summary>
 		/// 消息文本
 		/// </summary>
@@ -71,7 +73,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 消息类型，包括"文本"，"图片"，"帖子卡片"等
 		/// </summary>
-		public SendMessage.Quote_msg.Msg_Type Quote_Msg_Type => sendMessage.quote_msg.msg_type;
+		public Quote_Msg.Msg_Type Quote_Msg_Type => sendMessage.quote_msg.msg_type;
 		/// <summary>
 		/// 发送者的UID
 		/// </summary>
@@ -86,7 +88,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		public string User_ID_Str => sendMessage.quote_msg.from_user_id_str;
 
 		internal SendMessage sendMessage { get; set; }
-		public SendMessage.Quote_msg quoteInfo => sendMessage.quote_msg;
+		public Quote_Msg quote_msg => sendMessage.quote_msg;
 
 		public SendMessageReceiver(string message) : base(message)
 		{
