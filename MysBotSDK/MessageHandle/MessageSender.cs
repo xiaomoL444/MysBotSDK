@@ -220,9 +220,9 @@ Content-Type: application/json";
 	/// <param name="villa_id">大别野id</param>
 	/// <param name="user_id">用户id</param>
 	/// <returns></returns>
-	public static async Task<(string message, int retcode, Member member)> GetUserInformation(int villa_id, UInt64 user_id)
+	public static async Task<(string message, int retcode, Member member)> GetUserInfo(int villa_id, UInt64 user_id)
 	{
-		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetUserInformation);
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetUserInfo);
 		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { uid = user_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -237,10 +237,10 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json.message, retcode = json.retcode, member = json.data.member };
 	}
-	public static async Task<(string message, int retcode, Villa villa)> GetVillaInformation(int villa_id)
+	public static async Task<(string message, int retcode, Villa villa)> GetVillaInfo(int villa_id)
 	{
 
-		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaInformation);
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaInfo);
 		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { villa_id = villa_id });
 
@@ -255,10 +255,10 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json.message, retcode = json.retcode, villa = json.data.villa };
 	}
-	public static async Task<(string message, int retcode, Room room)> GetRoomInformation(int villa_id, UInt64 room_id)
+	public static async Task<(string message, int retcode, Room room)> GetRoomInfo(int villa_id, UInt64 room_id)
 	{
 
-		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetRoomInformation);
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetRoomInfo);
 		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
 

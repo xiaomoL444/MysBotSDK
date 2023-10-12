@@ -53,7 +53,7 @@ uktHkKy3hPOs5V9HuwIDAQAB
 			}
 			catch (Exception)
 			{
-				Logger.LogError($"加载{assembly_path}失败");
+				Logger.LogError($"加载插件{assembly_path}失败");
 			}
 		}
 
@@ -71,10 +71,18 @@ uktHkKy3hPOs5V9HuwIDAQAB
 		//加载插件
 		foreach (var assembly in assemblyLoadContext.Assemblies)
 		{
-			var rawModules = assembly.GetTypes().Where(x => x.GetInterfaces().Any(i => i == typeof(IMysPluginModule) || i == typeof(IProgramPluginModule))).ToList();
-			if (rawModules.Count == 0) continue;
-			mysPluginModules.AddRange(rawModules.Where(q => q.GetInterfaces().Any(i => i == typeof(IMysPluginModule))).Select(Activator.CreateInstance).Select(m => (m as IMysPluginModule)!));
-			programPluginMoudles.AddRange(rawModules.Where(q => q.GetInterfaces().Any(i => i == typeof(IProgramPluginModule))).Select(Activator.CreateInstance).Select(m => (m as IProgramPluginModule)!));
+			try
+			{
+				var rawModules = assembly.GetTypes().Where(x => x.GetInterfaces().Any(i => i == typeof(IMysPluginModule) || i == typeof(IProgramPluginModule))).ToList();
+				if (rawModules.Count == 0) continue;
+				mysPluginModules.AddRange(rawModules.Where(q => q.GetInterfaces().Any(i => i == typeof(IMysPluginModule))).Select(Activator.CreateInstance).Select(m => (m as IMysPluginModule)!));
+				programPluginMoudles.AddRange(rawModules.Where(q => q.GetInterfaces().Any(i => i == typeof(IProgramPluginModule))).Select(Activator.CreateInstance).Select(m => (m as IProgramPluginModule)!));
+			}
+			catch (Exception)
+			{
+				Logger.LogError($"读取程序集{assembly.FullName}错误");
+			}
+
 		}
 		foreach (var mysPluginModule in mysPluginModules)
 		{
@@ -161,12 +169,12 @@ uktHkKy3hPOs5V9HuwIDAQAB
 					}
 					catch (ArgumentException e)
 					{
-						Console.WriteLine(e.Message);
+						Logger.LogError(e.Message);
 						continue;
 					}
 					catch (NullReferenceException e)
 					{
-						Console.WriteLine(e.Message);
+						Logger.LogError(e.Message);
 						continue;
 					}
 				}
