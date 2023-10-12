@@ -40,7 +40,7 @@ namespace MysBotSDK.MessageHandle
 			this.text.Add(text.ConvertUTF8ToUTF16());
 			return this;
 		}
-		public MessageChain At(int villa_id, UInt64 id)
+		public MessageChain At(UInt64 villa_id, UInt64 id)
 		{
 			IDs.Add((text.Count - 1, new Entity()
 			{
@@ -73,7 +73,7 @@ namespace MysBotSDK.MessageHandle
 			quote.original_message_send_time = message_send_time;
 			return this;
 		}
-		public MessageChain Room_Link(int villa_id, UInt64 room_id)
+		public MessageChain Room_Link(UInt64 villa_id, UInt64 room_id)
 		{
 			IDs.Add((text.Count - 1, new Entity()
 			{
@@ -99,7 +99,7 @@ namespace MysBotSDK.MessageHandle
 			}));
 			return this;
 		}
-		public async Task<MessageChain> Bulid()
+		internal async Task<MessageChain> Bulid()
 		{
 			for (int i = 0; i < text.Count; i++)
 			{

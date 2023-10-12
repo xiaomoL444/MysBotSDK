@@ -20,8 +20,11 @@ public class ExampleProgram
 		};
 		mysBot.MessageReceiver
 			.OfType<SendMessageReceiver>()
-			.Subscribe((receiver) =>{
-
-		});
+			.Subscribe((receiver) =>
+			{
+				var messageChain = new MessageChain()
+				.Text("123");
+				MessageSender.SendText(receiver.Villa_ID, receiver.Room_ID, messageChain);
+			});
 	}
 }

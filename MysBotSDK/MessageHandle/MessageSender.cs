@@ -218,13 +218,13 @@ Content-Type: application/json";
 	/// 获取用户信息
 	/// </summary>
 	/// <param name="villa_id">大别野id</param>
-	/// <param name="user_id">用户id</param>
+	/// <param name="uid">用户id</param>
 	/// <returns></returns>
-	public static async Task<(string message, int retcode, Member member)> GetUserInfo(UInt64 villa_id, UInt64 user_id)
+	public static async Task<(string message, int retcode, Member member)> GetUserInfo(UInt64 villa_id, UInt64 uid)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetUserInfo);
 		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
-		httpRequestMessage.Content = JsonContent.Create(new { uid = user_id });
+		httpRequestMessage.Content = JsonContent.Create(new { uid });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"获取用户信息{res.Content.ReadAsStringAsync().Result}");
 
