@@ -1,6 +1,7 @@
 ﻿using MysBotSDK;
 using MysBotSDK.MessageHandle;
 using MysBotSDK.MessageHandle.Receiver;
+using MysBotSDK.Tool;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -101,6 +102,7 @@ uktHkKy3hPOs5V9HuwIDAQAB
 			AuditCallback = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<AuditCallbackAttribute>() != null));
 			mysPluginModules.Clear();
 		}
+		mysBot.MessageReceiver.Subscribe();
 		Array.ForEach(JoinVilla.ToArray(), method => { mysBot.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
 		Array.ForEach(SendMessage.ToArray(), method =>
 		{

@@ -9,9 +9,11 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using MysBotSDK.MessageHandle.Receiver;
+using MysBotSDK.Tool;
+
 namespace MysBotSDK
 {
-	public class MysBot
+    public class MysBot
 	{
 		public string callback_Adress { private get; init; }
 		public string bot_id { internal get; init; }
