@@ -88,7 +88,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		public string User_ID_Str => sendMessage.quote_msg.from_user_id_str;
 
 		internal SendMessage sendMessage { get; set; }
-		public Quote_Msg quote_msg => sendMessage.quote_msg;
+		internal Quote_Msg quote_msg => sendMessage.quote_msg;
 
 		public SendMessageReceiver(string message) : base(message)
 		{

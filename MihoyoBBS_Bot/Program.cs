@@ -2,10 +2,6 @@
 using MysBotSDK.MessageHandle;
 using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reactive.Linq;
 using System.Reflection;
 using System.Runtime.Loader;

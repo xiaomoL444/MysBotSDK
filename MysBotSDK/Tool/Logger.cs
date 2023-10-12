@@ -62,7 +62,7 @@ public static class Logger
 	public static string Debug(string? mes, [System.Runtime.CompilerServices.CallerMemberName] string nameAttribute = "")
 	{
 		CheckAvaliable();
-		string log = $"[DEBUG] [{nameAttribute}] {time}:{mes}";
+		string log = $"[DEBUG] [From: {nameAttribute}] {time}:{mes}";
 		lock (logLock)
 		{
 			StreamWriter sw = new StreamWriter($"./Log/{date}.txt", true);

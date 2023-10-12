@@ -114,10 +114,10 @@ namespace MysBotSDK.MessageHandle
 							break;
 						case Entity_Detail.EntityType.mentioned_user:
 							MentionType = MentionType.Partof;
-							var member = await MessageSender.GetUserInfo(int.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.user_id));
+							var member = await MessageSender.GetUserInfo(UInt64.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.user_id));
 							entities_.Add(new Entity()
 							{
-								entity = new Entity_Detail() { type =Entity_Detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
+								entity = new Entity_Detail() { type = Entity_Detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
 								length = (ulong)$"@{member.member.basic.nickname.ConvertUTF8ToUTF16()} ".Length,
 								offset = (ulong)text_.Length
 							});
@@ -135,7 +135,7 @@ namespace MysBotSDK.MessageHandle
 							text_ += "@全体成员 ".ConvertUTF8ToUTF16();
 							break;
 						case Entity_Detail.EntityType.villa_room_link:
-							var room = await MessageSender.GetRoomInfo(int.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.room_id));
+							var room = await MessageSender.GetRoomInfo(UInt64.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.room_id));
 							entities_.Add(new Entity()
 							{
 								entity = new Entity_Detail() { type = Entity_Detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
