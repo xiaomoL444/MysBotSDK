@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MysBotSDK\MysBotSDK.csproj" />
+    <Reference Include="MysBotSDK">
+      <HintPath>..\MysBotSDK\bin\Debug\net7.0\MysBotSDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

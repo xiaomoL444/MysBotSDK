@@ -1,8 +1,6 @@
 ﻿using MysBotSDK;
-using MysBotSDK.MessageHandle;
 using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
-using System.Reactive.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
 
@@ -15,15 +13,9 @@ static class Program
 		{
 			loggerLevel = Logger.LoggerLevel.Debug,
 			callback_Adress = "http://127.0.0.1:12328/",
-			bot_id = "bot_D0Vo7OZqT0LZR3MQUkTZ",
-			secret = "mIC6cdoSjOXCxkFijqa905S1bqdMVoIdHAQzFf5GnKb9e",
-			pub_key = @"-----BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmnRn8xpyiSxf1w101sBSybU23
-Wd5lbo3aBquzaUqJHqpG9FaAc2vxMtXmOmnde0x2rXUmEOUqeOBm3ES+dBU2OhhK
-XngKV1pzuABsnPpcBGf47a9dJYALyzs8IVwl1SsKQgAAV8g/jtf4H2DjQLG8R9cc
-uktHkKy3hPOs5V9HuwIDAQAB
------END PUBLIC KEY-----
-"
+			bot_id = "",
+			secret = "",
+			pub_key = @""
 		}.Initail();
 
 
