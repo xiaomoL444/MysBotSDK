@@ -12,7 +12,7 @@ namespace MysBotSDK.Tool
 		/// 读取文件，以 string = string 读取入字典
 		/// </summary>
 		/// <param name="path"></param>
-		public Dictionary<string, string> ReadAsDicString(string path)
+		public static Dictionary<string, string> ReadAsDicString(string path)
 		{
 			Dictionary<string, string> dic = new Dictionary<string, string>();
 
@@ -34,7 +34,7 @@ namespace MysBotSDK.Tool
 
 			return dic;
 		}
-		public void SaveDicString(string path, Dictionary<string, string> dic)
+		public static void SaveDicString(string path, Dictionary<string, string> dic)
 		{
 			string content = string.Empty;
 			for (int i = 0; i < dic.Count; i++)
