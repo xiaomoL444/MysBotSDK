@@ -128,26 +128,27 @@ public static class Logger
 		}
 		return $"[WARNING]{mes}\n";
 	}
-	public static string LogError(string? mes)
+	public static string LogError(string? mes, [System.Runtime.CompilerServices.CallerMemberName] string MemberName = "", [System.Runtime.CompilerServices.CallerFilePath] string FilePath = "", [System.Runtime.CompilerServices.CallerLineNumber] int LineNumber = 0)
 	{
 		CheckAvaliable();
+		string log = $"[ERROR] [Form: {MemberName}] [CallForm: {FilePath} Line: {LineNumber}] {time}:{mes}";
 		lock (logLock)
 		{
 			StreamWriter sw = new StreamWriter($"./Log/{date}.txt", true);
-			sw.WriteLine($"[ERROR]{time}:{mes}");
+			sw.WriteLine(log);
 			sw.Close();
 		}
 		if ((int)loggerLevel >= 0)
 		{
 			if (isWindow)
 			{
-				Colorful.Console.WriteLine($"[ERROR]{time}:{mes}", Color.Red);
+				Colorful.Console.WriteLine(log, Color.Red);
 			}
 			else
 			{
-				Console.WriteLine($"[ERROR]{time}:{mes}");
+				Console.WriteLine(log);
 			}
 		}
-		return $"[ERROR]{mes}\n";
+		return log + "\n";
 	}
 }

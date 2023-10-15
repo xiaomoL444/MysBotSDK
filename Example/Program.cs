@@ -8,7 +8,7 @@ namespace Example;
 
 public class ExampleProgram
 {
-	public async Task Main(string[] args)
+	public static async Task Main(string[] args)
 	{
 		MysBot mysBot = new MysBot()
 		{
