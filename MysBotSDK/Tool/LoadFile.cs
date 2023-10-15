@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MysBotSDK.Tool
 {
-	internal class LoadFile
+	public class LoadFile
 	{
 		/// <summary>
 		/// 读取文件，以 string = string 读取入字典
@@ -45,6 +45,8 @@ namespace MysBotSDK.Tool
 					content += "\n";
 				}
 			}
+			StreamWriter streamWriter = new StreamWriter(new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite));
+			streamWriter.Write(content);
 		}
 	}
 }

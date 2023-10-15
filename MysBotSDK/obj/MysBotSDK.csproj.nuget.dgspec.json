@@ -51,6 +51,10 @@
             "System.Reactive": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "WebSocketSharp-netstandard": {
+              "target": "Package",
+              "version": "[1.0.1, )"
             }
           },
           "imports": [
