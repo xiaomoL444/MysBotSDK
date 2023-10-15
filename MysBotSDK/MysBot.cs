@@ -35,7 +35,7 @@ namespace MysBotSDK
 		public MysBot Initail()
 		{
 			//检查bot参数是否齐全
-			if (http_callback_Adress == null || bot_id == null || secret == null | pub_key == null)
+			if (!(http_callback_Adress != null || ws_callback_Address != null) || bot_id == null || secret == null | pub_key == null)
 			{
 				throw new Exception(Logger.LogError("Bot参数不齐全"));
 			}
@@ -91,20 +91,29 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 			}
 			else if (!string.IsNullOrEmpty(ws_callback_Address) && string.IsNullOrEmpty(http_callback_Adress))
 			{
-				WebSocketSharp.WebSocket webSocket = new WebSocketSharp.WebSocket(ws_callback_Address);
-
-				webSocket.OnOpen += (sender, e) => { Logger.Log("开启websocket连接"); };
-				webSocket.OnMessage += (sender, e) =>
+				_ = Task.Run(() =>
 				{
-					if (e.IsText)
+					WebSocketSharp.WebSocket webSocket = new WebSocketSharp.WebSocket(ws_callback_Address);
+
+					webSocket.OnOpen += (sender, e) => { Logger.Log("开启websocket连接"); };
+					webSocket.OnMessage += (sender, e) =>
 					{
-						string data = e.Data;
-						MessageHandle(data);
-					}
-				};
-				webSocket.OnError += (sender, e) => { Logger.LogError("websocket出现错误"); };
-				webSocket.OnClose += (sender, e) => { Logger.Log("websocket关闭"); };
-				webSocket.Connect();
+						if (e.IsText)
+						{
+							string data = e.Data;
+							Logger.Debug(data);
+							MessageHandle(data);
+						}
+					};
+					CloseDelegate.SetConsoleCtrlHandler(CloseDelegate.cancelHandler, true);
+					CloseDelegate.CloseEvent += new Action(() => { webSocket.Close(); });
+					webSocket.OnError += (sender, e) => { Logger.LogError("websocket出现错误"); };
+					webSocket.OnClose += (sender, e) => { Logger.Log("websocket关闭"); };
+					webSocket.Connect();
+					webSocket.Send("BALUS");
+
+				});
+
 			}
 			else
 			{
@@ -112,6 +121,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 			}
 			return this;
 		}
+
 
 		/// <summary>
 		/// 回应我吧，月下初拥！
