@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MysBotSDK.Tool
 {
-	public class LoadFile
+	public class FileHandle
 	{
 		/// <summary>
 		/// 读取文件，以 string = string 读取入字典

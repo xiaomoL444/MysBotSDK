@@ -10,6 +10,7 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
+using System.Runtime.InteropServices;
 
 namespace MysBotSDK
 {
@@ -49,6 +50,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 			//创建监听
 			if (!string.IsNullOrEmpty(http_callback_Adress) && string.IsNullOrEmpty(ws_callback_Address))
 			{
+				Logger.Log("创建Http监听");
 				HttpListener listener = new HttpListener();
 				listener.Prefixes.Add(http_callback_Adress);
 				listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
@@ -91,6 +93,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 			}
 			else if (!string.IsNullOrEmpty(ws_callback_Address) && string.IsNullOrEmpty(http_callback_Adress))
 			{
+				Logger.Log("创建websocker监听");
 				_ = Task.Run(() =>
 				{
 					WebSocketSharp.WebSocket webSocket = new WebSocketSharp.WebSocket(ws_callback_Address);
@@ -105,8 +108,6 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 							MessageHandle(data);
 						}
 					};
-					CloseDelegate.SetConsoleCtrlHandler(CloseDelegate.cancelHandler, true);
-					CloseDelegate.CloseEvent += new Action(() => { webSocket.Close(); });
 					webSocket.OnError += (sender, e) => { Logger.LogError("websocket出现错误"); };
 					webSocket.OnClose += (sender, e) => { Logger.Log("websocket关闭"); };
 					webSocket.Connect();
