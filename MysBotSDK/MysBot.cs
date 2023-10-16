@@ -16,7 +16,7 @@ namespace MysBotSDK
 {
 	public class MysBot
 	{
-		public string http_callback_Adress { private get; init; }
+		public string http_callback_Address { private get; init; }
 		public string ws_callback_Address { private get; init; }
 		public string bot_id { internal get; init; }
 		public string secret { internal get; init; }
@@ -36,7 +36,7 @@ namespace MysBotSDK
 		public MysBot Initail()
 		{
 			//检查bot参数是否齐全
-			if (!(http_callback_Adress != null || ws_callback_Address != null) || bot_id == null || secret == null | pub_key == null)
+			if (!(http_callback_Address != null || ws_callback_Address != null) || bot_id == null || secret == null | pub_key == null)
 			{
 				throw new Exception(Logger.LogError("Bot参数不齐全"));
 			}
@@ -48,11 +48,11 @@ x-rpc-bot_secret:{secret}
 x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 
 			//创建监听
-			if (!string.IsNullOrEmpty(http_callback_Adress) && string.IsNullOrEmpty(ws_callback_Address))
+			if (!string.IsNullOrEmpty(http_callback_Address) && string.IsNullOrEmpty(ws_callback_Address))
 			{
 				Logger.Log("创建Http监听");
 				HttpListener listener = new HttpListener();
-				listener.Prefixes.Add(http_callback_Adress);
+				listener.Prefixes.Add(http_callback_Address);
 				listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
 				listener.Start();
 
@@ -91,10 +91,10 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 					}
 				});
 			}
-			else if (!string.IsNullOrEmpty(ws_callback_Address) && string.IsNullOrEmpty(http_callback_Adress))
+			else if (!string.IsNullOrEmpty(ws_callback_Address) && string.IsNullOrEmpty(http_callback_Address))
 			{
 				Logger.Log("创建websocker监听");
-				_=Task.Run(	async() =>
+				_ = Task.Run(async () =>
 				{
 					WebSocketSharp.WebSocket webSocket = new WebSocketSharp.WebSocket(ws_callback_Address);
 
@@ -117,12 +117,12 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 						webSocket.Send("BALUS");
 						await Task.Delay(1000 * 30);
 					}
-				});;
+				}); ;
 
 			}
 			else
 			{
-				throw new Exception("不能同时传入ws_callback与http_callback");
+				throw new Exception("不能同时传入ws_callback与http_callback,或者没有传值");
 			}
 			return this;
 		}

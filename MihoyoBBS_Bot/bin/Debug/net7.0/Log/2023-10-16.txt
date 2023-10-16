@@ -1,0 +1,343 @@
+[Log] 2023/10/16 11:45:47 +08:00:=========================================================
+[Log] 2023/10/16 11:45:47 +08:00:创建Http监听
+[Log] 2023/10/16 11:45:49 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[DEBUG] [From: Initail] 2023/10/16 11:46:24 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 \",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 \",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697427984718,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6Q-BP2J-J8D9-KFNT","villa_id":8489}}},"created_at":1697427984,"id":"4cadf825-3b38-8b7c-f4af-587bed3c24e1","send_at":1697427985}}
+
+[Log] 2023/10/16 11:46:56 +08:00:=========================================================
+[Log] 2023/10/16 11:46:56 +08:00:创建Http监听
+[Log] 2023/10/16 11:46:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[DEBUG] [From: Initail] 2023/10/16 11:47:04 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 \",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 \",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697428025640,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6Q-C32A-3FT9-KFNT","villa_id":8489}}},"created_at":1697428025,"id":"788070a1-4fc5-4c05-e4d8-71f27528aa3e","send_at":1697428026}}
+
+[Log] 2023/10/16 12:53:54 +08:00:=========================================================
+[Log] 2023/10/16 12:53:54 +08:00:创建Http监听
+[Log] 2023/10/16 12:53:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 12:53:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 12:53:56 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] Start
+[Log] 2023/10/16 12:53:56 +08:00:Start
+[Log] 2023/10/16 12:56:41 +08:00:=========================================================
+[Log] 2023/10/16 12:56:41 +08:00:创建Http监听
+[Log] 2023/10/16 12:56:42 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 12:56:42 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 12:56:42 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] Start
+[Log] 2023/10/16 12:56:42 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 12:57:01 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697432222754,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-C3O8-J6V9-KFNT","villa_id":8489}}},"created_at":1697432222,"id":"a016c4fc-32de-151f-40f8-41fcaa1e638e","send_at":1697432223}}
+
+[Log] 2023/10/16 12:57:02 +08:00:Commond:/签到
+[DEBUG] [From: SendText] 2023/10/16 12:57:04 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"b98c5af0-bc77-e370-d7f0-837ed0b2c3f2"}}
+[Log] 2023/10/16 12:59:32 +08:00:=========================================================
+[Log] 2023/10/16 12:59:32 +08:00:创建Http监听
+[Log] 2023/10/16 12:59:32 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 12:59:32 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 12:59:32 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 12:59:32 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 12:59:40 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697432381722,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-DAI6-KVB9-KFNT","villa_id":8489}}},"created_at":1697432381,"id":"2b92c4db-ee14-f346-3eb9-799034b7b69a","send_at":1697432382}}
+
+[Log] 2023/10/16 12:59:40 +08:00:Commond:/签到
+[Log] 2023/10/16 13:00:03 +08:00:=========================================================
+[Log] 2023/10/16 13:00:03 +08:00:创建Http监听
+[Log] 2023/10/16 13:00:03 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:00:03 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:00:03 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:00:03 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:00:09 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697432410002,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-DHF4-L9D9-KFNT","villa_id":8489}}},"created_at":1697432410,"id":"dbad4628-b4ac-5ed0-19a1-0baae7d68245","send_at":1697432410}}
+
+[Log] 2023/10/16 13:00:09 +08:00:Commond:/签到
+[Log] 2023/10/16 13:00:18 +08:00:=========================================================
+[Log] 2023/10/16 13:00:18 +08:00:创建Http监听
+[Log] 2023/10/16 13:00:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:00:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:00:19 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:00:19 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:00:20 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697432421307,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-DK7E-TCH9-KFNT","villa_id":8489}}},"created_at":1697432421,"id":"2d50376e-15a2-5964-8aa7-f86f88d1c7ab","send_at":1697432421}}
+
+[Log] 2023/10/16 13:00:20 +08:00:Commond:/签到
+[Log] 2023/10/16 13:02:56 +08:00:=========================================================
+[Log] 2023/10/16 13:02:56 +08:00:创建Http监听
+[Log] 2023/10/16 13:02:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:02:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:02:56 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:02:56 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:02:59 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697432580072,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-EQVQ-6SH9-KFNT","villa_id":8489}}},"created_at":1697432580,"id":"65087849-58bc-521b-b4ab-f1334f442e23","send_at":1697432580}}
+
+[Log] 2023/10/16 13:02:59 +08:00:Commond:/签到
+[Log] 2023/10/16 13:03:09 +08:00:=========================================================
+[Log] 2023/10/16 13:03:09 +08:00:创建Http监听
+[Log] 2023/10/16 13:03:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:03:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:03:09 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:03:09 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:03:11 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697432592642,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-EU20-N039-KFNT","villa_id":8489}}},"created_at":1697432592,"id":"3add3d53-84ea-d30f-4378-550f0cc5cdfb","send_at":1697432593}}
+
+[Log] 2023/10/16 13:03:11 +08:00:Commond:/签到
+2023/10/16 13:03:11 +08:00:=========================================================
+2023/10/16 13:03:11 +08:00:用户257585750不存在！
+[Log] 2023/10/16 13:03:45 +08:00:=========================================================
+[Log] 2023/10/16 13:03:45 +08:00:创建Http监听
+[Log] 2023/10/16 13:03:45 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:03:45 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:03:45 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:03:45 +08:00:Start
+[Log] 2023/10/16 13:05:37 +08:00:=========================================================
+[Log] 2023/10/16 13:05:37 +08:00:创建Http监听
+[Log] 2023/10/16 13:05:37 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:05:37 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:05:37 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:05:37 +08:00:Start
+[Log] 2023/10/16 13:05:50 +08:00:=========================================================
+[Log] 2023/10/16 13:05:50 +08:00:创建Http监听
+[Log] 2023/10/16 13:05:50 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:05:50 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:05:50 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:05:50 +08:00:Start
+[Log] 2023/10/16 13:06:08 +08:00:=========================================================
+[Log] 2023/10/16 13:06:08 +08:00:创建Http监听
+[Log] 2023/10/16 13:06:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:06:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:06:08 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:06:08 +08:00:Start
+[Log] 2023/10/16 13:09:56 +08:00:=========================================================
+[Log] 2023/10/16 13:09:56 +08:00:创建Http监听
+[Log] 2023/10/16 13:09:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:09:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:09:56 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:09:56 +08:00:Start
+[Log] 2023/10/16 13:10:40 +08:00:=========================================================
+[Log] 2023/10/16 13:10:40 +08:00:创建Http监听
+[Log] 2023/10/16 13:10:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:10:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:10:40 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:10:40 +08:00:Start
+[Log] 2023/10/16 13:11:10 +08:00:=========================================================
+[Log] 2023/10/16 13:11:10 +08:00:创建Http监听
+[Log] 2023/10/16 13:11:10 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:11:10 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:11:10 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:11:10 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:11:20 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697433081368,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-ILC6-49D9-KFNT","villa_id":8489}}},"created_at":1697433081,"id":"cb62b7b8-9ec2-df7d-c653-cd860be94a8f","send_at":1697433082}}
+
+[Log] 2023/10/16 13:11:20 +08:00:Commond:/签到
+[WARNING]2023/10/16 13:11:20 +08:00:用户257585750不存在！
+[Log] 2023/10/16 13:11:37 +08:00:=========================================================
+[Log] 2023/10/16 13:11:37 +08:00:创建Http监听
+[Log] 2023/10/16 13:11:37 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:11:37 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:11:37 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:11:37 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:11:38 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697433099635,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-IPQS-SGH9-KFNT","villa_id":8489}}},"created_at":1697433099,"id":"1a3f70aa-6b2d-d8ec-e32f-a9b439c95733","send_at":1697433100}}
+
+[Log] 2023/10/16 13:11:38 +08:00:Commond:/签到
+[WARNING]2023/10/16 13:11:38 +08:00:用户257585750不存在！
+[Log] 2023/10/16 13:13:03 +08:00:=========================================================
+[Log] 2023/10/16 13:13:03 +08:00:创建Http监听
+[Log] 2023/10/16 13:13:03 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:13:03 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:13:03 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:13:03 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:13:04 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697433185423,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-JEP3-TDH9-KFNT","villa_id":8489}}},"created_at":1697433185,"id":"edf94f31-fffd-2b87-2692-eef0465a0372","send_at":1697433185}}
+
+[Log] 2023/10/16 13:13:04 +08:00:Commond:/签到
+[WARNING]2023/10/16 13:13:04 +08:00:用户257585750不存在！
+[WARNING]2023/10/16 13:13:04 +08:00:查找该用户失败
+[Log] 2023/10/16 13:13:37 +08:00:=========================================================
+[Log] 2023/10/16 13:13:37 +08:00:创建Http监听
+[Log] 2023/10/16 13:13:37 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:13:37 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:13:37 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:13:37 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:13:39 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697433220189,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-JN8N-DOB9-KFNT","villa_id":8489}}},"created_at":1697433220,"id":"c97642e2-7a1a-e68c-431f-726d62d8dc3c","send_at":1697433220}}
+
+[Log] 2023/10/16 13:13:39 +08:00:Commond:/签到
+[WARNING]2023/10/16 13:13:39 +08:00:用户257585750不存在！
+[WARNING]2023/10/16 13:13:39 +08:00:查找该用户失败
+[Log] 2023/10/16 13:14:08 +08:00:=========================================================
+[Log] 2023/10/16 13:14:08 +08:00:创建Http监听
+[Log] 2023/10/16 13:14:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:14:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:14:08 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:14:08 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:14:08 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697433250285,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-JUJR-E0N9-KFNT","villa_id":8489}}},"created_at":1697433250,"id":"cf34775a-535c-9dc8-04a7-e8ecaced6205","send_at":1697433250}}
+
+[Log] 2023/10/16 13:14:09 +08:00:Commond:/签到
+[WARNING]2023/10/16 13:14:09 +08:00:用户257585750不存在！
+[WARNING]2023/10/16 13:14:20 +08:00:查找该用户失败
+[Log] 2023/10/16 13:14:47 +08:00:=========================================================
+[Log] 2023/10/16 13:14:47 +08:00:创建Http监听
+[Log] 2023/10/16 13:14:48 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:14:48 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:14:48 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:14:48 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:14:48 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697433289633,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-K878-E9T9-KFNT","villa_id":8489}}},"created_at":1697433289,"id":"c402ff64-0abb-6d99-f819-0d935917fae2","send_at":1697433290}}
+
+[Log] 2023/10/16 13:14:48 +08:00:Commond:/签到
+[WARNING]2023/10/16 13:14:48 +08:00:用户257585750不存在！
+[WARNING]2023/10/16 13:14:52 +08:00:查找该用户失败
+[DEBUG] [From: SendText] 2023/10/16 13:14:52 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"4b4d5340-033e-1b7b-87aa-e3c9a7dbfe79"}}
+[Log] 2023/10/16 13:16:25 +08:00:=========================================================
+[Log] 2023/10/16 13:16:25 +08:00:创建Http监听
+[Log] 2023/10/16 13:16:25 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:16:25 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:16:25 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:16:25 +08:00:Start
+[Log] 2023/10/16 13:16:33 +08:00:=========================================================
+[Log] 2023/10/16 13:16:33 +08:00:创建Http监听
+[Log] 2023/10/16 13:16:34 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:16:34 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:16:34 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:16:34 +08:00:Start
+[Log] 2023/10/16 13:16:43 +08:00:=========================================================
+[Log] 2023/10/16 13:16:43 +08:00:创建Http监听
+[Log] 2023/10/16 13:16:44 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:16:44 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:16:44 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:16:44 +08:00:Start
+[Log] 2023/10/16 13:16:45 +08:00:执行事件 凌晨自动完成签到
+[Log] 2023/10/16 13:16:45 +08:00:签到
+[Log] 2023/10/16 13:17:00 +08:00:=========================================================
+[Log] 2023/10/16 13:17:00 +08:00:创建Http监听
+[Log] 2023/10/16 13:17:00 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 13:17:00 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 13:17:00 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 13:17:00 +08:00:Start
+[DEBUG] [From: Initail] 2023/10/16 13:17:09 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697433429959,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-LAFH-VP99-KFNT","villa_id":8489}}},"created_at":1697433429,"id":"ac157dd3-10ae-dd88-86da-ddc40c495117","send_at":1697433430}}
+
+[Log] 2023/10/16 13:17:09 +08:00:Commond:/签到
+[WARNING]2023/10/16 13:17:09 +08:00:用户257585750不存在！
+[WARNING]2023/10/16 13:17:09 +08:00:查找该用户失败
+[DEBUG] [From: SendText] 2023/10/16 13:17:09 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"8a449909-d682-cc4e-406b-d0e275bf3b37"}}
+[DEBUG] [From: Initail] 2023/10/16 13:17:42 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /签到\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /签到\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697433463099,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6R-LIIE-O0N9-KFNT","villa_id":8489}}},"created_at":1697433463,"id":"c842ac45-2859-e5ad-99ad-6441a9455b02","send_at":1697433463}}
+
+[Log] 2023/10/16 13:17:42 +08:00:Commond:/签到
+[Log] 2023/10/16 13:17:42 +08:00:加载用户信息完成
+[Log] 2023/10/16 13:17:42 +08:00:已获得米游币110
+[Log] 2023/10/16 13:17:42 +08:00:总米游币31168
+[Log] 2023/10/16 13:17:42 +08:00:今日最高可获得米游币110
+[Log] 2023/10/16 13:17:42 +08:00:今日可获得米游币0
+[Log] 2023/10/16 13:17:42 +08:00:签到任务完成情况:True
+[Log] 2023/10/16 13:17:42 +08:00:看帖任务完成情况:True
+[Log] 2023/10/16 13:17:42 +08:00:点赞任务完成情况:True
+[Log] 2023/10/16 13:17:42 +08:00:分享任务完成情况:True
+[Log] 2023/10/16 13:17:42 +08:00:所有任务已经完成
+拥有米游币:31168
+今日获得米游币:110
+[DEBUG] [From: SendText] 2023/10/16 13:17:42 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"2e8c8b32-ab80-f730-4771-c9f322f125ef"}}
+[Log] 2023/10/16 16:37:48 +08:00:=========================================================
+[Log] 2023/10/16 16:37:48 +08:00:创建Http监听
+[Log] 2023/10/16 16:37:49 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 16:37:49 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("树脂")]] GenshinOriginalResin
+[Log] 2023/10/16 16:37:49 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 16:37:49 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 16:37:49 +08:00:AutoMysSignStart
+[DEBUG] [From: Initail] 2023/10/16 16:38:54 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"},{"name":"/作业","desc":"查看未完成的作业"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /树脂\",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /树脂\",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697445534287,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6U-HLKJ-PLJ9-KFNT","villa_id":8489}}},"created_at":1697445534,"id":"8d2bb522-04b1-2cab-165d-c6609a8d9c6b","send_at":1697445534}}
+
+[Log] 2023/10/16 16:38:55 +08:00:Commond:树脂
+[DEBUG] [From: .ctor] 2023/10/16 16:38:55 +08:00:{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "current_resin": 160,
+    "max_resin": 160,
+    "resin_recovery_time": "0",
+    "finished_task_num": 0,
+    "total_task_num": 4,
+    "is_extra_task_reward_received": false,
+    "remain_resin_discount_num": 3,
+    "resin_discount_num_limit": 3,
+    "current_expedition_num": 5,
+    "max_expedition_num": 5,
+    "expeditions": [
+      {
+        "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u96d7e/5b44229eea1a7ddb3a0778a85172e2d0.png",
+        "status": "Finished",
+        "remained_time": "0"
+      },
+      {
+        "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u96d7e/8c08c93d61e4f4da591d56dd8dab8287.png",
+        "status": "Finished",
+        "remained_time": "0"
+      },
+      {
+        "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u96d7e/c96e733404c9e6a3daa76f8369d7377a.png",
+        "status": "Finished",
+        "remained_time": "0"
+      },
+      {
+        "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u96d7e/bb98002c172f4ccb9f18778bb19c65a1.png",
+        "status": "Ongoing",
+        "remained_time": "3169"
+      },
+      {
+        "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u96d7e/8af1c9288d855e2551daae602ab8a543.png",
+        "status": "Ongoing",
+        "remained_time": "3169"
+      }
+    ],
+    "current_home_coin": 2400,
+    "max_home_coin": 2400,
+    "home_coin_recovery_time": "0",
+    "calendar_url": "https://bbs.mihoyo.com/ys/obc/channel/map/193?bbs_presentation_style=no_header",
+    "transformer": {
+      "obtained": true,
+      "recovery_time": {
+        "Day": 0,
+        "Hour": 0,
+        "Minute": 0,
+        "Second": 0,
+        "reached": true
+      },
+      "wiki": "https://bbs.mihoyo.com/ys/obc/content/1562/detail?bbs_presentation_style=no_header",
+      "noticed": false,
+      "latest_job_id": "0"
+    },
+    "daily_task": {
+      "total_num": 4,
+      "finished_num": 0,
+      "is_extra_task_reward_received": false,
+      "task_rewards": [
+        {
+          "status": "TaskRewardStatusUnfinished"
+        },
+        {
+          "status": "TaskRewardStatusUnfinished"
+        },
+        {
+          "status": "TaskRewardStatusUnfinished"
+        },
+        {
+          "status": "TaskRewardStatusUnfinished"
+        }
+      ],
+      "attendance_rewards": [
+        {
+          "status": "AttendanceRewardStatusUnfinished",
+          "progress": 0
+        },
+        {
+          "status": "AttendanceRewardStatusUnfinished",
+          "progress": 0
+        },
+        {
+          "status": "AttendanceRewardStatusUnfinished",
+          "progress": 0
+        },
+        {
+          "status": "AttendanceRewardStatusUnfinished",
+          "progress": 0
+        }
+      ],
+      "attendance_visible": true
+    }
+  }
+}
+[Log] 2023/10/16 16:38:55 +08:00:目前查询树脂160/160，预计恢复时间0时0分钟
+[DEBUG] [From: SendText] 2023/10/16 16:38:56 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"20685cf5-b900-646a-df2c-bf89ee8558c5"}}
+[Log] 2023/10/16 19:14:48 +08:00:=========================================================
+[ERROR] [Form: ReadAsDicString] [CallForm: E:\code\MysBotSDK\MysBotSDK\Tool\FileHandle.cs Line: 32] 2023/10/16 19:14:48 +08:00:解析失败
+[Log] 2023/10/16 19:25:16 +08:00:=========================================================
+[Log] 2023/10/16 19:25:16 +08:00:创建Http监听
+[Log] 2023/10/16 19:25:28 +08:00:=========================================================
+[Log] 2023/10/16 19:25:28 +08:00:创建Http监听
+[Log] 2023/10/16 19:25:31 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/签到")]] MysSign
+[Log] 2023/10/16 19:25:31 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("树脂")]] GenshinOriginalResin
+[Log] 2023/10/16 19:25:31 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 2023/10/16 19:25:31 +08:00:搜索到方法[[MysBotSDK.StartAttribute()]] AutoMysSign
+[Log] 2023/10/16 19:25:31 +08:00:AutoMysSignStart

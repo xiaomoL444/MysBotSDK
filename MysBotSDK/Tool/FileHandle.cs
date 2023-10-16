@@ -37,12 +37,12 @@ public class FileHandle
 		}
 		return dic;
 	}
-	public static void SaveDicString(string path, Dictionary<string, string> dic)
+	public static Dictionary<string, string> SaveDicString(string path, Dictionary<string, string> dic)
 	{
 		string content = string.Empty;
 		for (int i = 0; i < dic.Count; i++)
 		{
-			content = dic.ElementAt(i).Key + "=" + dic.ElementAt(i).Value;
+			content += dic.ElementAt(i).Key + "=" + dic.ElementAt(i).Value;
 			if (i != dic.Count - 1)
 			{
 				content += "\n";
@@ -54,5 +54,6 @@ public class FileHandle
 			streamWriter.Write(content);
 			streamWriter.Close();
 		}
+		return dic;
 	}
 }

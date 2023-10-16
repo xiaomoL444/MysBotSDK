@@ -1,0 +1,340 @@
+[Log] 2023/10/15 13:12:02 +08:00:=========================================================
+[Log] 2023/10/15 13:12:02 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 13:27:34 +08:00:=========================================================
+[Log] 2023/10/15 13:27:34 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 13:28:25 +08:00:=========================================================
+[Log] 2023/10/15 13:28:25 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[DEBUG] [From: Initail] 2023/10/15 13:29:18 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /Test \",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":{\\\"status_id\\\":11,\\\"name\\\":\\\"好耶\\\",\\\"icon\\\":\\\"https://bbs-static.miyoushe.com/static/2023/03/27/3d851688531d2e26c5d7fc2f67068bdd_4547150787603664250.png\\\",\\\"expiration\\\":1697375350,\\\"custom_name\\\":\\\"\\\"}}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /Test \",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697347757566,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB67-7MBV-MFT9-KFNT","villa_id":8489}}},"created_at":1697347757,"id":"baba1a30-10b3-034a-2ecc-c575c710fbff","send_at":1697347758}}
+
+[Log] 2023/10/15 13:29:18 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 13:29:19 +08:00:{"data":null,"message":"机器人没有数据访问权限","retcode":10322003}
+[Log] 2023/10/15 13:29:53 +08:00:=========================================================
+[Log] 2023/10/15 13:29:53 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[DEBUG] [From: Initail] 2023/10/15 13:29:55 +08:00:{"event":{"robot":{"template":{"id":"bot_w56csMVkMDa5efrcv7mg","name":"末醬映射機","desc":"是先有末酱再有晓末(生气)","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/15/257585750/219ebfe40777cfb4f4007b6d583ab59b_786924592831393165.jpg","commands":[{"name":"/Test","desc":"...继承了上一个测试"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬映射機 /Test \",\"entities\":[{\"offset\":0,\"length\":7,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_w56csMVkMDa5efrcv7mg\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":{\\\"status_id\\\":11,\\\"name\\\":\\\"好耶\\\",\\\"icon\\\":\\\"https://bbs-static.miyoushe.com/static/2023/03/27/3d851688531d2e26c5d7fc2f67068bdd_4547150787603664250.png\\\",\\\"expiration\\\":1697375350,\\\"custom_name\\\":\\\"\\\"}}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬映射機 /Test \",\"type\":2,\"userIdList\":[\"bot_w56csMVkMDa5efrcv7mg\"]}}","from_user_id":257585750,"send_at":1697347795087,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB67-7VH3-V419-KFNT","villa_id":8489}}},"created_at":1697347795,"id":"8a0d19bd-d211-5db4-a035-a903b59e964a","send_at":1697347795}}
+
+[Log] 2023/10/15 13:29:55 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 13:29:56 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"58ed9452-dcf0-853b-9a2c-e3e51f5d1f9a"}}
+[Log] 2023/10/15 14:30:27 +08:00:=========================================================
+[Log] 2023/10/15 14:30:27 +08:00:开启websocket连接
+[Log] 2023/10/15 14:30:28 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 14:33:02 +08:00:=========================================================
+[Log] 2023/10/15 14:33:02 +08:00:开启websocket连接
+[Log] 2023/10/15 14:33:02 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 14:33:51 +08:00:=========================================================
+[Log] 2023/10/15 14:33:51 +08:00:开启websocket连接
+[Log] 2023/10/15 14:33:52 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 14:35:21 +08:00:=========================================================
+[Log] 2023/10/15 14:35:21 +08:00:开启websocket连接
+[Log] 2023/10/15 14:35:22 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 14:35:25 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 14:35:26 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"c554d0b3-ed82-7f74-a667-ce688fa4e4bf"}}
+[Log] 2023/10/15 14:35:57 +08:00:=========================================================
+[Log] 2023/10/15 14:35:57 +08:00:开启websocket连接
+[Log] 2023/10/15 14:35:58 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 14:36:43 +08:00:=========================================================
+[Log] 2023/10/15 14:36:43 +08:00:开启websocket连接
+[Log] 2023/10/15 14:36:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 14:38:43 +08:00:=========================================================
+[Log] 2023/10/15 14:38:43 +08:00:开启websocket连接
+[Log] 2023/10/15 14:38:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 14:38:51 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 14:38:51 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"1560df4c-ca35-c803-dd6a-62bf5cfffa04"}}
+[Log] 2023/10/15 14:39:06 +08:00:=========================================================
+[Log] 2023/10/15 14:39:06 +08:00:开启websocket连接
+[Log] 2023/10/15 14:39:06 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 14:39:19 +08:00:=========================================================
+[Log] 2023/10/15 14:39:20 +08:00:=========================================================
+[Log] 2023/10/15 14:39:20 +08:00:开启websocket连接
+[Log] 2023/10/15 14:39:22 +08:00:=========================================================
+[Log] 2023/10/15 14:39:22 +08:00:开启websocket连接
+[Log] 2023/10/15 14:39:22 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:08:39 +08:00:=========================================================
+[Log] 2023/10/15 15:08:39 +08:00:开启websocket连接
+[Log] 2023/10/15 15:08:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:09:08 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 15:09:08 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"5be8eaa9-ea39-a629-27ee-02a72fae7c6a"}}
+[Log] 2023/10/15 15:09:22 +08:00:=========================================================
+[Log] 2023/10/15 15:09:22 +08:00:开启websocket连接
+[Log] 2023/10/15 15:09:23 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:09:31 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 15:09:31 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"9e308e55-4790-9b8b-ce11-5c993ed9573c"}}
+[Log] 2023/10/15 15:09:56 +08:00:=========================================================
+[Log] 2023/10/15 15:09:56 +08:00:开启websocket连接
+[Log] 2023/10/15 15:09:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:10:02 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 15:10:02 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"b26d33a2-651a-8068-2bec-fdef895e815f"}}
+[Log] 2023/10/15 15:10:18 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 15:10:18 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"504d70aa-1e19-44de-0ed1-2789ac5f5e93"}}
+[Log] 2023/10/15 15:10:40 +08:00:=========================================================
+[Log] 2023/10/15 15:10:40 +08:00:开启websocket连接
+[Log] 2023/10/15 15:10:40 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:11:54 +08:00:=========================================================
+[Log] 2023/10/15 15:11:54 +08:00:开启websocket连接
+[Log] 2023/10/15 15:11:55 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:11:58 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 15:11:59 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"5747ce87-db68-39f5-73f1-f571bc9bbde6"}}
+[Log] 2023/10/15 15:12:13 +08:00:=========================================================
+[Log] 2023/10/15 15:12:13 +08:00:开启websocket连接
+[Log] 2023/10/15 15:12:13 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:12:25 +08:00:=========================================================
+[Log] 2023/10/15 15:12:25 +08:00:开启websocket连接
+[Log] 2023/10/15 15:12:26 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:13:12 +08:00:=========================================================
+[Log] 2023/10/15 15:13:12 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:13:12 +08:00:开启websocket连接
+[Log] 2023/10/15 15:13:47 +08:00:=========================================================
+[Log] 2023/10/15 15:13:48 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:13:48 +08:00:开启websocket连接
+[Log] 2023/10/15 15:14:34 +08:00:websocket关闭
+[Log] 2023/10/15 15:14:42 +08:00:=========================================================
+[Log] 2023/10/15 15:14:42 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:14:42 +08:00:开启websocket连接
+[DEBUG] [From: Initail] 2023/10/15 15:14:55 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末醬","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"},{"name":"/TestQuote","desc":"测试引用"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬 /Test \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":{\\\"status_id\\\":11,\\\"name\\\":\\\"好耶\\\",\\\"icon\\\":\\\"https://bbs-static.miyoushe.com/static/2023/03/27/3d851688531d2e26c5d7fc2f67068bdd_4547150787603664250.png\\\",\\\"expiration\\\":1697375350,\\\"custom_name\\\":\\\"\\\"}}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬 /Test \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1697354089489,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB68-O084-D0J9-KFNT","villa_id":8489}}},"created_at":1697354089,"id":"cf19e363-0529-bc0b-be12-096e15517beb","send_at":1697354089},"sign":"p4L9tuEWd+uocu6LjxXOLZ6T8mvqyNj9Ta4AarkDr3nZFHflMXmgwAHQN/FjiB+jKGKbXhSjdDQxh/+duAWQp1wE0Gb3cju407nk7oihmqhuWrecOWKxncwiG99eDQHYuykQZI2Pl6H2uNqS439APhTMa8Q/xn3jFlk4sNwOD+8="}
+[Log] 2023/10/15 15:14:55 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 15:14:58 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"5e7ded8e-5634-d917-1c23-1625b5a6407f"}}
+[Log] 2023/10/15 15:15:02 +08:00:=========================================================
+[Log] 2023/10/15 15:15:02 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:15:02 +08:00:开启websocket连接
+[DEBUG] [From: Initail] 2023/10/15 15:15:14 +08:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末醬","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"},{"name":"/TestQuote","desc":"测试引用"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬 /Test \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":{\\\"status_id\\\":11,\\\"name\\\":\\\"好耶\\\",\\\"icon\\\":\\\"https://bbs-static.miyoushe.com/static/2023/03/27/3d851688531d2e26c5d7fc2f67068bdd_4547150787603664250.png\\\",\\\"expiration\\\":1697375350,\\\"custom_name\\\":\\\"\\\"}}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬 /Test \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1697354113912,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB68-O66U-5AN9-KFNT","villa_id":8489}}},"created_at":1697354113,"id":"87bd4a8d-90de-4875-c80e-40506fe5c806","send_at":1697354114},"sign":"yhqKbWISiI2XyrsOlFTfdfAM/CAJBU9mKH5LUt1jvNIpSmIwfLHXyGVFxHh+y6dMJOXx3pKN4HKKEk7GU0cD7HdPTnt0b6WgwThdfRs/o14alB1nqB9ti0DWYvsKHpu6bKdhpO4pehC4ysA0lCteIUOuwvmQdH94yFcQdE3Zw48="}
+[Log] 2023/10/15 15:15:14 +08:00:Commond:/Test
+[DEBUG] [From: SendText] 2023/10/15 15:15:15 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"f632036d-b1e1-a513-f197-99834a4c53b6"}}
+[Log] 2023/10/15 15:15:19 +08:00:=========================================================
+[Log] 2023/10/15 15:15:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:15:19 +08:00:开启websocket连接
+[Log] 2023/10/15 15:19:30 +08:00:=========================================================
+[Log] 2023/10/15 15:19:30 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:19:30 +08:00:开启websocket连接
+[Log] 2023/10/15 15:19:36 +08:00:=========================================================
+[Log] 2023/10/15 15:19:36 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:19:37 +08:00:开启websocket连接
+[Log] 2023/10/15 15:19:46 +08:00:=========================================================
+[Log] 2023/10/15 15:19:46 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:19:47 +08:00:开启websocket连接
+[Log] 2023/10/15 15:19:48 +08:00:=========================================================
+[Log] 2023/10/15 15:19:48 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:19:48 +08:00:开启websocket连接
+[Log] 2023/10/15 15:19:50 +08:00:=========================================================
+[Log] 2023/10/15 15:19:50 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:19:50 +08:00:开启websocket连接
+[Log] 2023/10/15 15:22:37 +08:00:=========================================================
+[Log] 2023/10/15 15:22:37 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:22:37 +08:00:开启websocket连接
+[Log] 2023/10/15 15:22:39 +08:00:=========================================================
+[Log] 2023/10/15 15:22:39 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:22:43 +08:00:=========================================================
+[Log] 2023/10/15 15:22:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:22:43 +08:00:开启websocket连接
+[Log] 2023/10/15 15:27:31 +08:00:=========================================================
+[Log] 2023/10/15 15:27:31 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:27:32 +08:00:开启websocket连接
+[Log] 2023/10/15 15:30:18 +08:00:=========================================================
+[Log] 2023/10/15 15:30:18 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:30:18 +08:00:开启websocket连接
+[Log] 2023/10/15 15:30:56 +08:00:=========================================================
+[Log] 2023/10/15 15:30:56 +08:00:开启websocket连接
+[Log] 2023/10/15 15:30:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:33:04 +08:00:=========================================================
+[Log] 2023/10/15 15:33:04 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:33:04 +08:00:开启websocket连接
+[Log] 2023/10/15 15:33:22 +08:00:=========================================================
+[Log] 2023/10/15 15:33:22 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:33:22 +08:00:开启websocket连接
+[Log] 2023/10/15 15:33:39 +08:00:=========================================================
+[Log] 2023/10/15 15:33:39 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:33:39 +08:00:开启websocket连接
+[Log] 2023/10/15 15:33:44 +08:00:=========================================================
+[Log] 2023/10/15 15:33:44 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:33:44 +08:00:开启websocket连接
+[Log] 2023/10/15 15:34:29 +08:00:=========================================================
+[Log] 2023/10/15 15:34:29 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:34:29 +08:00:开启websocket连接
+[Log] 2023/10/15 15:35:10 +08:00:=========================================================
+[Log] 2023/10/15 15:35:10 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:35:10 +08:00:开启websocket连接
+[Log] 2023/10/15 15:35:19 +08:00:=========================================================
+[Log] 2023/10/15 15:35:19 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:35:20 +08:00:开启websocket连接
+[Log] 2023/10/15 15:35:43 +08:00:=========================================================
+[Log] 2023/10/15 15:35:43 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:35:43 +08:00:开启websocket连接
+[Log] 2023/10/15 15:35:55 +08:00:=========================================================
+[Log] 2023/10/15 15:35:55 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:35:55 +08:00:开启websocket连接
+[Log] 2023/10/15 15:36:37 +08:00:=========================================================
+[Log] 2023/10/15 15:36:37 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:36:37 +08:00:开启websocket连接
+[Log] 2023/10/15 15:38:36 +08:00:=========================================================
+[Log] 2023/10/15 15:38:36 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:38:36 +08:00:开启websocket连接
+[Log] 2023/10/15 15:38:43 +08:00:websocket关闭
+[Log] 2023/10/15 15:39:10 +08:00:=========================================================
+[Log] 2023/10/15 15:39:10 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:39:10 +08:00:开启websocket连接
+[Log] 2023/10/15 15:39:28 +08:00:=========================================================
+[Log] 2023/10/15 15:39:28 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:39:28 +08:00:开启websocket连接
+[Log] 2023/10/15 15:39:56 +08:00:=========================================================
+[Log] 2023/10/15 15:39:56 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:39:56 +08:00:开启websocket连接
+[Log] 2023/10/15 15:40:14 +08:00:=========================================================
+[Log] 2023/10/15 15:40:14 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:40:15 +08:00:开启websocket连接
+[Log] 2023/10/15 15:40:15 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:40:34 +08:00:=========================================================
+[Log] 2023/10/15 15:40:34 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:40:34 +08:00:开启websocket连接
+[Log] 2023/10/15 15:40:52 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:40:56 +08:00:websocket关闭
+[Log] 2023/10/15 15:41:03 +08:00:=========================================================
+[Log] 2023/10/15 15:41:03 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:41:03 +08:00:开启websocket连接
+[Log] 2023/10/15 15:41:13 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:41:13 +08:00:websocket关闭
+[Log] 2023/10/15 15:43:03 +08:00:=========================================================
+[Log] 2023/10/15 15:43:03 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:43:03 +08:00:开启websocket连接
+[Log] 2023/10/15 15:43:06 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:43:06 +08:00:websocket关闭
+[Log] 2023/10/15 15:43:09 +08:00:=========================================================
+[Log] 2023/10/15 15:43:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:43:09 +08:00:开启websocket连接
+[Log] 2023/10/15 15:43:19 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:43:20 +08:00:websocket关闭
+[Log] 2023/10/15 15:46:18 +08:00:=========================================================
+[Log] 2023/10/15 15:46:18 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:46:18 +08:00:开启websocket连接
+[Log] 2023/10/15 15:46:26 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:46:26 +08:00:websocket关闭
+[Log] 2023/10/15 15:46:35 +08:00:=========================================================
+[Log] 2023/10/15 15:46:35 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:46:35 +08:00:开启websocket连接
+[Log] 2023/10/15 15:46:47 +08:00:=========================================================
+[Log] 2023/10/15 15:46:47 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:46:47 +08:00:开启websocket连接
+[Log] 2023/10/15 15:47:04 +08:00:=========================================================
+[Log] 2023/10/15 15:47:04 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:47:04 +08:00:开启websocket连接
+[Log] 2023/10/15 15:47:17 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:47:17 +08:00:websocket关闭
+[Log] 2023/10/15 15:48:03 +08:00:=========================================================
+[Log] 2023/10/15 15:48:03 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:48:04 +08:00:开启websocket连接
+[Log] 2023/10/15 15:48:08 +08:00:=========================================================
+[Log] 2023/10/15 15:48:08 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:48:08 +08:00:开启websocket连接
+[Log] 2023/10/15 15:48:14 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:48:14 +08:00:websocket关闭
+[Log] 2023/10/15 15:49:33 +08:00:=========================================================
+[Log] 2023/10/15 15:49:34 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:49:34 +08:00:开启websocket连接
+[Log] 2023/10/15 15:49:38 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:49:39 +08:00:websocket关闭
+[Log] 2023/10/15 15:49:41 +08:00:=========================================================
+[Log] 2023/10/15 15:49:41 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:49:41 +08:00:开启websocket连接
+[Log] 2023/10/15 15:49:48 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:49:48 +08:00:websocket关闭
+[Log] 2023/10/15 15:49:50 +08:00:=========================================================
+[Log] 2023/10/15 15:49:50 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:49:50 +08:00:开启websocket连接
+[Log] 2023/10/15 15:49:56 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:49:57 +08:00:websocket关闭
+[Log] 2023/10/15 15:52:33 +08:00:=========================================================
+[Log] 2023/10/15 15:52:33 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:53:09 +08:00:=========================================================
+[Log] 2023/10/15 15:53:09 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:55:44 +08:00:=========================================================
+[Log] 2023/10/15 15:55:44 +08:00:创建websocker监听
+[Log] 2023/10/15 15:55:44 +08:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 2023/10/15 15:55:44 +08:00:开启websocket连接
+[Log] 2023/10/15 15:55:46 +08:00:按控制台关闭按钮关闭
+[Log] 2023/10/15 15:55:47 +08:00:websocket关闭
+[Log] 15/10/2023 09:01:52 +01:00:=========================================================
+[Log] 15/10/2023 09:01:52 +01:00:创建websocker监听
+[Log] 15/10/2023 09:01:52 +01:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 15/10/2023 09:01:53 +01:00:开启websocket连接
+[Log] 15/10/2023 09:03:27 +01:00:=========================================================
+[Log] 15/10/2023 09:03:27 +01:00:创建websocker监听
+[Log] 15/10/2023 09:03:28 +01:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 15/10/2023 09:03:28 +01:00:开启websocket连接
+[DEBUG] [From: Initail] 15/10/2023 09:03:33 +01:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末醬","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"},{"name":"/TestQuote","desc":"测试引用"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬 /Test \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":{\\\"status_id\\\":11,\\\"name\\\":\\\"好耶\\\",\\\"icon\\\":\\\"https://bbs-static.miyoushe.com/static/2023/03/27/3d851688531d2e26c5d7fc2f67068bdd_4547150787603664250.png\\\",\\\"expiration\\\":1697375350,\\\"custom_name\\\":\\\"\\\"}}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬 /Test \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1697357011609,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB69-E9L6-9NJ9-KFNT","villa_id":8489}}},"created_at":1697357011,"id":"af54cd5e-26f2-16e7-ceac-bb8ba7735c5c","send_at":1697357012},"sign":"BeVAZ9tOW0Tf557M6NDs8muIx0snTJYI4/f4PUtz9FGyyHQt4i1zxtGiD67iJwMIE78F2VEcGPuXPDdGXJuCpf5/idgUPa2b/2W+Uhf6ebSmNOlAC+aVI9CxRWjNH18g/aiEZYLXZ0zqvHk1iS3s2qSnDkV6cKyQvPUFyLeQFow="}
+[Log] 15/10/2023 09:03:33 +01:00:Commond:/Test
+[DEBUG] [From: SendText] 15/10/2023 09:03:35 +01:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"cc887fa6-ff29-abd7-19dd-54d85d95fff0"}}
+[Log] 15/10/2023 11:26:01 +01:00:=========================================================
+[Log] 15/10/2023 11:26:01 +01:00:创建websocker监听
+[Log] 15/10/2023 11:26:02 +01:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 15/10/2023 11:26:13 +01:00:开启websocket连接
+[DEBUG] [From: Initail] 15/10/2023 11:26:34 +01:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末醬","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"},{"name":"/TestQuote","desc":"测试引用"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬 /Test \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":{\\\"status_id\\\":11,\\\"name\\\":\\\"好耶\\\",\\\"icon\\\":\\\"https://bbs-static.miyoushe.com/static/2023/03/27/3d851688531d2e26c5d7fc2f67068bdd_4547150787603664250.png\\\",\\\"expiration\\\":1697375350,\\\"custom_name\\\":\\\"\\\"}}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬 /Test \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1697365592037,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6B-FOFP-D2L9-KFNT","villa_id":8489}}},"created_at":1697365592,"id":"6426a074-f368-09a5-b9e2-97cad43a3fd6","send_at":1697365592},"sign":"AtY8kCTfAbVgZSsIr+cohnrKtLxnNQcG8iw2CWy7UzBUCtRE8fO4vhDky3DVO30Dm6sfhi1Ko0M49saKvW/TrnQG+mzn+sXrtLVpQWgioyaPGhsTGhuFfYAUYEdysVmy5y/1Vpvb0REmxf5j2a3TeH/za9jvAPh5oN/0jg3fILE="}
+[Log] 15/10/2023 11:26:34 +01:00:Commond:/Test
+[DEBUG] [From: SendText] 15/10/2023 11:26:36 +01:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"6c259e87-ffc7-1e90-fdce-7c3878ee1839"}}
+[Log] 15/10/2023 11:26:40 +01:00:input exit
+[ERROR] [Form: Commond] [CallForm: E:\code\MysBotSDK\MihoyoBBS_Bot\Program.cs Line: 196] 15/10/2023 11:26:40 +01:00:Object reference not set to an instance of an object.
+[Log] 15/10/2023 11:27:07 +01:00:=========================================================
+[Log] 15/10/2023 11:27:07 +01:00:创建websocker监听
+[Log] 15/10/2023 11:27:07 +01:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 15/10/2023 11:27:08 +01:00:开启websocket连接
+[DEBUG] [From: Initail] 15/10/2023 11:27:21 +01:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末醬","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"},{"name":"/TestQuote","desc":"测试引用"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬 /Test \",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":{\\\"status_id\\\":11,\\\"name\\\":\\\"好耶\\\",\\\"icon\\\":\\\"https://bbs-static.miyoushe.com/static/2023/03/27/3d851688531d2e26c5d7fc2f67068bdd_4547150787603664250.png\\\",\\\"expiration\\\":1697375350,\\\"custom_name\\\":\\\"\\\"}}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬 /Test \",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1697365640612,"object_name":1,"room_id":129608,"nickname":"曉末L444","msg_uid":"CB6B-G4B9-5LB9-KFNT","villa_id":8489}}},"created_at":1697365640,"id":"49e9d31c-b701-d9b7-7ef7-56697bfbebaf","send_at":1697365641},"sign":"mP2eNxYzWPhyW8/jO6jVpa8BpqkFWfndwfcB/Ry9UsgJ0wx9pXTq6BPv68lFo1UDpw+ZWlsQ9sJG47Guj1z0mu+JZgZYl7r4N0jg92YF99TmTqyBOl35OlFfq4ofidBUGv/7Euu9V+fQrx1Qa2Mz0gqJ9efu+6/BVdKxCTWQyuo="}
+[Log] 15/10/2023 11:27:22 +01:00:Commond:/Test
+[DEBUG] [From: SendText] 15/10/2023 11:27:24 +01:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"da164f43-795d-9976-51a3-8c9e47bf2523"}}
+[Log] 15/10/2023 11:30:21 +01:00:websocket关闭
+[Log] 15/10/2023 16:19:36 +01:00:=========================================================
+[Log] 15/10/2023 16:19:36 +01:00:创建websocker监听
+[Log] 15/10/2023 16:19:37 +01:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 15/10/2023 16:20:20 +01:00:=========================================================
+[Log] 15/10/2023 16:20:20 +01:00:创建websocker监听
+[Log] 15/10/2023 16:20:20 +01:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 15/10/2023 16:20:20 +01:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 15/10/2023 16:20:21 +01:00:开启websocket连接
+[DEBUG] [From: Initail] 15/10/2023 16:20:34 +01:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末醬","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"},{"name":"/TestQuote","desc":"测试引用"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬 /作业\",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬 /作业\",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1697383232558,"object_name":1,"room_id":142380,"nickname":"曉末L444","msg_uid":"CB6F-MB8B-G3H9-KFNT","villa_id":8489}}},"created_at":1697383232,"id":"c23eaf6a-c634-e21e-6a72-5b1d93842893","send_at":1697383233},"sign":"d6THluB+5bKT5mMm2H5kk2yhBVRbc/K/1bc3YP+3XStmZYb6zpz9TdNcP5g6gU9i1sP2txgk2mdDvM3nPu0sEZiB9cwnIyJ9IHK89c9xHHd//pSMqo8mYvF070yNYajExulKzX2CG5hRXqPoekWzHH9mop+4OL8jSAEubNVuXqE="}
+[Log] 15/10/2023 16:20:35 +01:00:Commond:/作业
+[Log] 15/10/2023 16:21:29 +01:00:=========================================================
+[Log] 15/10/2023 16:21:29 +01:00:创建websocker监听
+[Log] 15/10/2023 16:21:29 +01:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/Test")]] MysSign
+[Log] 15/10/2023 16:21:29 +01:00:搜索到方法[[MysBotSDK.SendMessageAttribute("/作业")]] MysModule
+[Log] 15/10/2023 16:21:30 +01:00:开启websocket连接
+[DEBUG] [From: Initail] 15/10/2023 16:22:11 +01:00:{"event":{"robot":{"template":{"id":"bot_D0Vo7OZqT0LZR3MQUkTZ","name":"末醬","desc":"曉末...?我只是一只末醬","icon":"https://upload-bbs.miyoushe.com/upload/2023/10/01/257585750/2aa74ac5c32f641124596f7a837d2dd6_3872593972105617644.jpg","commands":[{"name":"/Test","desc":"测试"},{"name":"/TestLink","desc":"测试外部链接"},{"name":"/TestPic","desc":"测试发送图片"},{"name":"/TestPost","desc":"测试发送帖子"},{"name":"/TImage","desc":"测试转床图"},{"name":"/TestQuote","desc":"测试引用"}]},"villa_id":8489},"type":2,"extend_data":{"EventData":{"SendMessage":{"content":"{\"content\":{\"text\":\"@末醬 /作业\",\"entities\":[{\"offset\":0,\"length\":4,\"entity\":{\"type\":\"mentioned_robot\",\"bot_id\":\"bot_D0Vo7OZqT0LZR3MQUkTZ\"}}]},\"user\":{\"id\":\"257585750\",\"portraitUri\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"alias\":\"\",\"extra\":\"{\\\"member_roles\\\":{\\\"name\\\":\\\"月与星出现之日\\\",\\\"color\\\":\\\"#F485D8\\\",\\\"web_color\\\":\\\"#C689DC\\\",\\\"role_font_color\\\":\\\"#B85ABA\\\",\\\"role_bg_color\\\":\\\"#F5E2F5\\\",\\\"color_scheme_id\\\":6},\\\"state\\\":null}\",\"portrait\":\"https://bbs-static.miyoushe.com/avatar/avatar30024.png\",\"name\":\"曉末L444\"},\"mentionedInfo\":{\"mentionedContent\":\"[@我] 曉末L444：@末醬 /作业\",\"type\":2,\"userIdList\":[\"bot_D0Vo7OZqT0LZR3MQUkTZ\"]}}","from_user_id":257585750,"send_at":1697383329658,"object_name":1,"room_id":142380,"nickname":"曉末L444","msg_uid":"CB6F-N2UU-HGB9-KFNT","villa_id":8489}}},"created_at":1697383329,"id":"a2869154-7601-8a88-c6c4-f0b63dffd870","send_at":1697383330},"sign":"iHNoVZhTTQV8gSfV3yv3ghkXC/ies3ofpmpIfsPpXdGKF/iJsfIXV2dzSJwM2ZpK/dK/7YpVO4uF0di1jl6dQAAIIhigooHDqh/gf0LEzdyl5roj9qO7rF0/g8xHc5+oX9yDUMhXVgr3NE7vfq/Ac+7Va2Nze4G/g23tLfOagMY="}
+[Log] 15/10/2023 16:22:12 +01:00:Commond:/作业
+[DEBUG] [From: GetClassList] 15/10/2023 16:22:13 +01:00:{"pn":1,"ps":50,"total":15,"courseList":[{"id":126673,"name":"大学生心理健康教育（2023-2024 第一学期）","cover":"https://obscloud.ulearning.cn/resources/web/16933221054921094.png","courseCode":"86165390","type":1,"classId":704401,"className":"2023集成电路1班、2班","status":1,"teacherName":"黎婉勤","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":29577727},{"id":127851,"name":"【2023秋】中国近现代史纲要（陈立中、李丹）","cover":"https://obscloud.ulearning.cn/resources/web/16651357378319998.png","courseCode":"60910310","type":1,"classId":702603,"className":"2023集成电路2班","status":1,"teacherName":"李丹","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":29496169},{"id":126986,"name":"（2023秋）习近平新时代中国特色社会主义思想概论","cover":"https://obscloud.ulearning.cn/resources/web/16934486877949288.png","courseCode":"67508699","type":1,"classId":700526,"className":"2023集成电路2班","status":1,"teacherName":"孙锋","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":29408774},{"id":129434,"name":"电路2023集成电路2班","cover":"https://leicloud.ulearning.cn//resources/473435/201808230937106793.png?imageView2/1/w/800/h/450","courseCode":"51983926","type":1,"classId":698689,"className":"默认班级","status":1,"teacherName":"胡胜","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":29306348},{"id":129322,"name":"【求是读书计划】读书心得提交（2023级）","cover":"https://leicloud.ulearning.cn/resources/473435/201808230937185751.png","courseCode":"80966272","type":1,"classId":697864,"className":"2023级学生","status":1,"teacherName":"通识教育中心","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":29273643},{"id":114874,"name":"通识教育大讲堂线上直播（学分通道）","cover":"https://leicloud.ulearning.cn//resources/473435/201808230937106793.png?imageView2/1/w/800/h/450","courseCode":"23922958","type":1,"classId":692435,"className":"2023级学生","status":1,"teacherName":"通识教育中心","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":29063164},{"id":128192,"name":"【2023秋】形势与政策1（2023级）","cover":"https://leicloud.ulearning.cn//resources/473435/201808230937106793.png?imageView2/1/w/800/h/450","courseCode":"38086480","type":1,"classId":686641,"className":"2023集成电路2班","status":1,"teacherName":"肖凤良","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":28776166},{"id":127060,"name":"2023高级语言程序设计","cover":"https://obscloud.ulearning.cn/resources/android/mobile/7028756_20230902205443533.png","courseCode":"87074175","type":1,"classId":679903,"className":"默认班级","status":1,"teacherName":"姜明慧","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":28772511},{"id":128111,"name":"【2023秋季】论法的精神","cover":"https://obscloud.ulearning.cn/resources/web/16613389147792564.png","courseCode":"83113561","type":1,"classId":686295,"className":"23集成电路1+2班","status":1,"teacherName":"王敬华","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":28763219},{"id":127145,"name":"2023秋季国家安全教育","cover":"https://leicloud.ulearning.cn//resources/473435/201808230937106793.png?imageView2/1/w/800/h/450","courseCode":"17718877","type":1,"classId":680566,"className":"2023集成电路2班","status":1,"teacherName":"张洁","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":28576025},{"id":126819,"name":"【2023秋】军事理论","cover":"https://obscloud.ulearning.cn/resources/web/16934828383103973.png","courseCode":"52373466","type":1,"classId":678421,"className":"14-2023集成电路2班","status":1,"teacherName":"周海鹏","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":28505114},{"id":126767,"name":"2023秋国际素养英语A1","cover":"https://obscloud.ulearning.cn/resources/ios/mobile/984020_1693453885061_1693453885.jpeg","courseCode":"53294460","type":1,"classId":677815,"className":"2023集成电路2班","status":1,"teacherName":"吴静","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":28486108},{"id":126708,"name":"【2023秋】通识教育-人文社科经典导引","cover":"https://leicloud.ulearning.cn//resources/473435/201808230937106793.png?imageView2/1/w/800/h/450","courseCode":"61509501","type":1,"classId":677207,"className":"2023集成电路2班","status":1,"teacherName":"黎婉勤、吴述松、郑玉敏、冯丽霞、刘川、王敬华、程守红、徐敏、何小勇、陈立中、杨家菁、陈锦文","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":28466147},{"id":126709,"name":"【2023秋】通识教育-批判与创新思维导引","cover":"https://leicloud.ulearning.cn//resources/473435/201808230937106793.png?imageView2/1/w/800/h/450","courseCode":"33629073","type":1,"classId":676662,"className":"2023集成电路2班","status":1,"teacherName":"李川、孙莉明、朱诗勇、罗瑜斌、陈德良、姜辉、梁灿、王博、杨锐珊、张锶涵","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":28444862},{"id":126334,"name":"高等数学I（2023）","cover":"https://obscloud.ulearning.cn/resources/web/16923390901693779.png","courseCode":"20751713","type":1,"classId":675499,"className":"2023集成电路2班","status":1,"teacherName":"牛银菊","learnProgress":0,"totalDuration":0,"publishStatus":1,"creatorOrgId":3755,"creatorOrgName":"东莞理工学院","classUserId":28407368}]}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:14 +01:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:14 +01:00:{"pn":1,"ps":20,"total":1,"homeworkList":[{"id":352167,"type":9,"homeworkTitle":"2023-10-11 10:27 第一次个人作业，学会如何使用知网下载文章","startTime":1696991220000,"endTime":1697385540000,"state":3,"timeStatus":"2","status":2,"teacherId":5268520,"publisher":"李丹","showLevel":0,"personStatus":2}]}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:14 +01:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:14 +01:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:15 +01:00:{"pn":1,"ps":20,"total":54,"homeworkList":[{"id":348977,"type":9,"homeworkTitle":"沟通表达力--《人类的故事》读书心得","startTime":1695614340000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348983,"type":9,"homeworkTitle":"沟通表达力--《The Moon and Sixpence 月亮与六便士》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348982,"type":9,"homeworkTitle":"沟通表达力--《东方主义》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348981,"type":9,"homeworkTitle":"沟通表达力--《The Old Man and The Sea 老人与海（中英对照文全译本）》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348980,"type":9,"homeworkTitle":"沟通表达力--《The Spirit of The Chinese People》","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348979,"type":9,"homeworkTitle":"沟通表达力--《复活》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348978,"type":9,"homeworkTitle":"沟通表达力--《哈姆雷特 中英双语珍藏版》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348976,"type":9,"homeworkTitle":"沟通表达力--《精神分析引论》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348975,"type":9,"homeworkTitle":"高阶创造力--《约翰克利斯朵夫》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348974,"type":9,"homeworkTitle":"高阶创造力--《西方文明史（第五版）（精编普及版）》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348973,"type":9,"homeworkTitle":"高阶创造力--《爆裂》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348972,"type":9,"homeworkTitle":"高阶创造力--《未来简史•人类简史》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348971,"type":9,"homeworkTitle":"高阶创造力--《谈谈方法》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348970,"type":9,"homeworkTitle":"高阶创造力--《时间简史》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348969,"type":9,"homeworkTitle":"高阶创造力--《高科技高思维》","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348968,"type":9,"homeworkTitle":"高阶创造力--《人类简史》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348967,"type":9,"homeworkTitle":"应用行动力--《乌合之众：大众心理研究》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348966,"type":9,"homeworkTitle":"应用行动力--《苦难辉煌》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348965,"type":9,"homeworkTitle":"应用行动力--《西行漫记——红星照耀中国》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348964,"type":9,"homeworkTitle":"应用行动力--《生存与命运》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1}]}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:15 +01:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:15 +01:00:{"pn":1,"ps":20,"total":1,"homeworkList":[{"id":347770,"type":3,"homeworkTitle":"2023-2024第一学期形势与政策课程调研——你想要什么样的形势与政策课？","startTime":1695027189000,"endTime":1704038340000,"state":0,"timeStatus":"2","status":2,"teacherId":965749,"publisher":"肖凤良","personStatus":1}]}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:15 +01:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:15 +01:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:15 +01:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:15 +01:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:15 +01:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:15 +01:00:{"pn":1,"ps":20,"total":2,"homeworkList":[{"id":353211,"type":8,"homeworkTitle":"第二讲《红楼梦》小组讨论作业","startTime":1697368569000,"endTime":1697731140000,"state":0,"timeStatus":"2","status":2,"teacherId":12466066,"publisher":"陈锦文","personStatus":1},{"id":350742,"type":8,"homeworkTitle":"2023-10-07 09:48 第一讲《论法的精神》小组作业","startTime":1696643329000,"endTime":1696694340000,"state":4,"timeStatus":"2","status":2,"score":85.0,"teacherId":12466066,"publisher":"陈锦文","personStatus":2}]}
+[Log] 15/10/2023 16:22:15 +01:00:课程:【2023秋】通识教育-人文社科经典导引
+[Log] 15/10/2023 16:22:15 +01:00:作业:第二讲《红楼梦》小组讨论作业
+结束:2023-10-19 23:59:00
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:15 +01:00:{"pn":1,"ps":20,"total":1,"homeworkList":[{"id":351265,"type":8,"homeworkTitle":"2023-10-08 基础知识1 小组作业","startTime":1696770491000,"endTime":1697178600000,"state":3,"timeStatus":"2","status":2,"teacherId":12466042,"publisher":"张锶涵","personStatus":2}]}
+[DEBUG] [From: GetHomeworkList] 15/10/2023 16:22:16 +01:00:{"pn":1,"ps":20,"total":6,"homeworkList":[{"id":353128,"type":9,"homeworkTitle":"2023-10-16   作业","startTime":1697422200000,"endTime":1697558340000,"peerReviewTime":1697644740000,"state":0,"timeStatus":"1","status":1,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"personStatus":1},{"id":352714,"type":9,"homeworkTitle":"2023-10-13    作业","startTime":1697163000000,"endTime":1697299140000,"peerReviewTime":1697385540000,"state":2,"timeStatus":"2","status":2,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"peerStatus":2,"personStatus":2},{"id":352392,"type":9,"homeworkTitle":"2023-10-11   课程思政作业","startTime":1696996800000,"endTime":1697299140000,"peerReviewTime":1697385540000,"state":2,"timeStatus":"2","status":2,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"peerStatus":2,"personStatus":2},{"id":352390,"type":9,"homeworkTitle":"2023-10-11   作业","startTime":1696996800000,"endTime":1697126340000,"peerReviewTime":1697212740000,"state":4,"timeStatus":"3","status":3,"score":84,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"peerStatus":2,"personStatus":2},{"id":351297,"type":9,"homeworkTitle":"2023-10-09   作业","startTime":1696817400000,"endTime":1696953540000,"peerReviewTime":1697039940000,"state":4,"timeStatus":"3","status":3,"score":89,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"peerStatus":2,"personStatus":2},{"id":351127,"type":9,"homeworkTitle":"2023-10-08    作业","startTime":1696731000000,"endTime":1696953540000,"peerReviewTime":1697039940000,"state":4,"timeStatus":"3","status":3,"score":80,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"peerStatus":2,"personStatus":2}]}
+[Log] 15/10/2023 16:22:16 +01:00:课程:高等数学I（2023）
+[Log] 15/10/2023 16:22:16 +01:00:作业:2023-10-16   作业
+结束:2023-10-17 23:59:00
+[Log] 15/10/2023 16:22:16 +01:00:此外还有21份长期作业,请自行前往检查~
+[DEBUG] [From: SendText] 15/10/2023 16:22:16 +01:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"48755684-3d40-bc19-8c4e-25b002535c9a"}}
+[Log] 15/10/2023 16:25:11 +01:00:websocket关闭
+:00:{"pn":1,"ps":20,"total":54,"homeworkList":[{"id":348977,"type":9,"homeworkTitle":"沟通表达力--《人类的故事》读书心得","startTime":1695614340000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348983,"type":9,"homeworkTitle":"沟通表达力--《The Moon and Sixpence 月亮与六便士》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348982,"type":9,"homeworkTitle":"沟通表达力--《东方主义》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348981,"type":9,"homeworkTitle":"沟通表达力--《The Old Man and The Sea 老人与海（中英对照文全译本）》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348980,"type":9,"homeworkTitle":"沟通表达力--《The Spirit of The Chinese People》","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348979,"type":9,"homeworkTitle":"沟通表达力--《复活》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348978,"type":9,"homeworkTitle":"沟通表达力--《哈姆雷特 中英双语珍藏版》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348976,"type":9,"homeworkTitle":"沟通表达力--《精神分析引论》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348975,"type":9,"homeworkTitle":"高阶创造力--《约翰克利斯朵夫》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348974,"type":9,"homeworkTitle":"高阶创造力--《西方文明史（第五版）（精编普及版）》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348973,"type":9,"homeworkTitle":"高阶创造力--《爆裂》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348972,"type":9,"homeworkTitle":"高阶创造力--《未来简史•人类简史》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348971,"type":9,"homeworkTitle":"高阶创造力--《谈谈方法》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348970,"type":9,"homeworkTitle":"高阶创造力--《时间简史》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348969,"type":9,"homeworkTitle":"高阶创造力--《高科技高思维》","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348968,"type":9,"homeworkTitle":"高阶创造力--《人类简史》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348967,"type":9,"homeworkTitle":"应用行动力--《乌合之众：大众心理研究》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348966,"type":9,"homeworkTitle":"应用行动力--《苦难辉煌》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348965,"type":9,"homeworkTitle":"应用行动力--《西行漫记——红星照耀中国》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1},{"id":348964,"type":9,"homeworkTitle":"应用行动力--《生存与命运》读书心得","startTime":1695571200000,"endTime":1811779140000,"state":0,"timeStatus":"2","status":2,"teacherId":9605730,"publisher":"通识教育中心","showLevel":0,"personStatus":1}]}
+[DEBUG] [From: GetHomeworkList] 2023/10/15 23:18:29 +08:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 2023/10/15 23:18:29 +08:00:{"pn":1,"ps":20,"total":1,"homeworkList":[{"id":347770,"type":3,"homeworkTitle":"2023-2024第一学期形势与政策课程调研——你想要什么样的形势与政策课？","startTime":1695027189000,"endTime":1704038340000,"state":0,"timeStatus":"2","status":2,"teacherId":965749,"publisher":"肖凤良","personStatus":1}]}
+[DEBUG] [From: GetHomeworkList] 2023/10/15 23:18:29 +08:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 2023/10/15 23:18:29 +08:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 2023/10/15 23:18:29 +08:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 2023/10/15 23:18:29 +08:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 2023/10/15 23:18:29 +08:00:{"pn":1,"ps":20,"total":0}
+[DEBUG] [From: GetHomeworkList] 2023/10/15 23:18:29 +08:00:{"pn":1,"ps":20,"total":2,"homeworkList":[{"id":353211,"type":8,"homeworkTitle":"第二讲《红楼梦》小组讨论作业","startTime":1697368569000,"endTime":1697731140000,"state":0,"timeStatus":"2","status":2,"teacherId":12466066,"publisher":"陈锦文","personStatus":1},{"id":350742,"type":8,"homeworkTitle":"2023-10-07 09:48 第一讲《论法的精神》小组作业","startTime":1696643329000,"endTime":1696694340000,"state":4,"timeStatus":"2","status":2,"score":85.0,"teacherId":12466066,"publisher":"陈锦文","personStatus":2}]}
+[Log] 2023/10/15 23:18:29 +08:00:课程:【2023秋】通识教育-人文社科经典导引
+[Log] 2023/10/15 23:18:29 +08:00:作业:第二讲《红楼梦》小组讨论作业
+结束:2023-10-19 23:59:00
+[DEBUG] [From: GetHomeworkList] 2023/10/15 23:18:30 +08:00:{"pn":1,"ps":20,"total":1,"homeworkList":[{"id":351265,"type":8,"homeworkTitle":"2023-10-08 基础知识1 小组作业","startTime":1696770491000,"endTime":1697178600000,"state":3,"timeStatus":"2","status":2,"teacherId":12466042,"publisher":"张锶涵","personStatus":2}]}
+[DEBUG] [From: GetHomeworkList] 2023/10/15 23:18:30 +08:00:{"pn":1,"ps":20,"total":6,"homeworkList":[{"id":353128,"type":9,"homeworkTitle":"2023-10-16   作业","startTime":1697422200000,"endTime":1697558340000,"peerReviewTime":1697644740000,"state":0,"timeStatus":"1","status":1,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"personStatus":1},{"id":352714,"type":9,"homeworkTitle":"2023-10-13    作业","startTime":1697163000000,"endTime":1697299140000,"peerReviewTime":1697385540000,"state":2,"timeStatus":"2","status":2,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"peerStatus":2,"personStatus":2},{"id":352392,"type":9,"homeworkTitle":"2023-10-11   课程思政作业","startTime":1696996800000,"endTime":1697299140000,"peerReviewTime":1697385540000,"state":2,"timeStatus":"2","status":2,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"peerStatus":2,"personStatus":2},{"id":352390,"type":9,"homeworkTitle":"2023-10-11   作业","startTime":1696996800000,"endTime":1697126340000,"peerReviewTime":1697212740000,"state":4,"timeStatus":"3","status":3,"score":84,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"peerStatus":2,"personStatus":2},{"id":351297,"type":9,"homeworkTitle":"2023-10-09   作业","startTime":1696817400000,"endTime":1696953540000,"peerReviewTime":1697039940000,"state":4,"timeStatus":"3","status":3,"score":89,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"peerStatus":2,"personStatus":2},{"id":351127,"type":9,"homeworkTitle":"2023-10-08    作业","startTime":1696731000000,"endTime":1696953540000,"peerReviewTime":1697039940000,"state":4,"timeStatus":"3","status":3,"score":80,"flag":2,"teacherId":5291539,"publisher":"牛银菊","showLevel":0,"peerStatus":2,"personStatus":2}]}
+[Log] 2023/10/15 23:18:30 +08:00:课程:高等数学I（2023）
+[Log] 2023/10/15 23:18:30 +08:00:作业:2023-10-16   作业
+结束:2023-10-17 23:59:00
+[Log] 2023/10/15 23:18:30 +08:00:此外还有21份长期作业,请自行前往检查~
+[DEBUG] [From: SendText] 2023/10/15 23:18:30 +08:00:{"retcode":0,"message":"OK","data":{"bot_msg_id":"534b7572-4156-4233-320f-da5cfd9c612d"}}

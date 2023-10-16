@@ -1,23 +1,55 @@
 ﻿using MysBotSDK;
+using MysBotSDK.MessageHandle;
 using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
+using System.Reactive.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 
 namespace MihoyoBBS_Bot;
 static class Program
 {
+	public static string GetAccountConfig(string key)
+	{
+		string account_path = "./account.conf";
+		var dic = FileHandle.ReadAsDicString(account_path);
+		if (!dic.ContainsKey(key))
+		{
+			dic[key] = "";
+			FileHandle.SaveDicString(account_path, dic);
+		}
+
+		return dic[key];
+	}
 	public static async Task Main()
 	{   //初始化Bot
-		MysBot mysBot = new MysBot()
+		MysBot mysBot;
+		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 		{
-			loggerLevel = Logger.LoggerLevel.Debug,
-			callback_Adress = "http://127.0.0.1:12328/",
-			bot_id = "",
-			secret = "",
-			pub_key = @""
-		}.Initail();
 
+			Action saveAction = new Action(() => { });
+
+			mysBot = new MysBot()//末酱映射机
+			{
+				loggerLevel = Logger.LoggerLevel.Debug,
+				http_callback_Address = GetAccountConfig("http_callback_Address"),
+				bot_id = GetAccountConfig("bot_id"),
+				secret = GetAccountConfig("mojiang_secret"),
+				pub_key = GetAccountConfig("pub_key")
+			}.Initail();
+		}
+		else
+		{
+			mysBot = new MysBot()//末酱
+			{
+				loggerLevel = Logger.LoggerLevel.Debug,
+				ws_callback_Address = GetAccountConfig("ws_callback_Address"),
+				bot_id = GetAccountConfig("mojiang_ready_bot_id"),
+				secret = GetAccountConfig("mojiang_ready_secret"),
+				pub_key = GetAccountConfig("pub_key")
+			}.Initail();
+		}
 
 		//读取程序集
 		List<IMysPluginModule> plugins = new List<IMysPluginModule>();
@@ -98,7 +130,7 @@ static class Program
 			AuditCallback = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<AuditCallbackAttribute>() != null));
 			mysPluginModules.Clear();
 		}
-		mysBot.MessageReceiver.Subscribe();
+		Array.ForEach(Start.ToArray(), method => { if (method.Enable) { method.Execute(); } });
 		Array.ForEach(JoinVilla.ToArray(), method => { mysBot.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
 		Array.ForEach(SendMessage.ToArray(), method =>
 		{
@@ -106,14 +138,11 @@ static class Program
 			{
 				if (method.Enable)
 				{
-					var commond = receiver.Text.Split(" ").ToList();
-					commond.RemoveAt(0);
-					if (commond[0] == $"/{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}" || commond[0] == $"{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}")
+					if (receiver.commond == $"/{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}" || receiver.commond == $"{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}")
 					{
 						Logger.Log($"Commond:{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}");
 						await method.Execute(receiver);
 					}
-
 				}
 			});
 		});
@@ -135,6 +164,8 @@ static class Program
 				while (true)
 				{
 					string? commond = Console.ReadLine();
+					if (string.IsNullOrEmpty(commond) || string.IsNullOrWhiteSpace(commond))
+					{ continue; }
 					string?[] commondSplit = commond.Split(" ");
 					Logger.Log($"input {commond}");
 					Type type = typeof(Commond);
@@ -181,6 +212,10 @@ static class Commond
 			Console.WriteLine(method.Name);
 		}
 		Console.WriteLine("========================");
+	}
+	public static void exit(string?[] args)
+	{
+		Environment.Exit(0);
 	}
 	//public static void updata(string?[] args)
 	//{
