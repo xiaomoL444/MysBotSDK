@@ -12,7 +12,7 @@ public class ExampleProgram
 	{
 		MysBot mysBot = new MysBot()
 		{
-			callback_Adress = "",//回调地址
+			http_callback_Adress = "",//回调地址
 			bot_id = "",
 			secret = "",
 			pub_key = "",
