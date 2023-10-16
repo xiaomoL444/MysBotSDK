@@ -10,6 +10,10 @@ namespace MysBotSDK.MessageHandle.ExtendData
 {
 	public class SendMessage : IExtendData
 	{
+		
+		/// <summary>
+		/// 命令参数
+		/// </summary>
 		public List<string> args { get; set; } = new List<string>();
 		/// <summary>
 		/// 消息内容string
