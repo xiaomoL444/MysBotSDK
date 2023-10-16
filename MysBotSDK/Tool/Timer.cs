@@ -10,17 +10,17 @@ namespace MysBotSDK.Tool
 	{
 		static string config_path = "./Timer.conf";
 		private static Dictionary<string, string> timers_startTime = new Dictionary<string, string>();
-		private static List<(string name,System.Timers.ElapsedEventHandler eventHandler, int hour, int minute)> timers_conf = new List<(string,System.Timers.ElapsedEventHandler eventHandler, int hour, int minute)>();
+		private static List<(string name, System.Timers.ElapsedEventHandler eventHandler, int hour, int minute)> timers_conf = new List<(string, System.Timers.ElapsedEventHandler eventHandler, int hour, int minute)>();
 		public static void Register(string name, System.Timers.ElapsedEventHandler eventHandle, int hour, int minute)
 		{
-			timers_conf.Add((name,eventHandle, hour, minute));
+			timers_conf.Add((name, eventHandle, hour, minute));
 			var file = FileHandle.ReadAsDicString(config_path);
-			if (file.ContainsKey(name))
+			if (!file.ContainsKey(name))
 			{
 				file[name] = "0";
-				timers_startTime = file;
 				FileHandle.SaveDicString(config_path, file);
 			}
+			timers_startTime = file;
 
 		}
 		/// <summary>
@@ -33,15 +33,16 @@ namespace MysBotSDK.Tool
 			{
 				foreach (var timer in timers_conf)
 				{
-					if (timers_startTime[timer.name]!= DateTimeOffset.Now.DayOfYear.ToString())
+					if (timers_startTime[timer.name] != DateTimeOffset.Now.DayOfYear.ToString())
 					{
 						if (DateTimeOffset.Now.Hour >= timer.hour && DateTimeOffset.Now.Minute >= timer.minute)
 						{
 							timers_startTime[timer.name] = DateTimeOffset.Now.DayOfYear.ToString();
 							FileHandle.SaveDicString(config_path, timers_startTime);
 							//执行定时任务
-					    	timer.eventHandler.Invoke(sender, e);
-							
+							Logger.Log($"执行事件 {timer.name}");
+							timer.eventHandler.Invoke(sender, e);
+
 						}
 					}
 				}
