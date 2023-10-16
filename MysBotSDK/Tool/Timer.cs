@@ -14,6 +14,10 @@ namespace MysBotSDK.Tool
 		public static void Register(string name, System.Timers.ElapsedEventHandler eventHandle, int hour, int minute)
 		{
 			Logger.Log($"注册计时事件:{name}");
+			if (timers_conf.Any(q => q.name == name))
+			{
+				Logger.LogWarnning($"已有同样的计时器时间创建{name}");
+			}
 			timers_conf.Add((name, eventHandle, hour, minute));
 			var file = FileHandle.ReadAsDicString(config_path);
 			if (!file.ContainsKey(name))

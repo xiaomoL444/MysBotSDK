@@ -8,7 +8,7 @@ namespace MysBotSDK.Tool;
 
 public class FileHandle
 {
-	public static object locker = 0;
+	private static object locker = 0;
 	/// <summary>
 	/// 读取文件，以 string = string 读取入字典
 	/// </summary>
@@ -50,7 +50,7 @@ public class FileHandle
 		}
 		lock (locker)
 		{
-			StreamWriter streamWriter = new StreamWriter(new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite));
+			StreamWriter streamWriter = new StreamWriter(new FileStream(path, FileMode.Truncate, FileAccess.ReadWrite));
 			streamWriter.Write(content);
 			streamWriter.Close();
 		}

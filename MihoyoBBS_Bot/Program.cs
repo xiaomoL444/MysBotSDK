@@ -23,7 +23,8 @@ static class Program
 		return dic[key];
 	}
 	public static async Task Main()
-	{   //初始化Bot
+	{
+		//初始化Bot
 		MysBot mysBot;
 		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 		{
@@ -34,20 +35,20 @@ static class Program
 			{
 				loggerLevel = Logger.LoggerLevel.Debug,
 				http_callback_Address = GetAccountConfig("http_callback_Address"),
-				bot_id = GetAccountConfig("bot_id"),
-				secret = GetAccountConfig("mojiang_secret"),
-				pub_key = GetAccountConfig("pub_key")
+				bot_id = GetAccountConfig("mojiang_ready_bot_id"),
+				secret = GetAccountConfig("mojiang_ready_secret"),
+				pub_key = GetAccountConfig("mojiang_ready_pub_key").Replace("\\n", "\n").TrimEnd(' ')
 			}.Initail();
 		}
 		else
 		{
 			mysBot = new MysBot()//末酱
 			{
-				loggerLevel = Logger.LoggerLevel.Debug,
+				loggerLevel = Logger.LoggerLevel.Log,
 				ws_callback_Address = GetAccountConfig("ws_callback_Address"),
-				bot_id = GetAccountConfig("mojiang_ready_bot_id"),
-				secret = GetAccountConfig("mojiang_ready_secret"),
-				pub_key = GetAccountConfig("pub_key")
+				bot_id = GetAccountConfig("mojiang_bot_id"),
+				secret = GetAccountConfig("mojiang_secret"),
+				pub_key = GetAccountConfig("mojiang_pub_key").Replace("\\n", "\n").TrimEnd(' ')
 			}.Initail();
 		}
 
