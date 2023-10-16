@@ -13,6 +13,7 @@ namespace MysBotSDK.Tool
 		private static List<(string name, System.Timers.ElapsedEventHandler eventHandler, int hour, int minute)> timers_conf = new List<(string, System.Timers.ElapsedEventHandler eventHandler, int hour, int minute)>();
 		public static void Register(string name, System.Timers.ElapsedEventHandler eventHandle, int hour, int minute)
 		{
+			Logger.Log($"注册计时事件:{name}");
 			timers_conf.Add((name, eventHandle, hour, minute));
 			var file = FileHandle.ReadAsDicString(config_path);
 			if (!file.ContainsKey(name))

@@ -5,6 +5,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <BaseOutputPath>E:\code\MysBotSDK\MysBotBulid</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
