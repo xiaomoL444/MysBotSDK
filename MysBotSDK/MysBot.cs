@@ -94,8 +94,10 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			else if (!string.IsNullOrEmpty(ws_callback_Address) && string.IsNullOrEmpty(http_callback_Address))
 			{
 				Logger.Log("创建websocker监听");
-				_ = Task.Run(async () =>
+				Func<Task?> func = null!;
+				func = (async () =>
 				{
+					bool isConnect = false;
 					WebSocketSharp.WebSocket webSocket = new WebSocketSharp.WebSocket(ws_callback_Address);
 
 					webSocket.OnOpen += (sender, e) => { Logger.Log("开启websocket连接"); };
@@ -109,16 +111,21 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 						}
 					};
 					webSocket.OnError += (sender, e) => { Logger.LogError($"websocket出现错误{e.Message}\n{e.Exception}"); };
-					webSocket.OnClose += (sender, e) => { Logger.Log("websocket关闭，尝试重新连接"); };
+					webSocket.OnClose += (sender, e) =>
+					{
+						Logger.Log("websocket关闭，尝试重新连接");
+						isConnect = true;
+						Task.Run(func);
+					};
 					webSocket.Connect();
-					while (true)
+					while (!isConnect)
 					{
 						//保活，30s发送一次消息
 						webSocket.Send("BALUS");
 						await Task.Delay(1000 * 30);
 					}
-				}); ;
-
+				});
+				Task.Run(func);
 			}
 			else
 			{
