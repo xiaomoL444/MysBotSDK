@@ -139,9 +139,9 @@ static class Program
 			{
 				if (method.Enable)
 				{
-					if (receiver.commond == $"/{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}" || receiver.commond == $"{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}")
+					if (receiver.commond == $"/{method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}" || receiver.commond == $"{method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}")
 					{
-						Logger.Log($"Commond:{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}");
+						Logger.Log($"Commond:{method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
 						await method.Execute(receiver);
 					}
 				}
@@ -173,7 +173,7 @@ static class Program
 					MethodInfo? methodInfo;
 					try
 					{
-						methodInfo = type.GetMethod(commondSplit[0]);
+						methodInfo = type.GetMethod(commondSplit[0]!);
 					}
 					catch (ArgumentException)
 					{
@@ -185,7 +185,7 @@ static class Program
 
 					try
 					{
-						methodInfo.Invoke(null, new object[] { commondSplit });
+						methodInfo!.Invoke(null, new object[] { commondSplit });
 					}
 					catch (ArgumentException e)
 					{

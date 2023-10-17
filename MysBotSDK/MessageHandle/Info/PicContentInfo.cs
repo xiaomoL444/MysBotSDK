@@ -11,8 +11,8 @@ namespace MysBotSDK.MessageHandle.Info
 	/// </summary>
 	public class PicContentInfo
 	{
-		public string url { get; set; }
-		public Size size { get; set; }
+		public string? url { get; set; }
+		public Size? size { get; set; }
 		public class Size
 		{
 			public Size(int width, int height)

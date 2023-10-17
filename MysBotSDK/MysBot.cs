@@ -16,17 +16,17 @@ namespace MysBotSDK
 {
 	public class MysBot
 	{
-		public string http_callback_Address { private get; init; }
-		public string ws_callback_Address { private get; init; }
-		public string bot_id { internal get; init; }
-		public string secret { internal get; init; }
-		public string pub_key { internal get; init; }
+		public string? http_callback_Address { private get; init; }
+		public string? ws_callback_Address { private get; init; }
+		public string? bot_id { internal get; init; }
+		public string? secret { internal get; init; }
+		public string? pub_key { internal get; init; }
 		public Logger.LoggerLevel loggerLevel { get { return Logger.loggerLevel; } set { Logger.loggerLevel = value; } }
 
 		public IObservable<MessageReceiverBase> MessageReceiver => messageReceiver.AsObservable();
 		private Subject<MessageReceiverBase> messageReceiver = new();
 
-		private string Certificate_Header { get; set; }
+		private string? Certificate_Header { get; set; }
 
 		/// <summary>
 		/// 
@@ -45,7 +45,7 @@ namespace MysBotSDK
 			//设置鉴权请求头
 			Certificate_Header = $@"x-rpc-bot_id:{bot_id}
 x-rpc-bot_secret:{secret}
-x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
+x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 
 			//创建监听
 			if (!string.IsNullOrEmpty(http_callback_Address) && string.IsNullOrEmpty(ws_callback_Address))
@@ -76,7 +76,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret, pub_key)}";
 
 						//处理消息
 						//校验伺服器请求头
-						if (!Authentication.Verify(data, request.Headers.Get("x-rpc-bot_sign"), pub_key, secret))
+						if (!Authentication.Verify(data, request.Headers.Get("x-rpc-bot_sign")!, pub_key!, secret!))
 						{
 							HttpRespond(response, new ResponseData() { message = "Invalid signature", retcode = 401 });
 							Logger.LogWarnning("鉴权失败");

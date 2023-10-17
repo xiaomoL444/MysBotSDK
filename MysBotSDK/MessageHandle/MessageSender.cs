@@ -14,14 +14,14 @@ public static class MessageSender
 {
 	public static string header { get; internal set; } = "";//没有x-rpc-bot_villa_id
 	public static string FormatHeader(UInt64 villa_id) { return header + $"\nx-rpc-bot_villa_id:{villa_id}"; }
-	private static MysBot mysBot;
+	private static MysBot? mysBot;
 	internal static MysBot MysBot
 	{
 		set
 		{
 			mysBot = value;
 			header = @$"x-rpc-bot_id:{mysBot.bot_id}
-x-rpc-bot_secret:{Authentication.HmacSHA256(mysBot.secret, mysBot.pub_key)}
+x-rpc-bot_secret:{Authentication.HmacSHA256(mysBot.secret!, mysBot.pub_key!)}
 Content-Type: application/json";
 		}
 	}
@@ -50,9 +50,9 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
-	public static async Task<(string message, int retcode, string bot_msg_id)> SendImage(UInt64 villa_id, UInt64 room_id, string url, PicContentInfo.Size size = null, int file_size = 0)
+	public static async Task<(string message, int retcode, string bot_msg_id)> SendImage(UInt64 villa_id, UInt64 room_id, string url, PicContentInfo.Size size = null!, int file_size = 0)
 	{
 		string object_name = "MHY:Image";
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
@@ -69,7 +69,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendPost(UInt64 villa_id, UInt64 room_id, string post_id)
 	{
@@ -88,7 +88,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
 	public static async Task<(string message, int retcode, string bot_msg_id)> RecallMessage(UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time)
 	{
@@ -106,7 +106,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
 	public static async Task<(string message, int retcode, string bot_msg_id)> PinMessage(UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time, bool is_cancel)
 	{
@@ -124,7 +124,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
 	public static async Task<(string message, int retcode, string group_id)> CreateGroup(UInt64 villa_id, string group_name)
 	{
@@ -142,7 +142,7 @@ Content-Type: application/json";
 			data = new { group_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, group_id = json.data.group_id };
+		return new() { message = json!.message, retcode = json.retcode, group_id = json.data.group_id };
 	}
 	public static async Task<(string message, int retcode)> DeleteGroup(UInt64 villa_id, UInt64 group_id)
 	{
@@ -159,7 +159,7 @@ Content-Type: application/json";
 			message = "",
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode };
+		return new() { message = json!.message, retcode = json.retcode };
 	}
 	public static async Task<(string message, int retcode)> EditGroup(UInt64 villa_id, UInt64 group_id, string new_group_name)
 	{
@@ -176,7 +176,7 @@ Content-Type: application/json";
 			message = "",
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode };
+		return new() { message = json!.message, retcode = json.retcode };
 	}
 	public static async Task<(string message, int retcode)> EditRoom(UInt64 villa_id, UInt64 room_id, string new_room_name)
 	{
@@ -193,7 +193,7 @@ Content-Type: application/json";
 			message = "",
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode };
+		return new() { message = json!.message, retcode = json.retcode };
 	}
 	public static async Task<(string message, int retcode)> DeleteRoom(UInt64 villa_id, UInt64 room_id)
 	{
@@ -210,7 +210,7 @@ Content-Type: application/json";
 			message = "",
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode };
+		return new() { message = json!.message, retcode = json.retcode };
 	}
 	#endregion
 	#region API获取信息
@@ -235,7 +235,7 @@ Content-Type: application/json";
 			data = new { member = new Member() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, member = json.data.member };
+		return new() { message = json!.message, retcode = json.retcode, member = json.data.member };
 	}
 	public static async Task<(string message, int retcode, Villa villa)> GetVillaInfo(UInt64 villa_id)
 	{
@@ -253,7 +253,7 @@ Content-Type: application/json";
 			data = new { villa = new Villa() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, villa = json.data.villa };
+		return new() { message = json!.message, retcode = json.retcode, villa = json.data.villa };
 	}
 	public static async Task<(string message, int retcode, Room room)> GetRoomInfo(UInt64 villa_id, UInt64 room_id)
 	{
@@ -271,7 +271,7 @@ Content-Type: application/json";
 			data = new { room = new Room() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, room = json.data.room };
+		return new() { message = json!.message, retcode = json.retcode, room = json.data.room };
 	}
 	public static async Task<(string message, int retcode, List<Member> members)> GetVillaMember(UInt64 villa_id)
 	{
@@ -295,7 +295,7 @@ Content-Type: application/json";
 				data = new { next_offset_str = "", list = new List<Member>() }
 			};
 			var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-			retcode = json.retcode;
+			retcode = json!.retcode;
 			message = json.message;
 
 			result_count = json.data.list.Count;
@@ -320,7 +320,7 @@ Content-Type: application/json";
 			data = new { list = new List<Group>() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, groups = json.data.list };
+		return new() { message = json!.message, retcode = json.retcode, groups = json.data.list };
 	}
 	public static async Task<(string message, int retcode, List<Room> rooms)> GetRoomList(UInt64 villa_id)
 	{
@@ -337,7 +337,7 @@ Content-Type: application/json";
 			data = new { list = new List<Room>() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, rooms = json.data.list };
+		return new() { message = json!.message, retcode = json.retcode, rooms = json.data.list };
 	}
 	public static async Task<(string message, int retcode, BotMemberAccessInfo access_info, Member member)> CheckMemberBotAccessToken(UInt64 villa_id, string token)
 	{
@@ -354,7 +354,7 @@ Content-Type: application/json";
 			data = new { access_info = new BotMemberAccessInfo(), member = new Member() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, access_info = json.data.access_info, member = json.data.member };
+		return new() { message = json!.message, retcode = json.retcode, access_info = json.data.access_info, member = json.data.member };
 	}
 	public static async Task<(string message, int retcode, List<Emoticon> emoticons)> GetAllEmoticons(UInt64 villa_id)
 	{
@@ -370,7 +370,7 @@ Content-Type: application/json";
 			data = new { list = new List<Emoticon>() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, emoticons = json.data.list };
+		return new() { message = json!.message, retcode = json.retcode, emoticons = json.data.list };
 	}
 	#endregion
 	#region 身份组
@@ -389,7 +389,7 @@ Content-Type: application/json";
 			data = new { }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode };
+		return new() { message = json!.message, retcode = json.retcode };
 	}
 	public static async Task<(string message, int retcode, string id)> CreateMemberRole(UInt64 villa_id, string name, string color, Permission permission)
 	{
@@ -406,7 +406,7 @@ Content-Type: application/json";
 			data = new { id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, id = json.data.id };
+		return new() { message = json!.message, retcode = json.retcode, id = json.data.id };
 	}
 	public static async Task<(string message, int retcode)> EditMemberRole(UInt64 villa_id, UInt64 id, string new_name, string new_color, Permission new_permission)
 	{
@@ -423,7 +423,7 @@ Content-Type: application/json";
 			data = new { }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode };
+		return new() { message = json!.message, retcode = json.retcode };
 	}
 	public static async Task<(string message, int retcode)> DeleteMemberRole(UInt64 villa_id, UInt64 id)
 	{
@@ -440,7 +440,7 @@ Content-Type: application/json";
 			data = new { }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode };
+		return new() { message = json!.message, retcode = json.retcode };
 	}
 	public static async Task<(string message, int retcode, MemberRole member_role)> GetVillaMemberRoleInfo(UInt64 villa_id, UInt64 role_id)
 	{
@@ -457,7 +457,7 @@ Content-Type: application/json";
 			data = new { role = new MemberRole() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, member_role = json.data.role };
+		return new() { message = json!.message, retcode = json.retcode, member_role = json.data.role };
 	}
 	public static async Task<(string message, int retcode, List<MemberRole> member_roles)> GetVillaMemberRoleList(UInt64 villa_id)
 	{
@@ -474,7 +474,7 @@ Content-Type: application/json";
 			data = new { list = new List<MemberRole>() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, member_roles = json.data.list };
+		return new() { message = json!.message, retcode = json.retcode, member_roles = json.data.list };
 	}
 	#endregion
 	#region 审核
@@ -492,7 +492,7 @@ Content-Type: application/json";
 			data = new { }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode };
+		return new() { message = json!.message, retcode = json.retcode };
 	}
 	#endregion
 	#region 图片转存
@@ -510,7 +510,7 @@ Content-Type: application/json";
 			data = new { new_url = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json.message, retcode = json.retcode, new_url = json.data.new_url };
+		return new() { message = json!.message, retcode = json.retcode, new_url = json.data.new_url };
 	}
 	#endregion
 }
