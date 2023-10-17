@@ -8,7 +8,7 @@ namespace MysBotSDK.Tool
 {
 	public static class Timer
 	{
-		static string config_path = "./Timer.conf";
+		static string config_path = "./Timer.json";
 		private static Dictionary<string, string> timers_startTime = new Dictionary<string, string>();
 		private static List<(string name, System.Timers.ElapsedEventHandler eventHandler, int hour, int minute)> timers_conf = new List<(string, System.Timers.ElapsedEventHandler eventHandler, int hour, int minute)>();
 		public static void Register(string name, System.Timers.ElapsedEventHandler eventHandle, int hour, int minute)

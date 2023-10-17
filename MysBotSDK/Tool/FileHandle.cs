@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,39 +20,29 @@ public class FileHandle
 		lock (locker)
 		{
 			StreamReader streamReader = new StreamReader(new FileStream(path, FileMode.OpenOrCreate));
-			string tmp_str;
-			while ((tmp_str = streamReader.ReadLine()) != null)
+			try
 			{
-				try
-				{
-					var split = tmp_str.Split("=");
-					dic[split[0]] = split[1];
-				}
-				catch
-				{
-					Logger.LogError("解析失败");
-				}
-
+				dic = JsonConvert.DeserializeObject<Dictionary<string, string>>(streamReader.ReadToEnd())!;
 			}
+			catch
+			{
+				Logger.LogError("解析失败");
+			}
+
 			streamReader.Close();
+		}
+		if (dic == null)
+		{
+			dic = new Dictionary<string, string>();
 		}
 		return dic;
 	}
 	public static Dictionary<string, string> SaveDicString(string path, Dictionary<string, string> dic)
 	{
-		string content = string.Empty;
-		for (int i = 0; i < dic.Count; i++)
-		{
-			content += dic.ElementAt(i).Key + "=" + dic.ElementAt(i).Value;
-			if (i != dic.Count - 1)
-			{
-				content += "\n";
-			}
-		}
 		lock (locker)
 		{
 			StreamWriter streamWriter = new StreamWriter(new FileStream(path, FileMode.Truncate, FileAccess.ReadWrite));
-			streamWriter.Write(content);
+			streamWriter.Write(JsonConvert.SerializeObject(dic));
 			streamWriter.Close();
 		}
 		return dic;

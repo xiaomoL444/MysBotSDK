@@ -12,7 +12,7 @@ static class Program
 {
 	public static string GetAccountConfig(string key)
 	{
-		string account_path = "./account.conf";
+		string account_path = "./account.json";
 		var dic = FileHandle.ReadAsDicString(account_path);
 		if (!dic.ContainsKey(key))
 		{
