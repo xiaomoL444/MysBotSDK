@@ -9,11 +9,12 @@ namespace MysBotSDK.Tool;
 
 public class FileHandle
 {
-	private static object locker = 0;
+	private static object locker = new();
+
 	/// <summary>
-	/// 读取文件，以 string = string 读取入字典
+	/// 读取文件
 	/// </summary>
-	/// <param name="path"></param>
+	/// <param name="path">文件路径</param>
 	public static Dictionary<string, string> ReadAsDicString(string path)
 	{
 		Dictionary<string, string> dic = new Dictionary<string, string>();
@@ -37,6 +38,13 @@ public class FileHandle
 		}
 		return dic;
 	}
+
+	/// <summary>
+	/// 储存文件
+	/// </summary>
+	/// <param name="path">路径</param>
+	/// <param name="dic">需要储存的字典</param>
+	/// <returns></returns>
 	public static Dictionary<string, string> SaveDicString(string path, Dictionary<string, string> dic)
 	{
 		lock (locker)
