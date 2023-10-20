@@ -11,7 +11,7 @@ namespace MysBotSDK.MessageHandle.Info
 		/// <summary>
 		/// BotID
 		/// </summary>
-		public strin	 id { get; set; }
+		public string? id { get; set; }
 
 		/// <summary>
 		/// Bot名字
