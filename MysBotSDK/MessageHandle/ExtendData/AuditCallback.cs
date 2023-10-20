@@ -14,7 +14,7 @@ namespace MysBotSDK.MessageHandle.ExtendData
 		/// <summary>
 		/// 审核事件 id
 		/// </summary>
-		public string?  audit_id { get; set; }
+		public string? audit_id { get; set; }
 
 		/// <summary>
 		/// 机器人 id
