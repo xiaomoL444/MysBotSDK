@@ -35,11 +35,24 @@ namespace MysBotSDK.MessageHandle
 			Text("");
 			IDs = new List<(int, Entity)>();
 		}
+
+		/// <summary>
+		/// 插入一段文本
+		/// </summary>
+		/// <param name="text">文本内容</param>
+		/// <returns>消息链</returns>
 		public MessageChain Text(string text)
 		{
 			this.text.Add(text.ConvertUTF8ToUTF16());
 			return this;
 		}
+
+		/// <summary>
+		/// 插入一段@At消息(不能与AtAll()同时使用)
+		/// </summary>
+		/// <param name="villa_id">大别野ID</param>
+		/// <param name="id">@At用户UID</param>
+		/// <returns>消息链</returns>
 		public MessageChain At(UInt64 villa_id, UInt64 id)
 		{
 			IDs.Add((text.Count - 1, new Entity()
@@ -53,6 +66,11 @@ namespace MysBotSDK.MessageHandle
 			}));
 			return this;
 		}
+
+		/// <summary>
+		/// @At所有人(不能与At()同时使用)
+		/// </summary>
+		/// <returns>消息链</returns>
 		public MessageChain AtAll()
 		{
 			IDs.Add((text.Count - 1, new Entity()
@@ -64,6 +82,13 @@ namespace MysBotSDK.MessageHandle
 			}));
 			return this;
 		}
+
+		/// <summary>
+		/// 引用一段消息
+		/// </summary>
+		/// <param name="message_id">消息UID</param>
+		/// <param name="message_send_time">消息发送时间</param>
+		/// <returns>消息链</returns>
 		public MessageChain Quote(string message_id, Int64 message_send_time)
 		{
 			quote = new QuoteInfo();
@@ -73,6 +98,13 @@ namespace MysBotSDK.MessageHandle
 			quote.original_message_send_time = message_send_time;
 			return this;
 		}
+
+		/// <summary>
+		/// 插入一段跳转房间#room
+		/// </summary>
+		/// <param name="villa_id">大别野ID</param>
+		/// <param name="room_id">房间ID</param>
+		/// <returns></returns>
 		public MessageChain Room_Link(UInt64 villa_id, UInt64 room_id)
 		{
 			IDs.Add((text.Count - 1, new Entity()
@@ -86,6 +118,13 @@ namespace MysBotSDK.MessageHandle
 			}));
 			return this;
 		}
+
+		/// <summary>
+		/// 跳转外部链接
+		/// </summary>
+		/// <param name="url">url链接</param>
+		/// <param name="requires_bot_access_token">是否需要带上含有用户信息的token</param>
+		/// <returns></returns>
 		public MessageChain Url_Link(string url, bool requires_bot_access_token = false)
 		{
 			IDs.Add((text.Count - 1, new Entity()
@@ -99,6 +138,7 @@ namespace MysBotSDK.MessageHandle
 			}));
 			return this;
 		}
+
 		internal async Task<MessageChain> Bulid()
 		{
 			for (int i = 0; i < text.Count; i++)
