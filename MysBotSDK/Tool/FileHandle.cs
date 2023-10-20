@@ -12,9 +12,10 @@ public class FileHandle
 	private static object locker = new();
 
 	/// <summary>
-	/// 读取文件
+	/// 读取配置文件
 	/// </summary>
 	/// <param name="path">文件路径</param>
+	/// <returns>返回字典类型配置文件</returns>
 	public static Dictionary<string, string> ReadAsDicString(string path)
 	{
 		Dictionary<string, string> dic = new Dictionary<string, string>();
@@ -44,7 +45,7 @@ public class FileHandle
 	/// </summary>
 	/// <param name="path">路径</param>
 	/// <param name="dic">需要储存的字典</param>
-	/// <returns></returns>
+	/// <returns>作为参数的dic字典</returns>
 	public static Dictionary<string, string> SaveDicString(string path, Dictionary<string, string> dic)
 	{
 		lock (locker)

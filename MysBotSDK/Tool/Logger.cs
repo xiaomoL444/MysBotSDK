@@ -72,7 +72,7 @@ public static class Logger
 	/// </summary>
 	/// <param name="mes">输出的信息</param>
 	/// <param name="nameAttribute">调用Debug的方法名(为空即可)</param>
-	/// <returns></returns>
+	/// <returns>[DEBUG] [From: {nameAttribute}] {time}:{mes}\n</returns>
 	public static string Debug(string? mes, [System.Runtime.CompilerServices.CallerMemberName] string nameAttribute = "")
 	{
 		string log = $"[DEBUG] [From: {nameAttribute}] {time}:{mes}";
@@ -100,7 +100,7 @@ public static class Logger
 	/// 输出Log信息
 	/// </summary>
 	/// <param name="mes">输出的信息</param>
-	/// <returns></returns>
+	/// <returns>[Log] {time}:{mes}\n</returns>
 	public static string Log(string? mes)
 	{
 		string log = $"[Log] {time}:{mes}";
@@ -129,7 +129,7 @@ public static class Logger
 	/// 输出Warning信息
 	/// </summary>
 	/// <param name="mes">输出的信息</param>
-	/// <returns></returns>
+	/// <returns>[WARNING]{time}:{mes}\n</returns>
 	public static string LogWarnning(string? mes)
 	{
 		lock (logLock)
@@ -159,7 +159,7 @@ public static class Logger
 	/// <param name="MemberName">调用LogError的方法名(为空即可)</param>
 	/// <param name="FilePath">调用LogError的代码路径(为空即可)</param>
 	/// <param name="LineNumber">调用LogError的代码行数(为空即可)</param>
-	/// <returns></returns>
+	/// <returns>[ERROR] [Form: {MemberName}] [CallForm: {FilePath} Line: {LineNumber}] {time}:{mes}\n</returns>
 	public static string LogError(string? mes, [System.Runtime.CompilerServices.CallerMemberName] string MemberName = "", [System.Runtime.CompilerServices.CallerFilePath] string FilePath = "", [System.Runtime.CompilerServices.CallerLineNumber] int LineNumber = 0)
 	{
 		string log = $"[ERROR] [Form: {MemberName}] [CallForm: {FilePath} Line: {LineNumber}] {time}:{mes}";

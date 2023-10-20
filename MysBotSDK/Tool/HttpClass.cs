@@ -33,10 +33,10 @@ public static class HttpClass
 	}
 
 	/// <summary>
-	/// 异步发送Http协议消息
+	/// 异步发送Http消息
 	/// </summary>
 	/// <param name="httpRequestMessage">请求消息</param>
-	/// <returns></returns>
+	/// <returns>Http回复消息</returns>
 	public static async Task<HttpResponseMessage> SendAsync(HttpRequestMessage httpRequestMessage)
 	{
 		var res = await client.SendAsync(httpRequestMessage, HttpCompletionOption.ResponseHeadersRead);
@@ -48,7 +48,7 @@ public static class HttpClass
 	/// </summary>
 	/// <param name="httpRequestMessage">请求信息</param>
 	/// <param name="cookies">请求头</param>
-	/// <returns></returns>
+	/// <returns>已添加请求头的Http请求信息</returns>
 	public static HttpRequestMessage AddHeaders(this HttpRequestMessage httpRequestMessage, string cookies)
 	{
 		StringReader stringReader = new StringReader(cookies);

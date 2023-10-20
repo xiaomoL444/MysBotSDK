@@ -12,8 +12,8 @@ namespace MysBotSDK.MessageHandle;
 
 public static class MessageSender
 {
-	public static string header { get; internal set; } = "";//没有x-rpc-bot_villa_id
-	public static string FormatHeader(UInt64 villa_id) { return header + $"\nx-rpc-bot_villa_id:{villa_id}"; }
+	internal static string header { get; set; } = "";//没有x-rpc-bot_villa_id
+	internal static string FormatHeader(UInt64 villa_id) { return header + $"\nx-rpc-bot_villa_id:{villa_id}"; }
 	private static MysBot? mysBot;
 	internal static MysBot MysBot
 	{
@@ -26,6 +26,14 @@ Content-Type: application/json";
 		}
 	}
 	#region 消息发送方法
+
+	/// <summary>
+	/// 发送一条文本消息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <param name="msg_content">消息链(MessageChain)</param>
+	/// <returns></returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)
 	{
 		await msg_content.Bulid();
@@ -52,6 +60,16 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
+
+	/// <summary>
+	/// 发送图片信息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <param name="url">图片url</param>
+	/// <param name="size">图片尺寸</param>
+	/// <param name="file_size">图片大小</param>
+	/// <returns></returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendImage(UInt64 villa_id, UInt64 room_id, string url, PicContentInfo.Size size = null!, int file_size = 0)
 	{
 		string object_name = "MHY:Image";
@@ -71,6 +89,14 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
+
+	/// <summary>
+	/// 发送帖子消息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <param name="post_id">帖子ID</param>
+	/// <returns></returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendPost(UInt64 villa_id, UInt64 room_id, string post_id)
 	{
 		string object_name = "MHY:Post";
@@ -90,6 +116,15 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
+
+	/// <summary>
+	/// 撤回消息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <param name="msg_uid">消息uid</param>
+	/// <param name="msg_time">消息发送时间</param>
+	/// <returns></returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> RecallMessage(UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.RecallMessage);
@@ -108,6 +143,16 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
+
+	/// <summary>
+	/// 置顶消息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <param name="msg_uid">消息uid</param>
+	/// <param name="msg_time">消息发送时间</param>
+	/// <param name="is_cancel">是否取消置顶消息</param>
+	/// <returns></returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> PinMessage(UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time, bool is_cancel)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.PinMessage);
@@ -126,6 +171,13 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
+
+	/// <summary>
+	/// 创建大别野分组
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="group_name">组别名字</param>
+	/// <returns></returns>
 	public static async Task<(string message, int retcode, string group_id)> CreateGroup(UInt64 villa_id, string group_name)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.CreateGroup);
@@ -144,6 +196,13 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, group_id = json.data.group_id };
 	}
+
+	/// <summary>
+	/// 删除分组
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="group_id">组别ID</param>
+	/// <returns></returns>
 	public static async Task<(string message, int retcode)> DeleteGroup(UInt64 villa_id, UInt64 group_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.DeleteGroup);
