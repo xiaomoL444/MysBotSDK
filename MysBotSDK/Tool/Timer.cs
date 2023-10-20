@@ -11,6 +11,13 @@ namespace MysBotSDK.Tool
 		static string config_path = "./Timer.json";
 		private static Dictionary<string, string> timers_startTime = new Dictionary<string, string>();
 		private static List<(string name, System.Timers.ElapsedEventHandler eventHandler, int hour, int minute)> timers_conf = new List<(string, System.Timers.ElapsedEventHandler eventHandler, int hour, int minute)>();
+		/// <summary>
+		/// 注册计时事件
+		/// </summary>
+		/// <param name="name">事件名称</param>
+		/// <param name="eventHandle">事件方法</param>
+		/// <param name="hour">触发时间在第几小时(不包含第24时)</param>
+		/// <param name="minute">触发时间在第几分钟(不包含第60分钟)</param>
 		public static void Register(string name, System.Timers.ElapsedEventHandler eventHandle, int hour, int minute)
 		{
 			Logger.Log($"注册计时事件:{name}");
