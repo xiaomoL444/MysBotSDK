@@ -25,6 +25,7 @@ x-rpc-bot_secret:{Authentication.HmacSHA256(mysBot.secret!, mysBot.pub_key!)}
 Content-Type: application/json";
 		}
 	}
+
 	#region 消息发送方法
 
 	/// <summary>
@@ -33,7 +34,7 @@ Content-Type: application/json";
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="room_id">房间ID</param>
 	/// <param name="msg_content">消息链(MessageChain)</param>
-	/// <returns></returns>
+	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)
 	{
 		await msg_content.Bulid();
@@ -69,7 +70,7 @@ Content-Type: application/json";
 	/// <param name="url">图片url</param>
 	/// <param name="size">图片尺寸</param>
 	/// <param name="file_size">图片大小</param>
-	/// <returns></returns>
+	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendImage(UInt64 villa_id, UInt64 room_id, string url, PicContentInfo.Size size = null!, int file_size = 0)
 	{
 		string object_name = "MHY:Image";
@@ -96,7 +97,7 @@ Content-Type: application/json";
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="room_id">房间ID</param>
 	/// <param name="post_id">帖子ID</param>
-	/// <returns></returns>
+	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendPost(UInt64 villa_id, UInt64 room_id, string post_id)
 	{
 		string object_name = "MHY:Post";
@@ -124,7 +125,7 @@ Content-Type: application/json";
 	/// <param name="room_id">房间ID</param>
 	/// <param name="msg_uid">消息uid</param>
 	/// <param name="msg_time">消息发送时间</param>
-	/// <returns></returns>
+	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> RecallMessage(UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.RecallMessage);
@@ -152,7 +153,7 @@ Content-Type: application/json";
 	/// <param name="msg_uid">消息uid</param>
 	/// <param name="msg_time">消息发送时间</param>
 	/// <param name="is_cancel">是否取消置顶消息</param>
-	/// <returns></returns>
+	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> PinMessage(UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time, bool is_cancel)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.PinMessage);
@@ -171,13 +172,15 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
 	}
+	#endregion
 
+	#region 大别野组别、房间
 	/// <summary>
 	/// 创建大别野分组
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="group_name">组别名字</param>
-	/// <returns></returns>
+	/// <returns>message:返回消息,retcode:返回消息code,group_id:组别id</returns>
 	public static async Task<(string message, int retcode, string group_id)> CreateGroup(UInt64 villa_id, string group_name)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.CreateGroup);
@@ -202,7 +205,7 @@ Content-Type: application/json";
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="group_id">组别ID</param>
-	/// <returns></returns>
+	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> DeleteGroup(UInt64 villa_id, UInt64 group_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.DeleteGroup);
@@ -220,6 +223,14 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode };
 	}
+
+	/// <summary>
+	/// 编辑组别
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="group_id">组别ID</param>
+	/// <param name="new_group_name">组别新名称</param>
+	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> EditGroup(UInt64 villa_id, UInt64 group_id, string new_group_name)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.EditGroup);
@@ -237,6 +248,14 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode };
 	}
+
+	/// <summary>
+	/// 编辑房间
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <param name="new_room_name">房间新名称</param>
+	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> EditRoom(UInt64 villa_id, UInt64 room_id, string new_room_name)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.EditRoom);
@@ -254,6 +273,13 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode };
 	}
+
+	/// <summary>
+	/// 删除房间
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> DeleteRoom(UInt64 villa_id, UInt64 room_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.DeleteRoom);
@@ -272,13 +298,15 @@ Content-Type: application/json";
 		return new() { message = json!.message, retcode = json.retcode };
 	}
 	#endregion
+
 	#region API获取信息
+
 	/// <summary>
 	/// 获取用户信息
 	/// </summary>
-	/// <param name="villa_id">大别野id</param>
-	/// <param name="uid">用户id</param>
-	/// <returns></returns>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="uid">用户UID</param>
+	/// <returns>message:返回消息,retcode:返回消息code,member:Member类消息</returns>
 	public static async Task<(string message, int retcode, Member member)> GetUserInfo(UInt64 villa_id, UInt64 uid)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetUserInfo);
@@ -296,6 +324,12 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, member = json.data.member };
 	}
+
+	/// <summary>
+	/// 获得大别野信息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <returns>message:返回消息,retcode:返回消息code,villa:Villa类消息</returns>
 	public static async Task<(string message, int retcode, Villa villa)> GetVillaInfo(UInt64 villa_id)
 	{
 
@@ -314,6 +348,13 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, villa = json.data.villa };
 	}
+
+	/// <summary>
+	/// 获取房间信息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <returns>message:返回消息,retcode:返回消息code,room:Room类消息</returns>
 	public static async Task<(string message, int retcode, Room room)> GetRoomInfo(UInt64 villa_id, UInt64 room_id)
 	{
 
@@ -332,6 +373,12 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, room = json.data.room };
 	}
+
+	/// <summary>
+	/// 获取大别野所有用户
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <returns>message:返回消息,retcode:返回消息code,members:Member类列表消息</returns>
 	public static async Task<(string message, int retcode, List<Member> members)> GetVillaMember(UInt64 villa_id)
 	{
 		int size_count = 10;
@@ -363,6 +410,12 @@ Content-Type: application/json";
 
 		return new() { message = message, retcode = retcode, members = members };
 	}
+
+	/// <summary>
+	/// 获取所有组别
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <returns>message:返回消息,retcode:返回消息code,groups:组别列表消息</returns>
 	public static async Task<(string message, int retcode, List<Group> groups)> GetGroupList(UInt64 villa_id)
 	{
 
@@ -381,6 +434,12 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, groups = json.data.list };
 	}
+
+	/// <summary>
+	/// 获取所有房间
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <returns>message:返回消息,retcode:返回消息code,rooms:Room类型列表消息</returns>
 	public static async Task<(string message, int retcode, List<Room> rooms)> GetRoomList(UInt64 villa_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetRoomList);
@@ -398,6 +457,13 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, rooms = json.data.list };
 	}
+
+	/// <summary>
+	/// 校验用户机器人访问凭证
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="token">token</param>
+	/// <returns>message:返回消息,retcode:返回消息code,access_info:BotMemberAccessInfo类型消息,member:Member类型消息</returns>
 	public static async Task<(string message, int retcode, BotMemberAccessInfo access_info, Member member)> CheckMemberBotAccessToken(UInt64 villa_id, string token)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.CheckMemberBotAccessToken);
@@ -415,6 +481,12 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, access_info = json.data.access_info, member = json.data.member };
 	}
+
+	/// <summary>
+	/// 获得所有表情
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <returns>message:返回消息,retcode:返回消息code,emoticons:Emoticon类型列表消息</returns>
 	public static async Task<(string message, int retcode, List<Emoticon> emoticons)> GetAllEmoticons(UInt64 villa_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetAllEmoticon);
@@ -432,7 +504,17 @@ Content-Type: application/json";
 		return new() { message = json!.message, retcode = json.retcode, emoticons = json.data.list };
 	}
 	#endregion
+
 	#region 身份组
+
+	/// <summary>
+	/// 更改用户身份组信息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="user_id">房间ID</param>
+	/// <param name="role_id">身份组ID</param>
+	/// <param name="is_add">是否是添加身份组</param>
+	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> OperateMemberToRole(UInt64 villa_id, UInt64 user_id, UInt64 role_id, bool is_add)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.OperateMemberToRole);
@@ -450,6 +532,15 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode };
 	}
+
+	/// <summary>
+	/// 创建身份组
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="name">身份组名字</param>
+	/// <param name="color">身份组颜色</param>
+	/// <param name="permission">身份组权限(可通过+=添加权限)</param>
+	/// <returns>message:返回消息,retcode:返回消息code,id:身份组ID</returns>
 	public static async Task<(string message, int retcode, string id)> CreateMemberRole(UInt64 villa_id, string name, string color, Permission permission)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.CreateMemberRole);
@@ -467,6 +558,16 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, id = json.data.id };
 	}
+
+	/// <summary>
+	/// 编辑身份组
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="id">身份组ID</param>
+	/// <param name="new_name">身份组新名字</param>
+	/// <param name="new_color">身份组新颜色</param>
+	/// <param name="new_permission">身份组新权限</param>
+	/// <returns></returns>
 	public static async Task<(string message, int retcode)> EditMemberRole(UInt64 villa_id, UInt64 id, string new_name, string new_color, Permission new_permission)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.EditMemberRole);
@@ -484,6 +585,13 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode };
 	}
+
+	/// <summary>
+	/// 删除身份组
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="id">身份组ID</param>
+	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> DeleteMemberRole(UInt64 villa_id, UInt64 id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.DeleteMemberRole);
@@ -501,6 +609,13 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode };
 	}
+
+	/// <summary>
+	/// 获取大别野身份组信息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="role_id">身份组ID</param>
+	/// <returns></returns>
 	public static async Task<(string message, int retcode, MemberRole member_role)> GetVillaMemberRoleInfo(UInt64 villa_id, UInt64 role_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMemberRoleInfo);
@@ -518,6 +633,12 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, member_role = json.data.role };
 	}
+
+	/// <summary>
+	/// 获取大别野所有身份组列表
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <returns>message:返回消息,retcode:返回消息code,member_roles:MemberRole类型列表消息</returns>
 	public static async Task<(string message, int retcode, List<MemberRole> member_roles)> GetVillaMemberRoleList(UInt64 villa_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMemberRole);
@@ -536,7 +657,19 @@ Content-Type: application/json";
 		return new() { message = json!.message, retcode = json.retcode, member_roles = json.data.list };
 	}
 	#endregion
+
 	#region 审核
+
+	/// <summary>
+	/// 审核消息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="audit_content">audit_content</param>
+	/// <param name="uid">uid</param>
+	/// <param name="content_type">消息类型</param>
+	/// <param name="pass_through">传递参数</param>
+	/// <param name="room_id">房间ID</param>
+	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> Audit(UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.Audit);
@@ -554,7 +687,15 @@ Content-Type: application/json";
 		return new() { message = json!.message, retcode = json.retcode };
 	}
 	#endregion
+
 	#region 图片转存
+
+	/// <summary>
+	/// 图片转存
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="url">需要转存的图片url</param>
+	/// <returns>message:返回消息,retcode:返回消息code,new_url:转存后的图片url</returns>
 	public static async Task<(string message, int retcode, string new_url)> Transferimage(UInt64 villa_id, string url)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.TransferImage);
@@ -572,4 +713,5 @@ Content-Type: application/json";
 		return new() { message = json!.message, retcode = json.retcode, new_url = json.data.new_url };
 	}
 	#endregion
+
 }
