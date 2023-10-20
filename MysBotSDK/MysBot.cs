@@ -35,6 +35,7 @@ namespace MysBotSDK
 		/// <exception cref="Exception"></exception>
 		public MysBot Initail()
 		{
+			Logger.Log("=========================================================\n初始化Bot");
 			//检查bot参数是否齐全
 			if (!(http_callback_Address != null || ws_callback_Address != null) || bot_id == null || secret == null | pub_key == null)
 			{

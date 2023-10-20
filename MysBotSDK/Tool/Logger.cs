@@ -13,8 +13,23 @@ namespace MysBotSDK.Tool;
 /// </summary>
 public static class Logger
 {
-	static object logLock = new object();
-	static string date = "";
+	static object logLock = new();
+	static string date
+	{
+		get
+		{
+			if (!Directory.Exists("./Log/"))
+			{
+				Directory.CreateDirectory("./Log/");
+			}
+			if (!File.Exists($"./Log/{date}.txt"))
+			{
+				File.Create($"./Log/{date}.txt").Close();
+			}
+
+			return $"{DateTimeOffset.UtcNow.LocalDateTime.Year}-{DateTimeOffset.UtcNow.LocalDateTime.Month}-{DateTimeOffset.UtcNow.LocalDateTime.Day}";
+		}
+	}
 	static string? time
 	{
 		get
@@ -22,8 +37,28 @@ public static class Logger
 			return DateTimeOffset.Now.ToString("");
 		}
 	}
-	static bool isWindow;
-	public static LoggerLevel loggerLevel { get; set; } = LoggerLevel.Log;//设置控制台输出哪种等级以上的信息
+	static bool isWindow
+	{
+		get
+		{
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			{
+				// Windows 相关逻辑
+				return true;
+			}
+			else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+			{
+				// Linux 相关逻辑
+				return false;
+			}
+			return false;
+		}
+	}
+
+	/// <summary>
+	/// 设置控制台输出哪种等级以上的信息
+	/// </summary>
+	public static LoggerLevel loggerLevel { get; set; } = LoggerLevel.Log;
 	public enum LoggerLevel
 	{
 		Error = 0,
@@ -32,36 +67,14 @@ public static class Logger
 		Debug = 3,
 	}
 
-	public static void CheckAvaliable()
-	{
-		if (date == "")
-		{
-			date = $"{DateTimeOffset.UtcNow.LocalDateTime.Year}-{DateTimeOffset.UtcNow.LocalDateTime.Month}-{DateTimeOffset.UtcNow.LocalDateTime.Day}";
-			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-			{
-				// Windows 相关逻辑
-				isWindow = true;
-			}
-			else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-			{
-				// Linux 相关逻辑
-				isWindow = false;
-			}
-			Log("=========================================================");
-
-		}
-		if (!Directory.Exists("./Log/"))
-		{
-			Directory.CreateDirectory("./Log/");
-		}
-		if (!File.Exists($"./Log/{date}.txt"))
-		{
-			File.Create($"./Log/{date}.txt").Close();
-		}
-	}
+	/// <summary>
+	/// 输出Debug信息
+	/// </summary>
+	/// <param name="mes">输出的信息</param>
+	/// <param name="nameAttribute">调用Debug的方法名(为空即可)</param>
+	/// <returns></returns>
 	public static string Debug(string? mes, [System.Runtime.CompilerServices.CallerMemberName] string nameAttribute = "")
 	{
-		CheckAvaliable();
 		string log = $"[DEBUG] [From: {nameAttribute}] {time}:{mes}";
 		lock (logLock)
 		{
@@ -82,9 +95,14 @@ public static class Logger
 		}
 		return log + "\n";
 	}
+
+	/// <summary>
+	/// 输出Log信息
+	/// </summary>
+	/// <param name="mes">输出的信息</param>
+	/// <returns></returns>
 	public static string Log(string? mes)
 	{
-		CheckAvaliable();
 		string log = $"[Log] {time}:{mes}";
 
 		lock (logLock)
@@ -106,9 +124,14 @@ public static class Logger
 		}
 		return mes + "\n";
 	}
+
+	/// <summary>
+	/// 输出Warning信息
+	/// </summary>
+	/// <param name="mes">输出的信息</param>
+	/// <returns></returns>
 	public static string LogWarnning(string? mes)
 	{
-		CheckAvaliable();
 		lock (logLock)
 		{
 			StreamWriter sw = new StreamWriter($"./Log/{date}.txt", true);
@@ -128,9 +151,17 @@ public static class Logger
 		}
 		return $"[WARNING]{mes}\n";
 	}
+
+	/// <summary>
+	/// 输出的Error信息
+	/// </summary>
+	/// <param name="mes">输出的信息</param>
+	/// <param name="MemberName">调用LogError的方法名(为空即可)</param>
+	/// <param name="FilePath">调用LogError的代码路径(为空即可)</param>
+	/// <param name="LineNumber">调用LogError的代码行数(为空即可)</param>
+	/// <returns></returns>
 	public static string LogError(string? mes, [System.Runtime.CompilerServices.CallerMemberName] string MemberName = "", [System.Runtime.CompilerServices.CallerFilePath] string FilePath = "", [System.Runtime.CompilerServices.CallerLineNumber] int LineNumber = 0)
 	{
-		CheckAvaliable();
 		string log = $"[ERROR] [Form: {MemberName}] [CallForm: {FilePath} Line: {LineNumber}] {time}:{mes}";
 		lock (logLock)
 		{
