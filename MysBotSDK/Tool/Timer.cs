@@ -33,14 +33,14 @@ namespace MysBotSDK.Tool
 		/// </summary>
 		static Timer()
 		{
-			System.Timers.Timer timer = new System.Timers.Timer(1000 * 30);
+			System.Timers.Timer timer = new System.Timers.Timer(1000 * 1);
 			timer.Elapsed += (sender, e) =>
 			{
 				foreach (var timer in timers_conf)
 				{
 					if (timers_startTime[timer.name] != DateTimeOffset.Now.DayOfYear.ToString())
 					{
-						if (DateTimeOffset.Now.Hour >= timer.hour && DateTimeOffset.Now.Minute >= timer.minute)
+						if (DateTimeOffset.Now.Hour == timer.hour && DateTimeOffset.Now.Minute == timer.minute)
 						{
 							timers_startTime[timer.name] = DateTimeOffset.Now.DayOfYear.ToString();
 							FileHandle.SaveDicString(config_path, timers_startTime);
