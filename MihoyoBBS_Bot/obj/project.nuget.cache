@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PM0jIBWFr+z5Ez9ok2qfufRkssvZ2JX45ljTfQcPN7IBweyMqcfmw1rqoBtMxNjHH+CX7D3pvIPvexvqoDgJuw==",
+  "dgSpecHash": "iaSVR+9Q4JhSiq5t22cOyGrvxDjsu9fqUlQxBhPjrbmwAAmJgGhrFBQSN6O53HT+pfp5KDgkfjYxhHEvsJwjVg==",
   "success": true,
   "projectFilePath": "E:\\code\\MysBotSDK\\MihoyoBBS_Bot\\MihoyoBBS_Bot.csproj",
   "expectedPackageFiles": [
@@ -38,7 +38,8 @@
     "C:\\Users\\月下初拥\\.nuget\\packages\\system.text.encoding\\4.0.11\\system.text.encoding.4.0.11.nupkg.sha512",
     "C:\\Users\\月下初拥\\.nuget\\packages\\system.text.regularexpressions\\4.1.0\\system.text.regularexpressions.4.1.0.nupkg.sha512",
     "C:\\Users\\月下初拥\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
-    "C:\\Users\\月下初拥\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512"
+    "C:\\Users\\月下初拥\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512",
+    "C:\\Users\\月下初拥\\.nuget\\packages\\websocketsharp-netstandard\\1.0.1\\websocketsharp-netstandard.1.0.1.nupkg.sha512"
   ],
   "logs": []
 }

@@ -29,7 +29,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		{
 
 		}
-		public override void Initialize(string message)
+		internal override void Initialize(string message)
 		{
 			joinVilla = JsonConvert.DeserializeObject<JoinVilla>(message)!;
 		}

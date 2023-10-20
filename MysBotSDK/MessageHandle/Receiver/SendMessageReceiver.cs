@@ -15,6 +15,10 @@ namespace MysBotSDK.MessageHandle.Receiver
 	public class SendMessageReceiver : MessageReceiverBase
 	{
 		/// <summary>
+		/// 指令，不管传入的命令是否有/，这里一并添加/
+		/// </summary>
+		public string commond { get; set; }
+		/// <summary>
 		/// 用户提交的指令参数(不包括开头的@At与/指令，只包括指令后的参数，以空格分离)
 		/// </summary>
 		public List<string> args => sendMessage.args;
@@ -93,10 +97,15 @@ namespace MysBotSDK.MessageHandle.Receiver
 		public SendMessageReceiver(string message) : base(message)
 		{
 		}
-		public override void Initialize(string message)
+		internal override void Initialize(string message)
 		{
 			sendMessage = JsonConvert.DeserializeObject<SendMessage>(message)!;
 			var args = sendMessage!.content.content.text.Split(" ").ToList();
+			commond = args[1];
+			if (!commond.StartsWith("/"))
+			{
+				commond = "/" + commond;
+			}
 			args.RemoveRange(0, 2);
 			sendMessage.args = args;
 		}

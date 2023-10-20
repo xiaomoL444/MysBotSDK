@@ -12,6 +12,7 @@ namespace MysBotSDK.MessageHandle.Info
 		/// Bot信息
 		/// </summary>
 		public Template template { get; set; }
+
 		/// <summary>
 		/// 大别野ID
 		/// </summary>

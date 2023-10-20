@@ -8,11 +8,11 @@ namespace Example;
 
 public class ExampleProgram
 {
-	public async Task Main(string[] args)
+	public static async Task Main(string[] args)
 	{
 		MysBot mysBot = new MysBot()
 		{
-			callback_Adress = "",//回调地址
+			http_callback_Adress = "",//回调地址
 			bot_id = "",
 			secret = "",
 			pub_key = "",

@@ -8,8 +8,8 @@ namespace MysBotSDK.MessageHandle.Info
 {
 	public enum MentionType
 	{
-		None = 0,
-		All = 1,
-		Partof = 2,
+		None = 0,//无？
+		All = 1,//@全员
+		Partof = 2,//@部分成员
 	}
 }

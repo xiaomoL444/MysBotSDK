@@ -15,15 +15,35 @@ namespace MysBotSDK.MessageHandle;
 
 public class MessageReceiverBase
 {
+	/// <summary>
+	/// robot信息
+	/// </summary>
 	public Robot robot { get; set; }
+
+	/// <summary>
+	/// 事件类型
+	/// </summary>
 	public EventType EventType { get; private set; }
+
+	/// <summary>
+	/// 接收器
+	/// </summary>
 	internal MessageReceiverBase receiver { get; set; }
 
+	/// <summary>
+	/// 构造器
+	/// </summary>
+	/// <param name="message"></param>
 	public MessageReceiverBase(string message)
 	{
 		Initialize(message);
 	}
-	public virtual void Initialize(string message)
+
+	/// <summary>
+	/// 初始化(主要是为了多态接收器重构准备的)
+	/// </summary>
+	/// <param name="message"></param>
+	internal virtual void Initialize(string message)
 	{
 		var json = JObject.Parse(message)["event"];
 		robot = JsonConvert.DeserializeObject<Robot>(json["robot"].ToString());
@@ -57,6 +77,10 @@ public class MessageReceiverBase
 		}
 	}
 }
+
+/// <summary>
+/// 事件类型
+/// </summary>
 public enum EventType
 {
 	JoinVilla = 1,

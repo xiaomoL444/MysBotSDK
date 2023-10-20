@@ -23,9 +23,6 @@ E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\MihoyoBBS_Bot.deps.json
 E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\MihoyoBBS_Bot.runtimeconfig.json
 E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\MihoyoBBS_Bot.dll
 E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\MihoyoBBS_Bot.pdb
-E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\Colorful.Console.dll
-E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\Newtonsoft.Json.dll
-E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\MysBotSDK.dll
 E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\MysBotSDK.pdb
 E:\code\MysBotSDK\MihoyoBBS_Bot\obj\Debug\net7.0\MihoyoBBS_Bot.csproj.AssemblyReference.cache
 E:\code\MysBotSDK\MihoyoBBS_Bot\obj\Debug\net7.0\MihoyoBBS_Bot.GeneratedMSBuildEditorConfig.editorconfig
@@ -39,3 +36,11 @@ E:\code\MysBotSDK\MihoyoBBS_Bot\obj\Debug\net7.0\MihoyoBBS_Bot.pdb
 E:\code\MysBotSDK\MihoyoBBS_Bot\obj\Debug\net7.0\MihoyoBBS_Bot.genruntimeconfig.cache
 E:\code\MysBotSDK\MihoyoBBS_Bot\obj\Debug\net7.0\ref\MihoyoBBS_Bot.dll
 E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\System.Reactive.dll
+E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\Colorful.Console.dll
+E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\Newtonsoft.Json.dll
+E:\code\MysBotSDK\MihoyoBBS_Bot\bin\Debug\net7.0\websocket-sharp.dll
+E:\code\MysBotSDK\MysBotBulid\Debug\net7.0\MihoyoBBS_Bot.exe
+E:\code\MysBotSDK\MysBotBulid\Debug\net7.0\MihoyoBBS_Bot.deps.json
+E:\code\MysBotSDK\MysBotBulid\Debug\net7.0\MihoyoBBS_Bot.runtimeconfig.json
+E:\code\MysBotSDK\MysBotBulid\Debug\net7.0\MihoyoBBS_Bot.dll
+E:\code\MysBotSDK\MysBotBulid\Debug\net7.0\MihoyoBBS_Bot.pdb

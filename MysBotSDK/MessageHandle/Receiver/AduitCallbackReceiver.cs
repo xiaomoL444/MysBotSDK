@@ -45,7 +45,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		public AuditCallbackReceiver(string message) : base(message)
 		{
 		}
-		public override void Initialize(string message)
+		internal override void Initialize(string message)
 		{
 			auditCallback = JsonConvert.DeserializeObject<AuditCallback>(message);
 		}

@@ -5,10 +5,20 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <BaseOutputPath>E:\code\MysBotSDK\MysBotBulid</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MysBotSDK\MysBotSDK.csproj" />
+    <PackageReference Include="Colorful.Console" Version="1.2.15" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Reactive" Version="6.0.0" />
+    <PackageReference Include="WebSocketSharp-netstandard" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MysBotSDK">
+      <HintPath>..\MysBotSDK\bin\Debug\net7.0\MysBotSDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

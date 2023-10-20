@@ -570,19 +570,17 @@
           }
         }
       },
-      "MysBotSDK/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Colorful.Console": "1.2.15",
-          "Newtonsoft.Json": "13.0.3",
-          "System.Reactive": "6.0.0"
-        },
+      "WebSocketSharp-netstandard/1.0.1": {
+        "type": "package",
         "compile": {
-          "bin/placeholder/MysBotSDK.dll": {}
+          "lib/netstandard2.0/websocket-sharp.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "bin/placeholder/MysBotSDK.dll": {}
+          "lib/netstandard2.0/websocket-sharp.dll": {
+            "related": ".xml"
+          }
         }
       }
     }
@@ -2603,15 +2601,30 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "MysBotSDK/1.0.0": {
-      "type": "project",
-      "path": "../MysBotSDK/MysBotSDK.csproj",
-      "msbuildProject": "../MysBotSDK/MysBotSDK.csproj"
+    "WebSocketSharp-netstandard/1.0.1": {
+      "sha512": "knoinAv31vbdxXdypnzN2MPX5hyntVLWceq6OdWRXkr9zzqp/RWbxSuLFGbkW8De1061URgNAN43BUTlgMx1CA==",
+      "type": "package",
+      "path": "websocketsharp-netstandard/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/websocket-sharp.dll",
+        "lib/net35/websocket-sharp.xml",
+        "lib/net45/websocket-sharp.dll",
+        "lib/net45/websocket-sharp.xml",
+        "lib/netstandard2.0/websocket-sharp.dll",
+        "lib/netstandard2.0/websocket-sharp.xml",
+        "websocketsharp-netstandard.1.0.1.nupkg.sha512",
+        "websocketsharp-netstandard.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "MysBotSDK >= 1.0.0"
+      "Colorful.Console >= 1.2.15",
+      "Newtonsoft.Json >= 13.0.3",
+      "System.Reactive >= 6.0.0",
+      "WebSocketSharp-netstandard >= 1.0.1"
     ]
   },
   "packageFolders": {
@@ -2640,11 +2653,7 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {
-            "E:\\code\\MysBotSDK\\MysBotSDK\\MysBotSDK.csproj": {
-              "projectPath": "E:\\code\\MysBotSDK\\MysBotSDK\\MysBotSDK.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -2656,6 +2665,24 @@
     "frameworks": {
       "net7.0": {
         "targetAlias": "net7.0",
+        "dependencies": {
+          "Colorful.Console": {
+            "target": "Package",
+            "version": "[1.2.15, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
+          },
+          "System.Reactive": {
+            "target": "Package",
+            "version": "[6.0.0, )"
+          },
+          "WebSocketSharp-netstandard": {
+            "target": "Package",
+            "version": "[1.0.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -2672,7 +2699,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

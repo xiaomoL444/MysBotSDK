@@ -12,17 +12,20 @@ namespace MysBotSDK.MessageHandle.Info
 		/// 用户uid
 		/// </summary>
 		public UInt64 uid { get; set; }
+
 		/// <summary>
 		/// 昵称
 		/// </summary>
-		public string nickname { get; set; }
+		public string? nickname { get; set; }
+
 		/// <summary>
 		/// 个性签名
 		/// </summary>
-		public string introduce { get; set; }
+		public string? introduce { get; set; }
+
 		/// <summary>
 		/// 头像链接
 		/// </summary>
-		public string avatar_url { get; set; }
+		public string? avatar_url { get; set; }
 	}
 }

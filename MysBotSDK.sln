@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MysBotSDK", "MysBotSDK\MysB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MihoyoBBS_Bot", "MihoyoBBS_Bot\MihoyoBBS_Bot.csproj", "{1A65D8BA-8604-460F-B50F-A0417ADD855C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConnectMihoyoBBS_Bot_Callback", "TestConnectMihoyoBBS_Bot_Callback\TestConnectMihoyoBBS_Bot_Callback.csproj", "{8624A27E-6913-47EF-9298-A1EC99362BB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test", "TestConnectMihoyoBBS_Bot_Callback\test.csproj", "{8624A27E-6913-47EF-9298-A1EC99362BB8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example", "Example\Example.csproj", "{3EB15601-D822-4EA9-BC87-4A8DAD61CA14}"
 EndProject
