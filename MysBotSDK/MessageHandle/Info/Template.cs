@@ -11,23 +11,27 @@ namespace MysBotSDK.MessageHandle.Info
 		/// <summary>
 		/// BotID
 		/// </summary>
-		public string id { get; set; }
+		public strin	 id { get; set; }
+
 		/// <summary>
 		/// Bot名字
 		/// </summary>
-		public string name { get; set; }
+		public string? name { get; set; }
+
 		/// <summary>
 		/// Bot描述
 		/// </summary>
-		public string desc { get; set; }
+		public string? desc { get; set; }
+
 		/// <summary>
 		/// Bot头像
 		/// </summary>
-		public string icon { get; set; }
+		public string? icon { get; set; }
+
 		/// <summary>
 		/// 用户使用的快捷命令
 		/// </summary>
-		public List<CommandsItem> commands { get; set; }
+		public List<CommandsItem> commands { get; set; } = new List<CommandsItem>();
 	}
 
 }

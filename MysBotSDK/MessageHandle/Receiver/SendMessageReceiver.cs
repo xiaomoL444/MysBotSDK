@@ -97,7 +97,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		public SendMessageReceiver(string message) : base(message)
 		{
 		}
-		public override void Initialize(string message)
+		internal override void Initialize(string message)
 		{
 			sendMessage = JsonConvert.DeserializeObject<SendMessage>(message)!;
 			var args = sendMessage!.content.content.text.Split(" ").ToList();

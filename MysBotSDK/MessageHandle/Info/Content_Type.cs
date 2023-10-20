@@ -8,8 +8,8 @@ namespace MysBotSDK.MessageHandle.Info
 {
 	public enum Content_Type
 	{
-		AuditContentTypeText = 0,
-		AuditContentTypeImage = 1
+		AuditContentTypeText = 0,//送审内容为文本
+		AuditContentTypeImage = 1//送审内容是图片
 	}
 
 }
