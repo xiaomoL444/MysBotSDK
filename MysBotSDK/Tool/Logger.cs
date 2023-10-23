@@ -18,16 +18,17 @@ public static class Logger
 	{
 		get
 		{
+			string _date = $"{DateTimeOffset.UtcNow.LocalDateTime.Year}-{DateTimeOffset.UtcNow.LocalDateTime.Month}-{DateTimeOffset.UtcNow.LocalDateTime.Day}";
 			if (!Directory.Exists("./Log/"))
 			{
 				Directory.CreateDirectory("./Log/");
 			}
-			if (!File.Exists($"./Log/{date}.txt"))
+			if (!File.Exists($"./Log/{_date}.txt"))
 			{
-				File.Create($"./Log/{date}.txt").Close();
+				File.Create($"./Log/{_date}.txt").Close();
 			}
 
-			return $"{DateTimeOffset.UtcNow.LocalDateTime.Year}-{DateTimeOffset.UtcNow.LocalDateTime.Month}-{DateTimeOffset.UtcNow.LocalDateTime.Day}";
+			return _date;
 		}
 	}
 	static string? time
