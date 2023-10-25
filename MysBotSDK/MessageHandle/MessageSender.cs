@@ -12,17 +12,19 @@ namespace MysBotSDK.MessageHandle;
 
 public static class MessageSender
 {
-	internal static string header { get; set; } = "";//没有x-rpc-bot_villa_id
-	internal static string FormatHeader(UInt64 villa_id) { return header + $"\nx-rpc-bot_villa_id:{villa_id}"; }
-	private static MysBot? mysBot;
+	internal static string GetHeader(MysBot mysBot)//没有x-rpc-bot_villa_id
+	{
+		return @$"x-rpc-bot_id:{mysBot.bot_id}
+x-rpc-bot_secret:{Authentication.HmacSHA256(mysBot.secret!, mysBot.pub_key!)}
+Content-Type: application/json";
+	}
+	internal static string FormatHeader(MysBot mysBot, UInt64 villa_id) { return GetHeader(mysBot) + $"\nx-rpc-bot_villa_id:{villa_id}"; }
+	private static List<MysBot> mysBot { get; set; } = new List<MysBot>();
 	internal static MysBot MysBot
 	{
 		set
 		{
-			mysBot = value;
-			header = @$"x-rpc-bot_id:{mysBot.bot_id}
-x-rpc-bot_secret:{Authentication.HmacSHA256(mysBot.secret!, mysBot.pub_key!)}
-Content-Type: application/json";
+			mysBot.Add(value);
 		}
 	}
 
@@ -35,7 +37,11 @@ Content-Type: application/json";
 	/// <param name="room_id">房间ID</param>
 	/// <param name="msg_content">消息链(MessageChain)</param>
 	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
-	public static async Task<(string message, int retcode, string bot_msg_id)> SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)
+	public static async Task<(string message, int retcode, string bot_msg_id)> SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)//默认用最新添加的bot发送消息
+	{
+		return await SendText(mysBot[mysBot.Count - 1], villa_id, room_id, msg_content);
+	}
+	public static async Task<(string message, int retcode, string bot_msg_id)> SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)
 	{
 		await msg_content.Bulid();
 
@@ -46,7 +52,7 @@ Content-Type: application/json";
 		msgContentInfo.quote = msg_content.quote;
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id, object_name, msg_content = JsonConvert.SerializeObject(msgContentInfo) });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -73,9 +79,13 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendImage(UInt64 villa_id, UInt64 room_id, string url, PicContentInfo.Size size = null!, int file_size = 0)
 	{
+		return await SendImage(mysBot[mysBot.Count - 1], villa_id, room_id, url, size, file_size);
+	}
+	public static async Task<(string message, int retcode, string bot_msg_id)> SendImage(MysBot mysBot, UInt64 villa_id, UInt64 room_id, string url, PicContentInfo.Size size = null!, int file_size = 0)
+	{
 		string object_name = "MHY:Image";
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { villa_id, room_id, object_name, msg_content = JsonConvert.SerializeObject(new { content = new PicContentInfo() { url = url, size = size, file_size = file_size } }) });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -100,9 +110,13 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendPost(UInt64 villa_id, UInt64 room_id, string post_id)
 	{
+		return await SendPost(mysBot[mysBot.Count - 1], villa_id, room_id, post_id);
+	}
+	public static async Task<(string message, int retcode, string bot_msg_id)> SendPost(MysBot mysBot, UInt64 villa_id, UInt64 room_id, string post_id)
+	{
 		string object_name = "MHY:Post";
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { villa_id, room_id, object_name, msg_content = JsonConvert.SerializeObject(new { content = new { post_id = post_id } }) });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -128,8 +142,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> RecallMessage(UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time)
 	{
+		return await RecallMessage(mysBot[mysBot.Count - 1], villa_id, room_id, msg_uid, msg_time);
+	}
+	public static async Task<(string message, int retcode, string bot_msg_id)> RecallMessage(MysBot mysBot, UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.RecallMessage);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id, msg_time, msg_uid });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -156,8 +174,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> PinMessage(UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time, bool is_cancel)
 	{
+		return await PinMessage(mysBot[mysBot.Count - 1], villa_id, room_id, msg_uid, msg_time, is_cancel);
+	}
+	public static async Task<(string message, int retcode, string bot_msg_id)> PinMessage(MysBot mysBot, UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time, bool is_cancel)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.PinMessage);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id, msg_time, msg_uid, is_cancel });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -183,8 +205,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,group_id:组别id</returns>
 	public static async Task<(string message, int retcode, string group_id)> CreateGroup(UInt64 villa_id, string group_name)
 	{
+		return await CreateGroup(mysBot[mysBot.Count - 1], villa_id, group_name);
+	}
+	public static async Task<(string message, int retcode, string group_id)> CreateGroup(MysBot mysBot, UInt64 villa_id, string group_name)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.CreateGroup);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { group_name });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -208,8 +234,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> DeleteGroup(UInt64 villa_id, UInt64 group_id)
 	{
+		return await DeleteGroup(mysBot[mysBot.Count - 1], villa_id, group_id);
+	}
+	public static async Task<(string message, int retcode)> DeleteGroup(MysBot mysBot, UInt64 villa_id, UInt64 group_id)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.DeleteGroup);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { group_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -233,8 +263,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> EditGroup(UInt64 villa_id, UInt64 group_id, string new_group_name)
 	{
+		return await EditGroup(mysBot[mysBot.Count - 1], villa_id, group_id, new_group_name);
+	}
+	public static async Task<(string message, int retcode)> EditGroup(MysBot mysBot, UInt64 villa_id, UInt64 group_id, string new_group_name)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.EditGroup);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { group_id, group_name = new_group_name });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -258,8 +292,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> EditRoom(UInt64 villa_id, UInt64 room_id, string new_room_name)
 	{
+		return await EditRoom(mysBot[mysBot.Count - 1], villa_id, room_id, new_room_name);
+	}
+	public static async Task<(string message, int retcode)> EditRoom(MysBot mysBot, UInt64 villa_id, UInt64 room_id, string new_room_name)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.EditRoom);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id, room_name = new_room_name });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -282,8 +320,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> DeleteRoom(UInt64 villa_id, UInt64 room_id)
 	{
+		return await DeleteRoom(mysBot[mysBot.Count - 1], villa_id, room_id);
+	}
+	public static async Task<(string message, int retcode)> DeleteRoom(MysBot mysBot, UInt64 villa_id, UInt64 room_id)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.DeleteRoom);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -306,11 +348,15 @@ Content-Type: application/json";
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="uid">用户UID</param>
-	/// <returns>message:返回消息,retcode:返回消息code,member:Member类消息</returns>
+	/// <returns>message:返回消息,retcode:返回消息code,member:Member类消息</returns>	
 	public static async Task<(string message, int retcode, Member member)> GetUserInfo(UInt64 villa_id, UInt64 uid)
 	{
+		return await GetUserInfo(mysBot[mysBot.Count - 1], villa_id, uid);
+	}
+	public static async Task<(string message, int retcode, Member member)> GetUserInfo(MysBot mysBot, UInt64 villa_id, UInt64 uid)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetUserInfo);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { uid });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"获取用户信息{res.Content.ReadAsStringAsync().Result}");
@@ -329,12 +375,16 @@ Content-Type: application/json";
 	/// 获得大别野信息
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
-	/// <returns>message:返回消息,retcode:返回消息code,villa:Villa类消息</returns>
+	/// <returns>message:返回消息,retcode:返回消息code,villa:Villa类消息</returns>	
 	public static async Task<(string message, int retcode, Villa villa)> GetVillaInfo(UInt64 villa_id)
+	{
+		return await GetVillaInfo(mysBot[mysBot.Count - 1], villa_id);
+	}
+	public static async Task<(string message, int retcode, Villa villa)> GetVillaInfo(MysBot mysBot, UInt64 villa_id)
 	{
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaInfo);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { villa_id = villa_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -357,9 +407,13 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,room:Room类消息</returns>
 	public static async Task<(string message, int retcode, Room room)> GetRoomInfo(UInt64 villa_id, UInt64 room_id)
 	{
+		return await GetRoomInfo(mysBot[mysBot.Count - 1], villa_id, room_id);
+	}
+	public static async Task<(string message, int retcode, Room room)> GetRoomInfo(MysBot mysBot, UInt64 villa_id, UInt64 room_id)
+	{
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetRoomInfo);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -381,6 +435,10 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,members:Member类列表消息</returns>
 	public static async Task<(string message, int retcode, List<Member> members)> GetVillaMember(UInt64 villa_id)
 	{
+		return await GetVillaMember(mysBot[mysBot.Count - 1], villa_id);
+	}
+	public static async Task<(string message, int retcode, List<Member> members)> GetVillaMember(MysBot mysBot, UInt64 villa_id)
+	{
 		int size_count = 10;
 		int result_count = 0;
 		string message = string.Empty;
@@ -389,7 +447,7 @@ Content-Type: application/json";
 		do
 		{
 			HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMember);
-			httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+			httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 			httpRequestMessage.Content = JsonContent.Create(new { size = 10, offset_str = "" });
 
 			var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -418,9 +476,13 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,groups:组别列表消息</returns>
 	public static async Task<(string message, int retcode, List<Group> groups)> GetGroupList(UInt64 villa_id)
 	{
+		return await GetGroupList(mysBot[mysBot.Count - 1], villa_id);
+	}
+	public static async Task<(string message, int retcode, List<Group> groups)> GetGroupList(MysBot mysBot, UInt64 villa_id)
+	{
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetGroupList);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		//httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -439,11 +501,15 @@ Content-Type: application/json";
 	/// 获取所有房间
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
-	/// <returns>message:返回消息,retcode:返回消息code,rooms:Room类型列表消息</returns>
+	/// <returns>message:返回消息,retcode:返回消息code,rooms:Room类型列表消息</returns>	
 	public static async Task<(string message, int retcode, List<Room> rooms)> GetRoomList(UInt64 villa_id)
 	{
+		return await GetRoomList(mysBot[mysBot.Count - 1], villa_id);
+	}
+	public static async Task<(string message, int retcode, List<Room> rooms)> GetRoomList(MysBot mysBot, UInt64 villa_id)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetRoomList);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		//httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
@@ -466,8 +532,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,access_info:BotMemberAccessInfo类型消息,member:Member类型消息</returns>
 	public static async Task<(string message, int retcode, BotMemberAccessInfo access_info, Member member)> CheckMemberBotAccessToken(UInt64 villa_id, string token)
 	{
+		return await CheckMemberBotAccessToken(mysBot[mysBot.Count - 1], villa_id, token);
+	}
+	public static async Task<(string message, int retcode, BotMemberAccessInfo access_info, Member member)> CheckMemberBotAccessToken(MysBot mysBot, UInt64 villa_id, string token)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.CheckMemberBotAccessToken);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { token });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"获取用户凭证{res.Content.ReadAsStringAsync().Result}");
@@ -489,8 +559,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,emoticons:Emoticon类型列表消息</returns>
 	public static async Task<(string message, int retcode, List<Emoticon> emoticons)> GetAllEmoticons(UInt64 villa_id)
 	{
+		return await GetAllEmoticons(mysBot[mysBot.Count - 1], villa_id);
+	}
+	public static async Task<(string message, int retcode, List<Emoticon> emoticons)> GetAllEmoticons(MysBot mysBot, UInt64 villa_id)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetAllEmoticon);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"获取表情{res.Content.ReadAsStringAsync().Result}");
@@ -517,8 +591,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> OperateMemberToRole(UInt64 villa_id, UInt64 user_id, UInt64 role_id, bool is_add)
 	{
+		return await OperateMemberToRole(mysBot[mysBot.Count - 1], villa_id, user_id, role_id, is_add);
+	}
+	public static async Task<(string message, int retcode)> OperateMemberToRole(MysBot mysBot, UInt64 villa_id, UInt64 user_id, UInt64 role_id, bool is_add)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.OperateMemberToRole);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { uid = user_id, role_id, is_add });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"获取向身份组添加用户{res.Content.ReadAsStringAsync().Result}");
@@ -540,11 +618,15 @@ Content-Type: application/json";
 	/// <param name="name">身份组名字</param>
 	/// <param name="color">身份组颜色</param>
 	/// <param name="permission">身份组权限(可通过+=添加权限)</param>
-	/// <returns>message:返回消息,retcode:返回消息code,id:身份组ID</returns>
+	/// <returns>message:返回消息,retcode:返回消息code,id:身份组ID</returns>	
 	public static async Task<(string message, int retcode, string id)> CreateMemberRole(UInt64 villa_id, string name, string color, Permission permission)
 	{
+		return await CreateMemberRole(mysBot[mysBot.Count - 1], villa_id, name, color, permission);
+	}
+	public static async Task<(string message, int retcode, string id)> CreateMemberRole(MysBot mysBot, UInt64 villa_id, string name, string color, Permission permission)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.CreateMemberRole);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { name, color, permissions = permission.ToString().Split(",") });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"创建身份组{res.Content.ReadAsStringAsync().Result}");
@@ -570,8 +652,12 @@ Content-Type: application/json";
 	/// <returns></returns>
 	public static async Task<(string message, int retcode)> EditMemberRole(UInt64 villa_id, UInt64 id, string new_name, string new_color, Permission new_permission)
 	{
+		return await EditMemberRole(mysBot[mysBot.Count - 1], villa_id, id, new_name, new_color, new_permission);
+	}
+	public static async Task<(string message, int retcode)> EditMemberRole(MysBot mysBot, UInt64 villa_id, UInt64 id, string new_name, string new_color, Permission new_permission)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.EditMemberRole);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { id, name = new_name, color = new_color, permissions = new_permission.ToString().Split(",") });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"编辑身份组{res.Content.ReadAsStringAsync().Result}");
@@ -594,8 +680,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> DeleteMemberRole(UInt64 villa_id, UInt64 id)
 	{
+		return await DeleteMemberRole(mysBot[mysBot.Count - 1], villa_id, id);
+	}
+	public static async Task<(string message, int retcode)> DeleteMemberRole(MysBot mysBot, UInt64 villa_id, UInt64 id)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.DeleteMemberRole);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"删除身份组{res.Content.ReadAsStringAsync().Result}");
@@ -615,11 +705,15 @@ Content-Type: application/json";
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="role_id">身份组ID</param>
-	/// <returns></returns>
+	/// <returns></returns>	
 	public static async Task<(string message, int retcode, MemberRole member_role)> GetVillaMemberRoleInfo(UInt64 villa_id, UInt64 role_id)
 	{
+		return await GetVillaMemberRoleInfo(mysBot[mysBot.Count - 1], villa_id, role_id);
+	}
+	public static async Task<(string message, int retcode, MemberRole member_role)> GetVillaMemberRoleInfo(MysBot mysBot, UInt64 villa_id, UInt64 role_id)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMemberRoleInfo);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { role_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"获取身份组{res.Content.ReadAsStringAsync().Result}");
@@ -638,11 +732,15 @@ Content-Type: application/json";
 	/// 获取大别野所有身份组列表
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
-	/// <returns>message:返回消息,retcode:返回消息code,member_roles:MemberRole类型列表消息</returns>
+	/// <returns>message:返回消息,retcode:返回消息code,member_roles:MemberRole类型列表消息</returns>	
 	public static async Task<(string message, int retcode, List<MemberRole> member_roles)> GetVillaMemberRoleList(UInt64 villa_id)
 	{
+		return await GetVillaMemberRoleList(mysBot[mysBot.Count - 1], villa_id);
+	}
+	public static async Task<(string message, int retcode, List<MemberRole> member_roles)> GetVillaMemberRoleList(MysBot mysBot, UInt64 villa_id)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMemberRole);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"获取身份组列表{res.Content.ReadAsStringAsync().Result}");
@@ -672,8 +770,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code</returns>
 	public static async Task<(string message, int retcode)> Audit(UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0)
 	{
+		return await Audit(mysBot[mysBot.Count - 1], villa_id, audit_content, uid, content_type, pass_through, room_id);
+	}
+	public static async Task<(string message, int retcode)> Audit(MysBot mysBot, UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.Audit);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { audit_content, uid, content_type = Enum.GetName(typeof(Content_Type), content_type), pass_through, room_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"获取表情{res.Content.ReadAsStringAsync().Result}");
@@ -698,8 +800,12 @@ Content-Type: application/json";
 	/// <returns>message:返回消息,retcode:返回消息code,new_url:转存后的图片url</returns>
 	public static async Task<(string message, int retcode, string new_url)> Transferimage(UInt64 villa_id, string url)
 	{
+		return await Transferimage(mysBot[mysBot.Count - 1], villa_id, url);
+	}
+	public static async Task<(string message, int retcode, string new_url)> Transferimage(MysBot mysBot, UInt64 villa_id, string url)
+	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.TransferImage);
-		httpRequestMessage.AddHeaders(FormatHeader(villa_id));
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { url });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug($"转换床图{res.Content.ReadAsStringAsync().Result}");
