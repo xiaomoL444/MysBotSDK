@@ -23,7 +23,7 @@ namespace MysBotSDK.MessageHandle
 		internal string text_ { get; set; }
 		internal List<Entity> entities_ { get; set; }
 		internal MentionType MentionType { get; set; }
-		internal QuoteInfo quote { get; set; }
+		internal QuoteInfo? quote { get; set; }
 		private List<string> text { get; set; }
 		private List<(int index, Entity entity)> IDs { get; set; }
 
@@ -154,15 +154,15 @@ namespace MysBotSDK.MessageHandle
 							break;
 						case Entity_Detail.EntityType.mentioned_user:
 							MentionType = MentionType.Partof;
-							var member = await MessageSender.GetUserInfo(UInt64.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.user_id));
+							var member = await MessageSender.GetUserInfo(UInt64.Parse(entity.entity!.entity.villa_id!), UInt64.Parse(entity.entity.entity!.user_id!));
 							entities_.Add(new Entity()
 							{
 								entity = new Entity_Detail() { type = Entity_Detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
-								length = (ulong)$"@{member.member.basic.nickname.ConvertUTF8ToUTF16()} ".Length,
+								length = (ulong)$"@{member.member.basic!.nickname!.ConvertUTF8ToUTF16()} ".Length,
 								offset = (ulong)text_.Length
 							});
 
-							text_ += $"@{member.member.basic.nickname.ConvertUTF8ToUTF16()} ";
+							text_ += $"@{member.member.basic!.nickname!.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity_Detail.EntityType.mentioned_all:
 							MentionType = MentionType.All;
@@ -175,20 +175,20 @@ namespace MysBotSDK.MessageHandle
 							text_ += "@全体成员 ".ConvertUTF8ToUTF16();
 							break;
 						case Entity_Detail.EntityType.villa_room_link:
-							var room = await MessageSender.GetRoomInfo(UInt64.Parse(entity.entity.entity.villa_id), UInt64.Parse(entity.entity.entity.room_id));
+							var room = await MessageSender.GetRoomInfo(UInt64.Parse(entity.entity!.entity.villa_id!), UInt64.Parse(entity.entity!.entity.room_id!));
 							entities_.Add(new Entity()
 							{
 								entity = new Entity_Detail() { type = Entity_Detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
-								length = (ulong)$"#{room.room.room_name.ConvertUTF8ToUTF16()} ".Length,
+								length = (ulong)$"#{room.room!.room_name!.ConvertUTF8ToUTF16()} ".Length,
 								offset = (ulong)text_.Length
 							});
-							text_ += $"#{room.room.room_name.ConvertUTF8ToUTF16()} ";
+							text_ += $"#{room.room!.room_name!.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity_Detail.EntityType.link:
 							entities_.Add(new Entity()
 							{
 								entity = entity.entity.entity,
-								length = (ulong)entity.entity.entity.url.Length,
+								length = (ulong)entity.entity!.entity.url!.Length,
 								offset = (ulong)text_.Length
 							});
 							text_ += entity.entity.entity.url.ConvertUTF8ToUTF16();

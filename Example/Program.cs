@@ -8,7 +8,7 @@ namespace Example;
 
 public class ExampleProgram
 {
-	public static async Task Main(string[] args)
+	public static void Main(string[] args)
 	{
 		MysBot mysBot = new MysBot()
 		{
@@ -20,11 +20,11 @@ public class ExampleProgram
 		};
 		mysBot.MessageReceiver
 			.OfType<SendMessageReceiver>()
-			.Subscribe((receiver) =>
+			.Subscribe(async (receiver) =>
 			{
 				var messageChain = new MessageChain()
 				.Text("123");
-				MessageSender.SendText(receiver.Villa_ID, receiver.Room_ID, messageChain);
+				await MessageSender.SendText(receiver.Villa_ID, receiver.Room_ID, messageChain);
 			});
 	}
 }

@@ -68,13 +68,13 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
 ## 实现的接口
 (需要villa_id进行鉴权，所以大多接口都需要villa_id)
 - [ ] 鉴权
-  - [ ] 校验用户机器人访问凭证 //有但未测试过，因此未实现完...
+  - [ ] 校验用户机器人访问凭证 //有但未测试过
 - [x] 大别野
   - [x] 获取大别野信息 GetVillaInfo(UInt64 Villa_ID)
 - [ ] 用户
   - [x] 获取用户信息 GetUserInfo(UInt64 Villa_ID,UInt64 UID)
   - [x] 获取大别野成员列表 GetVillaMember(UInt64 Villa_ID)
-  - [ ] 踢出大别野用户 根本没实现...//咕...没有更多成员可以测了...
+  - [ ] 踢出大别野用户 //咕...没有更多成员可以测了...
 - [x] 消息
   - [x] 置顶消息 PinMessage(UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time, bool is_cancel)
   - [x] 撤回消息 RecallMessage(UInt64 villa_id, UInt64 room_id, string msg_uid, Int64 msg_time)
@@ -107,7 +107,7 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
 - [x] 表态表情
   - [x] 获取全量表情 GetAllEmoticons(UInt64 villa_id)
 - [ ] 审核
-  - [ ] 审核 Audit(UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0) //有但未测试过，因此未实现完...
+  - [ ] 审核 Audit(UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0) //未测试过
 - [x] 图片
   - [x] 图片转存 Transferimage(UInt64 villa_id, string url)
 

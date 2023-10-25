@@ -19,12 +19,19 @@ x-rpc-bot_secret:{Authentication.HmacSHA256(mysBot.secret!, mysBot.pub_key!)}
 Content-Type: application/json";
 	}
 	internal static string FormatHeader(MysBot mysBot, UInt64 villa_id) { return GetHeader(mysBot) + $"\nx-rpc-bot_villa_id:{villa_id}"; }
-	private static List<MysBot> mysBot { get; set; } = new List<MysBot>();
+	internal static List<MysBot> mysBot { get; set; } = new List<MysBot>();
 	internal static MysBot MysBot
 	{
 		set
 		{
-			mysBot.Add(value);
+			if (mysBot.Contains(value))
+			{
+				Logger.LogWarnning("重复加载Bot");
+			}
+			else
+			{
+				mysBot.Add(value);
+			}
 		}
 	}
 
@@ -48,7 +55,7 @@ Content-Type: application/json";
 		MsgContentInfo msgContentInfo = new MsgContentInfo();
 		string object_name = "MHY:Text";
 		msgContentInfo.content = new MsgContent() { text = msg_content.text_, entities = msg_content.entities_ };
-		msgContentInfo.mentionedInfo = new MentionedInfo() { type = msg_content.MentionType, userIdList = msg_content.entities_.Where(q => q.entity.type == Entity_Detail.EntityType.mentioned_user).Select(q => q.entity.user_id).ToList() };
+		msgContentInfo.mentionedInfo = new MentionedInfo() { type = msg_content.MentionType, userIdList = msg_content.entities_.Where(q => q.entity.type == Entity_Detail.EntityType.mentioned_user).Select(q => q.entity.user_id).ToList()! };
 		msgContentInfo.quote = msg_content.quote;
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
@@ -580,6 +587,13 @@ Content-Type: application/json";
 	#endregion
 
 	#region 踢出用户
+
+	/// <summary>
+	/// 提出用户
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="user_id">用户uid</param>
+	/// <returns></returns>
 	public static async Task<(string message, int retcode)> DeleteVillaMember(UInt64 villa_id, UInt64 user_id)
 	{
 		return await DeleteVillaMember(mysBot[mysBot.Count - 1], villa_id, user_id);
