@@ -579,6 +579,30 @@ Content-Type: application/json";
 	}
 	#endregion
 
+	#region 踢出用户
+	public static async Task<(string message, int retcode)> DeleteVillaMember(UInt64 villa_id, UInt64 user_id)
+	{
+		return await DeleteVillaMember(mysBot[mysBot.Count - 1], villa_id, user_id);
+	}
+	public static async Task<(string message, int retcode)> DeleteVillaMember(MysBot mysBot, UInt64 villa_id, UInt64 user_id)
+	{
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.DeleteVillaMember);
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
+		httpRequestMessage.Content = JsonContent.Create(new { uid = user_id });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"踢出用户{res.Content.ReadAsStringAsync().Result}");
+
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+		return new() { message = json!.message, retcode = json.retcode };
+	}
+	#endregion
+
 	#region 身份组
 
 	/// <summary>
@@ -778,7 +802,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { audit_content, uid, content_type = Enum.GetName(typeof(Content_Type), content_type), pass_through, room_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取表情{res.Content.ReadAsStringAsync().Result}");
+		Logger.Debug($"审核{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
