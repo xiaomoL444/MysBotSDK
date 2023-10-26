@@ -89,9 +89,9 @@ public static class Logger
 		}
 		if ((int)loggerLevel >= 3)
 		{
-				Console.WriteLine(log);	
+			Console.WriteLine(log);
 		}
-		return $"{log}\n";
+		return $"{log.Replace(BLUE, "").Replace(GREEN, "").Replace(RED, "").Replace(YELLOW, "").Replace(RESET, "")}\n";
 	}
 
 	/// <summary>
@@ -113,7 +113,7 @@ public static class Logger
 		{
 			Console.WriteLine(log);
 		}
-		return  $"{log}\n";
+		return $"{log}\n";
 	}
 
 	/// <summary>
@@ -134,7 +134,7 @@ public static class Logger
 		{
 			Console.WriteLine(log);
 		}
-		return $"{log}\n";
+		return $"{log.Replace(BLUE, "").Replace(GREEN, "").Replace(RED, "").Replace(YELLOW, "").Replace(RESET, "")}\n";
 	}
 
 	/// <summary>
@@ -158,6 +158,6 @@ public static class Logger
 		{
 			Console.WriteLine(log);
 		}
-		return $"{log}\n";
+		return $"{log.Replace(BLUE, "").Replace(GREEN, "").Replace(RED, "").Replace(YELLOW, "").Replace(RESET, "")}\n";
 	}
 }

@@ -50,6 +50,10 @@ public class FileHandle
 	{
 		lock (locker)
 		{
+			if (!File.Exists(path))
+			{
+				File.Create(path).Close();
+			}
 			StreamWriter streamWriter = new StreamWriter(new FileStream(path, FileMode.Truncate, FileAccess.ReadWrite));
 			streamWriter.Write(JsonConvert.SerializeObject(dic));
 			streamWriter.Close();

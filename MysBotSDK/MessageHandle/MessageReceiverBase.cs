@@ -74,36 +74,38 @@ public class MessageReceiverBase
 			case EventType.SendMessage:
 				receiver = new SendMessageReceiver(eventData!["SendMessage"]!.ToString());
 				var sendMessageReceiver = (SendMessageReceiver)receiver;
-				villa_id = sendMessageReceiver.villa_id;
+				villa_id = sendMessageReceiver.Villa_ID;
 				room_id = sendMessageReceiver.Room_ID;
 				break;
 			case EventType.CreateRobot:
 				receiver = new CreateRobotReceiver(eventData!["CreateRobot"]!.ToString());
 				var createRobotReceiver = (CreateRobotReceiver)receiver;
-				villa_id = createRobotReceiver.villa_id;
+				villa_id = createRobotReceiver.Villa_ID;
 				room_id = 0;
 				break;
 			case EventType.DeleteRobot:
 				receiver = new DeleteRobotReceiver(eventData!["DeleteRobot"]!.ToString());
 				var deleteRobotReceiver = (DeleteRobotReceiver)receiver;
-				villa_id = deleteRobotReceiver.villa_id;
+				villa_id = deleteRobotReceiver.Villa_ID;
 				room_id = 0;
 				break;
 			case EventType.AddQuickEmoticon:
 				receiver = new AddQuickEmoticonReceiver(eventData!["AddQuickEmoticon"]!.ToString());
 				var addQuickEmoticonReceiver = (AddQuickEmoticonReceiver)receiver;
-				villa_id = addQuickEmoticonReceiver.villa_id;
+				villa_id = addQuickEmoticonReceiver.Villa_ID;
 				room_id = addQuickEmoticonReceiver.Room_ID;
 				break;
 			case EventType.AuditCallback:
 				receiver = new AuditCallbackReceiver(eventData!["AuditCallback"]!.ToString());
 				var auditCallbackReceiver = (AuditCallbackReceiver)receiver;
-				villa_id = auditCallbackReceiver.villa_id;
+				villa_id = auditCallbackReceiver.Villa_ID;
 				room_id = auditCallbackReceiver.Room_ID;
 				break;
-			default:
-				break;
 		}
+		receiver!.robot = this.robot;
+		receiver.EventType = this.EventType;
+		receiver.room_id = this.room_id;
+		receiver.villa_id = this.villa_id;
 	}
 }
 

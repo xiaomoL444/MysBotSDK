@@ -144,6 +144,11 @@ static class Program
 						Logger.Log($"Commond:{method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
 						await method.Execute(receiver);
 					}
+					else if (method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond == "*") //若填入*则代表接收任何消息
+					{
+						Logger.Log($"Commond:{method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
+						await method.Execute(receiver);
+					}
 				}
 			});
 		});
