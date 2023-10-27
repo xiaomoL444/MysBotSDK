@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 
 namespace MysBotSDK
 {
-	public class MysBot
+	public class MysBot : IDisposable
 	{
 		public string? http_callback_Address { private get; init; }
 		public string? ws_callback_Address { private get; init; }
@@ -27,6 +27,10 @@ namespace MysBotSDK
 		private Subject<MessageReceiverBase> messageReceiver = new();
 
 		private string? Certificate_Header { get; set; }
+
+		private CancellationTokenSource tokenSource = new();
+
+		private HttpListener? listener { get; set; }
 
 		/// <summary>
 		/// 
@@ -52,45 +56,53 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			if (!string.IsNullOrEmpty(http_callback_Address) && string.IsNullOrEmpty(ws_callback_Address))
 			{
 				Logger.Log("创建Http监听");
-				HttpListener listener = new HttpListener();
+				listener = new HttpListener();
 				listener.Prefixes.Add(http_callback_Address);
 				listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
 				listener.Start();
 
 				_ = Task.Run(() =>
 				{
-					while (true)
+					while (!tokenSource.IsCancellationRequested)
 					{
-						var content = listener.GetContext();
-						var request = content.Request;
-						var response = content.Response;
-
-						if (request.HttpMethod != "POST")
+						try
 						{
-							HttpRespond(response, new ResponseData() { message = "Method Was Not Allow", retcode = 400 });
-							continue;
-						}
-						//获取信息流
-						var steam = request.InputStream;
-						var reader = new StreamReader(steam);
-						var data = reader.ReadToEnd();
+							var content = listener.GetContext();
+							var request = content.Request;
+							var response = content.Response;
 
-						//处理消息
-						//校验伺服器请求头
-						if (!Authentication.Verify(data, request.Headers.Get("x-rpc-bot_sign")!, pub_key!, secret!))
+							if (request.HttpMethod != "POST")
+							{
+								HttpRespond(response, new ResponseData() { message = "Method Was Not Allow", retcode = 400 });
+								continue;
+							}
+							//获取信息流
+							var steam = request.InputStream;
+							var reader = new StreamReader(steam);
+							var data = reader.ReadToEnd();
+
+							//处理消息
+							//校验伺服器请求头
+							if (!Authentication.Verify(data, request.Headers.Get("x-rpc-bot_sign")!, pub_key!, secret!))
+							{
+								HttpRespond(response, new ResponseData() { message = "Invalid signature", retcode = 401 });
+								Logger.LogWarnning("鉴权失败");
+								continue;
+							}
+
+							Logger.Debug(data);
+
+							MessageHandle(data);
+
+							HttpRespond(response, new ResponseData() { message = "", retcode = 0 });
+						}
+						catch (Exception)
 						{
-							HttpRespond(response, new ResponseData() { message = "Invalid signature", retcode = 401 });
-							Logger.LogWarnning("鉴权失败");
-							continue;
+							listener.Close();
 						}
-
-						Logger.Debug(data);
-
-						MessageHandle(data);
-
-						HttpRespond(response, new ResponseData() { message = "", retcode = 0 });
 					}
-				});
+					listener.Close();
+				}, tokenSource.Token);
 			}
 			else if (!string.IsNullOrEmpty(ws_callback_Address) && string.IsNullOrEmpty(http_callback_Address))
 			{
@@ -98,7 +110,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 				Func<Task?> func = null!;
 				func = (async () =>
 				{
-					bool isConnect = false;
+					bool isNeedReconnect = false;
 					WebSocketSharp.WebSocket webSocket = new WebSocketSharp.WebSocket(ws_callback_Address);
 
 					webSocket.OnOpen += (sender, e) => { Logger.Log("开启websocket连接"); };
@@ -115,18 +127,18 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 					webSocket.OnClose += (sender, e) =>
 					{
 						Logger.Log("websocket关闭，尝试重新连接");
-						isConnect = true;
+						isNeedReconnect = true;
 						Task.Run(func);
 					};
 					webSocket.Connect();
-					while (!isConnect)
+					while (!isNeedReconnect && !tokenSource.IsCancellationRequested)
 					{
 						//保活，30s发送一次消息
 						webSocket.Send("BALUS");
-						await Task.Delay(1000 * 30);
+						await Task.Delay(1000 * 30, tokenSource.Token);
 					}
 				});
-				Task.Run(func);
+				_ = Task.Run(func, tokenSource.Token);
 			}
 			else
 			{
@@ -185,6 +197,14 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 
 				Logger.LogError("解析消息失败" + e.StackTrace);
 			}
+		}
+
+		public void Dispose()
+		{
+			tokenSource.Cancel();
+			if (listener != null) listener.Close();
+			tokenSource.Dispose();
+			MessageSender.mysBot.Remove(this);
 		}
 	}
 }

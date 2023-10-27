@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MysBotSDK.Tool;
 /// <summary>
@@ -13,21 +12,27 @@ namespace MysBotSDK.Tool;
 /// </summary>
 public static class Logger
 {
+	const string RESET = "\x1B[0m";
+	const string RED = "\x1B[91m";
+	const string GREEN = "\x1B[92m";
+	const string YELLOW = "\x1B[93m";
+	const string BLUE = "\x1B[94m";
 	static object logLock = new();
 	static string date
 	{
 		get
 		{
+			string _date = $"{DateTimeOffset.UtcNow.LocalDateTime.Year}-{DateTimeOffset.UtcNow.LocalDateTime.Month}-{DateTimeOffset.UtcNow.LocalDateTime.Day}";
 			if (!Directory.Exists("./Log/"))
 			{
 				Directory.CreateDirectory("./Log/");
 			}
-			if (!File.Exists($"./Log/{date}.txt"))
+			if (!File.Exists($"./Log/{_date}.txt"))
 			{
-				File.Create($"./Log/{date}.txt").Close();
+				File.Create($"./Log/{_date}.txt").Close();
 			}
 
-			return $"{DateTimeOffset.UtcNow.LocalDateTime.Year}-{DateTimeOffset.UtcNow.LocalDateTime.Month}-{DateTimeOffset.UtcNow.LocalDateTime.Day}";
+			return _date;
 		}
 	}
 	static string? time
@@ -75,7 +80,7 @@ public static class Logger
 	/// <returns>[DEBUG] [From: {nameAttribute}] {time}:{mes}\n</returns>
 	public static string Debug(string? mes, [System.Runtime.CompilerServices.CallerMemberName] string nameAttribute = "")
 	{
-		string log = $"[DEBUG] [From: {nameAttribute}] {time}:{mes}";
+		string log = $"{BLUE}[DEBUG]{RESET} {GREEN}[From: {nameAttribute}]{RESET} {BLUE}{time}:{mes}{RESET}";
 		lock (logLock)
 		{
 			StreamWriter sw = new StreamWriter($"./Log/{date}.txt", true);
@@ -84,16 +89,9 @@ public static class Logger
 		}
 		if ((int)loggerLevel >= 3)
 		{
-			if (isWindow)
-			{
-				Colorful.Console.WriteLine(log, Color.LightSkyBlue);
-			}
-			else
-			{
-				Console.WriteLine(log);
-			}
+			Console.WriteLine(log);
 		}
-		return log + "\n";
+		return $"{mes}\n";
 	}
 
 	/// <summary>
@@ -103,7 +101,7 @@ public static class Logger
 	/// <returns>[Log] {time}:{mes}\n</returns>
 	public static string Log(string? mes)
 	{
-		string log = $"[Log] {time}:{mes}";
+		string log = $"{GREEN}[Log] {time}:{mes}{RESET}";
 
 		lock (logLock)
 		{
@@ -113,16 +111,9 @@ public static class Logger
 		}
 		if ((int)loggerLevel >= 2)
 		{
-			if (isWindow)
-			{
-				Colorful.Console.WriteLine(log, Color.LightGreen);
-			}
-			else
-			{
-				Console.WriteLine(log);
-			}
+			Console.WriteLine(log);
 		}
-		return mes + "\n";
+		return $"{mes}\n";
 	}
 
 	/// <summary>
@@ -132,24 +123,18 @@ public static class Logger
 	/// <returns>[WARNING]{time}:{mes}\n</returns>
 	public static string LogWarnning(string? mes)
 	{
+		string log = $"{YELLOW}[WARNING] {time}:{mes}{RESET}";
 		lock (logLock)
 		{
 			StreamWriter sw = new StreamWriter($"./Log/{date}.txt", true);
-			sw.WriteLine($"[WARNING]{time}:{mes}");
+			sw.WriteLine(log);
 			sw.Close();
 		}
 		if ((int)loggerLevel >= 1)
 		{
-			if (isWindow)
-			{
-				Colorful.Console.WriteLine($"[WARNING]{time}:{mes}", Color.LightYellow);
-			}
-			else
-			{
-				Console.WriteLine($"[WARNING]{time}:{mes}");
-			}
+			Console.WriteLine(log);
 		}
-		return $"[WARNING]{mes}\n";
+		return $"{mes}\n";
 	}
 
 	/// <summary>
@@ -162,7 +147,7 @@ public static class Logger
 	/// <returns>[ERROR] [Form: {MemberName}] [CallForm: {FilePath} Line: {LineNumber}] {time}:{mes}\n</returns>
 	public static string LogError(string? mes, [System.Runtime.CompilerServices.CallerMemberName] string MemberName = "", [System.Runtime.CompilerServices.CallerFilePath] string FilePath = "", [System.Runtime.CompilerServices.CallerLineNumber] int LineNumber = 0)
 	{
-		string log = $"[ERROR] [Form: {MemberName}] [CallForm: {FilePath} Line: {LineNumber}] {time}:{mes}";
+		string log = $"{RED}[ERROR]{RESET} {GREEN}[Form: {MemberName}] | [CallForm: {FilePath} Line: {LineNumber}]{RESET}{RED} {time}:{mes}{RESET}";
 		lock (logLock)
 		{
 			StreamWriter sw = new StreamWriter($"./Log/{date}.txt", true);
@@ -171,15 +156,8 @@ public static class Logger
 		}
 		if ((int)loggerLevel >= 0)
 		{
-			if (isWindow)
-			{
-				Colorful.Console.WriteLine(log, Color.Red);
-			}
-			else
-			{
-				Console.WriteLine(log);
-			}
+			Console.WriteLine(log);
 		}
-		return log + "\n";
+		return $"{mes}\n";
 	}
 }
