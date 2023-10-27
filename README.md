@@ -24,13 +24,13 @@ MysBot mysBot = new MysBot()
 	bot_id = "",//开发平台上显示的机器人ID :bot_******
 	secret = "",//开发平台上显示的secret
 	pub_key = "",//开发平台上显示的pub_key :-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY----- 此处原样复制即可，我写了删除\r。。。
-	loggerLevel = Logger.LoggerLevel.Log,//Log等级，Error>Warning>Log>Debug,不填写默认Log，但是Debug内容会记录到日志(.\log\yyyy-mm-dd.txt)里
+	loggerLevel = Logger.LoggerLevel.Log,//Log等级，Error>Warning>Log>Debug,不填写此项默认Log，但是Debug内容会记录到日志(.\log\yyyy-mm-dd.txt)里
 };
 ```
 
-MysBot未实现IDisposable接口
+MysBot实现了IDisposable接口，可通过mysBot.Dispose()释放mysBot
 
-实例化后,MysBot有一个MessageReceiver属性可以订阅事件,这里订阅一个用户@AtBot消息(所有可以订阅的消息类型可以看这里[接收器](https://github.com/xiaomoL444/MysBotSDK/wiki/%E6%8E%A5%E6%94%B6%E5%99%A8))(对应事件的属性还没写上wiki...)
+实例化后,MysBot有一个MessageReceiver属性可以订阅事件,这里订阅一个"用户@AtBot消息"(SendMessageReceiver)(所有可以订阅的消息类型可以看[接收器](https://github.com/xiaomoL444/MysBotSDK/wiki/%E6%8E%A5%E6%94%B6%E5%99%A8))
 
 ```
 mysBot.MessageReceiver
@@ -64,6 +64,8 @@ MessageSender.SendText(receiver.Villa_ID,receiver.Room_ID,messageChain);
 ```
 
 MessageSender更多用法请看[#实现的接口](#实现的接口)
+
+MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```的一个重载为```SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```。在多Bot实例化的情况下，使用第一个方法会让最后被实例化的Bot发送消息，使用第二个方法则为指定Bot发送消息。若订阅消息类型为```SendMessageReceiver```时,receiver含有与MessageSender相同的方法，使用receiver里的方法发送消息时不再需要填入```villa_id```与```room_id```，且发送的Bot为接收消息的Bot
 
 ## 实现的接口
 (需要villa_id进行鉴权，所以大多接口都需要villa_id)
@@ -117,15 +119,11 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
 
 ## TO DO
 
-~~添加有必要的注释（感觉上已经加够了）~~
-
 如果学到了更好的语句与方法就尝试重构一些方法
 
 有一些报错似乎也没有弄好...(要多实现几个类吗...?)(不是不知道哪里有bug，是一些类似网络断开等导致运行中断的这种，可能还需要大家自己写try...?要是写在SDK里面还是会throw错误)
 
 写了个ws重新连接，但是可能连接超时没有再次重新连接...?
-
-空合并运算符
 
 # ~~重载方法(放弃)~~
 
