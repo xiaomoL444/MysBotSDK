@@ -30,7 +30,7 @@ MysBot mysBot = new MysBot()
 
 MysBot实现了IDisposable接口，可通过mysBot.Dispose()释放mysBot
 
-实例化后,MysBot有一个MessageReceiver属性可以订阅事件,这里订阅一个"用户@AtBot消息"(SendMessageReceiver)(所有可以订阅的消息类型可以看[接收器](https://github.com/xiaomoL444/MysBotSDK/wiki/%E6%8E%A5%E6%94%B6%E5%99%A8))
+实例化后,MysBot有一个MessageReceiver属性可以订阅事件,这里订阅一个"用户@AtBot消息"(```SendMessageReceiver```)(所有可以订阅的消息类型可以看[接收器](https://github.com/xiaomoL444/MysBotSDK/wiki/%E6%8E%A5%E6%94%B6%E5%99%A8))
 
 ```
 mysBot.MessageReceiver
@@ -43,7 +43,7 @@ mysBot.MessageReceiver
 	});
 ```
 
-实例化后可使用MessageSender类异步发送消息,例如发送文本,只有发送文本这里需要构造消息链(别的为什么不用?...?)
+实例化后可使用```MessageSender```类异步发送消息,例如发送文本,只有发送文本这里需要构造消息链(别的为什么不用?...?)
 
 构造消息链,[wiki](https://github.com/xiaomoL444/MysBotSDK/wiki/MessageChain)列举了所有可以用于构造的方法
 
@@ -65,7 +65,8 @@ MessageSender.SendText(receiver.Villa_ID,receiver.Room_ID,messageChain);
 
 MessageSender更多用法请看[#实现的接口](#实现的接口)
 
-MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```的一个重载为```SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```。在多Bot实例化的情况下，使用第一个方法会让最后被实例化的Bot发送消息，使用第二个方法则为指定Bot发送消息。若订阅消息类型为```SendMessageReceiver```时,receiver含有与MessageSender相同的方法，使用receiver里的方法发送消息时不再需要填入```villa_id```与```room_id```，且发送的Bot为接收消息的Bot
+### 注意!
+MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```的一个重载为```SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```。在多Bot实例化的情况下，使用第一个方法会让最后被实例化的Bot发送消息，使用第二个方法则为指定Bot发送消息。若订阅消息类型为```SendMessageReceiver```时,传回的receiver含有与MessageSender相同的发送方法，使用receiver里的方法发送消息时不再需要填入```villa_id```与```room_id```，且发送的Bot为接收消息的Bot
 
 ## 实现的接口
 (需要villa_id进行鉴权，所以大多接口都需要villa_id)

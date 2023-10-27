@@ -110,7 +110,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 				Func<Task?> func = null!;
 				func = (async () =>
 				{
-					bool isConnect = false;
+					bool isNeedReconnect = false;
 					WebSocketSharp.WebSocket webSocket = new WebSocketSharp.WebSocket(ws_callback_Address);
 
 					webSocket.OnOpen += (sender, e) => { Logger.Log("开启websocket连接"); };
@@ -127,11 +127,11 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 					webSocket.OnClose += (sender, e) =>
 					{
 						Logger.Log("websocket关闭，尝试重新连接");
-						isConnect = true;
+						isNeedReconnect = true;
 						Task.Run(func);
 					};
 					webSocket.Connect();
-					while (!isConnect || !tokenSource.IsCancellationRequested)
+					while (!isNeedReconnect && !tokenSource.IsCancellationRequested)
 					{
 						//保活，30s发送一次消息
 						webSocket.Send("BALUS");
