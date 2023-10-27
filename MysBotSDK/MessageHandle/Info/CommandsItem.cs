@@ -11,10 +11,11 @@ namespace MysBotSDK.MessageHandle.Info
 		/// <summary>
 		/// commond命令
 		/// </summary>
-		public string name { get; set; }
+		public string? name { get; set; }
+
 		/// <summary>
 		/// commond描述
 		/// </summary>
-		public string desc { get; set; }
+		public string? desc { get; set; }
 	}
 }

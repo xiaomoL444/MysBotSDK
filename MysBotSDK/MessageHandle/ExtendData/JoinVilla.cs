@@ -16,14 +16,17 @@ namespace MysBotSDK.MessageHandle.ExtendData
 		///用户 id
 		/// </summary>
 		public uint join_uid { get; set; }
+
 		/// <summary>
 		///用户昵称
 		/// </summary>
 		public string? join_user_nickname { get; set; }
+
 		/// <summary>
 		///用户加入时间的时间戳
 		/// </summary>
 		public long join_at { get; set; }
+
 		/// <summary>
 		/// 大别野 id
 		/// </summary>

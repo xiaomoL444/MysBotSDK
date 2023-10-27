@@ -4,28 +4,53 @@ using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
 using System.Reactive.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 
 namespace MihoyoBBS_Bot;
 static class Program
 {
-	public static async Task Main()
-	{   //初始化Bot
-		MysBot mysBot = new MysBot()
+	public static string GetAccountConfig(string key)
+	{
+		string account_path = "./account.json";
+		var dic = FileHandle.ReadAsDicString(account_path);
+		if (!dic.ContainsKey(key))
 		{
-			loggerLevel = Logger.LoggerLevel.Debug,
-			callback_Adress = "http://127.0.0.1:12328/",
-			bot_id = "bot_D0Vo7OZqT0LZR3MQUkTZ",
-			secret = "mIC6cdoSjOXCxkFijqa905S1bqdMVoIdHAQzFf5GnKb9e",
-			pub_key = @"-----BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmnRn8xpyiSxf1w101sBSybU23
-Wd5lbo3aBquzaUqJHqpG9FaAc2vxMtXmOmnde0x2rXUmEOUqeOBm3ES+dBU2OhhK
-XngKV1pzuABsnPpcBGf47a9dJYALyzs8IVwl1SsKQgAAV8g/jtf4H2DjQLG8R9cc
-uktHkKy3hPOs5V9HuwIDAQAB
------END PUBLIC KEY-----
-"
-		}.Initail();
+			dic[key] = "";
+			FileHandle.SaveDicString(account_path, dic);
+		}
 
+		return dic[key];
+	}
+	public static async Task Main()
+	{
+		//初始化Bot
+		MysBot mysBot;
+		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+		{
+
+			Action saveAction = new Action(() => { });
+
+			mysBot = new MysBot()//末酱映射机
+			{
+				loggerLevel = Logger.LoggerLevel.Debug,
+				http_callback_Address = GetAccountConfig("http_callback_Address"),
+				bot_id = GetAccountConfig("mojiang_ready_bot_id"),
+				secret = GetAccountConfig("mojiang_ready_secret"),
+				pub_key = GetAccountConfig("mojiang_ready_pub_key").Replace("\\n", "\n").TrimEnd(' ')
+			}.Initail();
+		}
+		else
+		{
+			mysBot = new MysBot()//末酱
+			{
+				loggerLevel = Logger.LoggerLevel.Log,
+				ws_callback_Address = GetAccountConfig("ws_callback_Address"),
+				bot_id = GetAccountConfig("mojiang_bot_id"),
+				secret = GetAccountConfig("mojiang_secret"),
+				pub_key = GetAccountConfig("mojiang_pub_key").Replace("\\n", "\n").TrimEnd(' ')
+			}.Initail();
+		}
 
 		//读取程序集
 		List<IMysPluginModule> plugins = new List<IMysPluginModule>();
@@ -106,7 +131,7 @@ uktHkKy3hPOs5V9HuwIDAQAB
 			AuditCallback = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<AuditCallbackAttribute>() != null));
 			mysPluginModules.Clear();
 		}
-		mysBot.MessageReceiver.Subscribe();
+		Array.ForEach(Start.ToArray(), method => { if (method.Enable) { method.Execute(); } });
 		Array.ForEach(JoinVilla.ToArray(), method => { mysBot.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
 		Array.ForEach(SendMessage.ToArray(), method =>
 		{
@@ -114,14 +139,16 @@ uktHkKy3hPOs5V9HuwIDAQAB
 			{
 				if (method.Enable)
 				{
-					var commond = receiver.Text.Split(" ").ToList();
-					commond.RemoveAt(0);
-					if (commond[0] == $"/{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}" || commond[0] == $"{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}")
+					if (receiver.commond == $"/{method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}" || receiver.commond == $"{method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}")
 					{
-						Logger.Log($"Commond:{method.GetType().GetCustomAttribute<SendMessageAttribute>().Commond}");
+						Logger.Log($"Commond:{method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
 						await method.Execute(receiver);
 					}
-
+					else if (method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond == "*") //若填入*则代表接收任何消息
+					{
+						Logger.Log($"Commond:{method.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
+						await method.Execute(receiver);
+					}
 				}
 			});
 		});
@@ -143,13 +170,15 @@ uktHkKy3hPOs5V9HuwIDAQAB
 				while (true)
 				{
 					string? commond = Console.ReadLine();
+					if (string.IsNullOrEmpty(commond) || string.IsNullOrWhiteSpace(commond))
+					{ continue; }
 					string?[] commondSplit = commond.Split(" ");
 					Logger.Log($"input {commond}");
 					Type type = typeof(Commond);
 					MethodInfo? methodInfo;
 					try
 					{
-						methodInfo = type.GetMethod(commondSplit[0]);
+						methodInfo = type.GetMethod(commondSplit[0]!);
 					}
 					catch (ArgumentException)
 					{
@@ -161,7 +190,7 @@ uktHkKy3hPOs5V9HuwIDAQAB
 
 					try
 					{
-						methodInfo.Invoke(null, new object[] { commondSplit });
+						methodInfo!.Invoke(null, new object[] { commondSplit });
 					}
 					catch (ArgumentException e)
 					{
@@ -189,6 +218,10 @@ static class Commond
 			Console.WriteLine(method.Name);
 		}
 		Console.WriteLine("========================");
+	}
+	public static void exit(string?[] args)
+	{
+		Environment.Exit(0);
 	}
 	//public static void updata(string?[] args)
 	//{
