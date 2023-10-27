@@ -116,7 +116,7 @@ MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 vil
 
 ## Other
 
-[MysBotSDK.Tool空间](https://github.com/xiaomoL444/MysBotSDK/wiki/Tool/)
+[MysBotSDK.Tool](https://github.com/xiaomoL444/MysBotSDK/wiki/Tool/)
 
 ## TO DO
 
