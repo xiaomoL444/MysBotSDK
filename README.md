@@ -20,7 +20,8 @@ using MysBotSDK.Tool;
 ```
 MysBot mysBot = new MysBot()
 {
-	callback_Adress = "",//回调地址,填写你在开发平台输入的回调地址，或者你的回调地址是经过映射的就填写映射的Ip :http://domain.com || 127.0.0.1:3280
+  ws_callback_Address = ""//ws反代回调地址(不可同时填入ws_callback_Address与http_callback_Address)
+	http_callback_Address = "",//回调地址,填写你在开发平台输入的回调地址，或者你的回调地址是经过映射的就填写映射的Ip :http://domain.com || 127.0.0.1:3280
 	bot_id = "",//开发平台上显示的机器人ID :bot_******
 	secret = "",//开发平台上显示的secret
 	pub_key = "",//开发平台上显示的pub_key :-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY----- 此处原样复制即可，我写了删除\r。。。
