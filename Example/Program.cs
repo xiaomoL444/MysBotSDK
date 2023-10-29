@@ -24,7 +24,9 @@ public class ExampleProgram
 			{
 				var messageChain = new MessageChain()
 				.Text("123");
-				await MessageSender.SendText(receiver.Villa_ID, receiver.Room_ID, messageChain);
+				await receiver.SendText(messageChain);
+				//await MessageSender.SendText(receiver.Villa_ID, receiver.Room_ID, messageChain);
+				//await MessageSender.SendText(mysBot,receiver.Villa_ID, receiver.Room_ID, messageChain);
 			});
 	}
 }

@@ -22,7 +22,7 @@ namespace MysBotSDK.MessageHandle
 	{
 		internal string text_ { get; set; }
 		internal List<Entity> entities_ { get; set; }
-		internal MentionType MentionType { get; set; }
+		internal MentionType mentionType { get; set; }
 		internal QuoteInfo? quote { get; set; }
 		private List<string> text { get; set; }
 		private List<(int index, Entity entity)> IDs { get; set; }
@@ -34,6 +34,7 @@ namespace MysBotSDK.MessageHandle
 			text = new List<string>();
 			Text("");
 			IDs = new List<(int, Entity)>();
+			mentionType = MentionType.None;
 		}
 
 		/// <summary>
@@ -153,7 +154,7 @@ namespace MysBotSDK.MessageHandle
 						case Entity_Detail.EntityType.mentioned_robot:
 							break;
 						case Entity_Detail.EntityType.mentioned_user:
-							MentionType = MentionType.Partof;
+							mentionType = MentionType.Partof;
 							var member = await MessageSender.GetUserInfo(UInt64.Parse(entity.entity!.entity.villa_id!), UInt64.Parse(entity.entity.entity!.user_id!));
 							entities_.Add(new Entity()
 							{
@@ -165,7 +166,7 @@ namespace MysBotSDK.MessageHandle
 							text_ += $"@{member.member.basic!.nickname!.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity_Detail.EntityType.mentioned_all:
-							MentionType = MentionType.All;
+							mentionType = MentionType.All;
 							entities_.Add(new Entity()
 							{
 								entity = entity.entity.entity,
