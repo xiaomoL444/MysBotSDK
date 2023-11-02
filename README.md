@@ -121,7 +121,7 @@ MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 vil
 
 ## 已知Bug
 
-- 发送消息会@At全体，已在v1.3pre中修复
+- 发送消息会@At全体，已在v1.3pre中修复（v1.3也许会在这个周末更新，好像没有需要添加的功能了）
 
 ## TO DO
 
