@@ -20,7 +20,7 @@ using MysBotSDK.Tool;
 ```
 MysBot mysBot = new MysBot()
 {
-  ws_callback_Address = ""//ws反代回调地址(不可同时填入ws_callback_Address与http_callback_Address)
+	ws_callback_Address = ""//ws反代回调地址(不可同时填入ws_callback_Address与http_callback_Address)
 	http_callback_Address = "",//回调地址,填写你在开发平台输入的回调地址，或者你的回调地址是经过映射的就填写映射的Ip :http://domain.com || 127.0.0.1:3280
 	bot_id = "",//开发平台上显示的机器人ID :bot_******
 	secret = "",//开发平台上显示的secret
@@ -111,7 +111,7 @@ MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 vil
 - [x] 表态表情
   - [x] 获取全量表情 GetAllEmoticons(UInt64 villa_id)
 - [ ] 审核
-  - [ ] 审核 Audit(UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0) //未测试过
+  - [ ] 审核 Audit(UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0) //有但未测试过
 - [x] 图片
   - [x] 图片转存 Transferimage(UInt64 villa_id, string url)
 
