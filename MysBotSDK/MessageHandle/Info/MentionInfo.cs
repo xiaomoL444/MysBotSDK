@@ -14,7 +14,7 @@ namespace MysBotSDK.MessageHandle.Info
 		/// <summary>
 		/// 提及类型
 		/// </summary>
-		public MentionType type { get; set; }
+		public MentionType? type { get; set; }
 
 		/// <summary>
 		/// 如果不是提及全员，应该填写被提及的用户 id 列表

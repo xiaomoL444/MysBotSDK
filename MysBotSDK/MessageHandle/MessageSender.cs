@@ -55,7 +55,10 @@ Content-Type: application/json";
 		MsgContentInfo msgContentInfo = new MsgContentInfo();
 		string object_name = "MHY:Text";
 		msgContentInfo.content = new MsgContent() { text = msg_content.text_, entities = msg_content.entities_ };
-		msgContentInfo.mentionedInfo = new MentionedInfo() { type = msg_content.MentionType, userIdList = msg_content.entities_.Where(q => q.entity.type == Entity_Detail.EntityType.mentioned_user).Select(q => q.entity.user_id).ToList()! };
+		if (msg_content.mentionType != MentionType.None)
+		{
+			msgContentInfo.mentionedInfo = new MentionedInfo() { type = msg_content.mentionType, userIdList = msg_content.entities_.Where(q => q.entity.type == Entity_Detail.EntityType.mentioned_user).Select(q => q.entity.user_id).ToList()! };
+		}
 		msgContentInfo.quote = msg_content.quote;
 
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
