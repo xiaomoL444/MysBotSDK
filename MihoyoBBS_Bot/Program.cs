@@ -28,9 +28,6 @@ static class Program
 		MysBot mysBot;
 		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 		{
-
-			Action saveAction = new Action(() => { });
-
 			mysBot = new MysBot()//末酱映射机
 			{
 				loggerLevel = Logger.LoggerLevel.Debug,
@@ -44,7 +41,7 @@ static class Program
 		{
 			mysBot = new MysBot()//末酱
 			{
-				loggerLevel = Logger.LoggerLevel.Log,
+				loggerLevel = Logger.LoggerLevel.Debug,
 				ws_callback_Address = GetAccountConfig("ws_callback_Address"),
 				bot_id = GetAccountConfig("mojiang_bot_id"),
 				secret = GetAccountConfig("mojiang_secret"),

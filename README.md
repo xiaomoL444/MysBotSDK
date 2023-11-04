@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # MysBotSDK
 
 顾名思义,C#语言的米游社大别野BotSDK(.Net 7.0)
