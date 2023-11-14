@@ -67,7 +67,8 @@ MessageSender.SendText(receiver.Villa_ID,receiver.Room_ID,messageChain);
 MessageSender更多用法请看[#实现的接口](#实现的接口)
 
 ### 注意!
-MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```的一个重载为```SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```。在多Bot实例化的情况下，使用第一个方法会让最后被实例化的Bot发送消息，使用第二个方法则为指定Bot发送消息。若订阅消息类型为```SendMessageReceiver```时,传回的receiver含有与MessageSender相同的发送方法，使用receiver里的方法发送消息时不再需要填入```villa_id```与```room_id```，且发送的Bot为接收消息的Bot
+- MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```的一个重载为```SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```。在多Bot实例化的情况下，使用第一个方法会让最后被实例化的Bot发送消息，使用第二个方法则为指定Bot发送消息。若订阅消息类型为```SendMessageReceiver```时,传回的receiver含有与MessageSender相同的发送方法，使用receiver里的方法发送消息时不再需要填入```villa_id```与```room_id```，且发送的Bot为接收消息的Bot
+- http连接内置鉴权，ws连接不支持鉴权
 
 ## 实现的接口
 (需要villa_id进行鉴权，所以大多接口都需要villa_id)
@@ -91,12 +92,12 @@ MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 vil
     - [x] 引用链接 Url_Link(string url, bool requires_bot_access_token = false)
   - [x] 发送图片 SendImage(UInt64 villa_id, UInt64 room_id, string url, PicContentInfo.Size size = null, int file_size = 0)
   - [x] 发送帖子 SendPost(UInt64 villa_id, UInt64 room_id, string post_id)
-- [ ] 房间
+- [x] 房间
   - [x] 创建分组 CreateGroup(UInt64 villa_id, string group_name)
   - [x] 编辑分组 EditGroup(UInt64 villa_id, UInt64 group_id, string new_group_name)
   - [x] 删除分组 DeleteGroup(UInt64 villa_id, UInt64 group_id)
   - [x] 获取分组列表 GetGroupList(UInt64 villa_id)
-  - [ ] 创建房间 //官方未给出接口
+  - [ ] 创建房间 //官方已删
   - [x] 编辑房间 EditRoom(UInt64 villa_id, UInt64 room_id, string new_room_name)
   - [x] 删除房间 DeleteRoom(UInt64 villa_id, UInt64 room_id)
   - [x] 获取房间信息 GetRoomInfo(UInt64 villa_id, UInt64 room_id)
@@ -112,12 +113,20 @@ MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 vil
   - [x] 获取全量表情 GetAllEmoticons(UInt64 villa_id)
 - [ ] 审核
   - [ ] 审核 Audit(UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0) //有但未测试过
-- [x] 图片
-  - [x] 图片转存 Transferimage(UInt64 villa_id, string url)
+- [ ] 图片
+  - [x] 图片转存 Transferimage(UInt64 villa_id, string url) 
+  - [ ] 图片上传
 
 ## Other
 
 [MysBotSDK.Tool](https://github.com/xiaomoL444/MysBotSDK/wiki/Tool/)
+
+### ?
+ 
+图片转存目前还在灰度阶段，全局QPS限流30，请开发者视需求调用，将会在未来迭代中优化。
+如果图片大小过大，或者原图床访问受限（比如海外服务器），可能会导致转存失败。
+
+### Fix
 
 ## TO DO
 
@@ -127,6 +136,5 @@ MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 vil
 
 写了个ws重新连接，但是可能连接超时没有再次重新连接...?
 
-# ~~重载方法(放弃)~~
-
-我原本有一个MihoyoBBS_Bot的项目，类似于一个提供好的主程序，可以热加载插件，但是AssemblyLoadContext没办法强制卸载......要是写了一个await Task.Run(()=>{while{}})没法卸载...因此放弃了...但是可以作为一个已经做好的主程序，可以加载Plugins里面的插件,里面的插件的类需要继承IMysPluginModule抽象类，并添加上特征(一共六个特征,对应六个消息事件),只有[SendMessage("")]需要填写string作为命令,可以填写"/Commond"或者"Commond"，插件生成后放入Plugins文件夹中启动主程序通过反射找到可以加载的类。注意IMysPluginModule.Excute()会传入一个MessageReceiverBase，需要拆箱成对应的消息事件(SendMessage)receiver，(所以超麻烦也是放弃的一个原因，虽然我现在也是用着插件,因为MihoyoBBS_Bot.Program里面加载有SendMessage("")特征的类后会依据填入的命令执行方法...其实这个自己实现一遍也行)
+# MihoyoBBS_Bot
+嗯...一个个人的启动程序...?好像不用理会，有用的只有MysBotSDK
