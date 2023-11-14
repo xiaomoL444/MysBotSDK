@@ -398,7 +398,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <returns>message:返回消息,retcode:返回消息code,new_url:转存后的图片url</returns>
 		public async Task<(string message, int retcode, string new_url)> Transferimage(string url)
 		{
-			return await MessageSender.Transferimage(MessageSender.mysBot.FirstOrDefault(b => b.bot_id == robot!.template!.id)!, villa_id, url);
+			return await MessageSender.TransferImage(MessageSender.mysBot.FirstOrDefault(b => b.bot_id == robot!.template!.id)!, villa_id, url);
 		}
 
 		#endregion

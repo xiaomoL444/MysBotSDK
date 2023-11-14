@@ -831,19 +831,19 @@ Content-Type: application/json";
 	}
 	#endregion
 
-	#region 图片转存
+	#region 图片
 
 	/// <summary>
-	/// 图片转存
+	/// 将非米游社的三方图床图片转存到米游社官方图床
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="url">需要转存的图片url</param>
 	/// <returns>message:返回消息,retcode:返回消息code,new_url:转存后的图片url</returns>
-	public static async Task<(string message, int retcode, string new_url)> Transferimage(UInt64 villa_id, string url)
+	public static async Task<(string message, int retcode, string new_url)> TransferImage(UInt64 villa_id, string url)
 	{
-		return await Transferimage(mysBot[mysBot.Count - 1], villa_id, url);
+		return await TransferImage(mysBot[mysBot.Count - 1], villa_id, url);
 	}
-	public static async Task<(string message, int retcode, string new_url)> Transferimage(MysBot mysBot, UInt64 villa_id, string url)
+	public static async Task<(string message, int retcode, string new_url)> TransferImage(MysBot mysBot, UInt64 villa_id, string url)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.TransferImage);
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
@@ -859,6 +859,12 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, new_url = json.data.new_url };
 	}
+
+	public static async Task<(string message, int retcode)> UploadImage(UInt64 villa_id)
+	{
+		return new();
+	}
+
 	#endregion
 
 }

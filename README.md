@@ -114,7 +114,7 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
 - [ ] 审核
   - [ ] 审核 Audit(UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0) //有但未测试过
 - [ ] 图片
-  - [x] 图片转存 Transferimage(UInt64 villa_id, string url) 
+  - [x] 图片转存 TransferImage(UInt64 villa_id, string url) 
   - [ ] 图片上传
 
 ## Other
@@ -127,6 +127,8 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
 如果图片大小过大，或者原图床访问受限（比如海外服务器），可能会导致转存失败。
 
 ### Fix
+
+v1.4将图片转存Transferimage方法改名为TransferImage,将与以往插件不兼容
 
 ## TO DO
 

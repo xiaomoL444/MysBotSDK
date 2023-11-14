@@ -81,6 +81,8 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 							var reader = new StreamReader(steam);
 							var data = reader.ReadToEnd();
 
+							Logger.Debug(data);
+
 							//处理消息
 							//校验伺服器请求头
 							if (!Authentication.Verify(data, request.Headers.Get("x-rpc-bot_sign")!, pub_key!, secret!))
@@ -89,8 +91,6 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 								Logger.LogWarnning("鉴权失败");
 								continue;
 							}
-
-							Logger.Debug(data);
 
 							MessageHandle(data);
 
@@ -120,6 +120,8 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 						{
 							string data = e.Data;
 							Logger.Debug(data);
+
+							//没有鉴权
 							MessageHandle(data);
 						}
 					};
