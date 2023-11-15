@@ -113,15 +113,15 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
   - [x] 获取全量表情 GetAllEmoticons(UInt64 villa_id)
 - [ ] 审核
   - [ ] 审核 Audit(UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0) //有但未测试过
-- [ ] 图片
+- [x] 图片
   - [x] 图片转存 TransferImage(UInt64 villa_id, string url) 
-  - [x] 图片上传
+  - [x] 图片上传 UploadImage(UInt64 villa_id, string file_path)
 
 ## Other
 
 [MysBotSDK.Tool](https://github.com/xiaomoL444/MysBotSDK/wiki/Tool/)
 
-### ?
+### [来自官方的提醒]
  
 图片转存目前还在灰度阶段，全局QPS限流30，请开发者视需求调用，将会在未来迭代中优化。
 如果图片大小过大，或者原图床访问受限（比如海外服务器），可能会导致转存失败。

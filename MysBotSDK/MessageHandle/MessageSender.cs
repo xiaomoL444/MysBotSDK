@@ -935,11 +935,7 @@ Content-Type: application/json";
 		//修改ContentType与ContentDisposition顺序
 		for (int i = 0; i < oss_content.Count(); i++)
 		{
-			var type = oss_content.ElementAt(i).Headers.ContentType;
-			var dis = oss_content.ElementAt(i).Headers.ContentDisposition;
-			oss_content.ElementAt(i).Headers.Clear();
-			oss_content.ElementAt(i).Headers.ContentDisposition = dis;
-			oss_content.ElementAt(i).Headers.ContentType = type;
+			oss_content.ElementAt(i).Headers.ContentType = null;
 		}
 		oss_httpRequestMessage.Content = oss_content;
 		var oss_res = await HttpClass.SendAsync(oss_httpRequestMessage);
