@@ -1,12 +1,18 @@
 ﻿using MysBotSDK.MessageHandle.Info;
 using MysBotSDK.Tool;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace MysBotSDK.MessageHandle;
 
@@ -831,19 +837,19 @@ Content-Type: application/json";
 	}
 	#endregion
 
-	#region 图片转存
+	#region 图片
 
 	/// <summary>
-	/// 图片转存
+	/// 将非米游社的三方图床图片转存到米游社官方图床
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="url">需要转存的图片url</param>
 	/// <returns>message:返回消息,retcode:返回消息code,new_url:转存后的图片url</returns>
-	public static async Task<(string message, int retcode, string new_url)> Transferimage(UInt64 villa_id, string url)
+	public static async Task<(string message, int retcode, string new_url)> TransferImage(UInt64 villa_id, string url)
 	{
-		return await Transferimage(mysBot[mysBot.Count - 1], villa_id, url);
+		return await TransferImage(mysBot[mysBot.Count - 1], villa_id, url);
 	}
-	public static async Task<(string message, int retcode, string new_url)> Transferimage(MysBot mysBot, UInt64 villa_id, string url)
+	public static async Task<(string message, int retcode, string new_url)> TransferImage(MysBot mysBot, UInt64 villa_id, string url)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.TransferImage);
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
@@ -859,6 +865,95 @@ Content-Type: application/json";
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, new_url = json.data.new_url };
 	}
+
+	/// <summary>
+	/// 上传本地图片至米游社大别野
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="file_path">需要上传的图片的路径</param>
+	/// <returns></returns>
+	public static async Task<(string message, int retcode, string url)> UploadImage(UInt64 villa_id, string file_path)
+	{
+		return await UploadImage(mysBot[mysBot.Count - 1], villa_id, file_path);
+	}
+	public static async Task<(string message, int retcode, string url)> UploadImage(MysBot mysBot, UInt64 villa_id, string file_path)
+	{
+		//上传至米游社获取阿里云参数
+		string[] allowExt = { "jpg", "jpeg", "png", "gif", "bmp" };
+		var md5 = GetMD5Hash.GetMD5HashFromFile(file_path);
+		var ext = file_path.Split('.')[file_path.Split('.').Length - 1];
+		if (!allowExt.Any(p => p == ext))
+		{
+			return new() { retcode = -1, message = Logger.LogError("不允许的上传图片扩展名") };
+		}
+
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.UploadImage);
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
+		httpRequestMessage.Content = JsonContent.Create(new { md5, ext });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"获取米游社阿里云 OSS 上传参数{res.Content.ReadAsStringAsync().Result}");
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+
+		if (json!.retcode != 0)
+		{
+			return new() { retcode = json.retcode, message = json.message };
+		}
+
+		//上传床图
+		var oss_params_json = JObject.Parse(res.Content.ReadAsStringAsync().Result)["data"]!["params"];
+
+		HttpRequestMessage oss_httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, (string?)oss_params_json!["host"]);
+		//oss_httpRequestMessage.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data;");
+
+		var fileStream = new FileStream(file_path, FileMode.Open, FileAccess.Read);
+		var streamContent = new StreamContent(fileStream);
+
+		var oss_content = new MultipartFormDataContent()
+		{
+			{ new StringContent((string)oss_params_json["callback_var"]!["x:extra"]!),"\"x:extra\""},
+			{ new StringContent((string)oss_params_json["accessid"]!), "\"OSSAccessKeyId\"" },
+			{ new StringContent((string)oss_params_json["signature"]!), "\"signature\"" },
+			{ new StringContent((string)oss_params_json["success_action_status"]!), "\"success_action_status\"" },
+			{ new StringContent((string)oss_params_json["name"]!), "\"name\"" },
+			{ new StringContent((string)oss_params_json["callback"]!), "\"callback\"" },
+			{ new StringContent((string)oss_params_json["x_oss_content_type"]!), "\"x-oss-content-type\"" },
+			{ new StringContent((string)oss_params_json["key"]!), "\"key\"" },
+			{ new StringContent((string)oss_params_json["policy"]!), "\"policy\"" },
+			{ streamContent,"\"file\"",$"\"Upload.{ext}\""}
+		};
+		streamContent.Headers.ContentDisposition!.FileNameStar = null;
+
+		var boundary = oss_content.Headers.ContentType!.Parameters.First(o => o.Name == "boundary");
+		boundary.Value = boundary.Value!.Replace("\"", String.Empty);
+
+		//修改ContentType与ContentDisposition顺序
+		for (int i = 0; i < oss_content.Count(); i++)
+		{
+			oss_content.ElementAt(i).Headers.ContentType = null;
+		}
+		oss_httpRequestMessage.Content = oss_content;
+		var oss_res = await HttpClass.SendAsync(oss_httpRequestMessage);
+		fileStream.Close();
+
+		Logger.Debug($"调用阿里云对象存储 OSS 的 API 上传文件{oss_res.Content.ReadAsStringAsync().Result}");
+
+		var oss_AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { url = "", secret_url = "", @object = "" }
+		};
+		var oss_json = JsonConvert.DeserializeAnonymousType(oss_res.Content.ReadAsStringAsync().Result, oss_AnonymousType);
+
+		return new() { retcode = oss_json!.retcode, message = oss_json.message, url = oss_json.data.url };
+	}
+
 	#endregion
 
 }

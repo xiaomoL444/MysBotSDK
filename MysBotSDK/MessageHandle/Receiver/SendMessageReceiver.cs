@@ -398,9 +398,19 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <returns>message:返回消息,retcode:返回消息code,new_url:转存后的图片url</returns>
 		public async Task<(string message, int retcode, string new_url)> Transferimage(string url)
 		{
-			return await MessageSender.Transferimage(MessageSender.mysBot.FirstOrDefault(b => b.bot_id == robot!.template!.id)!, villa_id, url);
+			return await MessageSender.TransferImage(MessageSender.mysBot.FirstOrDefault(b => b.bot_id == robot!.template!.id)!, villa_id, url);
 		}
 
+		/// <summary>
+		/// 上传本地图片至米游社大别野
+		/// </summary>
+		/// <param name="villa_id">大别野ID</param>
+		/// <param name="file_path">需要上传的图片的路径</param>
+		/// <returns></returns>
+		public async Task<(string message, int retcode, string url)> UploadImage(string file_path)
+		{
+			return await MessageSender.UploadImage(MessageSender.mysBot.FirstOrDefault(b => b.bot_id == robot!.template!.id)!, villa_id, file_path);
+		}
 		#endregion
 	}
 }
