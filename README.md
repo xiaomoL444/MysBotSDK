@@ -115,7 +115,7 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
   - [ ] 审核 Audit(UInt64 villa_id, string audit_content, UInt64 uid, Content_Type content_type, string pass_through = "", UInt64 room_id = 0) //有但未测试过
 - [ ] 图片
   - [x] 图片转存 TransferImage(UInt64 villa_id, string url) 
-  - [ ] 图片上传
+  - [x] 图片上传
 
 ## Other
 
