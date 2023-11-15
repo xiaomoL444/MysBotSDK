@@ -1,12 +1,17 @@
 ﻿using MysBotSDK.MessageHandle.Info;
 using MysBotSDK.Tool;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace MysBotSDK.MessageHandle;
 
@@ -860,8 +865,115 @@ Content-Type: application/json";
 		return new() { message = json!.message, retcode = json.retcode, new_url = json.data.new_url };
 	}
 
-	public static async Task<(string message, int retcode)> UploadImage(UInt64 villa_id)
+	public static async Task<(string message, int retcode)> UploadImage(MysBot mysBot, UInt64 villa_id, string file_path)
 	{
+		string[] allowExt = { "jpg", "jpeg", "png", "gif", "bmp" };
+		var md5 = GetMD5Hash.GetMD5HashFromFile(file_path);
+		var ext = file_path.Split('.')[file_path.Split('.').Length - 1];
+		if (!allowExt.Any(p => p == ext))
+		{
+			Logger.LogError("不允许的上传图片扩展名");
+			return new();
+		}
+
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.UploadImage);
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
+		httpRequestMessage.Content = JsonContent.Create(new { md5, ext });
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug($"获取米游社阿里云 OSS 上传参数{res.Content.ReadAsStringAsync().Result}");
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+
+
+
+		var oss_params_json = JObject.Parse(res.Content.ReadAsStringAsync().Result)["data"]!["params"];
+
+		HttpRequestMessage oss_httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, (string?)oss_params_json!["host"]);
+		oss_httpRequestMessage.Headers.TryAddWithoutValidation("Host", ((string?)oss_params_json!["host"]).Replace("https://", ""));
+		oss_httpRequestMessage.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data;");
+		var fileStream = new FileStream(file_path, FileMode.Open, FileAccess.Read);
+
+		var streamContent = new StreamContent(File.OpenRead(file_path));
+		var oss_content = new MultipartFormDataContent($"-----{Guid.NewGuid().ToString()}")
+		{
+			{ new StringContent((string)oss_params_json["callback_var"]!["x:extra"]!),"\"x:extra\""},
+			{ new StringContent((string)oss_params_json["accessid"]!), "\"OSSAccessKeyId\"" },
+			{ new StringContent((string)oss_params_json["signature"]!), "\"signature\"" },
+			{ new StringContent((string)oss_params_json["success_action_status"]!), "\"success_action_status\"" },
+			{ new StringContent((string)oss_params_json["name"]!), "\"name\"" },
+			{ new StringContent((string)oss_params_json["callback"]!), "\"callback\"" },
+			{ new StringContent((string)oss_params_json["x_oss_content_type"]!), "\"x-oss-content-type\"" },
+			{ new StringContent((string)oss_params_json["key"]!), "\"key\"" },
+			{ new StringContent((string)oss_params_json["policy"]!), "\"policy\"" },
+			{ streamContent,"\"file\"",$"\"test.{ext}\""}
+		};
+		streamContent.Headers.ContentDisposition.FileNameStar = null;
+		//oss_content.Add(new ByteArrayContent(File.ReadAllBytes("./test.jpg")), "\"file\"", "\"test.jpg\"");
+
+		var boundary = oss_content.Headers.ContentType.Parameters.First(o => o.Name == "boundary");
+		boundary.Value = boundary.Value.Replace("\"", String.Empty);
+
+		for (int i = 0; i < oss_content.Count(); i++)
+		{
+			var type = oss_content.ElementAt(i).Headers.ContentType;
+			var dis = oss_content.ElementAt(i).Headers.ContentDisposition;
+			oss_content.ElementAt(i).Headers.Clear();
+			oss_content.ElementAt(i).Headers.ContentDisposition = dis;
+			oss_content.ElementAt(i).Headers.ContentType = type;
+		}
+		oss_httpRequestMessage.Content = oss_content;
+
+		Logger.Debug(oss_httpRequestMessage.Content.ReadAsStringAsync().Result);
+		var oss_res = await HttpClass.SendAsync(oss_httpRequestMessage);
+
+		Logger.Debug(oss_res.RequestMessage.ToString());
+		fileStream.Close();
+
+		Logger.Debug($"调用阿里云对象存储 OSS 的 API 上传文件{oss_res.Content.ReadAsStringAsync().Result}");
+
+		//var fileName = Path.GetFileName(file_path);
+		//var multipartForm = new MultipartFormDataContent($"-----{Guid.NewGuid().ToString()}");
+		//var streamContent = new StreamContent(File.OpenRead(file_path));
+		//multipartForm.Add(new ByteArrayContent(Encoding.UTF8.GetBytes((string)oss_params_json["callback_var"]!["x:extra"]!)), "\"x:extra\"");
+		//multipartForm.Add(new ByteArrayContent(Encoding.UTF8.GetBytes((string)oss_params_json["accessid"]!)), "\"OSSAccessKeyId\"");
+		//multipartForm.Add(new ByteArrayContent(Encoding.UTF8.GetBytes((string)oss_params_json["signature"]!)), "\"signature\"");
+		//multipartForm.Add(new ByteArrayContent(Encoding.UTF8.GetBytes((string)oss_params_json["success_action_status"]!)), "\"success_action_status\"");
+		//multipartForm.Add(new ByteArrayContent(Encoding.UTF8.GetBytes((string)oss_params_json["name"]!)), "\"name\"");
+		//multipartForm.Add(new ByteArrayContent(Encoding.UTF8.GetBytes((string)oss_params_json["callback"]!)), "\"callback\"");
+		//multipartForm.Add(new ByteArrayContent(Encoding.UTF8.GetBytes((string)oss_params_json["x_oss_content_type"]!)), "\"x-oss-content-type\"");
+		//multipartForm.Add(new ByteArrayContent(Encoding.UTF8.GetBytes((string)oss_params_json["key"]!)), "\"key\"");
+		//multipartForm.Add(new ByteArrayContent(Encoding.UTF8.GetBytes((string)oss_params_json["policy"]!)), "\"policy\"");
+		//multipartForm.Add(new ByteArrayContent(Encoding.UTF8.GetBytes((string)oss_params_json["content_disposition"]!)), "\"Content-Disposition\"");
+
+		//multipartForm.Add(streamContent, "\"file\"", $"\"{fileName}\"");
+		//for (int i = 0; i < multipartForm.Count(); i++)
+		//{
+		//	var type = multipartForm.ElementAt(i).Headers.ContentType;
+		//	var dis = multipartForm.ElementAt(i).Headers.ContentDisposition;
+		//	multipartForm.ElementAt(i).Headers.Clear();
+		//	multipartForm.ElementAt(i).Headers.ContentDisposition = dis;
+		//	multipartForm.ElementAt(i).Headers.ContentType = type;
+		//}
+		////修饰boundary，移除双引号
+		//var boundary = multipartForm.Headers.ContentType.Parameters.First(o => o.Name == "boundary");
+		//boundary.Value = boundary.Value.Replace("\"", String.Empty);
+
+		////修饰文件表单域，移除FileNameStar
+		//streamContent.Headers.ContentDisposition.FileNameStar = null;
+		//var httpClient = new HttpClient();
+		//httpClient.DefaultRequestHeaders.Host = ((string?)oss_params_json!["host"]).Replace("https://", "");
+
+
+
+		//var rsp = await httpClient.PostAsync((string?)oss_params_json!["host"], multipartForm);
+		//var content = await rsp.Content.ReadAsStringAsync();
+		//Logger.Debug(content);
+
 		return new();
 	}
 

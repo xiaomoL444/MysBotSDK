@@ -40,7 +40,9 @@ public class Setting
 	public const string GetAllEmoticon = mys_domain + "/vila/api/bot/platform/getAllEmoticons";//Get
 
 	public const string Audit = mys_domain + "/vila/api/bot/platform/audit";//Post
+
 	public const string TransferImage = mys_domain + "/vila/api/bot/platform/transferImage";//Post
+	public const string UploadImage = mys_domain + "/vila/api/bot/platform/getUploadImageParams";//Get
 
 	public const string DeleteVillaMember = mys_domain + "/vila/api/bot/platform/deleteVillaMember";//Post  
 }

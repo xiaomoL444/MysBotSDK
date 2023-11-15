@@ -36,20 +36,7 @@ internal static class Authentication
 	}
 	static string UrlEncode(string source)
 	{
-		//StringBuilder builder = new StringBuilder();
-		//foreach (char c in source)
-		//{
-		//	if (HttpUtility.UrlEncode(c.ToString(), Encoding.UTF8).Length > 1)
-		//	{
-		//		builder.Append(HttpUtility.UrlEncode(c.ToString(), Encoding.UTF8).ToUpper());
-		//	}
-		//	else
-		//	{
-		//		builder.Append(c);
-		//	}
-		//}
 		string encodeUrl = System.Net.WebUtility.UrlEncode(source).Replace("(", "%28").Replace(")", "%29").Replace("!", "%21").Replace("*", "%2A").Replace("%7E", "~").Replace(" ", "+");
-		//string encodeUrl = builder.ToString().Replace("(", "%28").Replace(")", "%29").Replace("!", "%21").Replace("*", "%2A").Replace("%7E", "~").Replace(" ", "+");
 		return encodeUrl;
 	}
 
