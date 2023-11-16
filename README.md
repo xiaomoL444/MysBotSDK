@@ -130,6 +130,8 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
 
 ### Fix
 
+（v1.5）预计在v1.5新增ws连接与按钮消息
+
 v1.4将图片转存Transferimage方法改名为TransferImage,将与以往插件不兼容
 
 ## TO DO
