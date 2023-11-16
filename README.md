@@ -136,6 +136,8 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
 
 （v1.5）预计在v1.5新增更多文字样式
 
+（v1.5）预计在v1.5支持在文字里插入图片
+
 v1.4将图片转存Transferimage方法改名为TransferImage,将与以往插件不兼容
 
 ## TO DO
