@@ -2,19 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace MysBotSDK.MessageHandle.Info;
 
-[JsonPolymorphic(TypeDiscriminatorPropertyName = "c_type")]
-[JsonDerivedType(typeof(CallBack_Button),"1")]
-[JsonDerivedType(typeof(Input_Button), "2")]
-[JsonDerivedType(typeof(Link_Button), "3")]
-public  class Component_Group
+public class Component_Group
 {
-	public int c_type { get; set; }
+	[JsonProperty()]
+	internal int c_type { get; set; }
 	/// <summary>
 	/// 组件id，由机器人自定义，不能为空字符串。面板内的id需要唯一
 	/// </summary>
@@ -47,8 +41,8 @@ public  class Component_Group
 public class CallBack_Button : Component_Group
 {
 	public CallBack_Button()
-	{ 
-		c_type = 1; 
+	{
+		c_type = 1;
 	}
 }
 /// <summary>
@@ -59,7 +53,7 @@ public class Input_Button : Component_Group
 
 	public Input_Button()
 	{
-		c_type = 2;
+		//c_type = 2;
 	}
 	/// <summary>
 	/// 如果交互类型为输入型，则需要在该字段填充输入内容，不能为空

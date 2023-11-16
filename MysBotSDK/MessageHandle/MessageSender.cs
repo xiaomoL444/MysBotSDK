@@ -61,7 +61,7 @@ Content-Type: application/json";
 
 		MsgContentInfo msgContentInfo = new MsgContentInfo();
 		string object_name = "MHY:Text";
-		msgContentInfo.content = new MsgContent() { text = msg_content.text_, entities = msg_content.entities_ ,images=msg_content.images};
+		msgContentInfo.content = new MsgContent() { text = msg_content.text_, entities = msg_content.entities_, images = msg_content.images };
 		//添加@At信息(必须单独添加，否则会@At所有人)
 		if (msg_content.mentionType != MentionType.None)
 		{

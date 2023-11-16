@@ -18,6 +18,9 @@ namespace MysBotSDK.MessageHandle.Info
 		/// </summary>
 		public List<Entity> entities { get; set; } = new List<Entity>();
 
-		public List<PicContentInfo> images { get; set; }
+		/// <summary>
+		/// 内嵌的图片信息
+		/// </summary>
+		public List<PicContentInfo> images { get; set; } = new List<PicContentInfo>()
 	}
 }

@@ -8,7 +8,7 @@ using System.Web;
 
 namespace MysBotSDK.Tool;
 
-internal static class Authentication
+public static class Authentication
 {
 	public static bool Verify(string body, string botSign, string pub_key, string botSecret)
 	{
