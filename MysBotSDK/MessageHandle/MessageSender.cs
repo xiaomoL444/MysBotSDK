@@ -56,21 +56,36 @@ Content-Type: application/json";
 	}
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)
 	{
+		//Bulid信息
 		await msg_content.Bulid();
 
 		MsgContentInfo msgContentInfo = new MsgContentInfo();
 		string object_name = "MHY:Text";
-		msgContentInfo.content = new MsgContent() { text = msg_content.text_, entities = msg_content.entities_ };
+		msgContentInfo.content = new MsgContent() { text = msg_content.text_, entities = msg_content.entities_ ,images=msg_content.images};
+		//添加@At信息(必须单独添加，否则会@At所有人)
 		if (msg_content.mentionType != MentionType.None)
 		{
 			msgContentInfo.mentionedInfo = new MentionedInfo() { type = msg_content.mentionType, userIdList = msg_content.entities_.Where(q => q.entity.type == Entity_Detail.EntityType.mentioned_user).Select(q => q.entity.user_id).ToList()! };
 		}
+		//添加引用信息
 		msgContentInfo.quote = msg_content.quote;
 
+		//添加组件信息
+		msgContentInfo.panel!.template_id = msg_content.template_id;
+		msgContentInfo.panel.small_component_group_list = msg_content.smallComponent[0].Count == 0 ? null! : msg_content.smallComponent;
+		msgContentInfo.panel.mid_component_group_list = msg_content.midComponent[0].Count == 0 ? null! : msg_content.midComponent;
+		msgContentInfo.panel.big_component_group_list = msg_content.bigComponent[0].Count == 0 ? null! : msg_content.bigComponent;
+
+		//发送消息
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
-		httpRequestMessage.Content = JsonContent.Create(new { room_id, object_name, msg_content = JsonConvert.SerializeObject(msgContentInfo) });
+		httpRequestMessage.Content = JsonContent.Create(new
+		{
+			room_id,
+			object_name,
+			msg_content = JsonConvert.SerializeObject(msgContentInfo)
+		});
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug(res.Content.ReadAsStringAsync().Result);
 

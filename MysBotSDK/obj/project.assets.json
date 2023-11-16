@@ -43,21 +43,6 @@
             "related": ".xml"
           }
         }
-      },
-      "MysBotSDK/1.5.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3",
-          "System.Reactive": "6.0.0",
-          "WebSocketSharp-netstandard": "1.0.1"
-        },
-        "compile": {
-          "bin/placeholder/MysBotSDK.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MysBotSDK.dll": {}
-        }
       }
     }
   },
@@ -136,29 +121,26 @@
         "websocketsharp-netstandard.1.0.1.nupkg.sha512",
         "websocketsharp-netstandard.nuspec"
       ]
-    },
-    "MysBotSDK/1.5.0": {
-      "type": "project",
-      "path": "../MysBotSDK/MysBotSDK.csproj",
-      "msbuildProject": "../MysBotSDK/MysBotSDK.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "MysBotSDK >= 1.5.0"
+      "Newtonsoft.Json >= 13.0.3",
+      "System.Reactive >= 6.0.0",
+      "WebSocketSharp-netstandard >= 1.0.1"
     ]
   },
   "packageFolders": {
     "C:\\Users\\月下初拥\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.5.0",
     "restore": {
-      "projectUniqueName": "E:\\code\\MysBotSDK\\Example\\Example.csproj",
-      "projectName": "Example",
-      "projectPath": "E:\\code\\MysBotSDK\\Example\\Example.csproj",
+      "projectUniqueName": "E:\\code\\MysBotSDK\\MysBotSDK\\MysBotSDK.csproj",
+      "projectName": "MysBotSDK",
+      "projectPath": "E:\\code\\MysBotSDK\\MysBotSDK\\MysBotSDK.csproj",
       "packagesPath": "C:\\Users\\月下初拥\\.nuget\\packages\\",
-      "outputPath": "E:\\code\\MysBotSDK\\Example\\obj\\",
+      "outputPath": "E:\\code\\MysBotSDK\\MysBotSDK\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\月下初拥\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -174,11 +156,7 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {
-            "E:\\code\\MysBotSDK\\MysBotSDK\\MysBotSDK.csproj": {
-              "projectPath": "E:\\code\\MysBotSDK\\MysBotSDK\\MysBotSDK.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -190,6 +168,20 @@
     "frameworks": {
       "net7.0": {
         "targetAlias": "net7.0",
+        "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
+          },
+          "System.Reactive": {
+            "target": "Package",
+            "version": "[6.0.0, )"
+          },
+          "WebSocketSharp-netstandard": {
+            "target": "Package",
+            "version": "[1.0.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

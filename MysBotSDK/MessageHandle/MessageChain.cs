@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http.Json;
@@ -27,6 +28,13 @@ namespace MysBotSDK.MessageHandle
 		private List<string> text { get; set; }
 		private List<(int index, Entity entity)> IDs { get; set; }
 
+		public UInt64 template_id { get; set; }
+		public List<List<Component_Group>> smallComponent { get; private set; } = new List<List<Component_Group>>();
+		public List<List<Component_Group>> midComponent { get; private set; } = new List<List<Component_Group>>();
+		public List<List<Component_Group>> bigComponent { get; private set; } = new List<List<Component_Group>>();
+
+		public List<PicContentInfo> images { get; set; } = new();
+
 		public MessageChain()
 		{
 			text_ = string.Empty;
@@ -35,6 +43,9 @@ namespace MysBotSDK.MessageHandle
 			Text("");
 			IDs = new List<(int, Entity)>();
 			mentionType = MentionType.None;
+			smallComponent.Add(new List<Component_Group>());
+			midComponent.Add(new List<Component_Group>());
+			bigComponent.Add(new List<Component_Group>());
 		}
 
 		/// <summary>
@@ -140,6 +151,31 @@ namespace MysBotSDK.MessageHandle
 			return this;
 		}
 
+		public MessageChain AddButtonComponent(Component_Size component_Size, Component_Group component_Group)
+		{
+			switch (component_Size)
+			{
+				case Component_Size.small:
+					smallComponent[0].Add(component_Group);
+					break;
+				case Component_Size.middle:
+					midComponent[0].Add(component_Group);
+					break;
+				case Component_Size.big:
+					bigComponent[0].Add(component_Group);
+					break;
+				default:
+					break;
+			}
+
+			return this;
+		}
+		public MessageChain Image(string url, PicContentInfo.Size size = null!, int file_size = 0)
+		{
+			images.Add(new PicContentInfo() { url = url, size = size, file_size = file_size });
+			return this;
+		}
+
 		internal async Task<MessageChain> Bulid()
 		{
 			for (int i = 0; i < text.Count; i++)
@@ -199,8 +235,17 @@ namespace MysBotSDK.MessageHandle
 					}
 				}
 
+				//添加组件
+
 			}
 			return this;
 		}
+	}
+
+	public enum Component_Size
+	{
+		small = 0,
+		middle = 1,
+		big = 2,
 	}
 }

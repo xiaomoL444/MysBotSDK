@@ -17,5 +17,7 @@ namespace MysBotSDK.MessageHandle.Info
 		/// 消息文本内嵌的实体信息
 		/// </summary>
 		public List<Entity> entities { get; set; } = new List<Entity>();
+
+		public List<PicContentInfo> images { get; set; }
 	}
 }

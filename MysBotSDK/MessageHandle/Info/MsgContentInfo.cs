@@ -22,5 +22,10 @@ namespace MysBotSDK.MessageHandle.Info
 		/// 引用消息的信息
 		/// </summary>
 		public QuoteInfo? quote { get; set; }
+
+		/// <summary>
+		/// 面板消息
+		/// </summary>
+		public Panel? panel { get; set; } = new Panel();
 	}
 }
