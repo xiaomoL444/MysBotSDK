@@ -88,6 +88,7 @@ static class Program
 		List<IMysPluginModule> DeleteRobot = new List<IMysPluginModule>();
 		List<IMysPluginModule> AddQuickEmoticon = new List<IMysPluginModule>();
 		List<IMysPluginModule> AuditCallback = new List<IMysPluginModule>();
+		List<IMysPluginModule> ClickMsgComponent = new List<IMysPluginModule>();
 
 		//加载插件
 		foreach (var assembly in assemblyLoadContext.Assemblies)
@@ -129,6 +130,7 @@ static class Program
 			DeleteRobot = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<DeleteRobotAttribute>() != null));
 			AddQuickEmoticon = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<AddQuickEmoticonAttribute>() != null));
 			AuditCallback = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<AuditCallbackAttribute>() != null));
+			ClickMsgComponent = new List<IMysPluginModule>(mysPluginModules.Where(q => q.GetType().GetCustomAttribute<ClickMsgComponentAttribute>() != null));
 			mysPluginModules.Clear();
 		}
 		Array.ForEach(Start.ToArray(), method => { if (method.Enable) { method.Execute(); } });
@@ -156,6 +158,7 @@ static class Program
 		Array.ForEach(DeleteRobot.ToArray(), method => { mysBot.MessageReceiver.OfType<DeleteRobotReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
 		Array.ForEach(AddQuickEmoticon.ToArray(), method => { mysBot.MessageReceiver.OfType<AddQuickEmoticonReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
 		Array.ForEach(AuditCallback.ToArray(), method => { mysBot.MessageReceiver.OfType<AuditCallbackReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
+		Array.ForEach(AuditCallback.ToArray(), method => { mysBot.MessageReceiver.OfType<ClickMsgComponentReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
 
 		await Commond();
 	}

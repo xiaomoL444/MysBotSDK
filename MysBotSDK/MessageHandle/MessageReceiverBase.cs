@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.MessageHandle.Info;
 using System.Runtime.CompilerServices;
+using MysBotSDK.MessageHandle.ExtendData;
 
 namespace MysBotSDK.MessageHandle;
 
@@ -101,6 +102,12 @@ public class MessageReceiverBase
 				villa_id = auditCallbackReceiver.Villa_ID;
 				room_id = auditCallbackReceiver.Room_ID;
 				break;
+			case EventType.ClickMsgComponent:
+				receiver = new ClickMsgComponentReceiver(eventData!["ClickMsgComponent"]!.ToString());
+				var clickMsgComponentReceiver = (ClickMsgComponentReceiver)receiver;
+				villa_id = clickMsgComponentReceiver.Villa_ID;
+				room_id = clickMsgComponentReceiver.Room_id;
+				break;
 		}
 		receiver!.robot = this.robot;
 		receiver.EventType = this.EventType;
@@ -120,4 +127,5 @@ public enum EventType
 	DeleteRobot = 4,
 	AddQuickEmoticon = 5,
 	AuditCallback = 6,
+	ClickMsgComponent = 7,
 }
