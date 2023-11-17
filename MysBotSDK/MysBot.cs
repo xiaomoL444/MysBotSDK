@@ -188,6 +188,9 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 					case EventType.AuditCallback:
 						messageReceiver.OnNext((AuditCallbackReceiver)messageReceiverBase.receiver);
 						break;
+					case EventType.ClickMsgComponent:
+						messageReceiver.OnNext((ClickMsgComponentReceiver)messageReceiverBase.receiver);
+						break;
 					default:
 						break;
 				}

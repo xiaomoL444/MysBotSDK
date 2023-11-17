@@ -128,6 +128,8 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
 
 ### Fix
 
+Component_Group 变成抽象类
+
 v1.4将图片转存Transferimage方法改名为TransferImage,将与以往插件不兼容
 
 ## TO DO

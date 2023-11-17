@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MysBotSDK.MessageHandle.Info;
 
-public class Component_Group
+public abstract class Component_Group
 {
 	[JsonProperty()]
 	internal int c_type { get; set; }
