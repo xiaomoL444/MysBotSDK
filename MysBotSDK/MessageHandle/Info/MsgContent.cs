@@ -21,6 +21,6 @@ namespace MysBotSDK.MessageHandle.Info
 		/// <summary>
 		/// 内嵌的图片信息
 		/// </summary>
-		public List<PicContentInfo> images { get; set; } = new List<PicContentInfo>()
+		public List<PicContentInfo> images { get; set; } = new List<PicContentInfo>();
 	}
 }

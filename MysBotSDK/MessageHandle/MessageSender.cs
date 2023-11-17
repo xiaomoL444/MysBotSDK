@@ -54,6 +54,14 @@ Content-Type: application/json";
 	{
 		return await SendText(mysBot[mysBot.Count - 1], villa_id, room_id, msg_content);
 	}
+	/// <summary>
+	/// 发送一条文本消息
+	/// </summary>
+	/// <param name="mysBot">Bot实例</param>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <param name="msg_content">消息链(MessageChain)</param>
+	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 	public static async Task<(string message, int retcode, string bot_msg_id)> SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)
 	{
 		//Bulid信息
@@ -85,6 +93,52 @@ Content-Type: application/json";
 			room_id,
 			object_name,
 			msg_content = JsonConvert.SerializeObject(msgContentInfo)
+		});
+		var res = await HttpClass.SendAsync(httpRequestMessage);
+		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+
+		var AnonymousType = new
+		{
+			retcode = 0,
+			message = "",
+			data = new { bot_msg_id = "" }
+		};
+		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+	}
+
+	/// <summary>
+	/// 发送一条自定义Json消息
+	/// </summary>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <param name="msg_content">消息链(MessageChain)</param>
+	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
+	public static async Task<(string message, int retcode, string bot_msg_id)> SendText(UInt64 villa_id, UInt64 room_id, string msg_content)
+	{
+		return await SendText(mysBot[mysBot.Count - 1], villa_id, room_id, msg_content);
+	}
+	/// <summary>
+	/// 发送一条自定义Json消息
+	/// </summary>
+	/// <param name="mysBot">Bot实例</param>
+	/// <param name="villa_id">大别野ID</param>
+	/// <param name="room_id">房间ID</param>
+	/// <param name="msg_content">消息链(MessageChain)</param>
+	/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
+	public static async Task<(string message, int retcode, string bot_msg_id)> SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, string msg_content)
+	{
+		string object_name = "MHY:Text";
+
+		//发送消息
+		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
+		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
+
+		httpRequestMessage.Content = JsonContent.Create(new
+		{
+			room_id,
+			object_name,
+			msg_content = msg_content
 		});
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 		Logger.Debug(res.Content.ReadAsStringAsync().Result);

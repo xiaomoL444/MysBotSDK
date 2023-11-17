@@ -53,7 +53,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 如果被回复的消息从属于机器人，则该字段不为空字符串
 		/// </summary>
-		public string Bot_ID => sendMessage.bot_msg_id;
+		public string Bot_Msg_ID => sendMessage.bot_msg_id;
 		/// <summary>
 		/// 大别野ID
 		/// </summary>
@@ -116,11 +116,18 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 发送一条文本消息
 		/// </summary>
-		/// <param name="villa_id">大别野ID</param>
-		/// <param name="room_id">房间ID</param>
 		/// <param name="msg_content">消息链(MessageChain)</param>
 		/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 		public async Task<(string message, int retcode, string bot_msg_id)> SendText(MessageChain msg_content)
+		{
+			return await MessageSender.SendText(MessageSender.mysBot.FirstOrDefault(b => b.bot_id == robot!.template!.id)!, villa_id, room_id, msg_content);
+		}
+		/// <summary>
+		/// 发送一条自定义Json消息
+		/// </summary>
+		/// <param name="msg_content">自定义Json消息</param>
+		/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
+		public async Task<(string message, int retcode, string bot_msg_id)> SendText(string msg_content)
 		{
 			return await MessageSender.SendText(MessageSender.mysBot.FirstOrDefault(b => b.bot_id == robot!.template!.id)!, villa_id, room_id, msg_content);
 		}
@@ -128,7 +135,6 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 发送图片信息
 		/// </summary>
-		/// <param name="room_id">房间ID</param>
 		/// <param name="url">图片url</param>
 		/// <param name="size">图片尺寸</param>
 		/// <param name="file_size">图片大小</param>
@@ -141,7 +147,6 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 发送帖子消息
 		/// </summary>
-		/// <param name="room_id">房间ID</param>
 		/// <param name="post_id">帖子ID</param>
 		/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
 		public async Task<(string message, int retcode, string bot_msg_id)> SendPost(string post_id)
@@ -152,7 +157,6 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 撤回消息
 		/// </summary>
-		/// <param name="room_id">房间ID</param>
 		/// <param name="msg_uid">消息uid</param>
 		/// <param name="msg_time">消息发送时间</param>
 		/// <returns>message:返回消息,retcode:返回消息code,bot_msg_id:消息uid</returns>
@@ -164,7 +168,6 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 置顶消息
 		/// </summary>
-		/// <param name="room_id">房间ID</param>
 		/// <param name="msg_uid">消息uid</param>
 		/// <param name="msg_time">消息发送时间</param>
 		/// <param name="is_cancel">是否取消置顶消息</param>
@@ -208,7 +211,6 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 编辑房间
 		/// </summary>
-		/// <param name="room_id">房间ID</param>
 		/// <param name="new_room_name">房间新名称</param>
 		/// <returns>message:返回消息,retcode:返回消息code</returns>
 		public async Task<(string message, int retcode)> EditRoom(string new_room_name)
@@ -404,7 +406,6 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 上传本地图片至米游社大别野
 		/// </summary>
-		/// <param name="villa_id">大别野ID</param>
 		/// <param name="file_path">需要上传的图片的路径</param>
 		/// <returns></returns>
 		public async Task<(string message, int retcode, string url)> UploadImage(string file_path)
