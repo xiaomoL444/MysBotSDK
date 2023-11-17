@@ -43,9 +43,6 @@ namespace MysBotSDK.MessageHandle
 			Text("");
 			IDs = new List<(int, Entity)>();
 			mentionType = MentionType.None;
-			smallComponent.Add(new List<Component_Group>());
-			midComponent.Add(new List<Component_Group>());
-			bigComponent.Add(new List<Component_Group>());
 		}
 
 		/// <summary>
@@ -151,18 +148,18 @@ namespace MysBotSDK.MessageHandle
 			return this;
 		}
 
-		public MessageChain AddButtonComponent(Component_Size component_Size, Component_Group component_Group)
+		public MessageChain AddButtonComponent(Component_Size component_Size, List<Component_Group> component_Group)
 		{
 			switch (component_Size)
 			{
 				case Component_Size.small:
-					smallComponent[0].Add(component_Group);
+					smallComponent.Add(component_Group);
 					break;
 				case Component_Size.middle:
-					midComponent[0].Add(component_Group);
+					midComponent.Add(component_Group);
 					break;
 				case Component_Size.big:
-					bigComponent[0].Add(component_Group);
+					bigComponent.Add(component_Group);
 					break;
 				default:
 					break;

@@ -80,9 +80,9 @@ Content-Type: application/json";
 
 		//添加组件信息
 		msgContentInfo.panel!.template_id = msg_content.template_id;
-		msgContentInfo.panel.small_component_group_list = msg_content.smallComponent[0].Count == 0 ? null! : msg_content.smallComponent;
-		msgContentInfo.panel.mid_component_group_list = msg_content.midComponent[0].Count == 0 ? null! : msg_content.midComponent;
-		msgContentInfo.panel.big_component_group_list = msg_content.bigComponent[0].Count == 0 ? null! : msg_content.bigComponent;
+		msgContentInfo.panel.small_component_group_list = msg_content.smallComponent.Count == 0 ? null! : msg_content.smallComponent;
+		msgContentInfo.panel.mid_component_group_list = msg_content.midComponent.Count == 0 ? null! : msg_content.midComponent;
+		msgContentInfo.panel.big_component_group_list = msg_content.bigComponent.Count == 0 ? null! : msg_content.bigComponent;
 
 		//发送消息
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);

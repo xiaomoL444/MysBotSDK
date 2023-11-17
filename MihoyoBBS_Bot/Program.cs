@@ -158,7 +158,7 @@ static class Program
 		Array.ForEach(DeleteRobot.ToArray(), method => { mysBot.MessageReceiver.OfType<DeleteRobotReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
 		Array.ForEach(AddQuickEmoticon.ToArray(), method => { mysBot.MessageReceiver.OfType<AddQuickEmoticonReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
 		Array.ForEach(AuditCallback.ToArray(), method => { mysBot.MessageReceiver.OfType<AuditCallbackReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
-		Array.ForEach(AuditCallback.ToArray(), method => { mysBot.MessageReceiver.OfType<ClickMsgComponentReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
+		Array.ForEach(ClickMsgComponent.ToArray(), method => { mysBot.MessageReceiver.OfType<ClickMsgComponentReceiver>().Subscribe(async (receiver) => { if (method.Enable) { await method.Execute(receiver); } }); });
 
 		await Commond();
 	}
