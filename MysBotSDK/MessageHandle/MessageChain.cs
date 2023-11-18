@@ -193,7 +193,7 @@ namespace MysBotSDK.MessageHandle
 			return this;
 		}
 
-		public MessageChain AddButtonComponent(Component_Size component_Size, List<Component_Group> component_Group)
+		public MessageChain ButtonComponent(Component_Size component_Size, List<Component_Group> component_Group)
 		{
 			switch (component_Size)
 			{
