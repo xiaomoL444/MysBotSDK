@@ -16,6 +16,14 @@ using System.Text;
 
 namespace MysBotSDK.MessageHandle;
 
+public static class Date
+{
+	public static int retcode = 0;
+	public static string message = "";
+	[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+	public static object data = new();
+}
+
 public static class MessageSender
 {
 	internal static string GetHeader(MysBot mysBot)//没有x-rpc-bot_villa_id
@@ -104,7 +112,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data==null?"": json.data.bot_msg_id };
 	}
 
 	/// <summary>

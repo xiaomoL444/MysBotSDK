@@ -72,6 +72,16 @@ namespace MysBotSDK.MessageHandle
 				}
 				
 			}
+			Text(text);
+			return this;
+		}
+		/// <summary>
+		/// 插入一段文本
+		/// </summary>
+		/// <param name="text">文本内容</param>
+		/// <returns>消息链</returns>
+		public MessageChain Text(string text)
+		{
 			this.text.Add(text.ConvertUTF8ToUTF16());
 			return this;
 		}
