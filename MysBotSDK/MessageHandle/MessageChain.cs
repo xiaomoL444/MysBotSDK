@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using static MysBotSDK.MessageHandle.Info.Entity_Detail;
 
 namespace MysBotSDK.MessageHandle
 {
@@ -49,13 +50,57 @@ namespace MysBotSDK.MessageHandle
 		/// 插入一段文本
 		/// </summary>
 		/// <param name="text">文本内容</param>
+		/// <param name="font_Sytle">字体样式</param>
 		/// <returns>消息链</returns>
-		public MessageChain Text(string text)
+		public MessageChain Text(string text,Entity_Detail.Font_Sytle font_Sytle=Entity_Detail.Font_Sytle.None)
 		{
+			if (font_Sytle != Entity_Detail.Font_Sytle.None)
+			{
+				for (int i = 0; i < Enum.GetNames(typeof(Entity_Detail.Font_Sytle)).Length-1; i++)
+				{
+					if (((int)font_Sytle & (1 << i)) != 0)
+					{
+						this.IDs.Add((this.text.Count - 1, new Entity()
+						{
+							entity = new Entity_Detail()
+							{
+								type = Entity_Detail.EntityType.style,
+								font_style = (Entity_Detail.Font_Sytle)(1 << i)
+							}
+						}));
+					}
+				}
+				
+			}
 			this.text.Add(text.ConvertUTF8ToUTF16());
 			return this;
 		}
 
+		public MessageChain Font_Style(UInt64 offset,UInt64 length,Font_Sytle font_Sytle=Font_Sytle.None)
+		{
+			if (font_Sytle != Entity_Detail.Font_Sytle.None)
+			{
+				for (int i = 0; i < Enum.GetNames(typeof(Entity_Detail.Font_Sytle)).Length - 1; i++)
+				{
+					if (((int)font_Sytle & (1 << i)) != 0)
+					{
+						entities_.Add(new()
+						{
+							offset = offset,
+							length = length,
+							entity = new()
+							{
+								type = Entity_Detail.EntityType.style,
+								font_style = (Entity_Detail.Font_Sytle)(1 << i)
+							}
+						}) ;
+					}
+				}
+
+			}
+			
+			return this;
+		}
 		/// <summary>
 		/// 插入一段@At消息(不能与AtAll()同时使用)
 		/// </summary>
@@ -226,6 +271,14 @@ namespace MysBotSDK.MessageHandle
 								offset = (ulong)text_.Length
 							});
 							text_ += entity.entity.entity.url.ConvertUTF8ToUTF16();
+							break;
+						case Entity_Detail.EntityType.style:
+							entities_.Add(new()
+							{
+								entity = entity.entity.entity,
+								length = entity.entity.length == 0 ? (ulong)(text[entity.index + 1].ConvertUTF8ToUTF16().Length) : entity.entity.length,
+								offset = entity.entity.offset == 0 ? (ulong)text_.Length : entity.entity.offset
+							});
 							break;
 						default:
 							break;

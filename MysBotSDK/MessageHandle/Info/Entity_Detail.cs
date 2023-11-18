@@ -37,7 +37,11 @@ namespace MysBotSDK.MessageHandle.Info
 			/// <summary>
 			/// 链接
 			/// </summary>
-			link = 4
+			link = 4,
+			/// <summary>
+			/// 文字样式
+			/// </summary>
+			style = 5,
 		}
 
 		/// <summary>
@@ -69,5 +73,38 @@ namespace MysBotSDK.MessageHandle.Info
 		/// 字段为true时，跳转链接会带上含有用户信息的token
 		/// </summary>
 		public bool requires_bot_access_token { get; set; }
+
+		/// <summary>
+		/// 文字样式
+		/// </summary>
+		[JsonConverter(typeof(StringEnumConverter))]
+		public Font_Sytle font_style { get; set; }
+		/// <summary>
+		/// 文字样式类型
+		/// </summary>
+		[Flags]
+		public enum Font_Sytle
+		{
+			/// <summary>
+			/// 无
+			/// </summary>
+			None=0,
+			/// <summary>
+			/// 加粗
+			/// </summary>
+			bold = 1,
+			/// <summary>
+			///斜体
+			/// </summary>
+			italic = 2,
+			/// <summary>
+			/// 删除线
+			/// </summary>
+			strikethrough = 4,
+			/// <summary>
+			/// 下滑线
+			/// </summary>
+			underline = 8,
+		}
 	}
 }
