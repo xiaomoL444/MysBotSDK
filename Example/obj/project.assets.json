@@ -44,7 +44,7 @@
           }
         }
       },
-      "MysBotSDK/1.0.0": {
+      "MysBotSDK/1.5.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -137,7 +137,7 @@
         "websocketsharp-netstandard.nuspec"
       ]
     },
-    "MysBotSDK/1.0.0": {
+    "MysBotSDK/1.5.0": {
       "type": "project",
       "path": "../MysBotSDK/MysBotSDK.csproj",
       "msbuildProject": "../MysBotSDK/MysBotSDK.csproj"
@@ -145,7 +145,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "MysBotSDK >= 1.0.0"
+      "MysBotSDK >= 1.5.0"
     ]
   },
   "packageFolders": {

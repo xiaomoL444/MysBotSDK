@@ -56,15 +56,23 @@ public static class HttpClass
 
 		while ((temp_str = stringReader.ReadLine()) != null)//分割请求头，以第一个:为分割符
 		{
-			if (temp_str.EndsWith(";"))
+			try
 			{
-				temp_str = temp_str.Substring(0, temp_str.Length - 1);
+				if (temp_str.EndsWith(";"))
+				{
+					temp_str = temp_str.Substring(0, temp_str.Length - 1);
+				}
+				int index = temp_str.IndexOf(':');
+				string name = temp_str.Substring(0, index);
+				string value = temp_str.Substring(index + 1, temp_str.Length - 1 - index);
+				//httpRequestMessage.Headers.Add(name,value);
+				httpRequestMessage.Headers.TryAddWithoutValidation(name, value);
 			}
-			int index = temp_str.IndexOf(':');
-			string name = temp_str.Substring(0, index);
-			string value = temp_str.Substring(index + 1, temp_str.Length - 1 - index);
-			//httpRequestMessage.Headers.Add(name,value);
-			httpRequestMessage.Headers.TryAddWithoutValidation(name, value);
+			catch (Exception)
+			{
+				Logger.LogError($"分割请求头失败temp_str:{temp_str}，跳过该请求头");
+			}
+
 		}
 		return httpRequestMessage;
 	}

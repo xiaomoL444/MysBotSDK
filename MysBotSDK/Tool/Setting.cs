@@ -45,4 +45,6 @@ public class Setting
 	public const string UploadImage = mys_domain + "/vila/api/bot/platform/getUploadImageParams";//Get
 
 	public const string DeleteVillaMember = mys_domain + "/vila/api/bot/platform/deleteVillaMember";//Post  
+
+	public const string GetWebSocketInfo = mys_domain+"/vila/api/bot/platform/getWebsocketInfo";//Get http://devapi-takumi.mihoyo.com
 }

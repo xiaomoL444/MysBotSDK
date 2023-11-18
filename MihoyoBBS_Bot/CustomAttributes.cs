@@ -44,6 +44,10 @@ public class AuditCallbackAttribute : ExtendDataAttribute
 {
 
 }
+public class ClickMsgComponentAttribute : ExtendDataAttribute
+{
+
+}
 public class StartAttribute : ProgramAttribute
 {
 

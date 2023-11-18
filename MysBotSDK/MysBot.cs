@@ -5,12 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
-using System.Runtime.InteropServices;
 
 namespace MysBotSDK
 {
@@ -189,6 +187,9 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 						break;
 					case EventType.AuditCallback:
 						messageReceiver.OnNext((AuditCallbackReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.ClickMsgComponent:
+						messageReceiver.OnNext((ClickMsgComponentReceiver)messageReceiverBase.receiver);
 						break;
 					default:
 						break;

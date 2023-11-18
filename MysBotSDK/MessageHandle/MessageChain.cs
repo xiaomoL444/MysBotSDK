@@ -2,11 +2,13 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using static MysBotSDK.MessageHandle.Info.Entity_Detail;
 
 namespace MysBotSDK.MessageHandle
 {
@@ -27,6 +29,13 @@ namespace MysBotSDK.MessageHandle
 		private List<string> text { get; set; }
 		private List<(int index, Entity entity)> IDs { get; set; }
 
+		public UInt64 template_id { get; set; }
+		public List<List<Component_Group>> smallComponent { get; private set; } = new List<List<Component_Group>>();
+		public List<List<Component_Group>> midComponent { get; private set; } = new List<List<Component_Group>>();
+		public List<List<Component_Group>> bigComponent { get; private set; } = new List<List<Component_Group>>();
+
+		public List<PicContentInfo> images { get; set; } = new();
+
 		public MessageChain()
 		{
 			text_ = string.Empty;
@@ -41,6 +50,35 @@ namespace MysBotSDK.MessageHandle
 		/// 插入一段文本
 		/// </summary>
 		/// <param name="text">文本内容</param>
+		/// <param name="font_Sytle">字体样式</param>
+		/// <returns>消息链</returns>
+		public MessageChain Text(string text,Entity_Detail.Font_Sytle font_Sytle=Entity_Detail.Font_Sytle.None)
+		{
+			if (font_Sytle != Entity_Detail.Font_Sytle.None)
+			{
+				for (int i = 0; i < Enum.GetNames(typeof(Entity_Detail.Font_Sytle)).Length-1; i++)
+				{
+					if (((int)font_Sytle & (1 << i)) != 0)
+					{
+						this.IDs.Add((this.text.Count - 1, new Entity()
+						{
+							entity = new Entity_Detail()
+							{
+								type = Entity_Detail.EntityType.style,
+								font_style = (Entity_Detail.Font_Sytle)(1 << i)
+							}
+						}));
+					}
+				}
+				
+			}
+			Text(text);
+			return this;
+		}
+		/// <summary>
+		/// 插入一段文本
+		/// </summary>
+		/// <param name="text">文本内容</param>
 		/// <returns>消息链</returns>
 		public MessageChain Text(string text)
 		{
@@ -48,6 +86,31 @@ namespace MysBotSDK.MessageHandle
 			return this;
 		}
 
+		public MessageChain Font_Style(UInt64 offset,UInt64 length,Font_Sytle font_Sytle=Font_Sytle.None)
+		{
+			if (font_Sytle != Entity_Detail.Font_Sytle.None)
+			{
+				for (int i = 0; i < Enum.GetNames(typeof(Entity_Detail.Font_Sytle)).Length - 1; i++)
+				{
+					if (((int)font_Sytle & (1 << i)) != 0)
+					{
+						entities_.Add(new()
+						{
+							offset = offset,
+							length = length,
+							entity = new()
+							{
+								type = Entity_Detail.EntityType.style,
+								font_style = (Entity_Detail.Font_Sytle)(1 << i)
+							}
+						}) ;
+					}
+				}
+
+			}
+			
+			return this;
+		}
 		/// <summary>
 		/// 插入一段@At消息(不能与AtAll()同时使用)
 		/// </summary>
@@ -140,6 +203,31 @@ namespace MysBotSDK.MessageHandle
 			return this;
 		}
 
+		public MessageChain ButtonComponent(Component_Size component_Size, List<Component_Group> component_Group)
+		{
+			switch (component_Size)
+			{
+				case Component_Size.small:
+					smallComponent.Add(component_Group);
+					break;
+				case Component_Size.middle:
+					midComponent.Add(component_Group);
+					break;
+				case Component_Size.big:
+					bigComponent.Add(component_Group);
+					break;
+				default:
+					break;
+			}
+
+			return this;
+		}
+		public MessageChain Image(string url, PicContentInfo.Size size = null!, int file_size = 0)
+		{
+			images.Add(new PicContentInfo() { url = url, size = size, file_size = file_size });
+			return this;
+		}
+
 		internal async Task<MessageChain> Bulid()
 		{
 			for (int i = 0; i < text.Count; i++)
@@ -194,13 +282,30 @@ namespace MysBotSDK.MessageHandle
 							});
 							text_ += entity.entity.entity.url.ConvertUTF8ToUTF16();
 							break;
+						case Entity_Detail.EntityType.style:
+							entities_.Add(new()
+							{
+								entity = entity.entity.entity,
+								length = entity.entity.length == 0 ? (ulong)(text[entity.index + 1].ConvertUTF8ToUTF16().Length) : entity.entity.length,
+								offset = entity.entity.offset == 0 ? (ulong)text_.Length : entity.entity.offset
+							});
+							break;
 						default:
 							break;
 					}
 				}
 
+				//添加组件
+
 			}
 			return this;
 		}
+	}
+
+	public enum Component_Size
+	{
+		small = 0,
+		middle = 1,
+		big = 2,
 	}
 }
