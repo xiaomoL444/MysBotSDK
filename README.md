@@ -17,6 +17,8 @@ using MysBotSDK.Tool;
 
 实例化Bot
 
+注意！此ws連接不支持官方的ws連接，只是個人用於反代，預計1.5更新支持官方的ws連接
+
 ```
 MysBot mysBot = new MysBot()
 {
