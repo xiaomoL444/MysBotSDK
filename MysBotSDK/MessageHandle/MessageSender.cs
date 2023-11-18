@@ -158,7 +158,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id =json.data==null?null: json.data.bot_msg_id };
 	}
 
 	/// <summary>
@@ -191,7 +191,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id =json.data==null?null: json.data.bot_msg_id };
 	}
 
 	/// <summary>
@@ -222,7 +222,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null : json.data.bot_msg_id };
 	}
 
 	/// <summary>
@@ -253,7 +253,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null : json.data.bot_msg_id };
 	}
 
 	/// <summary>
@@ -285,7 +285,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null : json.data.bot_msg_id };
 	}
 	#endregion
 
@@ -316,7 +316,7 @@ Content-Type: application/json";
 			data = new { group_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, group_id = json.data.group_id };
+		return new() { message = json!.message, retcode = json.retcode, group_id = json.data == null ? null : json.data.group_id };
 	}
 
 	/// <summary>
@@ -461,7 +461,7 @@ Content-Type: application/json";
 			data = new { member = new Member() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, member = json.data.member };
+		return new() { message = json!.message, retcode = json.retcode, member = json.data == null ? null : json.data.member };
 	}
 
 	/// <summary>
@@ -489,7 +489,7 @@ Content-Type: application/json";
 			data = new { villa = new Villa() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, villa = json.data.villa };
+		return new() { message = json!.message, retcode = json.retcode, villa = json.data == null ? null : json.data.villa };
 	}
 
 	/// <summary>
@@ -518,7 +518,7 @@ Content-Type: application/json";
 			data = new { room = new Room() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, room = json.data.room };
+		return new() { message = json!.message, retcode = json.retcode, room = json.data == null ? null : json.data.room };
 	}
 
 	/// <summary>
@@ -555,6 +555,12 @@ Content-Type: application/json";
 			retcode = json!.retcode;
 			message = json.message;
 
+			//如果获取失败退出循环
+			if (json.data==null)
+			{
+				break;
+			}
+
 			result_count = json.data.list.Count;
 			members.AddRange(json.data.list);
 		} while (result_count == size_count && retcode == 0);
@@ -587,7 +593,7 @@ Content-Type: application/json";
 			data = new { list = new List<Group>() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, groups = json.data.list };
+		return new() { message = json!.message, retcode = json.retcode, groups = json.data == null ? null : json.data.list };
 	}
 
 	/// <summary>
@@ -614,7 +620,7 @@ Content-Type: application/json";
 			data = new { list = new List<Room>() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, rooms = json.data.list };
+		return new() { message = json!.message, retcode = json.retcode, rooms = json.data == null ? null : json.data.list };
 	}
 
 	/// <summary>
@@ -642,7 +648,7 @@ Content-Type: application/json";
 			data = new { access_info = new BotMemberAccessInfo(), member = new Member() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, access_info = json.data.access_info, member = json.data.member };
+		return new() { message = json!.message, retcode = json.retcode, access_info = json.data == null ? null : json.data.access_info, member = json.data == null ? null : json.data.member };
 	}
 
 	/// <summary>
@@ -668,14 +674,14 @@ Content-Type: application/json";
 			data = new { list = new List<Emoticon>() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, emoticons = json.data.list };
+		return new() { message = json!.message, retcode = json.retcode, emoticons = json.data == null ? null : json.data.list };
 	}
 	#endregion
 
 	#region 踢出用户
 
 	/// <summary>
-	/// 提出用户
+	/// 踢出用户
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="user_id">用户uid</param>
@@ -762,7 +768,7 @@ Content-Type: application/json";
 			data = new { id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, id = json.data.id };
+		return new() { message = json!.message, retcode = json.retcode, id = json.data == null ? null : json.data.id };
 	}
 
 	/// <summary>
@@ -829,7 +835,7 @@ Content-Type: application/json";
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="role_id">身份组ID</param>
-	/// <returns></returns>	
+	/// <returns>message:返回消息,retcode:返回消息code,member_roles:MemberRole身份组</returns>	
 	public static async Task<(string message, int retcode, MemberRole member_role)> GetVillaMemberRoleInfo(UInt64 villa_id, UInt64 role_id)
 	{
 		return await GetVillaMemberRoleInfo(mysBot[mysBot.Count - 1], villa_id, role_id);
@@ -849,7 +855,7 @@ Content-Type: application/json";
 			data = new { role = new MemberRole() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, member_role = json.data.role };
+		return new() { message = json!.message, retcode = json.retcode, member_role = json.data == null ? null : json.data.role };
 	}
 
 	/// <summary>
@@ -876,7 +882,7 @@ Content-Type: application/json";
 			data = new { list = new List<MemberRole>() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, member_roles = json.data.list };
+		return new() { message = json!.message, retcode = json.retcode, member_roles = json.data == null ? null : json.data.list };
 	}
 	#endregion
 
@@ -940,7 +946,7 @@ Content-Type: application/json";
 			data = new { new_url = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, new_url = json.data.new_url };
+		return new() { message = json!.message, retcode = json.retcode, new_url = json.data == null ? null : json.data.new_url };
 	}
 
 	/// <summary>
@@ -1028,7 +1034,7 @@ Content-Type: application/json";
 		};
 		var oss_json = JsonConvert.DeserializeAnonymousType(oss_res.Content.ReadAsStringAsync().Result, oss_AnonymousType);
 
-		return new() { retcode = oss_json!.retcode, message = oss_json.message, url = oss_json.data.url };
+		return new() { retcode = oss_json!.retcode, message = oss_json.message, url = json.data == null ? null : oss_json.data.url };
 	}
 
 	#endregion
