@@ -128,7 +128,13 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
 
 ### Fix
 
-Component_Group 变成抽象类
+（v1.6）预计在v1.6新增ws连接与按钮消息
+
+v1.5新增按钮面板与相应的回调消息
+
+v1.5新增更多文字样式
+
+v1.5支持在文字里插入图片
 
 v1.4将图片转存Transferimage方法改名为TransferImage,将与以往插件不兼容
 
