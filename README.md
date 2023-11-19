@@ -20,7 +20,7 @@ using MysBotSDK.Tool;
 ```
 MysBot mysBot = new MysBot()
 {
-	ws_callback_Address = ""//ws反代回调地址(不可同时填入ws_callback_Address与http_callback_Address)
+	ws_callback_Address = ""//ws反代回调地址(非官方的wss连接，请勿使用)
 	http_callback_Address = "",//回调地址,填写你在开发平台输入的回调地址，或者你的回调地址是经过映射的就填写映射的Ip :http://domain.com || 127.0.0.1:3280
 	bot_id = "",//开发平台上显示的机器人ID :bot_******
 	secret = "",//开发平台上显示的secret
@@ -142,7 +142,11 @@ v1.4将图片转存Transferimage方法改名为TransferImage,将与以往插件�
 
 将计划为SDK添加启动程序
 
+MessageReceiver类重构重构!!!
+
 如果学到了更好的语句与方法就尝试重构一些方法
+
+消息返回readAsync要加上await...好多都没有加上
 
 有一些报错似乎也没有弄好...(要多实现几个类吗...?)(不是不知道哪里有bug，是一些类似网络断开等导致运行中断的这种，可能还需要大家自己写try...?要是写在SDK里面还是会throw错误)
 
