@@ -39,8 +39,18 @@ public static class HttpClass
 	/// <returns>Http回复消息</returns>
 	public static async Task<HttpResponseMessage> SendAsync(HttpRequestMessage httpRequestMessage)
 	{
-		var res = await client.SendAsync(httpRequestMessage, HttpCompletionOption.ResponseHeadersRead);
-		return res;
+		try
+		{
+			var res = await client.SendAsync(httpRequestMessage, HttpCompletionOption.ResponseHeadersRead);
+			return res;
+		}
+		catch (Exception e)
+		{
+			Logger.LogError($"消息发送失败\n{e.InnerException}");
+			return null;
+		}
+
+
 	}
 
 	/// <summary>

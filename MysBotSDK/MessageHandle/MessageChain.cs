@@ -70,7 +70,6 @@ namespace MysBotSDK.MessageHandle
 						}));
 					}
 				}
-				
 			}
 			Text(text);
 			return this;
