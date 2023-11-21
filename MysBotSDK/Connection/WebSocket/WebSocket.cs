@@ -60,49 +60,73 @@ internal class WsClient
 	/// </summary>
 	List<byte[]> RetryMsg = new List<byte[]>();
 
+	/// <summary>
+	/// 心跳包发送是否失败，已用来判断是否兜底消息
+	/// </summary>
+	bool isHeartBeatFail { get; set; } = false;
+
+	/// <summary>
+	/// 上一段心跳包伺服器的时间
+	/// </summary>
+	UInt64 Last_server_timestamp { get; set; }
+
+	public UInt64 GetCurrentTime()
+	{
+		return (ulong)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalMicroseconds;
+	}
+
 	public WsClient(string bot_id, string bot_secret, uint villa_id = 0)
 	{
-		var wsInfo = GetWebSocketInfo(bot_id, bot_secret, villa_id);
-		//若返回值不等于0，错误
-		if (wsInfo.retcode != 0)
-		{
-			Logger.LogWarnning($"连接失败{wsInfo}");
-			isConnectFail = true;
-			return;
-		}
-		_ = Task.Run(() =>
-		{
-			webSocket = new WebSocketSharp.WebSocket(wsInfo.websocket_url);
-
-			webSocket.OnOpen += (sender, e) =>
+		//连接委托
+		Action connectAction = new(() => { });
+		connectAction = async () =>
 			{
-				//伺服器开启
-				Login(wsInfo.websocket_conn_uid, villa_id, bot_secret, bot_id, wsInfo.app_id, wsInfo.device_id, wsInfo.platform);
-				//输入登录指令，失败没有登录(懒)
-			};
-			webSocket.OnMessage += (sedner, e) =>
-			{
-				if (e.IsBinary)
+				//获取ws链接
+				var wsInfo = await GetWebSocketInfo(bot_id, bot_secret, villa_id);
+				//若返回值不等于0，错误
+				if (wsInfo.retcode != 0)
 				{
-					//解析数据
-					ReceiveMsg(e.RawData);
+					Logger.LogWarnning($"连接失败{wsInfo}，五秒后尝试重新连接");
+					isConnectFail = true;
+					await Task.Delay(5 * 1000);
+					await Task.Run(connectAction);
+					return;
 				}
+
+				webSocket = new WebSocketSharp.WebSocket(wsInfo.websocket_url);
+
+				webSocket.OnOpen += (sender, e) =>
+				{
+					//伺服器开启
+					Login(wsInfo.websocket_conn_uid, villa_id, bot_secret, bot_id, wsInfo.app_id, wsInfo.device_id, wsInfo.platform);
+					//输入登录指令，失败没有登录(懒)
+				};
+				webSocket.OnMessage += (sedner, e) =>
+				{
+					if (e.IsBinary)
+					{
+						//解析数据
+						ReceiveMsg(e.RawData);
+					}
+				};
+				webSocket.OnClose += async (sedner, e) =>
+				{
+					//伺服器关闭
+					Logger.LogWarnning("连接关闭，五秒后尝试重连");
+					await Task.Delay(5 * 1000);
+					await Task.Run(connectAction);
+				};
+				webSocket.OnError += (sender, e) =>
+				{
+					//发生错误
+					Logger.LogError($"发生未知错误{e.Message}\n{e.Exception}");
+				};
 			};
-			webSocket.OnClose += (sedner, e) =>
-			{
-				//伺服器关闭
-				Logger.LogWarnning("伺服器关闭!");
-			};
-			webSocket.OnError += (sender, e) =>
-			{
-				//发生错误
-				Logger.LogError($"发生未知错误{e.Message}\n{e.Exception}");
-			};
-		});
+		Task.Run(connectAction);
 		return;
 	}
 
-	public (string message, int retcode, string websocket_url, ulong websocket_conn_uid, int app_id, int platform, string device_id) GetWebSocketInfo(string bot_id, string bot_secret, uint villa_id = 0)
+	public async Task<(string message, int retcode, string websocket_url, ulong websocket_conn_uid, int app_id, int platform, string device_id)> GetWebSocketInfo(string bot_id, string bot_secret, uint villa_id = 0)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetWebSocketInfo);
 
@@ -113,7 +137,7 @@ x-rpc-bot_ts:{(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalMicr
 x-rpc-bot_nonce:{Guid.NewGuid()}
 Content-Type:application/json");
 
-		var res = HttpClass.SendAsync(httpRequestMessage).Result;
+		var res = await HttpClass.SendAsync(httpRequestMessage);
 
 		var AnonymousType = new
 		{
@@ -128,7 +152,7 @@ Content-Type:application/json");
 				device_id = ""
 			}
 		};
-		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType)!;
+		var json = JsonConvert.DeserializeAnonymousType(await (res.Content.ReadAsStringAsync()), AnonymousType)!;
 
 		try
 		{
@@ -191,6 +215,18 @@ Content-Type:application/json");
 		bytes.AddRange(wsMsg.BodyData.ToLittleEndian());
 
 		//发送
+		if (isConnectFail && !bizType.Equals(Command.Heartbeat))
+		{
+			//心跳包发送失败，消息兜底
+			RetryMsg.Add(bytes.ToArray());
+			return;
+		}
+		if (!isConnectFail && RetryMsg.Count != 0)
+		{
+			//心跳包恢复，将兜底的信息重新发送
+			RetryMsg.ForEach(retryMsg => { webSocket!.Send(retryMsg.ToArray()); });
+			RetryMsg.Clear();
+		}
 		webSocket!.Send(bytes.ToArray());
 
 		return;
@@ -233,6 +269,7 @@ Content-Type:application/json");
 				LogoutReply(wsMsg);
 				break;
 			case 6://PHeartBeatReply
+				HeartBeatReply(wsMsg);
 				break;
 			case 53://PKickOff
 				break;
@@ -278,13 +315,17 @@ Content-Type:application/json");
 	{
 		PHeartBeat pHeartBeat = new PHeartBeat
 		{
-			ClientTimestamp = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalMicroseconds.ToString()
+			ClientTimestamp = GetCurrentTime().ToString()
 		};
 		SendMsg(Command.Heartbeat, pHeartBeat, (uint)app_id, MsgType.Request);
 	}
 	#endregion
 
 	#region 接收命令
+	/// <summary>
+	/// 收到登录回应
+	/// </summary>
+	/// <param name="wsMsg">wss消息体</param>
 	public void LoginReply(WebSocketMessage wsMsg)
 	{
 		PLoginReply pLoginReply = PLoginReply.Parser.ParseFrom(wsMsg.BodyData);
@@ -292,22 +333,29 @@ Content-Type:application/json");
 		{
 			case 0:
 				Logger.Log("WebSocket连接成功");
-				//登录成功，进行操作,启动计时器每二十秒发送一次心跳包
-				heartBeatTimer = new System.Timers.Timer(20 * 1000);
+				//储存当前时间
+				Last_server_timestamp = GetCurrentTime();
+				//登录成功，进行操作,启动计时器每十秒发送一次心跳包
+				heartBeatTimer = new System.Timers.Timer(10 * 1000);
 				heartBeatTimer.Elapsed += (sender, e) =>
 				{
+					if ((Last_server_timestamp - GetCurrentTime()) / (Math.Pow(10, 6)) >= 60)
+					{
+						//心跳包超过60秒没有恢复，断开连接(onClose里调用重新连接)
+						webSocket?.Close();
+					}
 					HeartBeat((int)wsMsg.AppId);
 				};
 				heartBeatTimer.Start();
 				isConnectFail = false;
 
 				break;
-			case 1000://登录失败，参数错误
-				Logger.LogError("登录失败，参数错误");
+			case 1000://登出失败，参数错误
+				Logger.LogError("登出失败，参数错误");
 				isConnectFail = true;
 				break;
-			case 1001://登录失败，系统错误
-				Logger.LogError("登录失败，系统错误");
+			case 1001://登出失败，系统错误
+				Logger.LogError("登出失败，系统错误");
 				isConnectFail = true;
 				break;
 			default:
@@ -316,6 +364,10 @@ Content-Type:application/json");
 		}
 	}
 
+	/// <summary>
+	/// 收到登出回应
+	/// </summary>
+	/// <param name="wsMsg">wss消息体</param>
 	public void LogoutReply(WebSocketMessage wsMsg)
 	{
 		PLogoutReply pLogoutReply = PLogoutReply.Parser.ParseFrom(wsMsg.BodyData);
@@ -323,6 +375,7 @@ Content-Type:application/json");
 		{
 			case 0:
 				Logger.Log("WebSocket登出成功");
+				webSocket?.Close();
 				if (heartBeatTimer != null)
 				{
 					//关闭计时器
@@ -334,6 +387,67 @@ Content-Type:application/json");
 				break;
 			case 1001://登录失败，系统错误
 				Logger.LogError("登录失败，系统错误");
+				break;
+			default:
+				Logger.LogWarnning("无法识别的返回码");
+				break;
+		}
+	}
+
+	/// <summary>
+	/// 收到心跳包回应
+	/// </summary>
+	/// <param name="wsMsg"></param>
+	public void HeartBeatReply(WebSocketMessage wsMsg)
+	{
+		PHeartBeatReply pHeartBeatReply = PHeartBeatReply.Parser.ParseFrom(wsMsg.BodyData);
+		switch (pHeartBeatReply.Code)
+		{
+			case 0:
+				//Logger.Debug("收到心跳包");
+				//Logger.Debug($"{pHeartBeatReply.ServerTimestamp}");
+				Last_server_timestamp = pHeartBeatReply.ServerTimestamp;
+				isHeartBeatFail = false;
+				break;
+			case 1000://心跳包错误，参数错误
+				Logger.LogError("心跳包错误，参数错误");
+				isHeartBeatFail = true;
+				break;
+			case 1001://心跳包错误，系统错误
+				Logger.LogError("心跳包错误，系统错误");
+				isHeartBeatFail = true;
+				break;
+			default:
+				Logger.LogWarnning("无法识别的返回码");
+				isHeartBeatFail = true;
+				break;
+		}
+	}
+
+	/// <summary>
+	/// 收到踢出下线回应
+	/// </summary>
+	/// <param name="wsMsg"></param>
+	public void KickOff(WebSocketMessage wsMsg)
+	{
+		PKickOff pKickOff = PKickOff.Parser.ParseFrom(wsMsg.BodyData);
+		switch (pKickOff.Code)
+		{
+			case 0:
+				Logger.LogWarnning($"收到踢出登录的消息，错误码 {pKickOff.Code} ，错误信息 {pKickOff.Reason}");
+				//关闭wss连接
+				webSocket?.Close();
+				if (heartBeatTimer != null)
+				{
+					//关闭计时器
+					heartBeatTimer.Stop();
+				}
+				break;
+			case 1000://登录失败，参数错误
+				Logger.LogError("踢出失败，参数错误");
+				break;
+			case 1001://登录失败，系统错误
+				Logger.LogError("踢出失败，系统错误");
 				break;
 			default:
 				Logger.LogWarnning("无法识别的返回码");
