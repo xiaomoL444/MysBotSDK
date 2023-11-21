@@ -38,7 +38,7 @@ internal static class ExtensionEndianMethod
 	}
 }
 
-internal class WsClient
+internal class WsClient : IDisposable
 {
 	/// <summary>
 	/// 是否连接失败
@@ -69,6 +69,11 @@ internal class WsClient
 	/// 上一段心跳包伺服器的时间
 	/// </summary>
 	UInt64 Last_server_timestamp { get; set; }
+
+	/// <summary>
+	/// 是否是伺服器强制关闭连接
+	/// </summary>
+	bool isForceDisConnect { get; set; } = false;
 
 	public UInt64 GetCurrentTime()
 	{
@@ -112,15 +117,33 @@ internal class WsClient
 				webSocket.OnClose += async (sedner, e) =>
 				{
 					//伺服器关闭
-					Logger.LogWarnning("连接关闭，五秒后尝试重连");
+					Logger.LogWarnning("连接关闭，若不是伺服器请求的关闭，则五秒后尝试重连");
+					if (isForceDisConnect)
+					{
+						Logger.Log("伺服器强制关闭");
+						return;
+					}
 					await Task.Delay(5 * 1000);
 					await Task.Run(connectAction);
 				};
 				webSocket.OnError += (sender, e) =>
 				{
 					//发生错误
-					Logger.LogError($"发生未知错误{e.Message}\n{e.Exception}");
+					Logger.LogError($"发生未知错误{e.Message}\n{e.Exception}\n出现错误并没有重连机制");
 				};
+
+				try
+				{
+					//开启连接
+					webSocket.Connect();
+				}
+				catch (TimeoutException)
+				{
+					Logger.LogError("连接超时，五秒后重新连接");
+					await Task.Delay(5 * 1000);
+					await Task.Run(connectAction);
+				}
+
 			};
 		Task.Run(connectAction);
 		return;
@@ -341,8 +364,9 @@ Content-Type:application/json");
 				{
 					if ((Last_server_timestamp - GetCurrentTime()) / (Math.Pow(10, 6)) >= 60)
 					{
-						//心跳包超过60秒没有恢复，断开连接(onClose里调用重新连接)
+						//心跳包超过60秒没有恢复，断开连接(onClose里调用重新连接)，同时计时器停止
 						webSocket?.Close();
+						heartBeatTimer.Close();
 					}
 					HeartBeat((int)wsMsg.AppId);
 				};
@@ -453,6 +477,25 @@ Content-Type:application/json");
 				Logger.LogWarnning("无法识别的返回码");
 				break;
 		}
+	}
+
+	public void Dispose()
+	{
+		//伺服器关闭
+		if (webSocket != null && webSocket.IsAlive)
+		{
+			webSocket.Close();
+			webSocket = null;
+		}
+		//定时器关闭
+		if (heartBeatTimer != null)
+		{
+			heartBeatTimer.Stop();
+			heartBeatTimer.Dispose();
+			heartBeatTimer = null;
+		}
+		//兜底的消息清空
+		RetryMsg.Clear();
 	}
 	#endregion
 
