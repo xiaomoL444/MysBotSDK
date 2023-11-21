@@ -9,6 +9,8 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
+using VilaBot;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MysBotSDK
 {
@@ -161,6 +163,52 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			output.Write(buffer, 0, buffer.Length);
 		}
 		public void MessageHandle(string data)
+		{
+			//解析消息
+			try
+			{
+				MessageReceiverBase messageReceiverBase = new MessageReceiverBase(data);
+				//MessageReceiver应该是一个抽象类(父类)，然后下面就替换成事件触发器
+
+				switch (messageReceiverBase.EventType)
+				{
+					case EventType.JoinVilla:
+						messageReceiver.OnNext((JoinVillaReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.SendMessage:
+						messageReceiver.OnNext((SendMessageReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.CreateRobot:
+						messageReceiver.OnNext((CreateRobotReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.DeleteRobot:
+						messageReceiver.OnNext((DeleteRobotReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.AddQuickEmoticon:
+						messageReceiver.OnNext((AddQuickEmoticonReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.AuditCallback:
+						messageReceiver.OnNext((AuditCallbackReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.ClickMsgComponent:
+						messageReceiver.OnNext((ClickMsgComponentReceiver)messageReceiverBase.receiver);
+						break;
+					default:
+						break;
+				}
+			}
+			catch (Exception e)
+			{
+
+				Logger.LogError("解析消息失败" + e.StackTrace);
+			}
+		}
+
+		/// <summary>
+		/// 针对ws连接下的消息处理
+		/// </summary>
+		/// <param name="robotEventMessage"></param>
+		public void MessageHandle(RobotEventMessage robotEventMessage)
 		{
 			//解析消息
 			try

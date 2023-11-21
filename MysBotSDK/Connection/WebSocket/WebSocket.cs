@@ -40,6 +40,7 @@ internal static class ExtensionEndianMethod
 
 internal class WsClient : IDisposable
 {
+	public MysBot? selfBot;
 	/// <summary>
 	/// 是否连接失败
 	/// </summary>
@@ -71,7 +72,7 @@ internal class WsClient : IDisposable
 	UInt64 Last_server_timestamp { get; set; }
 
 	/// <summary>
-	/// 是否是伺服器强制关闭连接
+	/// 是否强制关闭连接并不再重连
 	/// </summary>
 	bool isForceDisConnect { get; set; } = false;
 
@@ -280,10 +281,12 @@ Content-Type:application/json");
 			return;
 		}
 
+		Logger.Log($"收到伺服器发送来的ID为 [ {wsMsg.ID} ] 的协议包");
 		//HandleMessage
 		switch (wsMsg.BizType)//唔姆唔姆...因为command里面没有RobotEvent所以用数字不用枚举了...
 		{
 			case 30001://RobotEvent
+				RobotEventHandle(wsMsg);
 				break;
 			case 7://PLoginReply
 				LoginReply(wsMsg);
@@ -295,8 +298,10 @@ Content-Type:application/json");
 				HeartBeatReply(wsMsg);
 				break;
 			case 53://PKickOff
+				KickOff(wsMsg);
 				break;
 			case 52://Shutdown
+				Shutdown(wsMsg);
 				break;
 			default:
 				Logger.LogError($"异常数据BizType = {wsMsg.BizType} ，请检查是数据异常还是暂未支持的数据类型");
@@ -346,6 +351,17 @@ Content-Type:application/json");
 
 	#region 接收命令
 	/// <summary>
+	/// 收到事件回调
+	/// </summary>
+	/// <param name="wsMsg"></param>
+	public void RobotEventHandle(WebSocketMessage wsMsg)
+	{
+		RobotEventMessage robotEventMessage = RobotEventMessage.Parser.ParseFrom(wsMsg.BodyData);
+		//var json = JsonFormatter.Default.Format(robotEvent);//尝试将Protobuf消息转化成Protobuf消息
+		selfBot?.MessageHandle(robotEventMessage);
+
+	}
+	/// <summary>
 	/// 收到登录回应
 	/// </summary>
 	/// <param name="wsMsg">wss消息体</param>
@@ -358,6 +374,9 @@ Content-Type:application/json");
 				Logger.Log("WebSocket连接成功");
 				//储存当前时间
 				Last_server_timestamp = GetCurrentTime();
+				//重置布尔值状态
+				isForceDisConnect = false;
+				isHeartBeatFail = false;
 				//登录成功，进行操作,启动计时器每十秒发送一次心跳包
 				heartBeatTimer = new System.Timers.Timer(10 * 1000);
 				heartBeatTimer.Elapsed += (sender, e) =>
@@ -389,7 +408,7 @@ Content-Type:application/json");
 	}
 
 	/// <summary>
-	/// 收到登出回应
+	/// 收到登出回应(断开连接不再重连)
 	/// </summary>
 	/// <param name="wsMsg">wss消息体</param>
 	public void LogoutReply(WebSocketMessage wsMsg)
@@ -399,6 +418,7 @@ Content-Type:application/json");
 		{
 			case 0:
 				Logger.Log("WebSocket登出成功");
+				isForceDisConnect = true;
 				webSocket?.Close();
 				if (heartBeatTimer != null)
 				{
@@ -449,7 +469,7 @@ Content-Type:application/json");
 	}
 
 	/// <summary>
-	/// 收到踢出下线回应
+	/// 收到踢出下线回应(断开连接不再重连)
 	/// </summary>
 	/// <param name="wsMsg"></param>
 	public void KickOff(WebSocketMessage wsMsg)
@@ -458,8 +478,9 @@ Content-Type:application/json");
 		switch (pKickOff.Code)
 		{
 			case 0:
-				Logger.LogWarnning($"收到踢出登录的消息，错误码 {pKickOff.Code} ，错误信息 {pKickOff.Reason}");
+				Logger.LogWarnning($"收到踢出登录的消息，状态码 {pKickOff.Code} ，原因 {pKickOff.Reason}");
 				//关闭wss连接
+				isForceDisConnect = true;
 				webSocket?.Close();
 				if (heartBeatTimer != null)
 				{
@@ -479,8 +500,30 @@ Content-Type:application/json");
 		}
 	}
 
+	/// <summary>
+	/// 伺服器发来关机信息(需要断开链接并进行重连)
+	/// </summary>
+	/// <param name="wsMsg"></param>
+	public void Shutdown(WebSocketMessage wsMsg)
+	{
+		Logger.Log("伺服器发来关闭消息，即将重新连接");
+		//计时器停止
+		if (heartBeatTimer != null)
+		{
+			heartBeatTimer.Stop();
+		}
+		//重置布尔值状态
+		isForceDisConnect = false;
+		isHeartBeatFail = false;
+		//清空兜底信息
+		RetryMsg.Clear();
+		//关闭连接，将自动重新连接
+		webSocket?.Close();
+	}
+
 	public void Dispose()
 	{
+		isForceDisConnect = true;
 		//伺服器关闭
 		if (webSocket != null && webSocket.IsAlive)
 		{
