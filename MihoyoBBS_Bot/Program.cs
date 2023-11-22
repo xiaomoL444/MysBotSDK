@@ -44,6 +44,8 @@ static class Program
 		{
 			mysBot = new MysBot()//末酱
 			{
+				WebsocketConnect = true,
+				test_villa_id = 8489,
 				loggerLevel = Logger.LoggerLevel.Log,
 				ws_callback_Address = GetAccountConfig("ws_callback_Address"),
 				bot_id = GetAccountConfig("mojiang_bot_id"),

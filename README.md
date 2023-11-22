@@ -4,7 +4,7 @@
 
 ## 使用
 
-先在Nuget安装以下包: Newtonsoft.Json WebSocketSharp-netstandard
+先在Nuget安装以下包: Newtonsoft.Json WebSocketSharp-netstandard Google.Protobuf
 
 引用命名空间
 
@@ -18,10 +18,21 @@ using MysBotSDK.Tool;
 实例化Bot
 
 ```
+//开启http回调
 MysBot mysBot = new MysBot()
 {
-	ws_callback_Address = ""//ws反代回调地址(非官方的wss连接，请勿使用)
 	http_callback_Address = "",//回调地址,填写你在开发平台输入的回调地址，或者你的回调地址是经过映射的就填写映射的Ip :http://domain.com || 127.0.0.1:3280
+	bot_id = "",//开发平台上显示的机器人ID :bot_******
+	secret = "",//开发平台上显示的secret
+	pub_key = "",//开发平台上显示的pub_key :-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY----- 此处原样复制即可，我写了删除\r。。。
+	loggerLevel = Logger.LoggerLevel.Log,//Log等级，Error>Warning>Log>Debug,不填写此项默认Log，但是Debug内容会记录到日志(.\log\yyyy-mm-dd.txt)里
+};
+
+//开启ws连接
+MysBot mysBot = new MysBot()
+{
+	WebsocketConnect = true,//表示开启ws连接
+	test_villa_id = 0,//若为未上线机器人，此处要填写调试大别野id
 	bot_id = "",//开发平台上显示的机器人ID :bot_******
 	secret = "",//开发平台上显示的secret
 	pub_key = "",//开发平台上显示的pub_key :-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY----- 此处原样复制即可，我写了删除\r。。。
