@@ -92,27 +92,7 @@ Content-Type: application/json";
 		msgContentInfo.panel.mid_component_group_list = msg_content.midComponent.Count == 0 ? null! : msg_content.midComponent;
 		msgContentInfo.panel.big_component_group_list = msg_content.bigComponent.Count == 0 ? null! : msg_content.bigComponent;
 
-		//发送消息
-		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
-		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
-
-		httpRequestMessage.Content = JsonContent.Create(new
-		{
-			room_id,
-			object_name,
-			msg_content = JsonConvert.SerializeObject(msgContentInfo)
-		});
-		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
-
-		var AnonymousType = new
-		{
-			retcode = 0,
-			message = "",
-			data = new { bot_msg_id = "" }
-		};
-		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data==null?"": json.data.bot_msg_id };
+		return await SendText(mysBot, villa_id, room_id, JsonConvert.SerializeObject(msgContentInfo));
 	}
 
 	/// <summary>
@@ -158,7 +138,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id =json.data==null?null: json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null : json.data.bot_msg_id };
 	}
 
 	/// <summary>
@@ -191,7 +171,7 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id =json.data==null?null: json.data.bot_msg_id };
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null : json.data.bot_msg_id };
 	}
 
 	/// <summary>
@@ -556,7 +536,7 @@ Content-Type: application/json";
 			message = json.message;
 
 			//如果获取失败退出循环
-			if (json.data==null)
+			if (json.data == null)
 			{
 				break;
 			}

@@ -24,35 +24,44 @@ static class Program
 	}
 	public static async Task Main()
 	{
-		//初始化Bot
+		//初始化Bot（改成纯读取配置信息）
 		MysBot mysBot;
-		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-		{
+		//if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+		//{
+		//	mysBot = new MysBot()//末酱映射机
+		//	{
+		//		loggerLevel = Logger.LoggerLevel.Debug,
+		//		http_callback_Address = GetAccountConfig("http_callback_Address"),
+		//		bot_id = GetAccountConfig("mojiang_ready_bot_id"),
+		//		secret = GetAccountConfig("mojiang_ready_secret"),
+		//		pub_key = GetAccountConfig("mojiang_ready_pub_key").Replace("\\n", "\n").TrimEnd(' ')
+		//	}.Initail();
+		//}
+		//else
+		//{
+		//	mysBot = new MysBot()//末酱
+		//	{
+		//		WebsocketConnect = true,
+		//		test_villa_id = 8489,
+		//		loggerLevel = Logger.LoggerLevel.Log,
+		//		ws_callback_Address = GetAccountConfig("ws_callback_Address"),
+		//		bot_id = GetAccountConfig("mojiang_bot_id"),
+		//		secret = GetAccountConfig("mojiang_secret"),
+		//		pub_key = GetAccountConfig("mojiang_pub_key").Replace("\\n", "\n").TrimEnd(' ')
+		//	}.Initail();
+		//}
 
-			Action saveAction = new Action(() => { });
-
-			mysBot = new MysBot()//末酱映射机
-			{
-				loggerLevel = Logger.LoggerLevel.Debug,
-				http_callback_Address = GetAccountConfig("http_callback_Address"),
-				bot_id = GetAccountConfig("mojiang_ready_bot_id"),
-				secret = GetAccountConfig("mojiang_ready_secret"),
-				pub_key = GetAccountConfig("mojiang_ready_pub_key").Replace("\\n", "\n").TrimEnd(' ')
-			}.Initail();
-		}
-		else
+		mysBot = new MysBot()//末酱
 		{
-			mysBot = new MysBot()//末酱
-			{
-				WebsocketConnect = true,
-				test_villa_id = 8489,
-				loggerLevel = Logger.LoggerLevel.Log,
-				ws_callback_Address = GetAccountConfig("ws_callback_Address"),
-				bot_id = GetAccountConfig("mojiang_bot_id"),
-				secret = GetAccountConfig("mojiang_secret"),
-				pub_key = GetAccountConfig("mojiang_pub_key").Replace("\\n", "\n").TrimEnd(' ')
-			}.Initail();
-		}
+			WebsocketConnect = bool.Parse(GetAccountConfig("WebsocketConnect")),
+			test_villa_id = uint.Parse(GetAccountConfig("test_villa_id")),
+			loggerLevel = Logger.LoggerLevel.Debug,
+			ws_callback_Address = GetAccountConfig("ws_callback_Address"),
+			http_callback_Address = GetAccountConfig("http_callback_Address"),
+			bot_id = GetAccountConfig("mojiang_bot_id"),
+			secret = GetAccountConfig("mojiang_secret"),
+			pub_key = GetAccountConfig("mojiang_pub_key").Replace("\\n", "\n").TrimEnd(' ')
+		}.Initail();
 
 		//读取程序集
 		List<IMysPluginModule> plugins = new List<IMysPluginModule>();
