@@ -4,6 +4,7 @@ using MysBotSDK.Connection;
 using MysBotSDK.Tool;
 using Newtonsoft.Json;
 using System;
+using System.Linq;
 using vila_bot;
 
 namespace MysBotSDK.Connection.WebSocket;
@@ -76,6 +77,11 @@ internal class WsClient : IDisposable
 	/// </summary>
 	bool isForceDisConnect { get; set; } = false;
 
+	/// <summary>
+	/// 链接信息
+	/// </summary>
+	private (UInt64 uid, Int32 platform, Int32 app_id, string device_id) linkInfo { get; set; }
+
 	public UInt64 GetCurrentTime()
 	{
 		return (ulong)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalMicroseconds;
@@ -86,66 +92,68 @@ internal class WsClient : IDisposable
 		//连接委托
 		Action connectAction = new(() => { });
 		connectAction = async () =>
+		{
+			//获取ws链接
+			var wsInfo = await GetWebSocketInfo(bot_id, bot_secret, villa_id);
+			//若返回值不等于0，错误
+			if (wsInfo.retcode != 0)
 			{
-				//获取ws链接
-				var wsInfo = await GetWebSocketInfo(bot_id, bot_secret, villa_id);
-				//若返回值不等于0，错误
-				if (wsInfo.retcode != 0)
+				Logger.LogWarnning($"连接失败{wsInfo}，五秒后尝试重新连接");
+				isConnectFail = true;
+				await Task.Delay(5 * 1000);
+				await Task.Run(connectAction);
+				return;
+			}
+
+			linkInfo = (wsInfo.websocket_conn_uid, wsInfo.platform, wsInfo.app_id, wsInfo.device_id);
+
+			webSocket = new WebSocketSharp.WebSocket(wsInfo.websocket_url);
+
+			webSocket.OnOpen += (sender, e) =>
+			{
+				//伺服器开启
+				Login(villa_id, bot_secret, bot_id);
+				//输入登录指令，失败没有登录(懒)
+			};
+			webSocket.OnMessage += (sedner, e) =>
+			{
+				if (e.IsBinary)
 				{
-					Logger.LogWarnning($"连接失败{wsInfo}，五秒后尝试重新连接");
-					isConnectFail = true;
-					await Task.Delay(5 * 1000);
-					await Task.Run(connectAction);
+					//解析数据
+					ReceiveMsg(e.RawData);
+				}
+			};
+			webSocket.OnClose += async (sedner, e) =>
+			{
+				//伺服器关闭
+				Logger.LogWarnning("连接关闭，若不是伺服器请求的关闭，则五秒后尝试重连");
+				if (isForceDisConnect)
+				{
+					Logger.Log("伺服器强制关闭");
 					return;
 				}
-
-				webSocket = new WebSocketSharp.WebSocket(wsInfo.websocket_url);
-
-				webSocket.OnOpen += (sender, e) =>
-				{
-					//伺服器开启
-					Login(wsInfo.websocket_conn_uid, villa_id, bot_secret, bot_id, wsInfo.app_id, wsInfo.device_id, wsInfo.platform);
-					//输入登录指令，失败没有登录(懒)
-				};
-				webSocket.OnMessage += (sedner, e) =>
-				{
-					if (e.IsBinary)
-					{
-						//解析数据
-						ReceiveMsg(e.RawData);
-					}
-				};
-				webSocket.OnClose += async (sedner, e) =>
-				{
-					//伺服器关闭
-					Logger.LogWarnning("连接关闭，若不是伺服器请求的关闭，则五秒后尝试重连");
-					if (isForceDisConnect)
-					{
-						Logger.Log("伺服器强制关闭");
-						return;
-					}
-					await Task.Delay(5 * 1000);
-					await Task.Run(connectAction);
-				};
-				webSocket.OnError += (sender, e) =>
-				{
-					//发生错误
-					Logger.LogError($"发生未知错误{e.Message}\n{e.Exception}\n出现错误并没有重连机制");
-				};
-
-				try
-				{
-					//开启连接
-					webSocket.Connect();
-				}
-				catch (TimeoutException)
-				{
-					Logger.LogError("连接超时，五秒后重新连接");
-					await Task.Delay(5 * 1000);
-					await Task.Run(connectAction);
-				}
-
+				await Task.Delay(5 * 1000);
+				await Task.Run(connectAction);
 			};
+			webSocket.OnError += (sender, e) =>
+			{
+				//发生错误
+				Logger.LogError($"发生未知错误{e.Message}\n{e.Exception}\n出现错误并没有重连机制");
+			};
+
+			try
+			{
+				//开启连接
+				webSocket.Connect();
+			}
+			catch (TimeoutException)
+			{
+				Logger.LogError("连接超时，五秒后重新连接");
+				await Task.Delay(5 * 1000);
+				await Task.Run(connectAction);
+			}
+
+		};
 		Task.Run(connectAction);
 		return;
 	}
@@ -213,46 +221,54 @@ Content-Type:application/json");
 	public ulong UniqMsgType { get { return ++uniqMsgType; } }
 	public void SendMsg<T>(Command bizType, T protobufData, uint appid = 104, MsgType msgType = MsgType.Request) where T : IMessage
 	{
-		var bodyData = protobufData.ToByteArray();
-		WebSocketMessage wsMsg = new()
+		try
 		{
-			BodyData = bodyData,
 
-			Magic = 0xBABEFACE,
-			DataLen = (uint)(24 + bodyData.Length),
-			HeaderLen = 24,
-			ID = UniqMsgType,
-			Flag = (uint)msgType,
-			BizType = (uint)bizType,
-			AppId = appid
-		};
-		List<byte> bytes = new List<byte>();
 
-		//添加字段
-		bytes.AddRange(BitConverter.GetBytes(wsMsg.Magic).ToLittleEndian());
-		bytes.AddRange(BitConverter.GetBytes(wsMsg.DataLen).ToLittleEndian());
-		bytes.AddRange(BitConverter.GetBytes(wsMsg.HeaderLen).ToLittleEndian());
-		bytes.AddRange(BitConverter.GetBytes(wsMsg.ID).ToLittleEndian());
-		bytes.AddRange(BitConverter.GetBytes(wsMsg.Flag).ToLittleEndian());
-		bytes.AddRange(BitConverter.GetBytes(wsMsg.BizType).ToLittleEndian());
-		bytes.AddRange(BitConverter.GetBytes(wsMsg.AppId).ToLittleEndian());
-		bytes.AddRange(wsMsg.BodyData.ToLittleEndian());
+			var bodyData = protobufData.ToByteArray();
+			WebSocketMessage wsMsg = new()
+			{
+				BodyData = bodyData,
 
-		//发送
-		if (isConnectFail && !bizType.Equals(Command.Heartbeat))
-		{
-			//心跳包发送失败，消息兜底
-			RetryMsg.Add(bytes.ToArray());
-			return;
+				Magic = 0xBABEFACE,
+				DataLen = (uint)(24 + bodyData.Length),
+				HeaderLen = 24,
+				ID = UniqMsgType,
+				Flag = (uint)msgType,
+				BizType = (uint)bizType,
+				AppId = appid
+			};
+			List<byte> bytes = new List<byte>();
+
+			//添加字段
+			bytes.AddRange(BitConverter.GetBytes(wsMsg.Magic).ToLittleEndian());
+			bytes.AddRange(BitConverter.GetBytes(wsMsg.DataLen).ToLittleEndian());
+			bytes.AddRange(BitConverter.GetBytes(wsMsg.HeaderLen).ToLittleEndian());
+			bytes.AddRange(BitConverter.GetBytes(wsMsg.ID).ToLittleEndian());
+			bytes.AddRange(BitConverter.GetBytes(wsMsg.Flag).ToLittleEndian());
+			bytes.AddRange(BitConverter.GetBytes(wsMsg.BizType).ToLittleEndian());
+			bytes.AddRange(BitConverter.GetBytes(wsMsg.AppId).ToLittleEndian());
+			bytes.AddRange(wsMsg.BodyData.ToLittleEndian());
+
+			//发送
+			if (isConnectFail && !bizType.Equals(Command.Heartbeat))
+			{
+				//心跳包发送失败，消息兜底
+				RetryMsg.Add(bytes.ToArray());
+				return;
+			}
+			if (!isConnectFail && RetryMsg.Count != 0)
+			{
+				//心跳包恢复，将兜底的信息重新发送
+				RetryMsg.ForEach(retryMsg => { webSocket!.Send(retryMsg.ToArray()); });
+				RetryMsg.Clear();
+			}
+			webSocket!.Send(bytes.ToArray());
 		}
-		if (!isConnectFail && RetryMsg.Count != 0)
+		catch (Exception)
 		{
-			//心跳包恢复，将兜底的信息重新发送
-			RetryMsg.ForEach(retryMsg => { webSocket!.Send(retryMsg.ToArray()); });
-			RetryMsg.Clear();
+			Logger.LogError("ws发送失败...?");
 		}
-		webSocket!.Send(bytes.ToArray());
-
 		return;
 	}
 	#endregion
@@ -261,89 +277,96 @@ Content-Type:application/json");
 	internal (ulong id, uint flag) LastMsg;
 	public void ReceiveMsg(byte[] data)
 	{
-		//解析
-		WebSocketMessage wsMsg = new WebSocketMessage()
+		try
 		{
-			Magic = BitConverter.ToUInt32(data.Take(4).ToArray()),//用于标识报文的开始 目前的协议的magic值是十六进制的【0xBABEFACE】
-			DataLen = BitConverter.ToUInt32(data.Skip(4).Take(4).ToArray()),//变长部分总长度=变长头长度+变长消息体长度
-			HeaderLen = BitConverter.ToUInt32(data.Skip(8).Take(4).ToArray()),//变长头总长度，变长头部分所有字段（包括HeaderLen本身）的总长度。
-			ID = BitConverter.ToUInt32(data.Skip(12).Take(4).ToArray()),//协议包序列ID，同一条连接上的发出的协议包应该单调递增，相同序列ID且Flag字段相同的包应该被认为是同一个包
-			Flag = BitConverter.ToUInt32(data.Skip(20).Take(4).ToArray()),//配合bizType使用，用于标识同一个bizType协议的方向。用 1 代表主动发到服务端的request包用 2 代表针对某个request包回应的response包
-			BizType = BitConverter.ToUInt32(data.Skip(24).Take(4).ToArray()),//消息体的业务类型，用于标识Body字段中的消息所属业务类型
-			AppId = BitConverter.ToUInt32(data.Skip(28).Take(4).ToArray()),//应用标识。固定为 104
+			//解析
+			WebSocketMessage wsMsg = new WebSocketMessage()
+			{
+				Magic = BitConverter.ToUInt32(data.Take(4).ToArray()),//用于标识报文的开始 目前的协议的magic值是十六进制的【0xBABEFACE】
+				DataLen = BitConverter.ToUInt32(data.Skip(4).Take(4).ToArray()),//变长部分总长度=变长头长度+变长消息体长度
+				HeaderLen = BitConverter.ToUInt32(data.Skip(8).Take(4).ToArray()),//变长头总长度，变长头部分所有字段（包括HeaderLen本身）的总长度。
+				ID = BitConverter.ToUInt32(data.Skip(12).Take(4).ToArray()),//协议包序列ID，同一条连接上的发出的协议包应该单调递增，相同序列ID且Flag字段相同的包应该被认为是同一个包
+				Flag = BitConverter.ToUInt32(data.Skip(20).Take(4).ToArray()),//配合bizType使用，用于标识同一个bizType协议的方向。用 1 代表主动发到服务端的request包用 2 代表针对某个request包回应的response包
+				BizType = BitConverter.ToUInt32(data.Skip(24).Take(4).ToArray()),//消息体的业务类型，用于标识Body字段中的消息所属业务类型
+				AppId = BitConverter.ToUInt32(data.Skip(28).Take(4).ToArray()),//应用标识。固定为 104
+			};
+			wsMsg.BodyData = data.Skip(32).Take((int)(wsMsg.HeaderLen - 20)).ToArray();
 
-		};
+			//相同序列ID且Flag字段相同的包应该被认为是同一个包
+			if (LastMsg == (wsMsg.ID, wsMsg.Flag))
+			{
+				Logger.Debug("收到相同的包，跳过");
+				return;
+			}
 
-		//相同序列ID且Flag字段相同的包应该被认为是同一个包
-		if (LastMsg == (wsMsg.ID, wsMsg.Flag))
-		{
-			Logger.Debug("收到相同的包，跳过");
-			return;
+			Logger.Log($"收到伺服器发送来的ID为 [ {wsMsg.ID} ] 的协议包");
+			//HandleMessage
+			switch (wsMsg.BizType)//唔姆唔姆...因为command里面没有RobotEvent所以用数字不用枚举了...
+			{
+				case 30001://RobotEvent
+					RobotEventHandle(wsMsg);
+					break;
+				case 7://PLoginReply
+					LoginReply(wsMsg);
+					break;
+				case 8://PLogoutReply
+					LogoutReply(wsMsg);
+					break;
+				case 6://PHeartBeatReply
+					HeartBeatReply(wsMsg);
+					break;
+				case 53://PKickOff
+					KickOff(wsMsg);
+					break;
+				case 52://Shutdown
+					Shutdown(wsMsg);
+					break;
+				default:
+					Logger.LogError($"异常数据BizType = {wsMsg.BizType} ，请检查是数据异常还是暂未支持的数据类型");
+					break;
+			}
 		}
-
-		Logger.Log($"收到伺服器发送来的ID为 [ {wsMsg.ID} ] 的协议包");
-		//HandleMessage
-		switch (wsMsg.BizType)//唔姆唔姆...因为command里面没有RobotEvent所以用数字不用枚举了...
+		catch (Exception)
 		{
-			case 30001://RobotEvent
-				RobotEventHandle(wsMsg);
-				break;
-			case 7://PLoginReply
-				LoginReply(wsMsg);
-				break;
-			case 8://PLogoutReply
-				LogoutReply(wsMsg);
-				break;
-			case 6://PHeartBeatReply
-				HeartBeatReply(wsMsg);
-				break;
-			case 53://PKickOff
-				KickOff(wsMsg);
-				break;
-			case 52://Shutdown
-				Shutdown(wsMsg);
-				break;
-			default:
-				Logger.LogError($"异常数据BizType = {wsMsg.BizType} ，请检查是数据异常还是暂未支持的数据类型");
-				break;
+			Logger.LogError("ws解析失败...?");
 		}
 		return;
 	}
 	#endregion
 
 	#region 发送命令
-	private void Login(ulong uid, ulong villa_id, string secret, string bot_id, int app_id, string device_id, int platform)
+	private void Login(ulong villa_id, string secret, string bot_id)
 	{
 		PLogin pLogin = new PLogin()
 		{
-			uid = uid,
-			token = $"{villa_id}.{secret}.{bot_id}",
-			app_id = app_id,
-			device_id = device_id,
-			platform = platform,
-			region = string.Empty   //?
+			Uid = linkInfo.uid,
+			Token = $"{villa_id}.{secret}.{bot_id}",
+			AppId = linkInfo.app_id,
+			DeviceId = linkInfo.device_id,
+			Platform = linkInfo.platform,
+			Region = string.Empty   //?
 		};
 
-		SendMsg(Command.PLogin, pLogin, (uint)app_id, MsgType.Request);
+		SendMsg(Command.PLogin, pLogin, (uint)linkInfo.app_id, MsgType.Request);
 		return;
 	}
-	private void Logout(UInt64 uid, Int32 platform, Int32 app_id, string device_id)
+	private void Logout()
 	{
 		PLogout pLogout = new PLogout()
 		{
-			uid = uid,
-			platform = platform,
-			app_id = app_id,
-			device_id = device_id
+			Uid = linkInfo.uid,
+			Platform = linkInfo.platform,
+			AppId = linkInfo.app_id,
+			DeviceId = linkInfo.device_id
 		};
-		SendMsg(Command.Logout, pLogout, (uint)app_id, MsgType.Request);
+		SendMsg(Command.Logout, pLogout, (uint)linkInfo.app_id, MsgType.Request);
 		return;
 	}
 	private void HeartBeat(Int32 app_id)
 	{
 		PHeartBeat pHeartBeat = new PHeartBeat
 		{
-			client_timestamp = GetCurrentTime().ToString()
+			ClientTimestamp = GetCurrentTime().ToString()
 		};
 		SendMsg(Command.Heartbeat, pHeartBeat, (uint)app_id, MsgType.Request);
 	}
@@ -368,7 +391,7 @@ Content-Type:application/json");
 	public void LoginReply(WebSocketMessage wsMsg)
 	{
 		PLoginReply pLoginReply = PLoginReply.Parser.ParseFrom(wsMsg.BodyData);
-		switch (pLoginReply.code)
+		switch (pLoginReply.Code)
 		{
 			case 0:
 				Logger.Log("WebSocket连接成功");
@@ -414,7 +437,7 @@ Content-Type:application/json");
 	public void LogoutReply(WebSocketMessage wsMsg)
 	{
 		PLogoutReply pLogoutReply = PLogoutReply.Parser.ParseFrom(wsMsg.BodyData);
-		switch (pLogoutReply.code)
+		switch (pLogoutReply.Code)
 		{
 			case 0:
 				Logger.Log("WebSocket登出成功");
@@ -445,12 +468,12 @@ Content-Type:application/json");
 	public void HeartBeatReply(WebSocketMessage wsMsg)
 	{
 		PHeartBeatReply pHeartBeatReply = PHeartBeatReply.Parser.ParseFrom(wsMsg.BodyData);
-		switch (pHeartBeatReply.code)
+		switch (pHeartBeatReply.Code)
 		{
 			case 0:
 				//Logger.Debug("收到心跳包");
 				//Logger.Debug($"{pHeartBeatReply.ServerTimestamp}");
-				Last_server_timestamp = pHeartBeatReply.server_timestamp;
+				Last_server_timestamp = pHeartBeatReply.ServerTimestamp;
 				isHeartBeatFail = false;
 				break;
 			case 1000://心跳包错误，参数错误
@@ -475,10 +498,10 @@ Content-Type:application/json");
 	public void KickOff(WebSocketMessage wsMsg)
 	{
 		PKickOff pKickOff = PKickOff.Parser.ParseFrom(wsMsg.BodyData);
-		switch (pKickOff.code)
+		switch (pKickOff.Code)
 		{
 			case 0:
-				Logger.LogWarnning($"收到踢出登录的消息，状态码 {pKickOff.code} ，原因 {pKickOff.reason}");
+				Logger.LogWarnning($"收到踢出登录的消息，状态码 {pKickOff.Code} ，原因 {pKickOff.Reason}");
 				//关闭wss连接
 				isForceDisConnect = true;
 				webSocket?.Close();

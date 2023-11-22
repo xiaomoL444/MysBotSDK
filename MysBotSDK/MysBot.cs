@@ -11,11 +11,16 @@ using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
 using vila_bot;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using MysBotSDK.Connection.WebSocket;
 
 namespace MysBotSDK
 {
 	public class MysBot : IDisposable
 	{
+		/// <summary>
+		/// 是否选择ws连接
+		/// </summary>
+		public bool WebsocketConnect { private get; init; }
 		public string? http_callback_Address { private get; init; }
 		public string? ws_callback_Address { private get; init; }
 		public string? bot_id { internal get; init; }
@@ -31,6 +36,8 @@ namespace MysBotSDK
 		private CancellationTokenSource tokenSource = new();
 
 		private HttpListener? listener { get; set; }
+
+		private WsClient wsClient { get; set; }
 
 		/// <summary>
 		/// 
@@ -145,6 +152,14 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			else
 			{
 				throw new Exception("不能同时传入ws_callback与http_callback,或者没有传值");
+			}
+			if (WebsocketConnect)
+			{
+				//开启官方的ws连接
+				_ = Task.Run(() =>
+				{
+					wsClient = new WsClient(bot_id, secret!, 8489);
+				});
 			}
 			return this;
 		}

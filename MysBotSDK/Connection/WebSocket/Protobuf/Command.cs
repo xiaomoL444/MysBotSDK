@@ -12,7 +12,7 @@ using scg = global::System.Collections.Generic;
 namespace vila_bot {
 
   /// <summary>Holder for reflection information generated from command.proto</summary>
-  public static partial class commandReflection {
+  public static partial class CommandReflection {
 
     #region Descriptor
     /// <summary>File descriptor for command.proto</summary>
@@ -21,7 +21,7 @@ namespace vila_bot {
     }
     private static pbr::FileDescriptor descriptor;
 
-    static commandReflection() {
+    static CommandReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg1jb21tYW5kLnByb3RvEgh2aWxhX2JvdCImCgpQSGVhcnRCZWF0EhgKEGNs",
@@ -49,14 +49,14 @@ namespace vila_bot {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::vila_bot.Command), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PHeartBeat), global::vila_bot.PHeartBeat.Parser, new[]{ "client_timestamp" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PHeartBeatReply), global::vila_bot.PHeartBeatReply.Parser, new[]{ "code", "server_timestamp" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLogin), global::vila_bot.PLogin.Parser, new[]{ "uid", "token", "platform", "app_id", "device_id", "region", "meta" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLoginReply), global::vila_bot.PLoginReply.Parser, new[]{ "code", "msg", "server_timestamp", "conn_id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLogout), global::vila_bot.PLogout.Parser, new[]{ "uid", "platform", "app_id", "device_id", "region" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLogoutReply), global::vila_bot.PLogoutReply.Parser, new[]{ "code", "msg", "conn_id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.CommonReply), global::vila_bot.CommonReply.Parser, new[]{ "code", "msg" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PKickOff), global::vila_bot.PKickOff.Parser, new[]{ "code", "reason" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PHeartBeat), global::vila_bot.PHeartBeat.Parser, new[]{ "ClientTimestamp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PHeartBeatReply), global::vila_bot.PHeartBeatReply.Parser, new[]{ "Code", "ServerTimestamp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLogin), global::vila_bot.PLogin.Parser, new[]{ "Uid", "Token", "Platform", "AppId", "DeviceId", "Region", "Meta" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLoginReply), global::vila_bot.PLoginReply.Parser, new[]{ "Code", "Msg", "ServerTimestamp", "ConnId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLogout), global::vila_bot.PLogout.Parser, new[]{ "Uid", "Platform", "AppId", "DeviceId", "Region" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLogoutReply), global::vila_bot.PLogoutReply.Parser, new[]{ "Code", "Msg", "ConnId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.CommonReply), global::vila_bot.CommonReply.Parser, new[]{ "Code", "Msg" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PKickOff), global::vila_bot.PKickOff.Parser, new[]{ "Code", "Reason" }, null, null, null, null)
           }));
     }
     #endregion
@@ -103,7 +103,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.commandReflection.Descriptor.MessageTypes[0]; }
+      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -123,7 +123,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PHeartBeat(PHeartBeat other) : this() {
-      client_timestamp_ = other.client_timestamp_;
+      clientTimestamp_ = other.clientTimestamp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -134,17 +134,17 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "client_timestamp" field.</summary>
-    public const int client_timestampFieldNumber = 1;
-    private string client_timestamp_ = "";
+    public const int ClientTimestampFieldNumber = 1;
+    private string clientTimestamp_ = "";
     /// <summary>
     /// 客户端时间戳，精确到ms
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string client_timestamp {
-      get { return client_timestamp_; }
+    public string ClientTimestamp {
+      get { return clientTimestamp_; }
       set {
-        client_timestamp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        clientTimestamp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -163,7 +163,7 @@ namespace vila_bot {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (client_timestamp != other.client_timestamp) return false;
+      if (ClientTimestamp != other.ClientTimestamp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -171,7 +171,7 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (client_timestamp.Length != 0) hash ^= client_timestamp.GetHashCode();
+      if (ClientTimestamp.Length != 0) hash ^= ClientTimestamp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -190,9 +190,9 @@ namespace vila_bot {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (client_timestamp.Length != 0) {
+      if (ClientTimestamp.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(client_timestamp);
+        output.WriteString(ClientTimestamp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -204,9 +204,9 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (client_timestamp.Length != 0) {
+      if (ClientTimestamp.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(client_timestamp);
+        output.WriteString(ClientTimestamp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -218,8 +218,8 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (client_timestamp.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(client_timestamp);
+      if (ClientTimestamp.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientTimestamp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -233,8 +233,8 @@ namespace vila_bot {
       if (other == null) {
         return;
       }
-      if (other.client_timestamp.Length != 0) {
-        client_timestamp = other.client_timestamp;
+      if (other.ClientTimestamp.Length != 0) {
+        ClientTimestamp = other.ClientTimestamp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -252,7 +252,7 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            client_timestamp = input.ReadString();
+            ClientTimestamp = input.ReadString();
             break;
           }
         }
@@ -271,7 +271,7 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            client_timestamp = input.ReadString();
+            ClientTimestamp = input.ReadString();
             break;
           }
         }
@@ -299,7 +299,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.commandReflection.Descriptor.MessageTypes[1]; }
+      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -320,7 +320,7 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PHeartBeatReply(PHeartBeatReply other) : this() {
       code_ = other.code_;
-      server_timestamp_ = other.server_timestamp_;
+      serverTimestamp_ = other.serverTimestamp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -331,14 +331,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "code" field.</summary>
-    public const int codeFieldNumber = 1;
+    public const int CodeFieldNumber = 1;
     private int code_;
     /// <summary>
     /// 错误码 非0表示失败
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int code {
+    public int Code {
       get { return code_; }
       set {
         code_ = value;
@@ -346,17 +346,17 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "server_timestamp" field.</summary>
-    public const int server_timestampFieldNumber = 2;
-    private ulong server_timestamp_;
+    public const int ServerTimestampFieldNumber = 2;
+    private ulong serverTimestamp_;
     /// <summary>
     /// 服务端时间戳，精确到ms
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong server_timestamp {
-      get { return server_timestamp_; }
+    public ulong ServerTimestamp {
+      get { return serverTimestamp_; }
       set {
-        server_timestamp_ = value;
+        serverTimestamp_ = value;
       }
     }
 
@@ -375,8 +375,8 @@ namespace vila_bot {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (code != other.code) return false;
-      if (server_timestamp != other.server_timestamp) return false;
+      if (Code != other.Code) return false;
+      if (ServerTimestamp != other.ServerTimestamp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -384,8 +384,8 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (code != 0) hash ^= code.GetHashCode();
-      if (server_timestamp != 0UL) hash ^= server_timestamp.GetHashCode();
+      if (Code != 0) hash ^= Code.GetHashCode();
+      if (ServerTimestamp != 0UL) hash ^= ServerTimestamp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -404,13 +404,13 @@ namespace vila_bot {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (code != 0) {
+      if (Code != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(code);
+        output.WriteInt32(Code);
       }
-      if (server_timestamp != 0UL) {
+      if (ServerTimestamp != 0UL) {
         output.WriteRawTag(16);
-        output.WriteUInt64(server_timestamp);
+        output.WriteUInt64(ServerTimestamp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -422,13 +422,13 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (code != 0) {
+      if (Code != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(code);
+        output.WriteInt32(Code);
       }
-      if (server_timestamp != 0UL) {
+      if (ServerTimestamp != 0UL) {
         output.WriteRawTag(16);
-        output.WriteUInt64(server_timestamp);
+        output.WriteUInt64(ServerTimestamp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -440,11 +440,11 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (code != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(code);
+      if (Code != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Code);
       }
-      if (server_timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(server_timestamp);
+      if (ServerTimestamp != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ServerTimestamp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -458,11 +458,11 @@ namespace vila_bot {
       if (other == null) {
         return;
       }
-      if (other.code != 0) {
-        code = other.code;
+      if (other.Code != 0) {
+        Code = other.Code;
       }
-      if (other.server_timestamp != 0UL) {
-        server_timestamp = other.server_timestamp;
+      if (other.ServerTimestamp != 0UL) {
+        ServerTimestamp = other.ServerTimestamp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -480,11 +480,11 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            code = input.ReadInt32();
+            Code = input.ReadInt32();
             break;
           }
           case 16: {
-            server_timestamp = input.ReadUInt64();
+            ServerTimestamp = input.ReadUInt64();
             break;
           }
         }
@@ -503,11 +503,11 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            code = input.ReadInt32();
+            Code = input.ReadInt32();
             break;
           }
           case 16: {
-            server_timestamp = input.ReadUInt64();
+            ServerTimestamp = input.ReadUInt64();
             break;
           }
         }
@@ -535,7 +535,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.commandReflection.Descriptor.MessageTypes[2]; }
+      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -558,8 +558,8 @@ namespace vila_bot {
       uid_ = other.uid_;
       token_ = other.token_;
       platform_ = other.platform_;
-      app_id_ = other.app_id_;
-      device_id_ = other.device_id_;
+      appId_ = other.appId_;
+      deviceId_ = other.deviceId_;
       region_ = other.region_;
       meta_ = other.meta_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -572,14 +572,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "uid" field.</summary>
-    public const int uidFieldNumber = 1;
+    public const int UidFieldNumber = 1;
     private ulong uid_;
     /// <summary>
     /// 长连接侧唯一id，uint64格式
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong uid {
+    public ulong Uid {
       get { return uid_; }
       set {
         uid_ = value;
@@ -587,14 +587,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "token" field.</summary>
-    public const int tokenFieldNumber = 2;
+    public const int TokenFieldNumber = 2;
     private string token_ = "";
     /// <summary>
     /// 用于业务后端验证的token
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string token {
+    public string Token {
       get { return token_; }
       set {
         token_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
@@ -602,14 +602,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "platform" field.</summary>
-    public const int platformFieldNumber = 3;
+    public const int PlatformFieldNumber = 3;
     private int platform_;
     /// <summary>
     /// 客户端操作平台枚举
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int platform {
+    public int Platform {
       get { return platform_; }
       set {
         platform_ = value;
@@ -617,41 +617,41 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "app_id" field.</summary>
-    public const int app_idFieldNumber = 4;
-    private int app_id_;
+    public const int AppIdFieldNumber = 4;
+    private int appId_;
     /// <summary>
     /// 业务所在客户端应用标识，用于在同一个客户端隔离不同业务的长连接通道。
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int app_id {
-      get { return app_id_; }
+    public int AppId {
+      get { return appId_; }
       set {
-        app_id_ = value;
+        appId_ = value;
       }
     }
 
     /// <summary>Field number for the "device_id" field.</summary>
-    public const int device_idFieldNumber = 5;
-    private string device_id_ = "";
+    public const int DeviceIdFieldNumber = 5;
+    private string deviceId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string device_id {
-      get { return device_id_; }
+    public string DeviceId {
+      get { return deviceId_; }
       set {
-        device_id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        deviceId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "region" field.</summary>
-    public const int regionFieldNumber = 6;
+    public const int RegionFieldNumber = 6;
     private string region_ = "";
     /// <summary>
     /// 区域划分字段，通过uid+app_id+platform+region四个字段唯一确定一条长连接
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string region {
+    public string Region {
       get { return region_; }
       set {
         region_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
@@ -659,7 +659,7 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "meta" field.</summary>
-    public const int metaFieldNumber = 7;
+    public const int MetaFieldNumber = 7;
     private static readonly pbc::MapField<string, string>.Codec _map_meta_codec
         = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 58);
     private readonly pbc::MapField<string, string> meta_ = new pbc::MapField<string, string>();
@@ -668,7 +668,7 @@ namespace vila_bot {
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, string> meta {
+    public pbc::MapField<string, string> Meta {
       get { return meta_; }
     }
 
@@ -687,13 +687,13 @@ namespace vila_bot {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (uid != other.uid) return false;
-      if (token != other.token) return false;
-      if (platform != other.platform) return false;
-      if (app_id != other.app_id) return false;
-      if (device_id != other.device_id) return false;
-      if (region != other.region) return false;
-      if (!meta.Equals(other.meta)) return false;
+      if (Uid != other.Uid) return false;
+      if (Token != other.Token) return false;
+      if (Platform != other.Platform) return false;
+      if (AppId != other.AppId) return false;
+      if (DeviceId != other.DeviceId) return false;
+      if (Region != other.Region) return false;
+      if (!Meta.Equals(other.Meta)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -701,13 +701,13 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (uid != 0UL) hash ^= uid.GetHashCode();
-      if (token.Length != 0) hash ^= token.GetHashCode();
-      if (platform != 0) hash ^= platform.GetHashCode();
-      if (app_id != 0) hash ^= app_id.GetHashCode();
-      if (device_id.Length != 0) hash ^= device_id.GetHashCode();
-      if (region.Length != 0) hash ^= region.GetHashCode();
-      hash ^= meta.GetHashCode();
+      if (Uid != 0UL) hash ^= Uid.GetHashCode();
+      if (Token.Length != 0) hash ^= Token.GetHashCode();
+      if (Platform != 0) hash ^= Platform.GetHashCode();
+      if (AppId != 0) hash ^= AppId.GetHashCode();
+      if (DeviceId.Length != 0) hash ^= DeviceId.GetHashCode();
+      if (Region.Length != 0) hash ^= Region.GetHashCode();
+      hash ^= Meta.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -726,29 +726,29 @@ namespace vila_bot {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (uid != 0UL) {
+      if (Uid != 0UL) {
         output.WriteRawTag(8);
-        output.WriteUInt64(uid);
+        output.WriteUInt64(Uid);
       }
-      if (token.Length != 0) {
+      if (Token.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(token);
+        output.WriteString(Token);
       }
-      if (platform != 0) {
+      if (Platform != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(platform);
+        output.WriteInt32(Platform);
       }
-      if (app_id != 0) {
+      if (AppId != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(app_id);
+        output.WriteInt32(AppId);
       }
-      if (device_id.Length != 0) {
+      if (DeviceId.Length != 0) {
         output.WriteRawTag(42);
-        output.WriteString(device_id);
+        output.WriteString(DeviceId);
       }
-      if (region.Length != 0) {
+      if (Region.Length != 0) {
         output.WriteRawTag(50);
-        output.WriteString(region);
+        output.WriteString(Region);
       }
       meta_.WriteTo(output, _map_meta_codec);
       if (_unknownFields != null) {
@@ -761,29 +761,29 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (uid != 0UL) {
+      if (Uid != 0UL) {
         output.WriteRawTag(8);
-        output.WriteUInt64(uid);
+        output.WriteUInt64(Uid);
       }
-      if (token.Length != 0) {
+      if (Token.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(token);
+        output.WriteString(Token);
       }
-      if (platform != 0) {
+      if (Platform != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(platform);
+        output.WriteInt32(Platform);
       }
-      if (app_id != 0) {
+      if (AppId != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(app_id);
+        output.WriteInt32(AppId);
       }
-      if (device_id.Length != 0) {
+      if (DeviceId.Length != 0) {
         output.WriteRawTag(42);
-        output.WriteString(device_id);
+        output.WriteString(DeviceId);
       }
-      if (region.Length != 0) {
+      if (Region.Length != 0) {
         output.WriteRawTag(50);
-        output.WriteString(region);
+        output.WriteString(Region);
       }
       meta_.WriteTo(ref output, _map_meta_codec);
       if (_unknownFields != null) {
@@ -796,23 +796,23 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (uid != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(uid);
+      if (Uid != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Uid);
       }
-      if (token.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(token);
+      if (Token.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
       }
-      if (platform != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(platform);
+      if (Platform != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Platform);
       }
-      if (app_id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(app_id);
+      if (AppId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(AppId);
       }
-      if (device_id.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(device_id);
+      if (DeviceId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceId);
       }
-      if (region.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(region);
+      if (Region.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Region);
       }
       size += meta_.CalculateSize(_map_meta_codec);
       if (_unknownFields != null) {
@@ -827,23 +827,23 @@ namespace vila_bot {
       if (other == null) {
         return;
       }
-      if (other.uid != 0UL) {
-        uid = other.uid;
+      if (other.Uid != 0UL) {
+        Uid = other.Uid;
       }
-      if (other.token.Length != 0) {
-        token = other.token;
+      if (other.Token.Length != 0) {
+        Token = other.Token;
       }
-      if (other.platform != 0) {
-        platform = other.platform;
+      if (other.Platform != 0) {
+        Platform = other.Platform;
       }
-      if (other.app_id != 0) {
-        app_id = other.app_id;
+      if (other.AppId != 0) {
+        AppId = other.AppId;
       }
-      if (other.device_id.Length != 0) {
-        device_id = other.device_id;
+      if (other.DeviceId.Length != 0) {
+        DeviceId = other.DeviceId;
       }
-      if (other.region.Length != 0) {
-        region = other.region;
+      if (other.Region.Length != 0) {
+        Region = other.Region;
       }
       meta_.MergeFrom(other.meta_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -862,27 +862,27 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            uid = input.ReadUInt64();
+            Uid = input.ReadUInt64();
             break;
           }
           case 18: {
-            token = input.ReadString();
+            Token = input.ReadString();
             break;
           }
           case 24: {
-            platform = input.ReadInt32();
+            Platform = input.ReadInt32();
             break;
           }
           case 32: {
-            app_id = input.ReadInt32();
+            AppId = input.ReadInt32();
             break;
           }
           case 42: {
-            device_id = input.ReadString();
+            DeviceId = input.ReadString();
             break;
           }
           case 50: {
-            region = input.ReadString();
+            Region = input.ReadString();
             break;
           }
           case 58: {
@@ -905,27 +905,27 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            uid = input.ReadUInt64();
+            Uid = input.ReadUInt64();
             break;
           }
           case 18: {
-            token = input.ReadString();
+            Token = input.ReadString();
             break;
           }
           case 24: {
-            platform = input.ReadInt32();
+            Platform = input.ReadInt32();
             break;
           }
           case 32: {
-            app_id = input.ReadInt32();
+            AppId = input.ReadInt32();
             break;
           }
           case 42: {
-            device_id = input.ReadString();
+            DeviceId = input.ReadString();
             break;
           }
           case 50: {
-            region = input.ReadString();
+            Region = input.ReadString();
             break;
           }
           case 58: {
@@ -957,7 +957,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.commandReflection.Descriptor.MessageTypes[3]; }
+      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -979,8 +979,8 @@ namespace vila_bot {
     public PLoginReply(PLoginReply other) : this() {
       code_ = other.code_;
       msg_ = other.msg_;
-      server_timestamp_ = other.server_timestamp_;
-      conn_id_ = other.conn_id_;
+      serverTimestamp_ = other.serverTimestamp_;
+      connId_ = other.connId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -991,14 +991,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "code" field.</summary>
-    public const int codeFieldNumber = 1;
+    public const int CodeFieldNumber = 1;
     private int code_;
     /// <summary>
     /// 错误码 非0表示失败
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int code {
+    public int Code {
       get { return code_; }
       set {
         code_ = value;
@@ -1006,14 +1006,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "msg" field.</summary>
-    public const int msgFieldNumber = 2;
+    public const int MsgFieldNumber = 2;
     private string msg_ = "";
     /// <summary>
     /// 错误信息
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string msg {
+    public string Msg {
       get { return msg_; }
       set {
         msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
@@ -1021,32 +1021,32 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "server_timestamp" field.</summary>
-    public const int server_timestampFieldNumber = 3;
-    private ulong server_timestamp_;
+    public const int ServerTimestampFieldNumber = 3;
+    private ulong serverTimestamp_;
     /// <summary>
     /// 服务端时间戳，精确到ms
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong server_timestamp {
-      get { return server_timestamp_; }
+    public ulong ServerTimestamp {
+      get { return serverTimestamp_; }
       set {
-        server_timestamp_ = value;
+        serverTimestamp_ = value;
       }
     }
 
     /// <summary>Field number for the "conn_id" field.</summary>
-    public const int conn_idFieldNumber = 4;
-    private ulong conn_id_;
+    public const int ConnIdFieldNumber = 4;
+    private ulong connId_;
     /// <summary>
     /// 唯一连接ID
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong conn_id {
-      get { return conn_id_; }
+    public ulong ConnId {
+      get { return connId_; }
       set {
-        conn_id_ = value;
+        connId_ = value;
       }
     }
 
@@ -1065,10 +1065,10 @@ namespace vila_bot {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (code != other.code) return false;
-      if (msg != other.msg) return false;
-      if (server_timestamp != other.server_timestamp) return false;
-      if (conn_id != other.conn_id) return false;
+      if (Code != other.Code) return false;
+      if (Msg != other.Msg) return false;
+      if (ServerTimestamp != other.ServerTimestamp) return false;
+      if (ConnId != other.ConnId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1076,10 +1076,10 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (code != 0) hash ^= code.GetHashCode();
-      if (msg.Length != 0) hash ^= msg.GetHashCode();
-      if (server_timestamp != 0UL) hash ^= server_timestamp.GetHashCode();
-      if (conn_id != 0UL) hash ^= conn_id.GetHashCode();
+      if (Code != 0) hash ^= Code.GetHashCode();
+      if (Msg.Length != 0) hash ^= Msg.GetHashCode();
+      if (ServerTimestamp != 0UL) hash ^= ServerTimestamp.GetHashCode();
+      if (ConnId != 0UL) hash ^= ConnId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1098,21 +1098,21 @@ namespace vila_bot {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (code != 0) {
+      if (Code != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(code);
+        output.WriteInt32(Code);
       }
-      if (msg.Length != 0) {
+      if (Msg.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(msg);
+        output.WriteString(Msg);
       }
-      if (server_timestamp != 0UL) {
+      if (ServerTimestamp != 0UL) {
         output.WriteRawTag(24);
-        output.WriteUInt64(server_timestamp);
+        output.WriteUInt64(ServerTimestamp);
       }
-      if (conn_id != 0UL) {
+      if (ConnId != 0UL) {
         output.WriteRawTag(32);
-        output.WriteUInt64(conn_id);
+        output.WriteUInt64(ConnId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1124,21 +1124,21 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (code != 0) {
+      if (Code != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(code);
+        output.WriteInt32(Code);
       }
-      if (msg.Length != 0) {
+      if (Msg.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(msg);
+        output.WriteString(Msg);
       }
-      if (server_timestamp != 0UL) {
+      if (ServerTimestamp != 0UL) {
         output.WriteRawTag(24);
-        output.WriteUInt64(server_timestamp);
+        output.WriteUInt64(ServerTimestamp);
       }
-      if (conn_id != 0UL) {
+      if (ConnId != 0UL) {
         output.WriteRawTag(32);
-        output.WriteUInt64(conn_id);
+        output.WriteUInt64(ConnId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1150,17 +1150,17 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (code != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(code);
+      if (Code != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Code);
       }
-      if (msg.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(msg);
+      if (Msg.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
       }
-      if (server_timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(server_timestamp);
+      if (ServerTimestamp != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ServerTimestamp);
       }
-      if (conn_id != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(conn_id);
+      if (ConnId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ConnId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1174,17 +1174,17 @@ namespace vila_bot {
       if (other == null) {
         return;
       }
-      if (other.code != 0) {
-        code = other.code;
+      if (other.Code != 0) {
+        Code = other.Code;
       }
-      if (other.msg.Length != 0) {
-        msg = other.msg;
+      if (other.Msg.Length != 0) {
+        Msg = other.Msg;
       }
-      if (other.server_timestamp != 0UL) {
-        server_timestamp = other.server_timestamp;
+      if (other.ServerTimestamp != 0UL) {
+        ServerTimestamp = other.ServerTimestamp;
       }
-      if (other.conn_id != 0UL) {
-        conn_id = other.conn_id;
+      if (other.ConnId != 0UL) {
+        ConnId = other.ConnId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1202,19 +1202,19 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            code = input.ReadInt32();
+            Code = input.ReadInt32();
             break;
           }
           case 18: {
-            msg = input.ReadString();
+            Msg = input.ReadString();
             break;
           }
           case 24: {
-            server_timestamp = input.ReadUInt64();
+            ServerTimestamp = input.ReadUInt64();
             break;
           }
           case 32: {
-            conn_id = input.ReadUInt64();
+            ConnId = input.ReadUInt64();
             break;
           }
         }
@@ -1233,19 +1233,19 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            code = input.ReadInt32();
+            Code = input.ReadInt32();
             break;
           }
           case 18: {
-            msg = input.ReadString();
+            Msg = input.ReadString();
             break;
           }
           case 24: {
-            server_timestamp = input.ReadUInt64();
+            ServerTimestamp = input.ReadUInt64();
             break;
           }
           case 32: {
-            conn_id = input.ReadUInt64();
+            ConnId = input.ReadUInt64();
             break;
           }
         }
@@ -1273,7 +1273,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.commandReflection.Descriptor.MessageTypes[4]; }
+      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1295,8 +1295,8 @@ namespace vila_bot {
     public PLogout(PLogout other) : this() {
       uid_ = other.uid_;
       platform_ = other.platform_;
-      app_id_ = other.app_id_;
-      device_id_ = other.device_id_;
+      appId_ = other.appId_;
+      deviceId_ = other.deviceId_;
       region_ = other.region_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1308,14 +1308,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "uid" field.</summary>
-    public const int uidFieldNumber = 1;
+    public const int UidFieldNumber = 1;
     private ulong uid_;
     /// <summary>
     /// 长连接侧唯一id，uint64格式
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong uid {
+    public ulong Uid {
       get { return uid_; }
       set {
         uid_ = value;
@@ -1323,14 +1323,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "platform" field.</summary>
-    public const int platformFieldNumber = 2;
+    public const int PlatformFieldNumber = 2;
     private int platform_;
     /// <summary>
     /// 客户端操作平台枚举
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int platform {
+    public int Platform {
       get { return platform_; }
       set {
         platform_ = value;
@@ -1338,44 +1338,44 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "app_id" field.</summary>
-    public const int app_idFieldNumber = 3;
-    private int app_id_;
+    public const int AppIdFieldNumber = 3;
+    private int appId_;
     /// <summary>
     /// 业务所在客户端应用标识，用于在同一个客户端隔离不同业务的长连接通道。
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int app_id {
-      get { return app_id_; }
+    public int AppId {
+      get { return appId_; }
       set {
-        app_id_ = value;
+        appId_ = value;
       }
     }
 
     /// <summary>Field number for the "device_id" field.</summary>
-    public const int device_idFieldNumber = 4;
-    private string device_id_ = "";
+    public const int DeviceIdFieldNumber = 4;
+    private string deviceId_ = "";
     /// <summary>
     /// 客户端设备唯一标识
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string device_id {
-      get { return device_id_; }
+    public string DeviceId {
+      get { return deviceId_; }
       set {
-        device_id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        deviceId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "region" field.</summary>
-    public const int regionFieldNumber = 5;
+    public const int RegionFieldNumber = 5;
     private string region_ = "";
     /// <summary>
     /// 区域划分字段，通过uid+app_id+platform+region四个字段唯一确定一条长连接
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string region {
+    public string Region {
       get { return region_; }
       set {
         region_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
@@ -1397,11 +1397,11 @@ namespace vila_bot {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (uid != other.uid) return false;
-      if (platform != other.platform) return false;
-      if (app_id != other.app_id) return false;
-      if (device_id != other.device_id) return false;
-      if (region != other.region) return false;
+      if (Uid != other.Uid) return false;
+      if (Platform != other.Platform) return false;
+      if (AppId != other.AppId) return false;
+      if (DeviceId != other.DeviceId) return false;
+      if (Region != other.Region) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1409,11 +1409,11 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (uid != 0UL) hash ^= uid.GetHashCode();
-      if (platform != 0) hash ^= platform.GetHashCode();
-      if (app_id != 0) hash ^= app_id.GetHashCode();
-      if (device_id.Length != 0) hash ^= device_id.GetHashCode();
-      if (region.Length != 0) hash ^= region.GetHashCode();
+      if (Uid != 0UL) hash ^= Uid.GetHashCode();
+      if (Platform != 0) hash ^= Platform.GetHashCode();
+      if (AppId != 0) hash ^= AppId.GetHashCode();
+      if (DeviceId.Length != 0) hash ^= DeviceId.GetHashCode();
+      if (Region.Length != 0) hash ^= Region.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1432,25 +1432,25 @@ namespace vila_bot {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (uid != 0UL) {
+      if (Uid != 0UL) {
         output.WriteRawTag(8);
-        output.WriteUInt64(uid);
+        output.WriteUInt64(Uid);
       }
-      if (platform != 0) {
+      if (Platform != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(platform);
+        output.WriteInt32(Platform);
       }
-      if (app_id != 0) {
+      if (AppId != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(app_id);
+        output.WriteInt32(AppId);
       }
-      if (device_id.Length != 0) {
+      if (DeviceId.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(device_id);
+        output.WriteString(DeviceId);
       }
-      if (region.Length != 0) {
+      if (Region.Length != 0) {
         output.WriteRawTag(42);
-        output.WriteString(region);
+        output.WriteString(Region);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1462,25 +1462,25 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (uid != 0UL) {
+      if (Uid != 0UL) {
         output.WriteRawTag(8);
-        output.WriteUInt64(uid);
+        output.WriteUInt64(Uid);
       }
-      if (platform != 0) {
+      if (Platform != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(platform);
+        output.WriteInt32(Platform);
       }
-      if (app_id != 0) {
+      if (AppId != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(app_id);
+        output.WriteInt32(AppId);
       }
-      if (device_id.Length != 0) {
+      if (DeviceId.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(device_id);
+        output.WriteString(DeviceId);
       }
-      if (region.Length != 0) {
+      if (Region.Length != 0) {
         output.WriteRawTag(42);
-        output.WriteString(region);
+        output.WriteString(Region);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1492,20 +1492,20 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (uid != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(uid);
+      if (Uid != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Uid);
       }
-      if (platform != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(platform);
+      if (Platform != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Platform);
       }
-      if (app_id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(app_id);
+      if (AppId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(AppId);
       }
-      if (device_id.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(device_id);
+      if (DeviceId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceId);
       }
-      if (region.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(region);
+      if (Region.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Region);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1519,20 +1519,20 @@ namespace vila_bot {
       if (other == null) {
         return;
       }
-      if (other.uid != 0UL) {
-        uid = other.uid;
+      if (other.Uid != 0UL) {
+        Uid = other.Uid;
       }
-      if (other.platform != 0) {
-        platform = other.platform;
+      if (other.Platform != 0) {
+        Platform = other.Platform;
       }
-      if (other.app_id != 0) {
-        app_id = other.app_id;
+      if (other.AppId != 0) {
+        AppId = other.AppId;
       }
-      if (other.device_id.Length != 0) {
-        device_id = other.device_id;
+      if (other.DeviceId.Length != 0) {
+        DeviceId = other.DeviceId;
       }
-      if (other.region.Length != 0) {
-        region = other.region;
+      if (other.Region.Length != 0) {
+        Region = other.Region;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1550,23 +1550,23 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            uid = input.ReadUInt64();
+            Uid = input.ReadUInt64();
             break;
           }
           case 16: {
-            platform = input.ReadInt32();
+            Platform = input.ReadInt32();
             break;
           }
           case 24: {
-            app_id = input.ReadInt32();
+            AppId = input.ReadInt32();
             break;
           }
           case 34: {
-            device_id = input.ReadString();
+            DeviceId = input.ReadString();
             break;
           }
           case 42: {
-            region = input.ReadString();
+            Region = input.ReadString();
             break;
           }
         }
@@ -1585,23 +1585,23 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            uid = input.ReadUInt64();
+            Uid = input.ReadUInt64();
             break;
           }
           case 16: {
-            platform = input.ReadInt32();
+            Platform = input.ReadInt32();
             break;
           }
           case 24: {
-            app_id = input.ReadInt32();
+            AppId = input.ReadInt32();
             break;
           }
           case 34: {
-            device_id = input.ReadString();
+            DeviceId = input.ReadString();
             break;
           }
           case 42: {
-            region = input.ReadString();
+            Region = input.ReadString();
             break;
           }
         }
@@ -1629,7 +1629,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.commandReflection.Descriptor.MessageTypes[5]; }
+      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1651,7 +1651,7 @@ namespace vila_bot {
     public PLogoutReply(PLogoutReply other) : this() {
       code_ = other.code_;
       msg_ = other.msg_;
-      conn_id_ = other.conn_id_;
+      connId_ = other.connId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1662,14 +1662,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "code" field.</summary>
-    public const int codeFieldNumber = 1;
+    public const int CodeFieldNumber = 1;
     private int code_;
     /// <summary>
     /// 错误码 非0表示失败
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int code {
+    public int Code {
       get { return code_; }
       set {
         code_ = value;
@@ -1677,14 +1677,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "msg" field.</summary>
-    public const int msgFieldNumber = 2;
+    public const int MsgFieldNumber = 2;
     private string msg_ = "";
     /// <summary>
     /// 错误信息
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string msg {
+    public string Msg {
       get { return msg_; }
       set {
         msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
@@ -1692,17 +1692,17 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "conn_id" field.</summary>
-    public const int conn_idFieldNumber = 3;
-    private ulong conn_id_;
+    public const int ConnIdFieldNumber = 3;
+    private ulong connId_;
     /// <summary>
     /// 连接id
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong conn_id {
-      get { return conn_id_; }
+    public ulong ConnId {
+      get { return connId_; }
       set {
-        conn_id_ = value;
+        connId_ = value;
       }
     }
 
@@ -1721,9 +1721,9 @@ namespace vila_bot {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (code != other.code) return false;
-      if (msg != other.msg) return false;
-      if (conn_id != other.conn_id) return false;
+      if (Code != other.Code) return false;
+      if (Msg != other.Msg) return false;
+      if (ConnId != other.ConnId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1731,9 +1731,9 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (code != 0) hash ^= code.GetHashCode();
-      if (msg.Length != 0) hash ^= msg.GetHashCode();
-      if (conn_id != 0UL) hash ^= conn_id.GetHashCode();
+      if (Code != 0) hash ^= Code.GetHashCode();
+      if (Msg.Length != 0) hash ^= Msg.GetHashCode();
+      if (ConnId != 0UL) hash ^= ConnId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1752,17 +1752,17 @@ namespace vila_bot {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (code != 0) {
+      if (Code != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(code);
+        output.WriteInt32(Code);
       }
-      if (msg.Length != 0) {
+      if (Msg.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(msg);
+        output.WriteString(Msg);
       }
-      if (conn_id != 0UL) {
+      if (ConnId != 0UL) {
         output.WriteRawTag(24);
-        output.WriteUInt64(conn_id);
+        output.WriteUInt64(ConnId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1774,17 +1774,17 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (code != 0) {
+      if (Code != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(code);
+        output.WriteInt32(Code);
       }
-      if (msg.Length != 0) {
+      if (Msg.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(msg);
+        output.WriteString(Msg);
       }
-      if (conn_id != 0UL) {
+      if (ConnId != 0UL) {
         output.WriteRawTag(24);
-        output.WriteUInt64(conn_id);
+        output.WriteUInt64(ConnId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1796,14 +1796,14 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (code != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(code);
+      if (Code != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Code);
       }
-      if (msg.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(msg);
+      if (Msg.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
       }
-      if (conn_id != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(conn_id);
+      if (ConnId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ConnId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1817,14 +1817,14 @@ namespace vila_bot {
       if (other == null) {
         return;
       }
-      if (other.code != 0) {
-        code = other.code;
+      if (other.Code != 0) {
+        Code = other.Code;
       }
-      if (other.msg.Length != 0) {
-        msg = other.msg;
+      if (other.Msg.Length != 0) {
+        Msg = other.Msg;
       }
-      if (other.conn_id != 0UL) {
-        conn_id = other.conn_id;
+      if (other.ConnId != 0UL) {
+        ConnId = other.ConnId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1842,15 +1842,15 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            code = input.ReadInt32();
+            Code = input.ReadInt32();
             break;
           }
           case 18: {
-            msg = input.ReadString();
+            Msg = input.ReadString();
             break;
           }
           case 24: {
-            conn_id = input.ReadUInt64();
+            ConnId = input.ReadUInt64();
             break;
           }
         }
@@ -1869,15 +1869,15 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            code = input.ReadInt32();
+            Code = input.ReadInt32();
             break;
           }
           case 18: {
-            msg = input.ReadString();
+            Msg = input.ReadString();
             break;
           }
           case 24: {
-            conn_id = input.ReadUInt64();
+            ConnId = input.ReadUInt64();
             break;
           }
         }
@@ -1905,7 +1905,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.commandReflection.Descriptor.MessageTypes[6]; }
+      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1937,14 +1937,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "code" field.</summary>
-    public const int codeFieldNumber = 1;
+    public const int CodeFieldNumber = 1;
     private int code_;
     /// <summary>
     /// 错误码 非0表示失败
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int code {
+    public int Code {
       get { return code_; }
       set {
         code_ = value;
@@ -1952,14 +1952,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "msg" field.</summary>
-    public const int msgFieldNumber = 2;
+    public const int MsgFieldNumber = 2;
     private string msg_ = "";
     /// <summary>
     /// 错误信息
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string msg {
+    public string Msg {
       get { return msg_; }
       set {
         msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
@@ -1981,8 +1981,8 @@ namespace vila_bot {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (code != other.code) return false;
-      if (msg != other.msg) return false;
+      if (Code != other.Code) return false;
+      if (Msg != other.Msg) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1990,8 +1990,8 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (code != 0) hash ^= code.GetHashCode();
-      if (msg.Length != 0) hash ^= msg.GetHashCode();
+      if (Code != 0) hash ^= Code.GetHashCode();
+      if (Msg.Length != 0) hash ^= Msg.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2010,13 +2010,13 @@ namespace vila_bot {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (code != 0) {
+      if (Code != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(code);
+        output.WriteInt32(Code);
       }
-      if (msg.Length != 0) {
+      if (Msg.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(msg);
+        output.WriteString(Msg);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2028,13 +2028,13 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (code != 0) {
+      if (Code != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(code);
+        output.WriteInt32(Code);
       }
-      if (msg.Length != 0) {
+      if (Msg.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(msg);
+        output.WriteString(Msg);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2046,11 +2046,11 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (code != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(code);
+      if (Code != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Code);
       }
-      if (msg.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(msg);
+      if (Msg.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2064,11 +2064,11 @@ namespace vila_bot {
       if (other == null) {
         return;
       }
-      if (other.code != 0) {
-        code = other.code;
+      if (other.Code != 0) {
+        Code = other.Code;
       }
-      if (other.msg.Length != 0) {
-        msg = other.msg;
+      if (other.Msg.Length != 0) {
+        Msg = other.Msg;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2086,11 +2086,11 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            code = input.ReadInt32();
+            Code = input.ReadInt32();
             break;
           }
           case 18: {
-            msg = input.ReadString();
+            Msg = input.ReadString();
             break;
           }
         }
@@ -2109,11 +2109,11 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            code = input.ReadInt32();
+            Code = input.ReadInt32();
             break;
           }
           case 18: {
-            msg = input.ReadString();
+            Msg = input.ReadString();
             break;
           }
         }
@@ -2141,7 +2141,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.commandReflection.Descriptor.MessageTypes[7]; }
+      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2173,14 +2173,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "code" field.</summary>
-    public const int codeFieldNumber = 1;
+    public const int CodeFieldNumber = 1;
     private int code_;
     /// <summary>
     /// 踢出原因状态码
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int code {
+    public int Code {
       get { return code_; }
       set {
         code_ = value;
@@ -2188,14 +2188,14 @@ namespace vila_bot {
     }
 
     /// <summary>Field number for the "reason" field.</summary>
-    public const int reasonFieldNumber = 2;
+    public const int ReasonFieldNumber = 2;
     private string reason_ = "";
     /// <summary>
     /// 状态码对应的文案
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string reason {
+    public string Reason {
       get { return reason_; }
       set {
         reason_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
@@ -2217,8 +2217,8 @@ namespace vila_bot {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (code != other.code) return false;
-      if (reason != other.reason) return false;
+      if (Code != other.Code) return false;
+      if (Reason != other.Reason) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2226,8 +2226,8 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (code != 0) hash ^= code.GetHashCode();
-      if (reason.Length != 0) hash ^= reason.GetHashCode();
+      if (Code != 0) hash ^= Code.GetHashCode();
+      if (Reason.Length != 0) hash ^= Reason.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2246,13 +2246,13 @@ namespace vila_bot {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (code != 0) {
+      if (Code != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(code);
+        output.WriteInt32(Code);
       }
-      if (reason.Length != 0) {
+      if (Reason.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(reason);
+        output.WriteString(Reason);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2264,13 +2264,13 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (code != 0) {
+      if (Code != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(code);
+        output.WriteInt32(Code);
       }
-      if (reason.Length != 0) {
+      if (Reason.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(reason);
+        output.WriteString(Reason);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2282,11 +2282,11 @@ namespace vila_bot {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (code != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(code);
+      if (Code != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Code);
       }
-      if (reason.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(reason);
+      if (Reason.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Reason);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2300,11 +2300,11 @@ namespace vila_bot {
       if (other == null) {
         return;
       }
-      if (other.code != 0) {
-        code = other.code;
+      if (other.Code != 0) {
+        Code = other.Code;
       }
-      if (other.reason.Length != 0) {
-        reason = other.reason;
+      if (other.Reason.Length != 0) {
+        Reason = other.Reason;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2322,11 +2322,11 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            code = input.ReadInt32();
+            Code = input.ReadInt32();
             break;
           }
           case 18: {
-            reason = input.ReadString();
+            Reason = input.ReadString();
             break;
           }
         }
@@ -2345,11 +2345,11 @@ namespace vila_bot {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            code = input.ReadInt32();
+            Code = input.ReadInt32();
             break;
           }
           case 18: {
-            reason = input.ReadString();
+            Reason = input.ReadString();
             break;
           }
         }

@@ -121,7 +121,7 @@ public class MessageReceiverBase
 	}
 	internal virtual void Initialize(vila_bot.RobotEventMessage robotEventMessage)
 	{
-		robot = JsonConvert.DeserializeObject<Robot>(JsonConvert.SerializeObject(robotEventMessage.@event.robot), new JsonSerializerSettings
+		robot = JsonConvert.DeserializeObject<Robot>(JsonConvert.SerializeObject(robotEventMessage.Event.Robot), new JsonSerializerSettings
 		{
 			ContractResolver = new DefaultContractResolver()
 			{
@@ -131,11 +131,11 @@ public class MessageReceiverBase
 
 		//var json = JObject.Parse(message)["event"];
 		//robot = JsonConvert.DeserializeObject<Robot>(json!["robot"]!.ToString())!;
-		EventType = (EventType)robotEventMessage.@event.type;
+		EventType = (EventType)robotEventMessage.Event.Type;
 		//EventType = (EventType)(int)json["type"]!;
 
 		//var eventData = json["extend_data"]!["EventData"];
-		var eventData = JObject.Parse(JsonConvert.SerializeObject(robotEventMessage.@event.extend_data, new JsonSerializerSettings
+		var eventData = JObject.Parse(JsonConvert.SerializeObject(robotEventMessage.Event.ExtendData, new JsonSerializerSettings
 		{
 			ContractResolver = new DefaultContractResolver()
 			{
@@ -207,4 +207,27 @@ public enum EventType
 	AddQuickEmoticon = 5,
 	AuditCallback = 6,
 	ClickMsgComponent = 7,
+}
+class OriginalCaseNamingStrategy : NamingStrategy
+{
+	protected override string ResolvePropertyName(string name)
+	{
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < name.Length; i++)
+		{
+			if (65 <= name[i] && name[i] <= 90)
+			{
+				if (i != 0)
+				{
+					stringBuilder.Append($"_");
+				}
+				stringBuilder.Append((char)(name[i] + 32));
+			}
+			else
+			{
+				stringBuilder.Append($"{name[i]}");
+			}
+		}
+		return stringBuilder.ToString();
+	}
 }
