@@ -4,6 +4,8 @@ package vila_bot;
 
 option go_package = "gopkg.mihoyo.com/vila-bot-go/proto/vila_bot;vila_bot";
 
+option csharp_namespace = "vila_bot";
+
 enum Command {
     UNKNOWN = 0;
 

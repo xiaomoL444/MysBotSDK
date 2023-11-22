@@ -4,7 +4,7 @@ using MysBotSDK.Connection;
 using MysBotSDK.Tool;
 using Newtonsoft.Json;
 using System;
-using VilaBot;
+using vila_bot;
 
 namespace MysBotSDK.Connection.WebSocket;
 
@@ -316,12 +316,12 @@ Content-Type:application/json");
 	{
 		PLogin pLogin = new PLogin()
 		{
-			Uid = uid,
-			Token = $"{villa_id}.{secret}.{bot_id}",
-			AppId = app_id,
-			DeviceId = device_id,
-			Platform = platform,
-			Region = string.Empty   //?
+			uid = uid,
+			token = $"{villa_id}.{secret}.{bot_id}",
+			app_id = app_id,
+			device_id = device_id,
+			platform = platform,
+			region = string.Empty   //?
 		};
 
 		SendMsg(Command.PLogin, pLogin, (uint)app_id, MsgType.Request);
@@ -331,10 +331,10 @@ Content-Type:application/json");
 	{
 		PLogout pLogout = new PLogout()
 		{
-			Uid = uid,
-			Platform = platform,
-			AppId = app_id,
-			DeviceId = device_id
+			uid = uid,
+			platform = platform,
+			app_id = app_id,
+			device_id = device_id
 		};
 		SendMsg(Command.Logout, pLogout, (uint)app_id, MsgType.Request);
 		return;
@@ -343,7 +343,7 @@ Content-Type:application/json");
 	{
 		PHeartBeat pHeartBeat = new PHeartBeat
 		{
-			ClientTimestamp = GetCurrentTime().ToString()
+			client_timestamp = GetCurrentTime().ToString()
 		};
 		SendMsg(Command.Heartbeat, pHeartBeat, (uint)app_id, MsgType.Request);
 	}
@@ -368,7 +368,7 @@ Content-Type:application/json");
 	public void LoginReply(WebSocketMessage wsMsg)
 	{
 		PLoginReply pLoginReply = PLoginReply.Parser.ParseFrom(wsMsg.BodyData);
-		switch (pLoginReply.Code)
+		switch (pLoginReply.code)
 		{
 			case 0:
 				Logger.Log("WebSocket连接成功");
@@ -414,7 +414,7 @@ Content-Type:application/json");
 	public void LogoutReply(WebSocketMessage wsMsg)
 	{
 		PLogoutReply pLogoutReply = PLogoutReply.Parser.ParseFrom(wsMsg.BodyData);
-		switch (pLogoutReply.Code)
+		switch (pLogoutReply.code)
 		{
 			case 0:
 				Logger.Log("WebSocket登出成功");
@@ -445,12 +445,12 @@ Content-Type:application/json");
 	public void HeartBeatReply(WebSocketMessage wsMsg)
 	{
 		PHeartBeatReply pHeartBeatReply = PHeartBeatReply.Parser.ParseFrom(wsMsg.BodyData);
-		switch (pHeartBeatReply.Code)
+		switch (pHeartBeatReply.code)
 		{
 			case 0:
 				//Logger.Debug("收到心跳包");
 				//Logger.Debug($"{pHeartBeatReply.ServerTimestamp}");
-				Last_server_timestamp = pHeartBeatReply.ServerTimestamp;
+				Last_server_timestamp = pHeartBeatReply.server_timestamp;
 				isHeartBeatFail = false;
 				break;
 			case 1000://心跳包错误，参数错误
@@ -475,10 +475,10 @@ Content-Type:application/json");
 	public void KickOff(WebSocketMessage wsMsg)
 	{
 		PKickOff pKickOff = PKickOff.Parser.ParseFrom(wsMsg.BodyData);
-		switch (pKickOff.Code)
+		switch (pKickOff.code)
 		{
 			case 0:
-				Logger.LogWarnning($"收到踢出登录的消息，状态码 {pKickOff.Code} ，原因 {pKickOff.Reason}");
+				Logger.LogWarnning($"收到踢出登录的消息，状态码 {pKickOff.code} ，原因 {pKickOff.reason}");
 				//关闭wss连接
 				isForceDisConnect = true;
 				webSocket?.Close();

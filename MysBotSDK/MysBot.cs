@@ -9,7 +9,7 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
-using VilaBot;
+using vila_bot;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MysBotSDK
@@ -213,7 +213,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			//解析消息
 			try
 			{
-				MessageReceiverBase messageReceiverBase = new MessageReceiverBase(data);
+				MessageReceiverBase messageReceiverBase = new MessageReceiverBase(robotEventMessage);
 				//MessageReceiver应该是一个抽象类(父类)，然后下面就替换成事件触发器
 
 				switch (messageReceiverBase.EventType)

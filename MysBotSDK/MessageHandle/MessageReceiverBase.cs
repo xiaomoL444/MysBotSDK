@@ -12,6 +12,8 @@ using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.MessageHandle.Info;
 using System.Runtime.CompilerServices;
 using MysBotSDK.MessageHandle.ExtendData;
+using Google.Protobuf;
+using Newtonsoft.Json.Serialization;
 
 namespace MysBotSDK.MessageHandle;
 
@@ -50,7 +52,10 @@ public class MessageReceiverBase
 	{
 		Initialize(message);
 	}
-
+	public MessageReceiverBase(vila_bot.RobotEventMessage robotEventMessage)
+	{
+		Initialize(robotEventMessage);
+	}
 	/// <summary>
 	/// 初始化(主要是为了多态接收器重构准备的)
 	/// </summary>
@@ -104,6 +109,80 @@ public class MessageReceiverBase
 				break;
 			case EventType.ClickMsgComponent:
 				receiver = new ClickMsgComponentReceiver(eventData!["ClickMsgComponent"]!.ToString());
+				var clickMsgComponentReceiver = (ClickMsgComponentReceiver)receiver;
+				villa_id = clickMsgComponentReceiver.Villa_ID;
+				room_id = clickMsgComponentReceiver.Room_id;
+				break;
+		}
+		receiver!.robot = this.robot;
+		receiver.EventType = this.EventType;
+		receiver.room_id = this.room_id;
+		receiver.villa_id = this.villa_id;
+	}
+	internal virtual void Initialize(vila_bot.RobotEventMessage robotEventMessage)
+	{
+		robot = JsonConvert.DeserializeObject<Robot>(JsonConvert.SerializeObject(robotEventMessage.@event.robot), new JsonSerializerSettings
+		{
+			ContractResolver = new DefaultContractResolver()
+			{
+				NamingStrategy = new OriginalCaseNamingStrategy()
+			}// 使用 ProtoContractResolver 保持原始字段名
+		});
+
+		//var json = JObject.Parse(message)["event"];
+		//robot = JsonConvert.DeserializeObject<Robot>(json!["robot"]!.ToString())!;
+		EventType = (EventType)robotEventMessage.@event.type;
+		//EventType = (EventType)(int)json["type"]!;
+
+		//var eventData = json["extend_data"]!["EventData"];
+		var eventData = JObject.Parse(JsonConvert.SerializeObject(robotEventMessage.@event.extend_data, new JsonSerializerSettings
+		{
+			ContractResolver = new DefaultContractResolver()
+			{
+				NamingStrategy = new OriginalCaseNamingStrategy()
+			}// 使用 ProtoContractResolver 保持原始字段名
+		}));
+		//对事件数据赋值
+		switch (EventType)
+		{
+			case EventType.JoinVilla:
+				receiver = new JoinVillaReceiver(eventData!["join_villa"]!.ToString());
+				var joinVillaReceiver = (JoinVillaReceiver)receiver;
+				villa_id = joinVillaReceiver.villa_id;
+				room_id = 0;
+				break;
+			case EventType.SendMessage:
+				receiver = new SendMessageReceiver(eventData!["send_message"]!.ToString());
+				var sendMessageReceiver = (SendMessageReceiver)receiver;
+				villa_id = sendMessageReceiver.Villa_ID;
+				room_id = sendMessageReceiver.Room_ID;
+				break;
+			case EventType.CreateRobot:
+				receiver = new CreateRobotReceiver(eventData!["create_robot"]!.ToString());
+				var createRobotReceiver = (CreateRobotReceiver)receiver;
+				villa_id = createRobotReceiver.Villa_ID;
+				room_id = 0;
+				break;
+			case EventType.DeleteRobot:
+				receiver = new DeleteRobotReceiver(eventData!["delete_robot"]!.ToString());
+				var deleteRobotReceiver = (DeleteRobotReceiver)receiver;
+				villa_id = deleteRobotReceiver.Villa_ID;
+				room_id = 0;
+				break;
+			case EventType.AddQuickEmoticon:
+				receiver = new AddQuickEmoticonReceiver(eventData!["add_quick_emoticon"]!.ToString());
+				var addQuickEmoticonReceiver = (AddQuickEmoticonReceiver)receiver;
+				villa_id = addQuickEmoticonReceiver.Villa_ID;
+				room_id = addQuickEmoticonReceiver.Room_ID;
+				break;
+			case EventType.AuditCallback:
+				receiver = new AuditCallbackReceiver(eventData!["audit_callback"]!.ToString());
+				var auditCallbackReceiver = (AuditCallbackReceiver)receiver;
+				villa_id = auditCallbackReceiver.Villa_ID;
+				room_id = auditCallbackReceiver.Room_ID;
+				break;
+			case EventType.ClickMsgComponent:
+				receiver = new ClickMsgComponentReceiver(eventData!["click_msg_component"]!.ToString());
 				var clickMsgComponentReceiver = (ClickMsgComponentReceiver)receiver;
 				villa_id = clickMsgComponentReceiver.Villa_ID;
 				room_id = clickMsgComponentReceiver.Room_id;
