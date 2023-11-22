@@ -189,15 +189,17 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			//若websocketConnect为true
 			else if (WebsocketConnect)
 			{
+				Logger.Log("创建ws连接(官方)");
 				//开启官方的ws连接
 				_ = Task.Run(() =>
 				{
 					wsClient = new WsClient(this, bot_id, secret!, test_villa_id);
 				});
 			}
+			//若什么都没有开启
 			else
 			{
-				throw new Exception("不能同时传入ws_callback与http_callback,或者没有传值");
+				throw new Exception("请检查是否添加了回调地址，或者检查WebsocketConnect是否开启");
 			}
 
 			return this;
