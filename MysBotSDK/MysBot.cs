@@ -22,13 +22,39 @@ namespace MysBotSDK
 		/// 是否选择ws连接
 		/// </summary>
 		public bool WebsocketConnect { private get; init; }
+		/// <summary>
+		/// 若选择ws连接，若bot未上架，则填入测试的别野id，上架的话则不用填入
+		/// </summary>
+		public uint test_villa_id { private get; init; }
+		/// <summary>
+		/// http回调地址
+		/// </summary>
 		public string? http_callback_Address { private get; init; }
+		/// <summary>
+		/// ws连接回调地址
+		/// </summary>
+		[Obsolete]
 		public string? ws_callback_Address { private get; init; }
+		/// <summary>
+		/// Bot的id
+		/// </summary>
 		public string? bot_id { internal get; init; }
+		/// <summary>
+		/// bot的secret
+		/// </summary>
 		public string? secret { internal get; init; }
+		/// <summary>
+		/// bot的pub_key
+		/// </summary>
 		public string? pub_key { internal get; init; }
+		/// <summary>
+		/// 日志输出等级
+		/// </summary>
 		public Logger.LoggerLevel loggerLevel { get { return Logger.loggerLevel; } set { Logger.loggerLevel = value; } }
 
+		/// <summary>
+		/// 消息接收器
+		/// </summary>
 		public IObservable<MessageReceiverBase> MessageReceiver => messageReceiver.AsObservable();
 		private Subject<MessageReceiverBase> messageReceiver = new();
 
@@ -36,9 +62,15 @@ namespace MysBotSDK
 
 		private CancellationTokenSource tokenSource = new();
 
+		/// <summary>
+		/// http侦听器
+		/// </summary>
 		private HttpListener? listener { get; set; }
 
-		private WsClient wsClient { get; set; }
+		/// <summary>
+		/// ws连接实例
+		/// </summary>
+		private WsClient? wsClient { get; set; }
 
 		/// <summary>
 		/// 
@@ -49,10 +81,12 @@ namespace MysBotSDK
 		{
 			Logger.Log("=========================================================\n初始化Bot");
 			//检查bot参数是否齐全
-			if (!(http_callback_Address != null || ws_callback_Address != null) || bot_id == null || secret == null | pub_key == null)
+			if (bot_id == null || secret == null || pub_key == null)
 			{
 				throw new Exception(Logger.LogError("Bot参数不齐全"));
 			}
+
+			//静态发送器添加该Bot
 			MessageSender.MysBot = this;
 
 			//设置鉴权请求头
@@ -61,7 +95,8 @@ x-rpc-bot_secret:{secret}
 x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 
 			//创建监听
-			if (!string.IsNullOrEmpty(http_callback_Address) && string.IsNullOrEmpty(ws_callback_Address))
+			//若http回调地址不为空，创建http侦听器
+			if (!string.IsNullOrEmpty(http_callback_Address))
 			{
 				Logger.Log("创建Http监听");
 				listener = new HttpListener();
@@ -112,7 +147,8 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 					listener.Close();
 				}, tokenSource.Token);
 			}
-			else if (!string.IsNullOrEmpty(ws_callback_Address) && string.IsNullOrEmpty(http_callback_Address))
+			//若ws连接不为空，则创建ws连接实例
+			else if (!string.IsNullOrEmpty(ws_callback_Address))
 			{
 				Logger.Log("创建websocker监听");
 				Func<Task?> func = null!;
@@ -150,18 +186,20 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 				});
 				_ = Task.Run(func, tokenSource.Token);
 			}
-			else
-			{
-				throw new Exception("不能同时传入ws_callback与http_callback,或者没有传值");
-			}
-			if (WebsocketConnect)
+			//若websocketConnect为true
+			else if (WebsocketConnect)
 			{
 				//开启官方的ws连接
 				_ = Task.Run(() =>
 				{
-					wsClient = new WsClient(bot_id, secret!, 8489);
+					wsClient = new WsClient(this, bot_id, secret!, test_villa_id);
 				});
 			}
+			else
+			{
+				throw new Exception("不能同时传入ws_callback与http_callback,或者没有传值");
+			}
+
 			return this;
 		}
 
@@ -169,7 +207,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 		/// <summary>
 		/// 回应我吧，月下初拥！
 		/// </summary>
-		/// <param name="response"></param>
+		/// <param name="listenerResponse">一个收到的回应消息</param>
 		/// <param name="responseString">回应的消息，丢入一个Json消息即可</param>
 		private void HttpRespond(HttpListenerResponse listenerResponse, ResponseData responseString)
 		{
@@ -178,6 +216,10 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			listenerResponse.ContentLength64 = buffer.Length;
 			output.Write(buffer, 0, buffer.Length);
 		}
+		/// <summary>
+		/// 消息解释器
+		/// </summary>
+		/// <param name="data"></param>
 		public void MessageHandle(string data)
 		{
 			//解析消息
@@ -217,59 +259,12 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			}
 			catch (Exception e)
 			{
-
 				Logger.LogError("解析消息失败" + e.StackTrace);
 			}
 		}
-
 		/// <summary>
-		/// 针对ws连接下的消息处理
+		/// Dispose方法
 		/// </summary>
-		/// <param name="robotEventMessage"></param>
-		public void MessageHandle(RobotEventMessage robotEventMessage)
-		{
-
-
-			//解析消息
-			try
-			{
-				MessageReceiverBase messageReceiverBase = new MessageReceiverBase(robotEventMessage);
-				//MessageReceiver应该是一个抽象类(父类)，然后下面就替换成事件触发器
-
-				switch (messageReceiverBase.EventType)
-				{
-					case EventType.JoinVilla:
-						messageReceiver.OnNext((JoinVillaReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.SendMessage:
-						messageReceiver.OnNext((SendMessageReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.CreateRobot:
-						messageReceiver.OnNext((CreateRobotReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.DeleteRobot:
-						messageReceiver.OnNext((DeleteRobotReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.AddQuickEmoticon:
-						messageReceiver.OnNext((AddQuickEmoticonReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.AuditCallback:
-						messageReceiver.OnNext((AuditCallbackReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.ClickMsgComponent:
-						messageReceiver.OnNext((ClickMsgComponentReceiver)messageReceiverBase.receiver);
-						break;
-					default:
-						break;
-				}
-			}
-			catch (Exception e)
-			{
-
-				Logger.LogError("解析消息失败" + e.StackTrace);
-			}
-		}
-
 		public void Dispose()
 		{
 			tokenSource.Cancel();

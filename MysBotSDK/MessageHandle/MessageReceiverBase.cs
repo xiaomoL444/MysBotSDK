@@ -17,6 +17,9 @@ using Newtonsoft.Json.Serialization;
 
 namespace MysBotSDK.MessageHandle;
 
+/// <summary>
+/// 消息接收器父类
+/// </summary>
 public class MessageReceiverBase
 {
 	/// <summary>
@@ -58,9 +61,15 @@ public class MessageReceiverBase
 
 	}
 
+	/// <summary>
+	/// 获取相应的扩展数据
+	/// </summary>
+	/// <typeparam name="T">数据类型</typeparam>
+	/// <param name="bodyData">消息体(应是一段最初收到的json消息)</param>
+	/// <returns></returns>
 	internal T GetExtendDataMsg<T>(string bodyData)
 	{
-		return (JsonConvert.DeserializeObject<T>(JObject.Parse(bodyData)["event"]!["extend_data"]!["EventData"]![typeof(T).Name]!.ToString()));
+		return JsonConvert.DeserializeObject<T>(JObject.Parse(bodyData)["event"]!["extend_data"]!["EventData"]![typeof(T).Name]!.ToString())!;
 	}
 }
 /// <summary>
