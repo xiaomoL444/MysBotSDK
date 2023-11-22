@@ -67,7 +67,8 @@ public class MessageReceiverBase
 		EventType = (EventType)(int)json["type"]!;
 
 		var eventData = json["extend_data"]!["EventData"];
-
+		var this_ = this;
+		receiver = (JoinVillaReceiver)this_;
 		//对事件数据赋值
 		switch (EventType)
 		{

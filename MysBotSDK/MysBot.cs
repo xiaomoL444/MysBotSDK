@@ -12,6 +12,7 @@ using MysBotSDK.Tool;
 using vila_bot;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using MysBotSDK.Connection.WebSocket;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MysBotSDK
 {
@@ -183,6 +184,46 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			try
 			{
 				MessageReceiverBase messageReceiverBase = new MessageReceiverBase(data);
+
+				//接收器
+				MessageReceiverBase? MsgRecvBase;
+				//写一段解析json消息查看事件是什么，再将Json消息丢入构造器中
+				switch ((EventType)((int)JObject.Parse(data)["event"]!["type"]!))
+				{
+					case EventType.JoinVilla:
+						messageReceiver.OnNext(new JoinVillaReceiver(data));
+						break;
+					case EventType.SendMessage:
+						messageReceiver.OnNext((SendMessageReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.CreateRobot:
+						messageReceiver.OnNext((CreateRobotReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.DeleteRobot:
+						messageReceiver.OnNext((DeleteRobotReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.AddQuickEmoticon:
+						messageReceiver.OnNext((AddQuickEmoticonReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.AuditCallback:
+						messageReceiver.OnNext((AuditCallbackReceiver)messageReceiverBase.receiver);
+						break;
+					case EventType.ClickMsgComponent:
+						messageReceiver.OnNext((ClickMsgComponentReceiver)messageReceiverBase.receiver);
+						break;
+					default:
+						break;
+				}
+				//触发事件
+				messageReceiver.OnNext((GetType()messageReceiverBase.receiver));
+
+				Type GetType()
+				{
+					return typeof(string);
+				}
+
+
+
 				//MessageReceiver应该是一个抽象类(父类)，然后下面就替换成事件触发器
 
 				switch (messageReceiverBase.EventType)

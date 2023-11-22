@@ -25,13 +25,14 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// </summary>
 		public UInt64 Villa_ID => joinVilla.villa_id;
 		internal JoinVilla joinVilla { get; set; }
+		/// <summary>
+		/// 加入大别野事件接收器
+		/// </summary>
+		/// <param name="message"></param>
 		public JoinVillaReceiver(string message) : base(message)
 		{
-
-		}
-		internal override void Initialize(string message)
-		{
 			joinVilla = JsonConvert.DeserializeObject<JoinVilla>(message)!;
+			villa_id = joinVilla.villa_id;
 		}
 	}
 }
