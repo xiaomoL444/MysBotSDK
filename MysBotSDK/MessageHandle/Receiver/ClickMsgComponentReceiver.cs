@@ -48,11 +48,9 @@ namespace MysBotSDK.MessageHandle.Receiver
 		internal ClickMsgComponent clickMsgComponent { get; set; }
 		public ClickMsgComponentReceiver(string message) : base(message)
 		{
-
-		}
-		internal override void Initialize(string message)
-		{
-			clickMsgComponent = JsonConvert.DeserializeObject<ClickMsgComponent>(message)!;
+			clickMsgComponent = GetExtendDataMsg<ClickMsgComponent>(message);
+			villa_id = clickMsgComponent.villa_id;
+			room_id = clickMsgComponent.room_id;
 		}
 	}
 }

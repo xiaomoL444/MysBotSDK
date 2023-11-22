@@ -31,7 +31,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <param name="message"></param>
 		public JoinVillaReceiver(string message) : base(message)
 		{
-			joinVilla = JsonConvert.DeserializeObject<JoinVilla>(message)!;
+			joinVilla = GetExtendDataMsg<JoinVilla>(message);
 			villa_id = joinVilla.villa_id;
 		}
 	}

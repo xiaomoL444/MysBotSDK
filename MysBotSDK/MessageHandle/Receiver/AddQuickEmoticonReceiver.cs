@@ -48,10 +48,9 @@ namespace MysBotSDK.MessageHandle.Receiver
 		internal AddQuickEmoticon addQuickEmoticon { get; set; }
 		public AddQuickEmoticonReceiver(string message) : base(message)
 		{
-		}
-		internal override void Initialize(string message)
-		{
-			addQuickEmoticon = JsonConvert.DeserializeObject<AddQuickEmoticon>(message)!;
+			addQuickEmoticon = GetExtendDataMsg<AddQuickEmoticon>(message);
+			villa_id = addQuickEmoticon.villa_id;
+			room_id = addQuickEmoticon.room_id;
 		}
 	}
 

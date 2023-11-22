@@ -194,60 +194,22 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 						messageReceiver.OnNext(new JoinVillaReceiver(data));
 						break;
 					case EventType.SendMessage:
-						messageReceiver.OnNext((SendMessageReceiver)messageReceiverBase.receiver);
+						messageReceiver.OnNext(new SendMessageReceiver(data));
 						break;
 					case EventType.CreateRobot:
-						messageReceiver.OnNext((CreateRobotReceiver)messageReceiverBase.receiver);
+						messageReceiver.OnNext(new CreateRobotReceiver(data));
 						break;
 					case EventType.DeleteRobot:
-						messageReceiver.OnNext((DeleteRobotReceiver)messageReceiverBase.receiver);
+						messageReceiver.OnNext(new DeleteRobotReceiver(data));
 						break;
 					case EventType.AddQuickEmoticon:
-						messageReceiver.OnNext((AddQuickEmoticonReceiver)messageReceiverBase.receiver);
+						messageReceiver.OnNext(new AddQuickEmoticonReceiver(data));
 						break;
 					case EventType.AuditCallback:
-						messageReceiver.OnNext((AuditCallbackReceiver)messageReceiverBase.receiver);
+						messageReceiver.OnNext(new AuditCallbackReceiver(data));
 						break;
 					case EventType.ClickMsgComponent:
-						messageReceiver.OnNext((ClickMsgComponentReceiver)messageReceiverBase.receiver);
-						break;
-					default:
-						break;
-				}
-				//触发事件
-				messageReceiver.OnNext((GetType()messageReceiverBase.receiver));
-
-				Type GetType()
-				{
-					return typeof(string);
-				}
-
-
-
-				//MessageReceiver应该是一个抽象类(父类)，然后下面就替换成事件触发器
-
-				switch (messageReceiverBase.EventType)
-				{
-					case EventType.JoinVilla:
-						messageReceiver.OnNext((JoinVillaReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.SendMessage:
-						messageReceiver.OnNext((SendMessageReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.CreateRobot:
-						messageReceiver.OnNext((CreateRobotReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.DeleteRobot:
-						messageReceiver.OnNext((DeleteRobotReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.AddQuickEmoticon:
-						messageReceiver.OnNext((AddQuickEmoticonReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.AuditCallback:
-						messageReceiver.OnNext((AuditCallbackReceiver)messageReceiverBase.receiver);
-						break;
-					case EventType.ClickMsgComponent:
-						messageReceiver.OnNext((ClickMsgComponentReceiver)messageReceiverBase.receiver);
+						messageReceiver.OnNext(new ClickMsgComponentReceiver(data));
 						break;
 					default:
 						break;
@@ -266,6 +228,8 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 		/// <param name="robotEventMessage"></param>
 		public void MessageHandle(RobotEventMessage robotEventMessage)
 		{
+
+
 			//解析消息
 			try
 			{

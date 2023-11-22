@@ -20,10 +20,8 @@ namespace MysBotSDK.MessageHandle.Receiver
 		internal DeleteRobot deleteRobot { get; set; }
 		public DeleteRobotReceiver(string message) : base(message)
 		{
-		}
-		internal override void Initialize(string message)
-		{
-			deleteRobot = JsonConvert.DeserializeObject<DeleteRobot>(message)!;
+			deleteRobot = GetExtendDataMsg<DeleteRobot>(message);
+			villa_id = deleteRobot.villa_id;
 		}
 	}
 

@@ -1,10 +1,13 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using MysBotSDK.Connection;
+using MysBotSDK.MessageHandle;
 using MysBotSDK.Tool;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Linq;
+using System.Text;
 using vila_bot;
 
 namespace MysBotSDK.Connection.WebSocket;
@@ -12,7 +15,7 @@ namespace MysBotSDK.Connection.WebSocket;
 internal static class ExtensionEndianMethod
 {
 	/// <summary>
-	/// 转为小端字序
+	/// 发送时转为小端字序
 	/// </summary>
 	/// <param name="source"></param>
 	/// <returns></returns>
@@ -24,24 +27,15 @@ internal static class ExtensionEndianMethod
 		}
 		return source;
 	}
-	/// <summary>
-	/// 转为大端口(其实不需要的)字序
-	/// </summary>
-	/// <param name="source"></param>
-	/// <returns></returns>
-	public static byte[] ToBigEndiam(this byte[] source)
-	{
-		if (BitConverter.IsLittleEndian)
-		{
-			Array.Reverse(source);
-		}
-		return source;
-	}
 }
 
 internal class WsClient : IDisposable
 {
-	public MysBot? selfBot;
+	/// <summary>
+	/// Bot实例
+	/// </summary>
+	public MysBot? mysBot { private get; init; }
+
 	/// <summary>
 	/// 是否连接失败
 	/// </summary>
@@ -87,8 +81,9 @@ internal class WsClient : IDisposable
 		return (ulong)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalMicroseconds;
 	}
 
-	public WsClient(string bot_id, string bot_secret, uint villa_id = 0)
+	public WsClient(MysBot mysBot, string bot_id, string bot_secret, uint villa_id = 0)
 	{
+		this.mysBot = mysBot;
 		//连接委托
 		Action connectAction = new(() => { });
 		connectAction = async () =>
@@ -223,8 +218,6 @@ Content-Type:application/json");
 	{
 		try
 		{
-
-
 			var bodyData = protobufData.ToByteArray();
 			WebSocketMessage wsMsg = new()
 			{
@@ -285,12 +278,25 @@ Content-Type:application/json");
 				Magic = BitConverter.ToUInt32(data.Take(4).ToArray()),//用于标识报文的开始 目前的协议的magic值是十六进制的【0xBABEFACE】
 				DataLen = BitConverter.ToUInt32(data.Skip(4).Take(4).ToArray()),//变长部分总长度=变长头长度+变长消息体长度
 				HeaderLen = BitConverter.ToUInt32(data.Skip(8).Take(4).ToArray()),//变长头总长度，变长头部分所有字段（包括HeaderLen本身）的总长度。
-				ID = BitConverter.ToUInt32(data.Skip(12).Take(4).ToArray()),//协议包序列ID，同一条连接上的发出的协议包应该单调递增，相同序列ID且Flag字段相同的包应该被认为是同一个包
+				ID = BitConverter.ToUInt64(data.Skip(12).Take(4).ToArray()),//协议包序列ID，同一条连接上的发出的协议包应该单调递增，相同序列ID且Flag字段相同的包应该被认为是同一个包
 				Flag = BitConverter.ToUInt32(data.Skip(20).Take(4).ToArray()),//配合bizType使用，用于标识同一个bizType协议的方向。用 1 代表主动发到服务端的request包用 2 代表针对某个request包回应的response包
 				BizType = BitConverter.ToUInt32(data.Skip(24).Take(4).ToArray()),//消息体的业务类型，用于标识Body字段中的消息所属业务类型
 				AppId = BitConverter.ToUInt32(data.Skip(28).Take(4).ToArray()),//应用标识。固定为 104
 			};
 			wsMsg.BodyData = data.Skip(32).Take((int)(wsMsg.HeaderLen - 20)).ToArray();
+
+			//若本机为大端，则转换字序
+			if (!BitConverter.IsLittleEndian)
+			{
+				wsMsg.Magic = BitConverter.ToUInt32(BitConverter.GetBytes(wsMsg.Magic).Reverse().ToArray());
+				wsMsg.DataLen = BitConverter.ToUInt32(BitConverter.GetBytes(wsMsg.DataLen).Reverse().ToArray());
+				wsMsg.HeaderLen = BitConverter.ToUInt32(BitConverter.GetBytes(wsMsg.HeaderLen).Reverse().ToArray());
+				wsMsg.ID = BitConverter.ToUInt64(BitConverter.GetBytes(wsMsg.ID).Reverse().ToArray());
+				wsMsg.Flag = BitConverter.ToUInt32(BitConverter.GetBytes(wsMsg.Flag).Reverse().ToArray());
+				wsMsg.BizType = BitConverter.ToUInt32(BitConverter.GetBytes(wsMsg.BizType).Reverse().ToArray());
+				wsMsg.AppId = BitConverter.ToUInt32(BitConverter.GetBytes(wsMsg.AppId).Reverse().ToArray());
+				wsMsg.BodyData = wsMsg.BodyData.Reverse().ToArray();
+			}
 
 			//相同序列ID且Flag字段相同的包应该被认为是同一个包
 			if (LastMsg == (wsMsg.ID, wsMsg.Flag))
@@ -377,11 +383,35 @@ Content-Type:application/json");
 	/// 收到事件回调
 	/// </summary>
 	/// <param name="wsMsg"></param>
-	public void RobotEventHandle(WebSocketMessage wsMsg)
+	private void RobotEventHandle(WebSocketMessage wsMsg)
 	{
 		RobotEventMessage robotEventMessage = RobotEventMessage.Parser.ParseFrom(wsMsg.BodyData);
+
+		//组装一条json消息
+		var packMsg = new
+		{
+			@event = new
+			{
+				robot = robotEventMessage.Event.Robot,
+				type = robotEventMessage.Event.Type,
+				extend_data = new
+				{
+					EventData = robotEventMessage.Event.ExtendData
+				},
+				create_at = robotEventMessage.Event.CreatedAt,
+				id = robotEventMessage.Event.Id,
+				send_at = robotEventMessage.Event.SendAt
+			}
+		};
+
 		//var json = JsonFormatter.Default.Format(robotEvent);//尝试将Protobuf消息转化成Protobuf消息
-		selfBot?.MessageHandle(robotEventMessage);
+		mysBot?.MessageHandle(JsonConvert.SerializeObject(packMsg, new JsonSerializerSettings
+		{
+			ContractResolver = new DefaultContractResolver()
+			{
+				NamingStrategy = new OriginalCaseNamingStrategy()
+			}
+		}));
 
 	}
 	/// <summary>
@@ -565,4 +595,27 @@ Content-Type:application/json");
 	}
 	#endregion
 
+}
+class OriginalCaseNamingStrategy : NamingStrategy
+{
+	protected override string ResolvePropertyName(string name)
+	{
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < name.Length; i++)
+		{
+			if (65 <= name[i] && name[i] <= 90)
+			{
+				if (i != 0)
+				{
+					stringBuilder.Append($"_");
+				}
+				stringBuilder.Append((char)(name[i] + 32));
+			}
+			else
+			{
+				stringBuilder.Append($"{name[i]}");
+			}
+		}
+		return stringBuilder.ToString();
+	}
 }
