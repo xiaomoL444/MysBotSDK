@@ -1,10 +1,12 @@
 ﻿using MysBotSDK.MessageHandle.ExtendData;
+using MysBotSDK.Tool;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MysBotSDK.MessageHandle.Receiver
 {
@@ -47,6 +49,8 @@ namespace MysBotSDK.MessageHandle.Receiver
 			auditCallback = GetExtendDataMsg<AuditCallback>(message);
 			villa_id = auditCallback.villa_id;
 			room_id = auditCallback.room_id;
+
+			Logger.Log($"Receive [AduitCallback] Aduit_ID:{Audit_ID}Pass_Through:{Pass_Through} Form villa:{villa_id},room:{room_id}");
 		}
 	}
 }

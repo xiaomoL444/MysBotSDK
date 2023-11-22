@@ -92,6 +92,8 @@ Content-Type: application/json";
 		msgContentInfo.panel.mid_component_group_list = msg_content.midComponent.Count == 0 ? null! : msg_content.midComponent;
 		msgContentInfo.panel.big_component_group_list = msg_content.bigComponent.Count == 0 ? null! : msg_content.bigComponent;
 
+		Logger.Log($"Send: {msgContentInfo.content.text} To villa:{villa_id},room:{room_id}");
+
 		return await SendText(mysBot, villa_id, room_id, JsonConvert.SerializeObject(msgContentInfo));
 	}
 

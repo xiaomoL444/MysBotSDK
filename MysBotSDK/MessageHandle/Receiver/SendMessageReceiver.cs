@@ -1,5 +1,6 @@
 ﻿using MysBotSDK.MessageHandle.ExtendData;
 using MysBotSDK.MessageHandle.Info;
+using MysBotSDK.Tool;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -112,6 +113,8 @@ namespace MysBotSDK.MessageHandle.Receiver
 			}
 			args.RemoveRange(0, 2);
 			sendMessage.args = args;
+
+			Logger.Log($"Receive [SendMessage] {Text} Form villa:{villa_id},room:{room_id}");
 		}
 
 		#region Method
