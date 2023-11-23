@@ -92,9 +92,16 @@ Content-Type: application/json";
 		msgContentInfo.panel.mid_component_group_list = msg_content.midComponent.Count == 0 ? null! : msg_content.midComponent;
 		msgContentInfo.panel.big_component_group_list = msg_content.bigComponent.Count == 0 ? null! : msg_content.bigComponent;
 
-		Logger.Log($"Send: {msgContentInfo.content.text} To villa:{villa_id},room:{room_id}");
+		Logger.Log($"Send Text: {msgContentInfo.content.text} To villa:{villa_id},room:{room_id}");
 
-		return await SendText(mysBot, villa_id, room_id, JsonConvert.SerializeObject(msgContentInfo));
+		var res = await SendText(mysBot, villa_id, room_id, JsonConvert.SerializeObject(msgContentInfo));
+
+		if (res.retcode != 0)
+		{
+			Logger.LogError($"Fail! retcode: {res.retcode},message: {res.message}");
+		}
+
+		return res;
 	}
 
 	/// <summary>
@@ -140,7 +147,8 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null : json.data.bot_msg_id };
+
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null! : json.data.bot_msg_id };
 	}
 
 	/// <summary>
@@ -172,7 +180,16 @@ Content-Type: application/json";
 			message = "",
 			data = new { bot_msg_id = "" }
 		};
+
+		Logger.Log($"Send Image: {url} To villa:{villa_id},room:{room_id}");
+
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+
+		if (json!.retcode != 0)
+		{
+			Logger.LogError($"Fail! retcode: {json.retcode},message: {json.message}");
+		}
+
 		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null : json.data.bot_msg_id };
 	}
 
@@ -203,7 +220,16 @@ Content-Type: application/json";
 			message = "",
 			data = new { bot_msg_id = "" }
 		};
+
+		Logger.Log($"Send Post: {post_id} To villa:{villa_id},room:{room_id}");
+
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+
+		if (json!.retcode != 0)
+		{
+			Logger.LogError($"Fail! retcode: {json.retcode},message: {json.message}");
+		}
+
 		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null : json.data.bot_msg_id };
 	}
 
