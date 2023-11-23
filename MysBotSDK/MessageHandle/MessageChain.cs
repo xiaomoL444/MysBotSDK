@@ -281,13 +281,14 @@ namespace MysBotSDK.MessageHandle
 							text_ += $"#{room.room!.room_name!.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity_Detail.EntityType.link:
+							var add_url_text = string.IsNullOrEmpty(entity.entity.entity.url_highlight_text) ? entity.entity.entity.url!.ConvertUTF8ToUTF16() : entity.entity.entity.url_highlight_text.ConvertUTF8ToUTF16();
 							entities_.Add(new Entity()
 							{
 								entity = entity.entity.entity,
-								length = (ulong)entity.entity!.entity.url!.Length,
+								length = (ulong)add_url_text.Length,
 								offset = (ulong)text_.Length
 							});
-							text_ += string.IsNullOrEmpty(entity.entity.entity.url_highlight_text) ? entity.entity.entity.url.ConvertUTF8ToUTF16(): entity.entity.entity.url_highlight_text.ConvertUTF8ToUTF16();
+							text_ += add_url_text;
 							break;
 						case Entity_Detail.EntityType.style:
 							entities_.Add(new()
