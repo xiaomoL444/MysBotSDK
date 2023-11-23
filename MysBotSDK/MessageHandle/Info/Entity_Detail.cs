@@ -70,6 +70,11 @@ namespace MysBotSDK.MessageHandle.Info
 		public string? url { get; set; }
 
 		/// <summary>
+		/// 跳转url时用户设置的高亮文本
+		/// </summary>
+		public string? url_highlight_text { get; set; }
+
+		/// <summary>
 		/// 字段为true时，跳转链接会带上含有用户信息的token
 		/// </summary>
 		public bool requires_bot_access_token { get; set; }
