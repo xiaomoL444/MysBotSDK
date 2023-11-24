@@ -25,7 +25,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// </summary>
 		public List<string> args => sendMessage.args;
 		/// <summary>
-		/// 反序列化后的content消息，非必要不使用，里面似乎还有类没实现...
+		/// 反序列化后的content消息，非必要不使用，里面似乎还有类没实现...（好的，v1.6.2实现了userInfo）
 		/// </summary>
 		public Content_Msg content => sendMessage.content;
 		/// <summary>
