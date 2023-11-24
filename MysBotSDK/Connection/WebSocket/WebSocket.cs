@@ -409,7 +409,7 @@ Content-Type:application/json");
 		{
 			ContractResolver = new DefaultContractResolver()
 			{
-				NamingStrategy = new OriginalCaseNamingStrategy()
+				NamingStrategy = new LowCamelCaseToUnderscore()
 			}
 		}));
 
@@ -596,7 +596,7 @@ Content-Type:application/json");
 	#endregion
 
 }
-class OriginalCaseNamingStrategy : NamingStrategy
+class LowCamelCaseToUnderscore : NamingStrategy
 {
 	protected override string ResolvePropertyName(string name)
 	{

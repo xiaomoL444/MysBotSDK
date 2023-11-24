@@ -1,18 +1,12 @@
 ﻿using MysBotSDK.MessageHandle;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
-using vila_bot;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using MysBotSDK.Connection.WebSocket;
-using System.Security.Cryptography.X509Certificates;
+using MysBotSDK.Connection.Http;
 
 namespace MysBotSDK
 {
@@ -60,13 +54,7 @@ namespace MysBotSDK
 
 		private string? Certificate_Header { get; set; }
 
-		private CancellationTokenSource tokenSource = new();
-
-		/// <summary>
-		/// http侦听器
-		/// </summary>
-		private HttpListener? listener { get; set; }
-
+		private HttpListener? httpListener { get; set; }
 		/// <summary>
 		/// ws连接实例
 		/// </summary>
@@ -98,54 +86,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			//若http回调地址不为空，创建http侦听器
 			if (!string.IsNullOrEmpty(http_callback_Address))
 			{
-				Logger.Log("创建Http监听");
-				listener = new HttpListener();
-				listener.Prefixes.Add(http_callback_Address);
-				listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
-				listener.Start();
-
-				_ = Task.Run(() =>
-				{
-					while (!tokenSource.IsCancellationRequested)
-					{
-						try
-						{
-							var content = listener.GetContext();
-							var request = content.Request;
-							var response = content.Response;
-
-							if (request.HttpMethod != "POST")
-							{
-								HttpRespond(response, new ResponseData() { message = "Method Was Not Allow", retcode = 400 });
-								continue;
-							}
-							//获取信息流
-							var steam = request.InputStream;
-							var reader = new StreamReader(steam);
-							var data = reader.ReadToEnd();
-
-							Logger.Debug(data);
-
-							//处理消息
-							//校验伺服器请求头
-							if (!Authentication.Verify(data, request.Headers.Get("x-rpc-bot_sign")!, pub_key!, secret!))
-							{
-								HttpRespond(response, new ResponseData() { message = "Invalid signature", retcode = 401 });
-								Logger.LogWarnning("鉴权失败");
-								continue;
-							}
-
-							MessageHandle(data);
-
-							HttpRespond(response, new ResponseData() { message = "", retcode = 0 });
-						}
-						catch (Exception)
-						{
-							listener.Close();
-						}
-					}
-					listener.Close();
-				}, tokenSource.Token);
+				httpListener = new(this, http_callback_Address, secret, pub_key);
 			}
 			//若ws连接不为空，则创建ws连接实例
 			else if (!string.IsNullOrEmpty(ws_callback_Address))
@@ -177,14 +118,14 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 						Task.Run(func);
 					};
 					webSocket.Connect();
-					while (!isNeedReconnect && !tokenSource.IsCancellationRequested)
+					while (!isNeedReconnect)
 					{
 						//保活，30s发送一次消息
 						webSocket.Send("BALUS");
-						await Task.Delay(1000 * 30, tokenSource.Token);
+						await Task.Delay(1000 * 30);
 					}
 				});
-				_ = Task.Run(func, tokenSource.Token);
+				_ = Task.Run(func);
 			}
 			//若websocketConnect为true
 			else if (WebsocketConnect)
@@ -203,20 +144,6 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			}
 
 			return this;
-		}
-
-
-		/// <summary>
-		/// 回应我吧，月下初拥！
-		/// </summary>
-		/// <param name="listenerResponse">一个收到的回应消息</param>
-		/// <param name="responseString">回应的消息，丢入一个Json消息即可</param>
-		private void HttpRespond(HttpListenerResponse listenerResponse, ResponseData responseString)
-		{
-			var output = listenerResponse.OutputStream;
-			byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString.ToString());
-			listenerResponse.ContentLength64 = buffer.Length;
-			output.Write(buffer, 0, buffer.Length);
 		}
 		/// <summary>
 		/// 消息解释器
@@ -269,9 +196,15 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 		/// </summary>
 		public void Dispose()
 		{
-			tokenSource.Cancel();
-			if (listener != null) listener.Close();
-			tokenSource.Dispose();
+			if (httpListener != null)
+			{
+				httpListener.Dispose();
+			}
+			if (wsClient != null)
+			{
+				wsClient.Dispose();
+			}
+
 			MessageSender.mysBot.Remove(this);
 		}
 	}
