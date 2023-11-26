@@ -1,4 +1,5 @@
 ﻿using MysBotSDK.Tool;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,8 @@ internal class HttpListener : IDisposable
 
 	private CancellationTokenSource tokenSource = new();
 
-	public HttpListener(MysBot mysBot, string http_callback_Address,string secret,string pub_key)
+	public HttpListener(MysBot mysBot, string http_callback_Address, string secret, string pub_key)
 	{
-		Logger.Log("创建Http监听");
 		listener = new System.Net.HttpListener();
 		listener.Prefixes.Add(http_callback_Address);
 		listener.AuthenticationSchemes = System.Net.AuthenticationSchemes.Anonymous;
@@ -68,7 +68,6 @@ internal class HttpListener : IDisposable
 			listener.Close();
 		}, tokenSource.Token);
 	}
-
 	/// <summary>
 	/// 回应我吧，月下初拥！
 	/// </summary>
@@ -87,5 +86,15 @@ internal class HttpListener : IDisposable
 		tokenSource.Cancel();
 		if (listener != null && listener.IsListening) listener.Close();
 		tokenSource.Dispose();
+	}
+	public class ResponseData
+	{
+		public string message { get; set; } = "";
+		public int retcode { get; set; } = 0;
+
+		public override string ToString()
+		{
+			return JsonConvert.SerializeObject(this).ToString();
+		}
 	}
 }

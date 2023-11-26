@@ -86,6 +86,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			//若http回调地址不为空，创建http侦听器
 			if (!string.IsNullOrEmpty(http_callback_Address))
 			{
+				Logger.Log("创建Http监听");
 				httpListener = new(this, http_callback_Address, secret, pub_key);
 			}
 			//若ws连接不为空，则创建ws连接实例
@@ -132,10 +133,7 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 			{
 				Logger.Log("创建ws连接(官方)");
 				//开启官方的ws连接
-				_ = Task.Run(() =>
-				{
-					wsClient = new WsClient(this, bot_id, secret!, test_villa_id);
-				});
+				wsClient = new WsClient(this, bot_id, secret!, test_villa_id);
 			}
 			//若什么都没有开启
 			else
@@ -207,15 +205,5 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 
 			MessageSender.mysBot.Remove(this);
 		}
-	}
-}
-public class ResponseData
-{
-	public string message { get; set; } = "";
-	public int retcode { get; set; } = 0;
-
-	public override string ToString()
-	{
-		return JsonConvert.SerializeObject(this).ToString();
 	}
 }

@@ -34,12 +34,12 @@ internal class WsClient : IDisposable
 	/// <summary>
 	/// Bot实例
 	/// </summary>
-	public MysBot? mysBot { private get; init; }
+	private MysBot? mysBot { get; init; }
 
 	/// <summary>
 	/// 是否连接失败
 	/// </summary>
-	public bool isConnectFail = false;
+	public bool isConnectFail { get; set; } = false;
 
 	/// <summary>
 	/// websocker连接实例
@@ -89,7 +89,9 @@ internal class WsClient : IDisposable
 		connectAction = async () =>
 		{
 			//获取ws链接
+			Logger.Debug("异步获取websocketInfo中...");
 			var wsInfo = await GetWebSocketInfo(bot_id, bot_secret, villa_id);
+			Logger.Debug($"返回值{wsInfo}");
 			//若返回值不等于0，错误
 			if (wsInfo.retcode != 0)
 			{
@@ -386,6 +388,8 @@ Content-Type:application/json");
 	private void RobotEventHandle(WebSocketMessage wsMsg)
 	{
 		RobotEventMessage robotEventMessage = RobotEventMessage.Parser.ParseFrom(wsMsg.BodyData);
+
+		Logger.Debug(robotEventMessage.ToString());
 
 		//组装一条json消息
 		var packMsg = new
