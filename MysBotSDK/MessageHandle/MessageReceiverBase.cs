@@ -14,6 +14,7 @@ using System.Runtime.CompilerServices;
 using MysBotSDK.MessageHandle.ExtendData;
 using Google.Protobuf;
 using Newtonsoft.Json.Serialization;
+using MysBotSDK.Tool;
 
 namespace MysBotSDK.MessageHandle;
 
@@ -69,7 +70,46 @@ public class MessageReceiverBase
 	/// <returns></returns>
 	internal T GetExtendDataMsg<T>(string bodyData)
 	{
-		return JsonConvert.DeserializeObject<T>(JObject.Parse(bodyData)["event"]!["extend_data"]!["EventData"]![typeof(T).Name]!.ToString())!;
+		var json = (JObject)JObject.Parse(bodyData)["event"]!["extend_data"]!;
+		if (json.ContainsKey("EventData"))
+		{
+			//原格式解析
+			return JsonConvert.DeserializeObject<T>(JObject.Parse(bodyData)["event"]!["extend_data"]!["EventData"]![typeof(T).Name]!.ToString())!;
+		}
+		else if (json.ContainsKey("event_data"))
+		{
+			//ws将之从下划线改成大写
+			return JsonConvert.DeserializeObject<T>(JObject.Parse(bodyData)["event"]!["extend_data"]!["event_data"]![BigCamelToUnderscore(typeof(T).Name)]!.ToString())!;
+		}
+		else
+		{
+			Logger.LogError("无效的消息体");
+			return default(T)!;
+		}
+	}
+	internal Dictionary<string, string> BigCamelToUndderscore { get; set; } = new Dictionary<string, string>();
+	internal string BigCamelToUnderscore(string score)
+	{
+		if (!BigCamelToUndderscore.ContainsKey(score))
+		{
+			StringBuilder stringBuilder = new StringBuilder();
+			for (int i = 0; i < score.Length; i++)
+			{
+				if ('A' <= score[i] && score[i] <= 'Z')
+				{
+					if (i != 0)
+					{
+						stringBuilder.Append('_');
+					}
+					stringBuilder.Append((char)(score[i] + 32));
+					continue;
+				}
+				stringBuilder.Append(score[i]);
+			}
+			BigCamelToUndderscore[score] = stringBuilder.ToString();
+		}
+
+		return BigCamelToUndderscore[score];
 	}
 }
 /// <summary>

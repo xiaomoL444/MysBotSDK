@@ -10,6 +10,7 @@ using System.Runtime.Loader;
 namespace MihoyoBBS_Bot;
 static class Program
 {
+	public static MysBot? mysBot;
 	public static string GetAccountConfig(string key)
 	{
 		string account_path = "./account.json";
@@ -25,7 +26,7 @@ static class Program
 	public static async Task Main()
 	{
 		//初始化Bot（改成纯读取配置信息）
-		MysBot mysBot;
+
 		//if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 		//{
 		//	mysBot = new MysBot()//末酱映射机
@@ -235,6 +236,10 @@ static class Commond
 	}
 	public static void exit(string?[] args)
 	{
+		if (Program.mysBot != null)
+		{
+			Program.mysBot.Dispose();
+		}
 		Environment.Exit(0);
 	}
 	//public static void updata(string?[] args)

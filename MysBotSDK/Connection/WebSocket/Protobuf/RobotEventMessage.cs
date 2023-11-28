@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace vila_bot {
+namespace VilaBot {
 
   /// <summary>Holder for reflection information generated from robot_event_message.proto</summary>
   public static partial class RobotEventMessageReflection {
@@ -26,13 +26,12 @@ namespace vila_bot {
           string.Concat(
             "Chlyb2JvdF9ldmVudF9tZXNzYWdlLnByb3RvEgh2aWxhX2JvdBoLbW9kZWwu",
             "cHJvdG8iOAoRUm9ib3RFdmVudE1lc3NhZ2USIwoFZXZlbnQYASABKAsyFC52",
-            "aWxhX2JvdC5Sb2JvdEV2ZW50QkFaNGdvcGtnLm1paG95by5jb20vdmlsYS1i",
-            "b3QtZ28vcHJvdG8vdmlsYV9ib3Q7dmlsYV9ib3SqAgh2aWxhX2JvdGIGcHJv",
-            "dG8z"));
+            "aWxhX2JvdC5Sb2JvdEV2ZW50QjZaNGdvcGtnLm1paG95by5jb20vdmlsYS1i",
+            "b3QtZ28vcHJvdG8vdmlsYV9ib3Q7dmlsYV9ib3RiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::vila_bot.ModelReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::VilaBot.ModelReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.RobotEventMessage), global::vila_bot.RobotEventMessage.Parser, new[]{ "Event" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.RobotEventMessage), global::VilaBot.RobotEventMessage.Parser, new[]{ "Event" }, null, null, null, null)
           }));
     }
     #endregion
@@ -54,7 +53,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.RobotEventMessageReflection.Descriptor.MessageTypes[0]; }
+      get { return global::VilaBot.RobotEventMessageReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -86,10 +85,10 @@ namespace vila_bot {
 
     /// <summary>Field number for the "event" field.</summary>
     public const int EventFieldNumber = 1;
-    private global::vila_bot.RobotEvent event_;
+    private global::VilaBot.RobotEvent event_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::vila_bot.RobotEvent Event {
+    public global::VilaBot.RobotEvent Event {
       get { return event_; }
       set {
         event_ = value;
@@ -183,7 +182,7 @@ namespace vila_bot {
       }
       if (other.event_ != null) {
         if (event_ == null) {
-          Event = new global::vila_bot.RobotEvent();
+          Event = new global::VilaBot.RobotEvent();
         }
         Event.MergeFrom(other.Event);
       }
@@ -204,7 +203,7 @@ namespace vila_bot {
             break;
           case 10: {
             if (event_ == null) {
-              Event = new global::vila_bot.RobotEvent();
+              Event = new global::VilaBot.RobotEvent();
             }
             input.ReadMessage(Event);
             break;
@@ -226,7 +225,7 @@ namespace vila_bot {
             break;
           case 10: {
             if (event_ == null) {
-              Event = new global::vila_bot.RobotEvent();
+              Event = new global::VilaBot.RobotEvent();
             }
             input.ReadMessage(Event);
             break;

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace vila_bot {
+namespace VilaBot {
 
   /// <summary>Holder for reflection information generated from command.proto</summary>
   public static partial class CommandReflection {
@@ -43,20 +43,20 @@ namespace vila_bot {
             "EAQSEgoOUF9FWENIQU5HRV9LRVkQBRIPCgtQX0hFQVJUQkVBVBAGEgsKB1Bf",
             "TE9HSU4QBxIMCghQX0xPR09VVBAIEgwKCEtJQ0tfT0ZGEDMSDAoIU0hVVERP",
             "V04QNBIOCgpQX0tJQ0tfT0ZGEDUSDgoKUk9PTV9FTlRFUhA8Eg4KClJPT01f",
-            "TEVBVkUQPRIOCgpST09NX0NMT1NFED4SDAoIUk9PTV9NU0cQP0JBWjRnb3Br",
+            "TEVBVkUQPRIOCgpST09NX0NMT1NFED4SDAoIUk9PTV9NU0cQP0I2WjRnb3Br",
             "Zy5taWhveW8uY29tL3ZpbGEtYm90LWdvL3Byb3RvL3ZpbGFfYm90O3ZpbGFf",
-            "Ym90qgIIdmlsYV9ib3RiBnByb3RvMw=="));
+            "Ym90YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::vila_bot.Command), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PHeartBeat), global::vila_bot.PHeartBeat.Parser, new[]{ "ClientTimestamp" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PHeartBeatReply), global::vila_bot.PHeartBeatReply.Parser, new[]{ "Code", "ServerTimestamp" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLogin), global::vila_bot.PLogin.Parser, new[]{ "Uid", "Token", "Platform", "AppId", "DeviceId", "Region", "Meta" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLoginReply), global::vila_bot.PLoginReply.Parser, new[]{ "Code", "Msg", "ServerTimestamp", "ConnId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLogout), global::vila_bot.PLogout.Parser, new[]{ "Uid", "Platform", "AppId", "DeviceId", "Region" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PLogoutReply), global::vila_bot.PLogoutReply.Parser, new[]{ "Code", "Msg", "ConnId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.CommonReply), global::vila_bot.CommonReply.Parser, new[]{ "Code", "Msg" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::vila_bot.PKickOff), global::vila_bot.PKickOff.Parser, new[]{ "Code", "Reason" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::VilaBot.Command), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.PHeartBeat), global::VilaBot.PHeartBeat.Parser, new[]{ "ClientTimestamp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.PHeartBeatReply), global::VilaBot.PHeartBeatReply.Parser, new[]{ "Code", "ServerTimestamp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.PLogin), global::VilaBot.PLogin.Parser, new[]{ "Uid", "Token", "Platform", "AppId", "DeviceId", "Region", "Meta" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.PLoginReply), global::VilaBot.PLoginReply.Parser, new[]{ "Code", "Msg", "ServerTimestamp", "ConnId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.PLogout), global::VilaBot.PLogout.Parser, new[]{ "Uid", "Platform", "AppId", "DeviceId", "Region" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.PLogoutReply), global::VilaBot.PLogoutReply.Parser, new[]{ "Code", "Msg", "ConnId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.CommonReply), global::VilaBot.CommonReply.Parser, new[]{ "Code", "Msg" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.PKickOff), global::VilaBot.PKickOff.Parser, new[]{ "Code", "Reason" }, null, null, null, null)
           }));
     }
     #endregion
@@ -103,7 +103,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[0]; }
+      get { return global::VilaBot.CommandReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -299,7 +299,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[1]; }
+      get { return global::VilaBot.CommandReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -535,7 +535,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[2]; }
+      get { return global::VilaBot.CommandReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -957,7 +957,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[3]; }
+      get { return global::VilaBot.CommandReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1273,7 +1273,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[4]; }
+      get { return global::VilaBot.CommandReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1629,7 +1629,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[5]; }
+      get { return global::VilaBot.CommandReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1905,7 +1905,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[6]; }
+      get { return global::VilaBot.CommandReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2141,7 +2141,7 @@ namespace vila_bot {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::vila_bot.CommandReflection.Descriptor.MessageTypes[7]; }
+      get { return global::VilaBot.CommandReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

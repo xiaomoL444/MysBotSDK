@@ -36,6 +36,7 @@ public class UserInfo
 	/// <summary>
 	/// 用户额外信息
 	/// </summary>
+	[JsonIgnore]
 	public UserInfo_ExtraInfo extra { get { return JsonConvert.DeserializeObject<UserInfo_ExtraInfo>(extra_!)!; } }
 }
 /// <summary>
