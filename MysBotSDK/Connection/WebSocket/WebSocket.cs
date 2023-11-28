@@ -337,8 +337,10 @@ Content-Type:application/json");
 				return;
 			}
 
-
-			Logger.Log($"收到伺服器发送来的BizType为 [ {wsMsg.BizType} ] ID为 [ {wsMsg.ID} ] 的协议包");
+			if (wsMsg.BizType != 6)
+			{
+				Logger.Log($"收到伺服器发送来的BizType为 [ {wsMsg.BizType} ] ID为 [ {wsMsg.ID} ] 的协议包");
+			}
 			//HandleMessage
 			switch (wsMsg.BizType)//唔姆唔姆...因为command里面没有RobotEvent所以用数字不用枚举了...
 			{
