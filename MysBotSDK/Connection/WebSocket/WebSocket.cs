@@ -44,7 +44,7 @@ internal class WsClient : IDisposable
 	/// <summary>
 	/// websocker连接实例
 	/// </summary>
-	WebSocketSharp.WebSocket? webSocket;
+	WebSocketSharp.WebSocket? webSocket { get; set; }
 
 	/// <summary>
 	/// 心跳包计时器
@@ -85,8 +85,8 @@ internal class WsClient : IDisposable
 	{
 		this.mysBot = mysBot;
 		//连接委托
-		Action connectAction = new(() => { });
-		connectAction = async () =>
+		Func<Task?> func = null!;
+		func = (async () =>
 		{
 			//获取ws链接
 			Logger.Debug("异步获取websocketInfo中...");
@@ -99,7 +99,7 @@ internal class WsClient : IDisposable
 			{
 				Logger.LogWarnning("获取websocketInfo失败！五秒后重新连接");
 				await Task.Delay(5 * 1000);
-				await Task.Run(connectAction);
+				await Task.Run(func);
 				return;
 			}
 			Logger.Debug($"返回值{wsInfo}");
@@ -109,7 +109,7 @@ internal class WsClient : IDisposable
 				Logger.LogWarnning($"连接失败{wsInfo}，五秒后尝试重新连接");
 				isConnectFail = true;
 				await Task.Delay(5 * 1000);
-				await Task.Run(connectAction);
+				await Task.Run(func);
 				return;
 			}
 
@@ -124,6 +124,7 @@ internal class WsClient : IDisposable
 				}
 			}
 			webSocket = new WebSocketSharp.WebSocket(wsInfo.websocket_url);
+			webSocket.SslConfiguration.EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12;
 
 			webSocket.OnOpen += (sender, e) =>
 			{
@@ -149,7 +150,7 @@ internal class WsClient : IDisposable
 					return;
 				}
 				await Task.Delay(5 * 1000);
-				await Task.Run(connectAction);
+				await Task.Run(func);
 			};
 			webSocket.OnError += (sender, e) =>
 			{
@@ -166,11 +167,12 @@ internal class WsClient : IDisposable
 			{
 				Logger.LogError("连接超时，五秒后重新连接");
 				await Task.Delay(5 * 1000);
-				await Task.Run(connectAction);
+				await Task.Run(func);
 			}
-
-		};
-		Task.Run(connectAction);
+		});
+		Logger.Log("委托设置完成");
+		_ = Task.Run(func);
+		Logger.Log("委托运行");
 		return;
 	}
 
