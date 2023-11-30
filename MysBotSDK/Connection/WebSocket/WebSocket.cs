@@ -287,7 +287,10 @@ Content-Type:application/json");
 				Logger.LogWarnning("ws已关闭或不存活");
 				return;
 			}
-			Logger.Log($"ws发送Flag [ {msgType} ] ID [ {UniqMsgType} ]");
+			if (bizType != Command.PHeartbeat)
+			{
+				Logger.Log($"ws发送BizType [ {bizType} ] ID [ {UniqMsgType} ]");
+			}
 			webSocket!.Send(bytes.ToArray());
 		}
 		catch (Exception e)

@@ -26,6 +26,7 @@ namespace MysBotSDK.Tool
 				Logger.LogWarnning($"已有同样的计时器时间创建{name}");
 			}
 			timers_conf.Add((name, eventHandle, hour, minute));
+
 			var file = FileHandle.ReadAsDicString(config_path);
 			if (!file.ContainsKey(name))
 			{

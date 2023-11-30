@@ -544,12 +544,13 @@ Content-Type: application/json";
 		int result_count = 0;
 		string message = string.Empty;
 		int retcode = 0;
+		string offset_str = string.Empty;
 		List<Member> members = new List<Member>();
 		do
 		{
 			HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMember);
 			httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
-			httpRequestMessage.Content = JsonContent.Create(new { size = 10, offset_str = "" });
+			httpRequestMessage.Content = JsonContent.Create(new { size = 10, offset_str });
 
 			var res = await HttpClass.SendAsync(httpRequestMessage);
 			Logger.Debug($"获取大别野成员信息{res.Content.ReadAsStringAsync().Result}");
@@ -571,6 +572,7 @@ Content-Type: application/json";
 
 			result_count = json.data.list.Count;
 			members.AddRange(json.data.list);
+			offset_str = json.data.next_offset_str;
 		} while (result_count == size_count && retcode == 0);
 
 		return new() { message = message, retcode = retcode, members = members };
