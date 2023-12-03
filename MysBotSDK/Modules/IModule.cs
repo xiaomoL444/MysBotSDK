@@ -34,7 +34,7 @@ public interface IMysTaskModule
 	/// <summary>
 	/// 程序卸载插件时执行的命令
 	/// </summary>
-	public void UnLoad();
+	public void Unloads();
 
 	/// <summary>
 	/// 是否启用插件

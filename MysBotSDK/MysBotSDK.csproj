@@ -8,6 +8,7 @@
     <Version>1.6.0</Version>
     <Authors>xiaomoL444</Authors>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <BaseOutputPath>E:\code\MysBotSDK\MysBotSDKBuild</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
