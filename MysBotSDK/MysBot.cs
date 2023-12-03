@@ -1,12 +1,11 @@
-﻿using MysBotSDK.MessageHandle;
-using Newtonsoft.Json;
+﻿using MysBotSDK.Connection.Http;
+using MysBotSDK.Connection.WebSocket;
+using MysBotSDK.MessageHandle;
+using MysBotSDK.MessageHandle.Receiver;
+using MysBotSDK.Tool;
 using Newtonsoft.Json.Linq;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using MysBotSDK.MessageHandle.Receiver;
-using MysBotSDK.Tool;
-using MysBotSDK.Connection.WebSocket;
-using MysBotSDK.Connection.Http;
 
 namespace MysBotSDK
 {
