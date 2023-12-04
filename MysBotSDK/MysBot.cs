@@ -194,9 +194,9 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 		/// </summary>
 		public void ClearHandle()
 		{
-			if (messageReceiver == null) return;
+			if (!messageReceiver.HasObservers) return;
 			messageReceiver.Dispose();
-			messageReceiver = null!;
+			messageReceiver = new();
 		}
 		/// <summary>
 		/// Dispose方法

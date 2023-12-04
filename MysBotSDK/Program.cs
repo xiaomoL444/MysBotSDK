@@ -474,11 +474,14 @@ static class Commond
 	}
 	public static async void reloadPlugins(string?[] args)
 	{
-		unloadPlugins(null!);
+		if (Program.weakReference.IsAlive) {
+			unloadPlugins(null!);
 		while (Program.weakReference!.IsAlive)
 		{
 			await Task.Delay(100);
 		}
-		loadPlugins(null!);
+
+		}
+		loadPlugins(null!);	
 	}
 }
