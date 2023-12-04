@@ -15,6 +15,7 @@ public static class HttpClass
 	{
 		clientHandle = new HttpClientHandler()
 		{
+			MaxConnectionsPerServer = 1,
 			UseCookies = true,
 			AutomaticDecompression = DecompressionMethods.GZip,
 			UseProxy = false,
@@ -46,7 +47,7 @@ public static class HttpClass
 		}
 		catch (Exception e)
 		{
-			Logger.LogError($"消息发送失败\n{e.InnerException}");
+			Logger.LogError($"消息发送失败\n{e.StackTrace}");
 			return null;
 		}
 
