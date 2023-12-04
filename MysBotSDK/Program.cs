@@ -203,10 +203,13 @@ static class Program
 		foreach (var receiver in receivers.Keys)
 		{
 			var receiverType = (EventType)Enum.Parse(typeof(EventType), receiver.Replace("Attribute", string.Empty));
+			var moduleList = receivers[receiver];
 			switch (receiverType)
 			{
 				case EventType.JoinVilla:
-					mysBot.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					mysBot.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(messageReceiver => {
+					TryExecuteModules(moduleList, messageReceiver);
+					});
 					break;
 				case EventType.SendMessage:
 					mysBot.MessageReceiver.OfType<SendMessageReceiver>().Subscribe(messageReceiver =>
@@ -220,15 +223,13 @@ static class Program
 								|| messageReceiver.commond == $"{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}"
 								|| module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond == "*") //若填入*则代表接收任何消息
 								{
-									if (module.GetType().GetCustomAttribute<SendMessageAttribute>()!.isBlock)
+									if (module.GetType().GetCustomAttribute<SendMessageAttribute>()!.isBlock&& module.IsEnable)
 									{	
 										isBlock = true; 
-									}
-					
 									Logger.Log($"Commond:{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
-									_ = Task.Run(async () => {
-										await ((IMysReceiverModule)module).Execute(messageReceiver);
-									});
+						            }
+									TryExecuteModules(new List<IMysSDKBaseModule>() { module }, messageReceiver);
+
 								}
 								//else if ()
 								//{
@@ -240,19 +241,19 @@ static class Program
 					});
 					break;
 				case EventType.CreateRobot:
-					mysBot.MessageReceiver.OfType<CreateRobotReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					mysBot.MessageReceiver.OfType<CreateRobotReceiver>().Subscribe(messageReceiver => { TryExecuteModules(moduleList, messageReceiver); });
 					break;
 				case EventType.DeleteRobot:
-					mysBot.MessageReceiver.OfType<DeleteRobotReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					mysBot.MessageReceiver.OfType<DeleteRobotReceiver>().Subscribe(messageReceiver => { TryExecuteModules(moduleList, messageReceiver); });
 					break;
 				case EventType.AddQuickEmoticon:
-					mysBot.MessageReceiver.OfType<AddQuickEmoticonReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					mysBot.MessageReceiver.OfType<AddQuickEmoticonReceiver>().Subscribe(messageReceiver => { TryExecuteModules(moduleList, messageReceiver); });
 					break;
 				case EventType.AuditCallback:
-					mysBot.MessageReceiver.OfType<AuditCallbackReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					mysBot.MessageReceiver.OfType<AuditCallbackReceiver>().Subscribe(messageReceiver => { TryExecuteModules(moduleList, messageReceiver); });
 					break;
 				case EventType.ClickMsgComponent:
-					mysBot.MessageReceiver.OfType<ClickMsgComponentReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					mysBot.MessageReceiver.OfType<ClickMsgComponentReceiver>().Subscribe(messageReceiver => { TryExecuteModules(moduleList, messageReceiver); });
 					break;
 				default:
 					break;
@@ -316,6 +317,27 @@ static class Program
 	internal static void UnloadPlugins()
 	{
 		isUnload = true;
+	}
+
+	/// <summary>
+	/// 尝试执行指令
+	/// </summary>
+	internal static void TryExecuteModules(List<IMysSDKBaseModule> modules,MessageReceiverBase messageReceiver) 
+	{
+		modules.ForEach(async module =>
+		{
+			if (module.IsEnable)
+			{
+				try
+				{
+					await ((IMysReceiverModule)module).Execute(messageReceiver);
+				}
+				catch (Exception ex)
+				{
+					Logger.LogError($"执行指令错误 {ex.Message} \n{ex.StackTrace}");
+				}
+			}
+		});
 	}
 
 	static async Task Command()
