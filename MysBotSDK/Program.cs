@@ -211,20 +211,30 @@ static class Program
 				case EventType.SendMessage:
 					mysBot.MessageReceiver.OfType<SendMessageReceiver>().Subscribe(messageReceiver =>
 					{
-						receivers[receiver].ForEach(async module =>
+						bool isBlock = false;
+						receivers[receiver].ForEach(module =>
 						{
-							if (module.IsEnable)
+							if (module.IsEnable&&!isBlock)
 							{
-								if (messageReceiver.commond == $"/{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}" || messageReceiver.commond == $"{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}")
+								if (messageReceiver.commond == $"/{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}" 
+								|| messageReceiver.commond == $"{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}"
+								|| module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond == "*") //若填入*则代表接收任何消息
 								{
+									if (module.GetType().GetCustomAttribute<SendMessageAttribute>()!.isBlock)
+									{	
+										isBlock = true; 
+									}
+					
 									Logger.Log($"Commond:{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
-									await ((IMysReceiverModule)module).Execute(messageReceiver);
+									_ = Task.Run(async () => {
+										await ((IMysReceiverModule)module).Execute(messageReceiver);
+									});
 								}
-								else if (module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond == "*") //若填入*则代表接收任何消息
-								{
-									Logger.Log($"Commond:{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
-									await ((IMysReceiverModule)module).Execute(messageReceiver);
-								}
+								//else if ()
+								//{
+								//	Logger.Log($"Commond:{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
+								//	await ((IMysReceiverModule)module).Execute(messageReceiver);
+								//}
 							}
 						});
 					});
@@ -265,7 +275,7 @@ static class Program
 
 				//删除引用
 
-				//mysBot.ClearHandle();
+				mysBot.ClearHandle();
 				//receivers.Clear();
 				//mysSDKBaseModules.Clear();
 				//plugins.Clear();
