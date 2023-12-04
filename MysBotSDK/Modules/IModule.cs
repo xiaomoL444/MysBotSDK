@@ -3,9 +3,19 @@
 namespace MysBotSDK.Modules;
 
 /// <summary>
+/// MysBotSDK接口基类
+/// </summary>
+public interface IMysSDKBaseModule
+{
+	/// <summary>
+	/// 模块是否启用
+	/// </summary>
+	bool IsEnable { get; set; }
+}
+/// <summary>
 /// 接收器事件接口
 /// </summary>
-public interface IMysReceiverModule
+public interface IMysReceiverModule : IMysSDKBaseModule
 {
 	/// <summary>
 	/// 触发器
@@ -13,17 +23,12 @@ public interface IMysReceiverModule
 	/// <param name="base">传递的接收器参数</param>
 	/// <returns></returns>
 	public Task Execute(MessageReceiverBase @base);
-
-	/// <summary>
-	/// 是否启用插件
-	/// </summary>
-	public bool? isEnable { get; set; }
 }
 
 /// <summary>
 /// 多线程启动接口
 /// </summary>
-public interface IMysTaskModule
+public interface IMysTaskModule : IMysSDKBaseModule
 {
 	/// <summary>
 	/// 程序启动时执行的命令
@@ -35,9 +40,4 @@ public interface IMysTaskModule
 	/// 程序卸载插件时执行的命令
 	/// </summary>
 	public void Unloads();
-
-	/// <summary>
-	/// 是否启用插件
-	/// </summary>
-	public bool? isEnable { get; set; }
 }

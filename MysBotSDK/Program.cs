@@ -1,28 +1,40 @@
-﻿using MysBotSDK.Tool;
+﻿using MysBotSDK.MessageHandle;
+using MysBotSDK.MessageHandle.ExtendData;
+using MysBotSDK.MessageHandle.Receiver;
+using MysBotSDK.Modules;
+using MysBotSDK.Tool;
 using Newtonsoft;
 using Newtonsoft.Json;
+using System;
 using System.Linq.Expressions;
 using System.Net.Sockets;
+using System.Reactive.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.Loader;
 
 namespace MysBotSDK;
 
-internal class Program
+static class Program
 {
-	static MysBot? mysBot;
-	public static async Task Main(string[] args)
+	internal static MysBot? mysBot;
+
+	internal static bool isUnload { get; set; } = false;
+
+	internal static WeakReference? weakReference { get; set; }
+	static async Task Main(string[] args)
 	{
 		string ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version!.ToString(3);
-		Logger.Log("========================================================");
+		Logger.Log("=========================================================");
 		Logger.Log($"当前MysSDK版本:{ver}");
 
 		Logger.Log($"加载Bot信息");
-
 		LoadBotConfig();
 
-		while (true)
-		{
+		Logger.Log($"加载插件信息");
+		LoadPlugins();
 
-		}
+		await Command();
 	}
 	internal static void LoadBotConfig()
 	{
@@ -47,8 +59,7 @@ internal class Program
 			fileStream.Close();
 
 			Logger.LogWarnning("创建成功，按任意键退出程序，退出后填写配置单再次启动");
-			Console.ReadKey();
-			Environment.Exit(0);
+			PressAndExitProgram();
 		}
 		try
 		{
@@ -67,19 +78,238 @@ internal class Program
 		catch (Exception ex)
 		{
 			Logger.LogError($"错误信息 {ex.Message} \n加载Bot失败，按任意键退出程序");
-			Console.ReadKey();
-			Environment.Exit(0);
-
+			PressAndExitProgram();
 		}
 	}
-	/*
-
-	public static void LoadPlugins(out WeakReference weakReference)
+	[MethodImpl(MethodImplOptions.NoInlining)]
+	static void LoadPlugins()
 	{
 
-	}
-	*/
+		#region 加载插件路径
+		List<IMysSDKBaseModule> plugins = new List<IMysSDKBaseModule>();
 
+		AssemblyLoadContext assemblyLoadContext = new AssemblyLoadContext("Plugins", true);
+		weakReference = new WeakReference(assemblyLoadContext.Assemblies, trackResurrection: true);
+
+		if (!Directory.Exists("Plugins"))
+		{
+			Directory.CreateDirectory("Plugins");
+			Logger.LogWarnning("不存在路径./Plugins/，创建文件夹");
+		}
+		var assemblies_path = Directory.EnumerateFiles("./Plugins", "*.dll").ToList();
+
+		assemblies_path.ForEach((path) =>
+		{
+			try
+			{
+				var steam = new FileStream(path, FileMode.Open);
+				//assemblyLoadContext.LoadFromStream(steam);
+				steam.Close();
+			}
+			catch (Exception)
+			{
+				Logger.LogError($"加载插件路径[{path}]失败");
+			}
+		});
+
+		#endregion
+
+		#region 加载插件方法
+
+		List<IMysSDKBaseModule> mysSDKBaseModules = new List<IMysSDKBaseModule>();
+
+		foreach (var assembly in assemblyLoadContext.Assemblies)
+		{
+			try
+			{
+				Logger.Debug($"读取插件集{assembly.GetName()}");
+				var rawModules = assembly.GetTypes().Where(x => x.GetInterfaces().Any(i => i == typeof(IMysSDKBaseModule))).ToList();
+				if (rawModules.Count == 0) continue;
+				mysSDKBaseModules.AddRange(rawModules.Where(q => q.GetInterfaces().Any(i => i == typeof(IMysSDKBaseModule))).Select(Activator.CreateInstance).Select(m => (m as IMysSDKBaseModule)!));
+				rawModules.Clear();
+			}
+			catch (Exception)
+			{
+				Logger.LogError($"读取程序集{assembly.FullName}错误");
+			}
+
+		}
+
+		//输出所有加载成功的方法
+		mysSDKBaseModules.ForEach((module) =>
+		{
+			Logger.Log($"搜索到方法[{String.Join("", module.GetType().CustomAttributes)}] {module.GetType().Name}");
+		});
+
+		#endregion
+
+		#region 加入订阅器
+		Dictionary<string, List<IMysSDKBaseModule>> receivers = new();
+
+		//获取所有接收器方法
+		var allReceiverType = GetSubClassNames(typeof(ExtendDataAttribute));
+		//载入插件
+		if (mysSDKBaseModules.Count > 0)
+		{
+			allReceiverType.ForEach(type =>
+			{
+				receivers[type.name] = new List<IMysSDKBaseModule>(mysSDKBaseModules.Where(q => q.GetType().GetCustomAttribute(type.type) != null));
+			});
+		}
+		foreach (var receiver in receivers.Keys)
+		{
+			var receiverType = (EventType)Enum.Parse(typeof(EventType), receiver.Replace("Attribute", string.Empty));
+			switch (receiverType)
+			{
+				case EventType.JoinVilla:
+					mysBot.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					break;
+				case EventType.SendMessage:
+					mysBot.MessageReceiver.OfType<SendMessageReceiver>().Subscribe(messageReceiver =>
+					{
+						receivers[receiver].ForEach(async module =>
+						{
+							if (module.IsEnable)
+							{
+								if (messageReceiver.commond == $"/{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}" || messageReceiver.commond == $"{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}")
+								{
+									Logger.Log($"Commond:{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
+									await ((IMysReceiverModule)module).Execute(messageReceiver);
+								}
+								else if (module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond == "*") //若填入*则代表接收任何消息
+								{
+									Logger.Log($"Commond:{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
+									await ((IMysReceiverModule)module).Execute(messageReceiver);
+								}
+							}
+						});
+					});
+					break;
+				case EventType.CreateRobot:
+					mysBot.MessageReceiver.OfType<CreateRobotReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					break;
+				case EventType.DeleteRobot:
+					mysBot.MessageReceiver.OfType<DeleteRobotReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					break;
+				case EventType.AddQuickEmoticon:
+					mysBot.MessageReceiver.OfType<AddQuickEmoticonReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					break;
+				case EventType.AuditCallback:
+					mysBot.MessageReceiver.OfType<AuditCallbackReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					break;
+				case EventType.ClickMsgComponent:
+					mysBot.MessageReceiver.OfType<ClickMsgComponentReceiver>().Subscribe(messageReceiver => { receivers[receiver].ForEach(async module => { if (module.IsEnable) await ((IMysReceiverModule)module).Execute(messageReceiver); }); });
+					break;
+				default:
+					break;
+			}
+		}
+		#endregion
+
+		#region 卸载插件
+		_ = Task.Run(() =>
+		{
+			while (true)
+			{
+				if (!isUnload)
+				{
+					continue;
+				}
+				isUnload = false;
+				Logger.LogWarnning("执行卸载插件操作");
+				assemblyLoadContext.Unloading += (context) => { Logger.Log($"卸载插件中"); };
+
+				//删除引用
+
+				//mysBot.ClearHandle();
+				//receivers.Clear();
+				//mysSDKBaseModules.Clear();
+				//plugins.Clear();
+
+				//卸载操作
+				assemblyLoadContext.Unload();
+
+				for (int i = 0; weakReference.IsAlive && (i < 10); i++)
+				{
+					GC.Collect();
+					GC.WaitForPendingFinalizers();
+				}
+
+				if (weakReference.IsAlive)
+				{
+					Logger.LogError("插件卸载失败，请检查插件并重启程序");
+					return;
+				}
+				Logger.Log("插件卸载成功");
+				return;
+			}
+
+		});
+		#endregion
+	}
+
+	internal static void UnloadPlugins()
+	{
+		isUnload = true;
+	}
+
+	static async Task Command()
+	{
+		await Task.Run(() =>
+		{
+			while (true)
+			{
+				string? commond = Console.ReadLine();
+				if (string.IsNullOrEmpty(commond) || string.IsNullOrWhiteSpace(commond))
+				{ continue; }
+				string?[] commondSplit = commond.Split(" ");
+				Logger.Log($"input {commond}");
+				Type type = typeof(Commond);
+				MethodInfo? methodInfo;
+				try
+				{
+					methodInfo = type.GetMethod(commondSplit[0]!);
+				}
+				catch (ArgumentException)
+				{
+					Logger.LogError($"没有此方法！");
+					continue;
+				}
+
+				if (String.IsNullOrWhiteSpace(commond)) continue;
+
+				try
+				{
+					methodInfo!.Invoke(null, new object[] { commondSplit });
+				}
+				catch (ArgumentException e)
+				{
+					Logger.LogError(e.Message);
+					continue;
+				}
+				catch (NullReferenceException e)
+				{
+					Logger.LogError(e.Message);
+					continue;
+				}
+			}
+		});
+	}
+
+	/// <summary>
+	/// 点击任意键并退出程序
+	/// </summary>
+	public static void PressAndExitProgram()
+	{
+		Console.ReadKey();
+		Environment.Exit(0);
+	}
+
+	/// <summary>
+	/// 获取Bot配置文件某个键值
+	/// </summary>
+	/// <param name="key">键</param>
+	/// <returns></returns>
 	public static string GetAccountConfig(string key)
 	{
 		string account_path = "./account.json";
@@ -93,8 +323,62 @@ internal class Program
 		return dic[key];
 	}
 
-	public static UInt64 GetCurrentTime()
+	/// <summary>
+	/// 获取现在准确的UTC时间
+	/// </summary>
+	/// <returns></returns>
+	static UInt64 GetCurrentTime()
 	{
 		return (ulong)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalMicroseconds;
+	}
+
+	/// <summary>
+	/// 获取一个类在其所在的程序集中的所有子类
+	/// </summary>
+	/// <param name="parentType">给定的类型</param>
+	/// <returns>所有子类的名称</returns>
+	static List<(Type type, string name)> GetSubClassNames(Type parentType)
+	{
+		var subTypeList = new List<Type>();
+		var assembly = parentType.Assembly;//获取当前父类所在的程序集``
+		var assemblyAllTypes = assembly.GetTypes();//获取该程序集中的所有类型
+		foreach (var itemType in assemblyAllTypes)//遍历所有类型进行查找
+		{
+			var baseType = itemType.BaseType;//获取元素类型的基类
+			if (baseType != null)//如果有基类
+			{
+				if (baseType.Name == parentType.Name)//如果基类就是给定的父类
+				{
+					subTypeList.Add(itemType);//加入子类表中
+				}
+			}
+		}
+		return subTypeList.Select(item => (item, item.Name)).ToList();//获取所有子类类型的名称
+	}
+}
+static class Commond
+{
+	public static void help(string?[] args)
+	{
+		Type type = typeof(Commond);
+		Console.WriteLine("========================");
+		foreach (var method in type.GetMethods())
+		{
+			if (method.Name == "GetType" || method.Name == "ToString" || method.Name == "Equals" || method.Name == "GetHashCode") continue;
+			Console.WriteLine(method.Name);
+		}
+		Console.WriteLine("========================");
+	}
+	public static void exit(string?[] args)
+	{
+		if (Program.mysBot != null)
+		{
+			Program.mysBot.Dispose();
+		}
+		Environment.Exit(0);
+	}
+	public static void unload(string?[] args)
+	{
+		Program.UnloadPlugins();
 	}
 }

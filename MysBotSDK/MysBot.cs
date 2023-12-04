@@ -188,11 +188,22 @@ x-rpc-bot_villa_id:{Authentication.HmacSHA256(secret!, pub_key!)}";
 				Logger.LogError("解析消息失败" + e.StackTrace);
 			}
 		}
+
+		/// <summary>
+		/// 删除方法
+		/// </summary>
+		public void ClearHandle()
+		{
+			if (messageReceiver == null) return;
+			messageReceiver.Dispose();
+			messageReceiver = null!;
+		}
 		/// <summary>
 		/// Dispose方法
 		/// </summary>
 		public void Dispose()
 		{
+			ClearHandle();
 			if (httpListener != null)
 			{
 				httpListener.Dispose();
