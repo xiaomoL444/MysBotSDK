@@ -50,7 +50,7 @@ namespace MysBotSDK.MessageHandle.Info
 		/// <summary>
 		/// 指定的房间列表
 		/// </summary>
-		public UInt64 rool_ids { get; set; }
+		public UInt64 room_ids { get; set; }
 
 		/// <summary>
 		/// 该身份组下的成员数量
