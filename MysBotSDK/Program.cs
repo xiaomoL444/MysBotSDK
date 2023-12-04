@@ -124,6 +124,8 @@ static class Program
 
 		List<IMysSDKBaseModule> mysSDKBaseModules = new List<IMysSDKBaseModule>();
 
+		List<IMysTaskModule> mysTaskModules = new List<IMysTaskModule>();
+
 		foreach (var assembly in assemblyLoadContext.Assemblies)
 		{
 			try
@@ -144,6 +146,26 @@ static class Program
 		mysSDKBaseModules.ForEach((module) =>
 		{
 			Logger.Debug($"搜索到方法[{string.Join("", module.GetType().CustomAttributes)}]{module.GetType().Name}");
+
+			if (module is IMysTaskModule)
+			{
+				Logger.Debug($"搜索到Task方法 {module.GetType().Name}");
+				mysTaskModules.Add((IMysTaskModule)module);
+			}
+		});
+
+		#endregion
+
+		#region Task模块执行
+
+		mysTaskModules.ForEach(module =>
+		{
+			Logger.Log($"搜索并执行Task方法{module.GetType().Name}");
+			if (!module.IsEnable) return;
+			Task.Run(async () =>
+			{
+				await module.Start();
+			});
 		});
 
 		#endregion
@@ -237,7 +259,18 @@ static class Program
 				//mysSDKBaseModules.Clear();
 				//plugins.Clear();
 
+				//Task任务停止
+				mysTaskModules.ForEach((module) =>
+				{
+					if (!module.IsEnable) return;
+
+					Logger.Debug($"停止Task方法 {module.GetType().Name}");
+					module.Unload();
+
+				});
+
 				//卸载操作
+
 				assemblyLoadContext.Unload();
 
 				for (int i = 0; weakReference.IsAlive && (i < 10); i++)

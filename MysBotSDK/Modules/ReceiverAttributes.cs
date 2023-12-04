@@ -59,10 +59,3 @@ public class AuditCallbackAttribute : ExtendDataAttribute { }
 /// </summary>
 public class ClickMsgComponentAttribute : ExtendDataAttribute { }
 #endregion
-
-#region Program
-
-public abstract class ProgramAttribute : Attribute { }
-
-public class StartAttribute : ProgramAttribute { }
-#endregion

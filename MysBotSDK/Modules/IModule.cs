@@ -39,5 +39,5 @@ public interface IMysTaskModule : IMysSDKBaseModule
 	/// <summary>
 	/// 程序卸载插件时执行的命令
 	/// </summary>
-	public void Unloads();
+	public void Unload();
 }
