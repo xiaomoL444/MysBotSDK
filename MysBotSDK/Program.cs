@@ -10,6 +10,7 @@ using System.Linq.Expressions;
 using System.Net.Sockets;
 using System.Reactive.Linq;
 using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 
@@ -33,6 +34,8 @@ static class Program
 
 		Logger.Log($"加载插件信息");
 		LoadPlugins();
+
+
 
 		await Command();
 	}
@@ -82,7 +85,7 @@ static class Program
 		}
 	}
 	[MethodImpl(MethodImplOptions.NoInlining)]
-	static void LoadPlugins()
+	internal static void LoadPlugins()
 	{
 
 		#region 加载插件路径
@@ -103,7 +106,7 @@ static class Program
 			try
 			{
 				var steam = new FileStream(path, FileMode.Open);
-				//assemblyLoadContext.LoadFromStream(steam);
+				assemblyLoadContext.LoadFromStream(steam);
 				steam.Close();
 			}
 			catch (Exception)
@@ -113,6 +116,9 @@ static class Program
 		});
 
 		#endregion
+
+		//获取所有接收器方法
+		var allReceiverType = GetSubClassNames(typeof(ExtendDataAttribute));
 
 		#region 加载插件方法
 
@@ -126,7 +132,6 @@ static class Program
 				var rawModules = assembly.GetTypes().Where(x => x.GetInterfaces().Any(i => i == typeof(IMysSDKBaseModule))).ToList();
 				if (rawModules.Count == 0) continue;
 				mysSDKBaseModules.AddRange(rawModules.Where(q => q.GetInterfaces().Any(i => i == typeof(IMysSDKBaseModule))).Select(Activator.CreateInstance).Select(m => (m as IMysSDKBaseModule)!));
-				rawModules.Clear();
 			}
 			catch (Exception)
 			{
@@ -138,7 +143,7 @@ static class Program
 		//输出所有加载成功的方法
 		mysSDKBaseModules.ForEach((module) =>
 		{
-			Logger.Log($"搜索到方法[{String.Join("", module.GetType().CustomAttributes)}] {module.GetType().Name}");
+			Logger.Debug($"搜索到方法[{string.Join("", module.GetType().CustomAttributes)}]{module.GetType().Name}");
 		});
 
 		#endregion
@@ -146,14 +151,20 @@ static class Program
 		#region 加入订阅器
 		Dictionary<string, List<IMysSDKBaseModule>> receivers = new();
 
-		//获取所有接收器方法
-		var allReceiverType = GetSubClassNames(typeof(ExtendDataAttribute));
 		//载入插件
 		if (mysSDKBaseModules.Count > 0)
 		{
 			allReceiverType.ForEach(type =>
 			{
-				receivers[type.name] = new List<IMysSDKBaseModule>(mysSDKBaseModules.Where(q => q.GetType().GetCustomAttribute(type.type) != null));
+				receivers[type.name] = new List<IMysSDKBaseModule>(mysSDKBaseModules.Where(q =>
+				{
+					var isEqual = q.GetType().GetCustomAttribute(type.type) != null;
+					if (isEqual)
+					{
+						Logger.Log($"载入的方法[{type.name.Replace("Attribute", string.Empty)}] {q.GetType().Name} ");
+					}
+					return isEqual;
+				}));
 			});
 		}
 		foreach (var receiver in receivers.Keys)
@@ -373,12 +384,25 @@ static class Commond
 	{
 		if (Program.mysBot != null)
 		{
-			Program.mysBot.Dispose();
+			Program.mysBot?.Dispose();
 		}
 		Environment.Exit(0);
 	}
-	public static void unload(string?[] args)
+	public static void unloadPlugins(string?[] args)
 	{
 		Program.UnloadPlugins();
+	}
+	public static void loadPlugins(string?[] args)
+	{
+		Program.LoadPlugins();
+	}
+	public static async void reloadPlugins(string?[] args)
+	{
+		unloadPlugins(null!);
+		while (Program.weakReference!.IsAlive)
+		{
+			await Task.Delay(100);
+		}
+		loadPlugins(null!);
 	}
 }
