@@ -4,7 +4,18 @@
 /// <summary>
 /// 接收器特征
 /// </summary>
-public abstract class ExtendDataAttribute : Attribute { }
+public abstract class ExtendDataAttribute : Attribute
+{
+	/// <summary>
+	/// 查找到该方法后是否锁定停止往下搜索方法
+	/// </summary>
+	public bool isBlock { get; set; }
+
+	/// <summary>
+	/// 优先级，328优先级比0大，仅针对同一接收器有效
+	/// </summary>
+	public int priority { get; set; }
+}
 
 /// <summary>
 /// 有用户加入大别野的接收器特征

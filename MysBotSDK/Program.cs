@@ -156,6 +156,8 @@ static class Program
 
 		#endregion
 
+
+
 		#region Task模块执行
 
 		mysTaskModules.ForEach(module =>
@@ -189,6 +191,15 @@ static class Program
 				}));
 			});
 		}
+
+		#region 按照优先级排列模块
+
+		foreach (var detailReceiver in receivers)
+		{
+			receivers[detailReceiver.Key] = detailReceiver.Value.OrderByDescending(o => o.GetType().GetCustomAttribute<ExtendDataAttribute>().priority).ToList();
+		}
+		#endregion
+
 		foreach (var receiver in receivers.Keys)
 		{
 			var receiverType = (EventType)Enum.Parse(typeof(EventType), receiver.Replace("Attribute", string.Empty));
