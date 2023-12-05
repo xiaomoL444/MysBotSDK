@@ -39,7 +39,7 @@ public static class Logger
 	{
 		get
 		{
-			return DateTimeOffset.Now.ToString("");
+			return DateTimeOffset.Now.ToString("G");
 		}
 	}
 	static bool isWindow

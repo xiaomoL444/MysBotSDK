@@ -207,8 +207,9 @@ static class Program
 			switch (receiverType)
 			{
 				case EventType.JoinVilla:
-					mysBot.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(messageReceiver => {
-					TryExecuteModules(moduleList, messageReceiver);
+					mysBot.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(messageReceiver =>
+					{
+						TryExecuteModules(moduleList, messageReceiver);
 					});
 					break;
 				case EventType.SendMessage:
@@ -217,17 +218,17 @@ static class Program
 						bool isBlock = false;
 						receivers[receiver].ForEach(module =>
 						{
-							if (module.IsEnable&&!isBlock)
+							if (module.IsEnable && !isBlock)
 							{
-								if (messageReceiver.commond == $"/{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}" 
+								if (messageReceiver.commond == $"/{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}"
 								|| messageReceiver.commond == $"{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}"
 								|| module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond == "*") //若填入*则代表接收任何消息
 								{
-									if (module.GetType().GetCustomAttribute<SendMessageAttribute>()!.isBlock&& module.IsEnable)
-									{	
-										isBlock = true; 
-									Logger.Log($"Commond:{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
-						            }
+									if (module.GetType().GetCustomAttribute<SendMessageAttribute>()!.isBlock && module.IsEnable)
+									{
+										isBlock = true;
+										Logger.Log($"Commond:{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
+									}
 									TryExecuteModules(new List<IMysSDKBaseModule>() { module }, messageReceiver);
 
 								}
@@ -322,7 +323,7 @@ static class Program
 	/// <summary>
 	/// 尝试执行指令
 	/// </summary>
-	internal static void TryExecuteModules(List<IMysSDKBaseModule> modules,MessageReceiverBase messageReceiver) 
+	internal static void TryExecuteModules(List<IMysSDKBaseModule> modules, MessageReceiverBase messageReceiver)
 	{
 		modules.ForEach(async module =>
 		{
@@ -448,13 +449,13 @@ static class Commond
 	public static void help(string?[] args)
 	{
 		Type type = typeof(Commond);
-		Console.WriteLine("========================");
+		Logger.Log("========================");
 		foreach (var method in type.GetMethods())
 		{
 			if (method.Name == "GetType" || method.Name == "ToString" || method.Name == "Equals" || method.Name == "GetHashCode") continue;
-			Console.WriteLine(method.Name);
+			Logger.Log(method.Name);
 		}
-		Console.WriteLine("========================");
+		Logger.Log("========================");
 	}
 	public static void exit(string?[] args)
 	{
@@ -474,14 +475,15 @@ static class Commond
 	}
 	public static async void reloadPlugins(string?[] args)
 	{
-		if (Program.weakReference.IsAlive) {
-			unloadPlugins(null!);
-		while (Program.weakReference!.IsAlive)
+		if (Program.weakReference != null && Program.weakReference.IsAlive)
 		{
-			await Task.Delay(100);
-		}
+			unloadPlugins(null!);
+			while (Program.weakReference!.IsAlive)
+			{
+				await Task.Delay(100);
+			}
 
 		}
-		loadPlugins(null!);	
+		loadPlugins(null!);
 	}
 }
