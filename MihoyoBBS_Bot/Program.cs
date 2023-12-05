@@ -56,7 +56,7 @@ static class Program
 		{
 			WebsocketConnect = bool.Parse(GetAccountConfig("WebsocketConnect")),
 			test_villa_id = uint.Parse(GetAccountConfig("test_villa_id")),
-			loggerLevel = Logger.LoggerLevel.Debug,
+			loggerLevel = Logger.LoggerLevel.Log,
 			ws_callback_Address = GetAccountConfig("ws_callback_Address"),
 			http_callback_Address = GetAccountConfig("http_callback_Address"),
 			bot_id = GetAccountConfig("mojiang_bot_id"),
