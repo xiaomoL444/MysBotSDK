@@ -846,11 +846,11 @@ Content-Type: application/json";
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="role_id">身份组ID</param>
 	/// <returns>message:返回消息,retcode:返回消息code,member_roles:MemberRole身份组</returns>	
-	public static async Task<(string message, int retcode, MemberRole member_role)> GetVillaMemberRoleInfo(UInt64 villa_id, UInt64 role_id)
+	public static async Task<(string message, int retcode, MemberRoleInfo member_role)> GetVillaMemberRoleInfo(UInt64 villa_id, UInt64 role_id)
 	{
 		return await GetVillaMemberRoleInfo(mysBot[mysBot.Count - 1], villa_id, role_id);
 	}
-	public static async Task<(string message, int retcode, MemberRole member_role)> GetVillaMemberRoleInfo(MysBot mysBot, UInt64 villa_id, UInt64 role_id)
+	public static async Task<(string message, int retcode, MemberRoleInfo member_role)> GetVillaMemberRoleInfo(MysBot mysBot, UInt64 villa_id, UInt64 role_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMemberRoleInfo);
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
@@ -862,7 +862,7 @@ Content-Type: application/json";
 		{
 			retcode = 0,
 			message = "",
-			data = new { role = new MemberRole() }
+			data = new { role = new MemberRoleInfo() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, member_role = json.data == null ? null : json.data.role };

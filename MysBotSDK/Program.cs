@@ -35,10 +35,9 @@ static class Program
 		Logger.Log($"加载插件信息");
 		LoadPlugins();
 
-
-
 		await Command();
 	}
+
 	internal static void LoadBotConfig()
 	{
 		if (!File.Exists("account.json"))
@@ -155,8 +154,6 @@ static class Program
 		});
 
 		#endregion
-
-
 
 		#region Task模块执行
 
@@ -335,7 +332,7 @@ static class Program
 				}
 				catch (Exception ex)
 				{
-					Logger.LogError($"执行指令错误 {ex.Message} \n{ex.StackTrace}");
+					Logger.LogError($"执行指令错误 \n错误信息: {ex.Message} \n{ex.StackTrace}");
 				}
 			}
 		});
