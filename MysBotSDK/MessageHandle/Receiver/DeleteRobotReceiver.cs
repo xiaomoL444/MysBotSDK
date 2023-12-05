@@ -1,10 +1,12 @@
 ﻿using MysBotSDK.MessageHandle.ExtendData;
+using MysBotSDK.Tool;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MysBotSDK.MessageHandle.Receiver
 {
@@ -20,10 +22,10 @@ namespace MysBotSDK.MessageHandle.Receiver
 		internal DeleteRobot deleteRobot { get; set; }
 		public DeleteRobotReceiver(string message) : base(message)
 		{
-		}
-		internal override void Initialize(string message)
-		{
-			deleteRobot = JsonConvert.DeserializeObject<DeleteRobot>(message)!;
+			deleteRobot = GetExtendDataMsg<DeleteRobot>(message);
+			villa_id = deleteRobot.villa_id;
+
+			Logger.Log($"Receive [DeleteRobot] Form villa:{villa_id},room:{room_id}");
 		}
 	}
 

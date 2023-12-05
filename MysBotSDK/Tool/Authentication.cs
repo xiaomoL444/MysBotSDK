@@ -8,9 +8,9 @@ using System.Web;
 
 namespace MysBotSDK.Tool;
 
-public static class Authentication
+internal static class Authentication
 {
-	public static bool Verify(string body, string botSign, string pub_key, string botSecret)
+	internal static bool Verify(string body, string botSign, string pub_key, string botSecret)
 	{
 		byte[] sign = Convert.FromBase64String(botSign);
 		string combinedData_ = "body=" + UrlEncode(body.TrimEnd('\n')) + "&secret=" + botSecret;
@@ -40,7 +40,7 @@ public static class Authentication
 		return encodeUrl;
 	}
 
-	public static string HmacSHA256(string secret, string pub_key)
+	internal static string HmacSHA256(string secret, string pub_key)
 	{
 		using (HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(pub_key.Replace("\r", ""))))
 		{

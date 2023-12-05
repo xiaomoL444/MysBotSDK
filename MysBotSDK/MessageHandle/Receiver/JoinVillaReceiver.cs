@@ -1,5 +1,7 @@
 ﻿using MysBotSDK.MessageHandle.ExtendData;
+using MysBotSDK.Tool;
 using Newtonsoft.Json;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MysBotSDK.MessageHandle.Receiver
 {
@@ -25,13 +27,16 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// </summary>
 		public UInt64 Villa_ID => joinVilla.villa_id;
 		internal JoinVilla joinVilla { get; set; }
+		/// <summary>
+		/// 加入大别野事件接收器
+		/// </summary>
+		/// <param name="message"></param>
 		public JoinVillaReceiver(string message) : base(message)
 		{
+			joinVilla = GetExtendDataMsg<JoinVilla>(message);
+			villa_id = joinVilla.villa_id;
 
-		}
-		internal override void Initialize(string message)
-		{
-			joinVilla = JsonConvert.DeserializeObject<JoinVilla>(message)!;
+			Logger.Log($"Receive [JoinVilla] @{NickName} Form villa:{villa_id},room:{room_id}");
 		}
 	}
 }

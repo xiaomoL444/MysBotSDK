@@ -1,10 +1,12 @@
 ﻿using MysBotSDK.MessageHandle.ExtendData;
+using MysBotSDK.Tool;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MysBotSDK.MessageHandle.Receiver
 {
@@ -48,10 +50,11 @@ namespace MysBotSDK.MessageHandle.Receiver
 		internal AddQuickEmoticon addQuickEmoticon { get; set; }
 		public AddQuickEmoticonReceiver(string message) : base(message)
 		{
-		}
-		internal override void Initialize(string message)
-		{
-			addQuickEmoticon = JsonConvert.DeserializeObject<AddQuickEmoticon>(message)!;
+			addQuickEmoticon = GetExtendDataMsg<AddQuickEmoticon>(message);
+			villa_id = addQuickEmoticon.villa_id;
+			room_id = addQuickEmoticon.room_id;
+
+			Logger.Log($"Receive [AddQuickEmotion] {Emoticon_Name} Form villa:{villa_id},room:{room_id}");
 		}
 	}
 

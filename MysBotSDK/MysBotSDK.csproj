@@ -1,16 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.5.0</Version>
+    <Version>1.6.0</Version>
     <Authors>xiaomoL444</Authors>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <BaseOutputPath>E:\code\MysBotSDK\MysBotSDKBuild</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.25.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Reactive" Version="6.0.0" />
     <PackageReference Include="WebSocketSharp-netstandard" Version="1.0.1" />

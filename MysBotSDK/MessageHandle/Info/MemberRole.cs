@@ -8,13 +8,17 @@ using System.Threading.Tasks;
 
 namespace MysBotSDK.MessageHandle.Info
 {
+	/// <summary>
+	/// 身份组信息( 获取大别野下所有身份组 接口使用 )
+	/// </summary>
 	public class MemberRole
 	{
+		[JsonProperty("id")]
+		private object id_ { get; set; } = new object();
+
 		/// <summary>
 		/// 身份组id
 		/// </summary>
-		[JsonProperty("id")]
-		private object id_ { get; set; } = new object();
 		[JsonIgnore]
 		public UInt64 id { get { return UInt64.Parse(id_.ToString()!); } set { id_ = (object)value; } }
 
@@ -23,13 +27,14 @@ namespace MysBotSDK.MessageHandle.Info
 		/// </summary>
 		public string? name { get; set; }
 
+		[JsonProperty("villa_id")]
+		private object villa_id_ { get; set; } = new object();
+
 		/// <summary>
 		/// 大别野id
 		/// </summary>
-		[JsonProperty("villa_id")]
-		private object villa_id_ { get; set; } = new object();
 		[JsonIgnore]
-		public UInt64 villa_id { get { return UInt64.Parse(villa_id_.ToString()); } set { villa_id_ = (object)value; } }
+		public UInt64 villa_id { get { return UInt64.Parse(villa_id_.ToString()!); } set { villa_id_ = (object)value; } }
 
 		/// <summary>
 		/// 身份组颜色
@@ -50,15 +55,6 @@ namespace MysBotSDK.MessageHandle.Info
 		/// <summary>
 		/// 指定的房间列表
 		/// </summary>
-		public UInt64 rool_ids { get; set; }
-
-		/// <summary>
-		/// 该身份组下的成员数量
-		/// </summary>
-		[JsonProperty("member_num")]
-		private int member_num_ { get; set; }
-		[JsonIgnore]
-		public string member_num { get { return member_num_.ToString(); } set { member_num_ = int.Parse(value); } }
-		public List<Permissions> permissions { get; set; } = new List<Permissions>();
+		public List<UInt64> room_ids { get; set; } = new();
 	}
 }

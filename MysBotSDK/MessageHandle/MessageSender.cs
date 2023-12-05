@@ -92,27 +92,16 @@ Content-Type: application/json";
 		msgContentInfo.panel.mid_component_group_list = msg_content.midComponent.Count == 0 ? null! : msg_content.midComponent;
 		msgContentInfo.panel.big_component_group_list = msg_content.bigComponent.Count == 0 ? null! : msg_content.bigComponent;
 
-		//发送消息
-		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Setting.SendMessage);
-		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
+		Logger.Log($"Send Text: {msgContentInfo.content.text} To villa:{villa_id},room:{room_id}");
 
-		httpRequestMessage.Content = JsonContent.Create(new
-		{
-			room_id,
-			object_name,
-			msg_content = JsonConvert.SerializeObject(msgContentInfo)
-		});
-		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		var res = await SendText(mysBot, villa_id, room_id, JsonConvert.SerializeObject(msgContentInfo));
 
-		var AnonymousType = new
+		if (res.retcode != 0)
 		{
-			retcode = 0,
-			message = "",
-			data = new { bot_msg_id = "" }
-		};
-		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data==null?"": json.data.bot_msg_id };
+			Logger.LogError($"Fail! retcode: {res.retcode},message: {res.message}");
+		}
+
+		return res;
 	}
 
 	/// <summary>
@@ -158,7 +147,8 @@ Content-Type: application/json";
 			data = new { bot_msg_id = "" }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id =json.data==null?null: json.data.bot_msg_id };
+
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null! : json.data.bot_msg_id };
 	}
 
 	/// <summary>
@@ -190,8 +180,17 @@ Content-Type: application/json";
 			message = "",
 			data = new { bot_msg_id = "" }
 		};
+
+		Logger.Log($"Send Image: {url} To villa:{villa_id},room:{room_id}");
+
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
-		return new() { message = json!.message, retcode = json.retcode, bot_msg_id =json.data==null?null: json.data.bot_msg_id };
+
+		if (json!.retcode != 0)
+		{
+			Logger.LogError($"Fail! retcode: {json.retcode},message: {json.message}");
+		}
+
+		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null : json.data.bot_msg_id };
 	}
 
 	/// <summary>
@@ -221,7 +220,16 @@ Content-Type: application/json";
 			message = "",
 			data = new { bot_msg_id = "" }
 		};
+
+		Logger.Log($"Send Post: {post_id} To villa:{villa_id},room:{room_id}");
+
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
+
+		if (json!.retcode != 0)
+		{
+			Logger.LogError($"Fail! retcode: {json.retcode},message: {json.message}");
+		}
+
 		return new() { message = json!.message, retcode = json.retcode, bot_msg_id = json.data == null ? null : json.data.bot_msg_id };
 	}
 
@@ -536,12 +544,13 @@ Content-Type: application/json";
 		int result_count = 0;
 		string message = string.Empty;
 		int retcode = 0;
+		string offset_str = string.Empty;
 		List<Member> members = new List<Member>();
 		do
 		{
 			HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMember);
 			httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
-			httpRequestMessage.Content = JsonContent.Create(new { size = 10, offset_str = "" });
+			httpRequestMessage.Content = JsonContent.Create(new { size = 10, offset_str });
 
 			var res = await HttpClass.SendAsync(httpRequestMessage);
 			Logger.Debug($"获取大别野成员信息{res.Content.ReadAsStringAsync().Result}");
@@ -556,13 +565,14 @@ Content-Type: application/json";
 			message = json.message;
 
 			//如果获取失败退出循环
-			if (json.data==null)
+			if (json.data == null)
 			{
 				break;
 			}
 
 			result_count = json.data.list.Count;
 			members.AddRange(json.data.list);
+			offset_str = json.data.next_offset_str;
 		} while (result_count == size_count && retcode == 0);
 
 		return new() { message = message, retcode = retcode, members = members };
@@ -836,11 +846,11 @@ Content-Type: application/json";
 	/// <param name="villa_id">大别野ID</param>
 	/// <param name="role_id">身份组ID</param>
 	/// <returns>message:返回消息,retcode:返回消息code,member_roles:MemberRole身份组</returns>	
-	public static async Task<(string message, int retcode, MemberRole member_role)> GetVillaMemberRoleInfo(UInt64 villa_id, UInt64 role_id)
+	public static async Task<(string message, int retcode, MemberRoleInfo member_role)> GetVillaMemberRoleInfo(UInt64 villa_id, UInt64 role_id)
 	{
 		return await GetVillaMemberRoleInfo(mysBot[mysBot.Count - 1], villa_id, role_id);
 	}
-	public static async Task<(string message, int retcode, MemberRole member_role)> GetVillaMemberRoleInfo(MysBot mysBot, UInt64 villa_id, UInt64 role_id)
+	public static async Task<(string message, int retcode, MemberRoleInfo member_role)> GetVillaMemberRoleInfo(MysBot mysBot, UInt64 villa_id, UInt64 role_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetVillaMemberRoleInfo);
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
@@ -852,7 +862,7 @@ Content-Type: application/json";
 		{
 			retcode = 0,
 			message = "",
-			data = new { role = new MemberRole() }
+			data = new { role = new MemberRoleInfo() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, member_role = json.data == null ? null : json.data.role };

@@ -12,9 +12,15 @@ using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.MessageHandle.Info;
 using System.Runtime.CompilerServices;
 using MysBotSDK.MessageHandle.ExtendData;
+using Google.Protobuf;
+using Newtonsoft.Json.Serialization;
+using MysBotSDK.Tool;
 
 namespace MysBotSDK.MessageHandle;
 
+/// <summary>
+/// 消息接收器父类
+/// </summary>
 public class MessageReceiverBase
 {
 	/// <summary>
@@ -43,79 +49,69 @@ public class MessageReceiverBase
 	internal UInt64 room_id { get; set; }
 
 	/// <summary>
-	/// 构造器
+	/// WebHook构造器
 	/// </summary>
 	/// <param name="message"></param>
 	public MessageReceiverBase(string message)
 	{
-		Initialize(message);
-	}
-
-	/// <summary>
-	/// 初始化(主要是为了多态接收器重构准备的)
-	/// </summary>
-	/// <param name="message"></param>
-	internal virtual void Initialize(string message)
-	{
+		//解析ExtendData以外的内容
 		var json = JObject.Parse(message)["event"];
 		robot = JsonConvert.DeserializeObject<Robot>(json!["robot"]!.ToString())!;
 		EventType = (EventType)(int)json["type"]!;
+		//至于roomid与villaid则在子类构造器里实现
 
-		var eventData = json["extend_data"]!["EventData"];
+	}
 
-		//对事件数据赋值
-		switch (EventType)
+	/// <summary>
+	/// 获取相应的扩展数据
+	/// </summary>
+	/// <typeparam name="T">数据类型</typeparam>
+	/// <param name="bodyData">消息体(应是一段最初收到的json消息)</param>
+	/// <returns></returns>
+	internal T GetExtendDataMsg<T>(string bodyData)
+	{
+		var json = (JObject)JObject.Parse(bodyData)["event"]!["extend_data"]!;
+		if (json.ContainsKey("EventData"))
 		{
-			case EventType.JoinVilla:
-				receiver = new JoinVillaReceiver(eventData!["JoinVilla"]!.ToString());
-				var joinVillaReceiver = (JoinVillaReceiver)receiver;
-				villa_id = joinVillaReceiver.villa_id;
-				room_id = 0;
-				break;
-			case EventType.SendMessage:
-				receiver = new SendMessageReceiver(eventData!["SendMessage"]!.ToString());
-				var sendMessageReceiver = (SendMessageReceiver)receiver;
-				villa_id = sendMessageReceiver.Villa_ID;
-				room_id = sendMessageReceiver.Room_ID;
-				break;
-			case EventType.CreateRobot:
-				receiver = new CreateRobotReceiver(eventData!["CreateRobot"]!.ToString());
-				var createRobotReceiver = (CreateRobotReceiver)receiver;
-				villa_id = createRobotReceiver.Villa_ID;
-				room_id = 0;
-				break;
-			case EventType.DeleteRobot:
-				receiver = new DeleteRobotReceiver(eventData!["DeleteRobot"]!.ToString());
-				var deleteRobotReceiver = (DeleteRobotReceiver)receiver;
-				villa_id = deleteRobotReceiver.Villa_ID;
-				room_id = 0;
-				break;
-			case EventType.AddQuickEmoticon:
-				receiver = new AddQuickEmoticonReceiver(eventData!["AddQuickEmoticon"]!.ToString());
-				var addQuickEmoticonReceiver = (AddQuickEmoticonReceiver)receiver;
-				villa_id = addQuickEmoticonReceiver.Villa_ID;
-				room_id = addQuickEmoticonReceiver.Room_ID;
-				break;
-			case EventType.AuditCallback:
-				receiver = new AuditCallbackReceiver(eventData!["AuditCallback"]!.ToString());
-				var auditCallbackReceiver = (AuditCallbackReceiver)receiver;
-				villa_id = auditCallbackReceiver.Villa_ID;
-				room_id = auditCallbackReceiver.Room_ID;
-				break;
-			case EventType.ClickMsgComponent:
-				receiver = new ClickMsgComponentReceiver(eventData!["ClickMsgComponent"]!.ToString());
-				var clickMsgComponentReceiver = (ClickMsgComponentReceiver)receiver;
-				villa_id = clickMsgComponentReceiver.Villa_ID;
-				room_id = clickMsgComponentReceiver.Room_id;
-				break;
+			//原格式解析
+			return JsonConvert.DeserializeObject<T>(JObject.Parse(bodyData)["event"]!["extend_data"]!["EventData"]![typeof(T).Name]!.ToString())!;
 		}
-		receiver!.robot = this.robot;
-		receiver.EventType = this.EventType;
-		receiver.room_id = this.room_id;
-		receiver.villa_id = this.villa_id;
+		else if (json.ContainsKey("event_data"))
+		{
+			//ws将之从下划线改成大写
+			return JsonConvert.DeserializeObject<T>(JObject.Parse(bodyData)["event"]!["extend_data"]!["event_data"]![BigCamelToUnderscore(typeof(T).Name)]!.ToString())!;
+		}
+		else
+		{
+			Logger.LogError("无效的消息体");
+			return default(T)!;
+		}
+	}
+	internal Dictionary<string, string> BigCamelToUndderscore { get; set; } = new Dictionary<string, string>();
+	internal string BigCamelToUnderscore(string score)
+	{
+		if (!BigCamelToUndderscore.ContainsKey(score))
+		{
+			StringBuilder stringBuilder = new StringBuilder();
+			for (int i = 0; i < score.Length; i++)
+			{
+				if ('A' <= score[i] && score[i] <= 'Z')
+				{
+					if (i != 0)
+					{
+						stringBuilder.Append('_');
+					}
+					stringBuilder.Append((char)(score[i] + 32));
+					continue;
+				}
+				stringBuilder.Append(score[i]);
+			}
+			BigCamelToUndderscore[score] = stringBuilder.ToString();
+		}
+
+		return BigCamelToUndderscore[score];
 	}
 }
-
 /// <summary>
 /// 事件类型
 /// </summary>

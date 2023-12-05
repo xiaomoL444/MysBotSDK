@@ -52,11 +52,11 @@ namespace MysBotSDK.MessageHandle
 		/// <param name="text">文本内容</param>
 		/// <param name="font_Sytle">字体样式</param>
 		/// <returns>消息链</returns>
-		public MessageChain Text(string text,Entity_Detail.Font_Sytle font_Sytle=Entity_Detail.Font_Sytle.None)
+		public MessageChain Text(string text, Entity_Detail.Font_Sytle font_Sytle = Entity_Detail.Font_Sytle.None)
 		{
 			if (font_Sytle != Entity_Detail.Font_Sytle.None)
 			{
-				for (int i = 0; i < Enum.GetNames(typeof(Entity_Detail.Font_Sytle)).Length-1; i++)
+				for (int i = 0; i < Enum.GetNames(typeof(Entity_Detail.Font_Sytle)).Length - 1; i++)
 				{
 					if (((int)font_Sytle & (1 << i)) != 0)
 					{
@@ -70,7 +70,6 @@ namespace MysBotSDK.MessageHandle
 						}));
 					}
 				}
-				
 			}
 			Text(text);
 			return this;
@@ -85,8 +84,14 @@ namespace MysBotSDK.MessageHandle
 			this.text.Add(text.ConvertUTF8ToUTF16());
 			return this;
 		}
-
-		public MessageChain Font_Style(UInt64 offset,UInt64 length,Font_Sytle font_Sytle=Font_Sytle.None)
+		/// <summary>
+		/// 自定义文本样式
+		/// </summary>
+		/// <param name="offset">文本开始位置</param>
+		/// <param name="length">文本长度</param>
+		/// <param name="font_Sytle">文本样式</param>
+		/// <returns></returns>
+		public MessageChain Font_Style(UInt64 offset, UInt64 length, Font_Sytle font_Sytle = Font_Sytle.None)
 		{
 			if (font_Sytle != Entity_Detail.Font_Sytle.None)
 			{
@@ -103,12 +108,12 @@ namespace MysBotSDK.MessageHandle
 								type = Entity_Detail.EntityType.style,
 								font_style = (Entity_Detail.Font_Sytle)(1 << i)
 							}
-						}) ;
+						});
 					}
 				}
 
 			}
-			
+
 			return this;
 		}
 		/// <summary>
@@ -187,16 +192,18 @@ namespace MysBotSDK.MessageHandle
 		/// 跳转外部链接
 		/// </summary>
 		/// <param name="url">url链接</param>
+		/// <param name="text">高亮文本</param>
 		/// <param name="requires_bot_access_token">是否需要带上含有用户信息的token</param>
 		/// <returns></returns>
-		public MessageChain Url_Link(string url, bool requires_bot_access_token = false)
+		public MessageChain Url_Link(string url, bool requires_bot_access_token = false, string highlight_text = "")
 		{
-			IDs.Add((text.Count - 1, new Entity()
+			IDs.Add((this.text.Count - 1, new Entity()
 			{
 				entity = new Entity_Detail()
 				{
 					type = Entity_Detail.EntityType.link,
 					url = url,
+					url_highlight_text = highlight_text,
 					requires_bot_access_token = requires_bot_access_token
 				}
 			}));
@@ -274,13 +281,14 @@ namespace MysBotSDK.MessageHandle
 							text_ += $"#{room.room!.room_name!.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity_Detail.EntityType.link:
+							var add_url_text = string.IsNullOrEmpty(entity.entity.entity.url_highlight_text) ? entity.entity.entity.url!.ConvertUTF8ToUTF16() : entity.entity.entity.url_highlight_text.ConvertUTF8ToUTF16();
 							entities_.Add(new Entity()
 							{
 								entity = entity.entity.entity,
-								length = (ulong)entity.entity!.entity.url!.Length,
+								length = (ulong)add_url_text.Length,
 								offset = (ulong)text_.Length
 							});
-							text_ += entity.entity.entity.url.ConvertUTF8ToUTF16();
+							text_ += add_url_text;
 							break;
 						case Entity_Detail.EntityType.style:
 							entities_.Add(new()

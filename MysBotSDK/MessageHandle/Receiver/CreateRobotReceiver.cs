@@ -1,10 +1,12 @@
 ﻿using MysBotSDK.MessageHandle.ExtendData;
+using MysBotSDK.Tool;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MysBotSDK.MessageHandle.Receiver
 {
@@ -18,12 +20,16 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// </summary>
 		public UInt64 Villa_ID => createRobot.villa_id;
 		internal CreateRobot createRobot { get; set; }
+		/// <summary>
+		/// bot加入新大别野事件
+		/// </summary>
+		/// <param name="message"></param>
 		public CreateRobotReceiver(string message) : base(message)
 		{
-		}
-		internal override void Initialize(string message)
-		{
-			createRobot = JsonConvert.DeserializeObject<CreateRobot>(message)!;
+			createRobot = GetExtendDataMsg<CreateRobot>(message);
+			villa_id = createRobot.villa_id;
+
+			Logger.Log($"Receive [CreateRobot] Form villa:{villa_id},room:{room_id}");
 		}
 	}
 }

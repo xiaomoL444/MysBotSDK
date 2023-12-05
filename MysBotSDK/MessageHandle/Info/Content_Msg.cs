@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,5 +26,11 @@ namespace MysBotSDK.MessageHandle.Info
 		/// 引用消息的信息
 		/// </summary>
 		public QuoteInfo? QuoteInfo { get; set; }
+
+		/// <summary>
+		/// 用户信息
+		/// </summary>
+		[JsonProperty("user")]
+		public UserInfo? userInfo { get; set; }
 	}
 }

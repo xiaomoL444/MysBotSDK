@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "9yb2VQp8u/fOhVg62Hub9HxzaExx3y5fab/Ojxa8w26KqI2Bhju8ztxOV1TnlET/Oqsuyp86aUAP4a+Y16UxxA==",
+  "dgSpecHash": "mrMU1HQmrgTptHGpLim9wON+pH6DEjxE5mjopkoq/drmx/0djB0P7jKhjDWP7zDKlHhulCalMdO9t9ykQ7BWwg==",
   "success": true,
   "projectFilePath": "E:\\code\\MysBotSDK\\Example\\Example.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\月下初拥\\.nuget\\packages\\google.protobuf\\3.25.1\\google.protobuf.3.25.1.nupkg.sha512",
     "C:\\Users\\月下初拥\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\月下初拥\\.nuget\\packages\\system.reactive\\6.0.0\\system.reactive.6.0.0.nupkg.sha512",
     "C:\\Users\\月下初拥\\.nuget\\packages\\websocketsharp-netstandard\\1.0.1\\websocketsharp-netstandard.1.0.1.nupkg.sha512"

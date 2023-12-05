@@ -1,4 +1,5 @@
 ﻿using MysBotSDK.MessageHandle.ExtendData;
+using MysBotSDK.Tool;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MysBotSDK.MessageHandle.Receiver
 {
@@ -48,11 +50,11 @@ namespace MysBotSDK.MessageHandle.Receiver
 		internal ClickMsgComponent clickMsgComponent { get; set; }
 		public ClickMsgComponentReceiver(string message) : base(message)
 		{
+			clickMsgComponent = GetExtendDataMsg<ClickMsgComponent>(message);
+			villa_id = clickMsgComponent.villa_id;
+			room_id = clickMsgComponent.room_id;
 
-		}
-		internal override void Initialize(string message)
-		{
-			clickMsgComponent = JsonConvert.DeserializeObject<ClickMsgComponent>(message)!;
+			Logger.Log($"Receive [ClickMsgComponent] ID:{Component_Id},Extra:{Extra} Form villa:{villa_id},room:{room_id}");
 		}
 	}
 }
