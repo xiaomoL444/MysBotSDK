@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Net;
 using System.Reflection;
+using MysBotSDK.MessageHandle;
 
 namespace MysBotSDK.Tool;
 
@@ -15,7 +16,7 @@ public static class HttpClass
 	/// <summary>
 	/// 每秒最大查询数量
 	/// </summary>
-	public const int QPS = 30;
+	public const int QPS = 20;
 
 	/// <summary>
 	/// 该秒已发送的数量
@@ -42,11 +43,13 @@ public static class HttpClass
 	{
 		clientHandle = new HttpClientHandler()
 		{
-			MaxConnectionsPerServer = 10,
+			MaxConnectionsPerServer = QPS,
 			UseCookies = true,
 			AutomaticDecompression = DecompressionMethods.GZip,
 			UseProxy = false,
 			Proxy = null,
+			//UseProxy = true,
+			//Proxy = new WebProxy(new Uri("http://localhost:8888")),
 			UseDefaultCredentials = true,
 			AllowAutoRedirect = true,
 			ClientCertificateOptions = ClientCertificateOption.Automatic,
@@ -72,19 +75,25 @@ public static class HttpClass
 			//	last_task_ID = 0;
 			//	execute_task_ID = 0;
 			//}
+
+			//Logger.Log($"{execute_task_ID}");
 			had_sended_queue_nums_per_second = 0;
 		};
 		clearQueueTimer.Start();
 
-		detectTask = Task.Run(() =>
+		//设置发送的队列ID
+		detectTask = Task.Run(async () =>
 		{
 			while (true)
 			{
 				//	Logger.Log($"{had_sended_queue_nums_per_second}");
 				if (had_sended_queue_nums_per_second < QPS && execute_task_ID < last_task_ID)
 				{
+					had_sended_queue_nums_per_second++;//队列数量增加
+													   //await Task.Delay(1000 / QPS);
 					execute_task_ID++;
 				}
+				await Task.Delay(1);
 			}
 		});
 	}
@@ -100,17 +109,16 @@ public static class HttpClass
 		try
 		{
 			//若有新的任务
-			had_sended_queue_nums_per_second++;//队列数量增加
 			UInt128 self_task_ID = last_task_ID++;//获取自身的任务id
 
 			//判断自己的ID是否可以执行
-			while (execute_task_ID < self_task_ID) ;//Logger.LogWarnning($"{execute_task_ID} {self_task_ID}"); ;
+			while (execute_task_ID < self_task_ID) await Task.Delay(1);//Logger.LogWarnning($"{execute_task_ID} {self_task_ID}"); ;
 
 			var res = await client.SendAsync(httpRequestMessage, HttpCompletionOption.ResponseHeadersRead);
 
 			if (res.StatusCode == HttpStatusCode.TooManyRequests)
 			{
-				Logger.LogError("请求过快，重新请求");
+				Logger.LogWarnning("请求过快，重新请求");
 
 				TypeInfo requestType = httpRequestMessage.GetType().GetTypeInfo();
 				FieldInfo sendStatusField = requestType.GetField(SEND_STATUS_FIELD_NAME, BindingFlags.Instance | BindingFlags.NonPublic);
