@@ -217,14 +217,14 @@ static class Program
 						{
 							if (module.IsEnable && !isBlock)
 							{
-								if (messageReceiver.commond == $"/{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}"
-								|| messageReceiver.commond == $"{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}"
-								|| module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond == "*") //若填入*则代表接收任何消息
+								if (messageReceiver.commond == $"/{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.command}"
+								|| messageReceiver.commond == $"{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.command}"
+								|| module.GetType().GetCustomAttribute<SendMessageAttribute>()!.command == "*") //若填入*则代表接收任何消息
 								{
 									if (module.GetType().GetCustomAttribute<SendMessageAttribute>()!.isBlock && module.IsEnable)
 									{
 										isBlock = true;
-										Logger.Log($"Commond:{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.Commond}");
+										Logger.Log($"Commond:{module.GetType().GetCustomAttribute<SendMessageAttribute>()!.command}");
 									}
 									TryExecuteModules(new List<IMysSDKBaseModule>() { module }, messageReceiver);
 

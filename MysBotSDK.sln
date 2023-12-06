@@ -5,13 +5,11 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MysBotSDK", "MysBotSDK\MysBotSDK.csproj", "{B6E64737-BC3D-4930-A6CD-6B624B033F7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MihoyoBBS_Bot", "MihoyoBBS_Bot\MihoyoBBS_Bot.csproj", "{1A65D8BA-8604-460F-B50F-A0417ADD855C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test", "TestConnectMihoyoBBS_Bot_Callback\test.csproj", "{8624A27E-6913-47EF-9298-A1EC99362BB8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example", "Example\Example.csproj", "{3EB15601-D822-4EA9-BC87-4A8DAD61CA14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testPlugin", "testPlugin\testPlugin.csproj", "{97938D23-8424-4C8E-9708-1CC87BAB5343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testPlugin", "testPlugin\testPlugin.csproj", "{97938D23-8424-4C8E-9708-1CC87BAB5343}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{B6E64737-BC3D-4930-A6CD-6B624B033F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6E64737-BC3D-4930-A6CD-6B624B033F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6E64737-BC3D-4930-A6CD-6B624B033F7E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A65D8BA-8604-460F-B50F-A0417ADD855C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A65D8BA-8604-460F-B50F-A0417ADD855C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A65D8BA-8604-460F-B50F-A0417ADD855C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A65D8BA-8604-460F-B50F-A0417ADD855C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8624A27E-6913-47EF-9298-A1EC99362BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8624A27E-6913-47EF-9298-A1EC99362BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8624A27E-6913-47EF-9298-A1EC99362BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU

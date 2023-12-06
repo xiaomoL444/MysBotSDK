@@ -30,18 +30,18 @@ public class SendMessageAttribute : ExtendDataAttribute
 	/// <summary>
 	/// 唤起的命令
 	/// </summary>
-	public string Commond { get; set; }
+	public string command { get; set; }
 	/// <summary>
 	/// 触发该方法的命令，如命令"/Test"，则填入"Test"或者"、Test"，发送消息时可用"@bot /Test"或者"@bot Test"唤起
 	/// </summary>
 	/// <param name="commond"></param>
-	public SendMessageAttribute(string commond)
+	public SendMessageAttribute(string command)
 	{
-		if (commond[0] == '/')
+		if (command[0] == '/')
 		{
-			Commond = commond.Substring(1);
+			command = command.Substring(1);
 		}
-		Commond = commond;
+		command = command;
 	}
 }
 
