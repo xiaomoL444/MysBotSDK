@@ -56,6 +56,7 @@ namespace MysBotSDK.Tool
 			System.Timers.Timer timer = new System.Timers.Timer(1000 * 1);
 			timer.Elapsed += (sender, e) =>
 			{
+				//Logger.Debug("Count");
 				foreach (var timer in timers_conf)
 				{
 					if (timers_startTime[timer.name] != DateTimeOffset.Now.DayOfYear.ToString())
