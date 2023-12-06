@@ -34,14 +34,14 @@ public class SendMessageAttribute : ExtendDataAttribute
 	/// <summary>
 	/// 触发该方法的命令，如命令"/Test"，则填入"Test"或者"、Test"，发送消息时可用"@bot /Test"或者"@bot Test"唤起
 	/// </summary>
-	/// <param name="commond"></param>
+	/// <param name="command"></param>
 	public SendMessageAttribute(string command)
 	{
 		if (command[0] == '/')
 		{
-			command = command.Substring(1);
+			this.command = command.Substring(1);
 		}
-		command = command;
+		this.command = command;
 	}
 }
 
