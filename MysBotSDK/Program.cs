@@ -33,7 +33,12 @@ public static class Program
 		LoadBotConfig();
 
 		Logger.Log($"加载插件信息");
-		LoadPlugins();
+		if (args != null && args.Length != 0 && args[0] != string.Empty)
+		{
+			Logger.Log("加载自身项目指定命名空间下的插件");
+			LoadPlugins(true, args);
+		}
+		LoadPlugins(false);
 
 		await Command();
 	}
@@ -83,36 +88,44 @@ public static class Program
 			PressAndExitProgram();
 		}
 	}
+	/// <summary>
+	/// 加载插件
+	/// </summary>
+	/// <param name="isLoadSelfPlugins">是否要加载本地项目插件(开发插件时开启)</param>
+	/// <param name="args">命名空间名</param>
 	[MethodImpl(MethodImplOptions.NoInlining)]
-	internal static void LoadPlugins()
+	internal static void LoadPlugins(bool isLoadSelfPlugins, string[] args = null!)
 	{
-
 		#region 加载插件路径
 		List<IMysSDKBaseModule> plugins = new List<IMysSDKBaseModule>();
 
 		AssemblyLoadContext assemblyLoadContext = new AssemblyLoadContext("Plugins", true);
 		weakReference = new WeakReference(assemblyLoadContext.Assemblies, trackResurrection: true);
 
-		if (!Directory.Exists("Plugins"))
+		if (!isLoadSelfPlugins)
 		{
-			Directory.CreateDirectory("Plugins");
-			Logger.LogWarnning("不存在路径./Plugins/，创建文件夹");
-		}
-		var assemblies_path = Directory.EnumerateFiles("./Plugins", "*.dll").ToList();
 
-		assemblies_path.ForEach((path) =>
-		{
-			try
+			if (!Directory.Exists("Plugins"))
 			{
-				var steam = new FileStream(path, FileMode.Open);
-				assemblyLoadContext.LoadFromStream(steam);
-				steam.Close();
+				Directory.CreateDirectory("Plugins");
+				Logger.LogWarnning("不存在路径./Plugins/，创建文件夹");
 			}
-			catch (Exception)
+			var assemblies_path = Directory.EnumerateFiles("./Plugins", "*.dll").ToList();
+
+			assemblies_path.ForEach((path) =>
 			{
-				Logger.LogError($"加载插件路径[{path}]失败");
-			}
-		});
+				try
+				{
+					var steam = new FileStream(path, FileMode.Open);
+					assemblyLoadContext.LoadFromStream(steam);
+					steam.Close();
+				}
+				catch (Exception)
+				{
+					Logger.LogError($"加载插件路径[{path}]失败");
+				}
+			});
+		}
 
 		#endregion
 
@@ -125,7 +138,9 @@ public static class Program
 
 		List<IMysTaskModule> mysTaskModules = new List<IMysTaskModule>();
 
-		foreach (var assembly in assemblyLoadContext.Assemblies)
+		var AssemblyToLoad = isLoadSelfPlugins ? AppDomain.CurrentDomain.GetAssemblies().Where(a => a.GetTypes().Any(t => args.Any(n => n == t.Namespace))) : assemblyLoadContext.Assemblies;
+
+		foreach (var assembly in AssemblyToLoad)
 		{
 			try
 			{
@@ -258,6 +273,11 @@ public static class Program
 			}
 		}
 		#endregion
+
+		if (isLoadSelfPlugins)
+		{
+			return;
+		}
 
 		#region 卸载插件
 		_ = Task.Run(() =>
@@ -468,7 +488,7 @@ static class Commond
 	}
 	public static void loadPlugins(string?[] args)
 	{
-		Program.LoadPlugins();
+		Program.LoadPlugins(false);
 	}
 	public static async void reloadPlugins(string?[] args)
 	{
