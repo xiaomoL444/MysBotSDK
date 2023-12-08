@@ -21,7 +21,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// <summary>
 		/// 房间ID
 		/// </summary>
-		public UInt64 Room_id => clickMsgComponent.room_id;
+		public UInt64 Room_ID => clickMsgComponent.room_id;
 		/// <summary>
 		/// 大别野ID
 		/// </summary>
