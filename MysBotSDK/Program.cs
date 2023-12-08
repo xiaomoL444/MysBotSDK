@@ -197,7 +197,7 @@ public static class Program
 					var isEqual = q.GetType().GetCustomAttribute(type.type) != null;
 					if (isEqual)
 					{
-						Logger.Log($"载入的方法[{type.name.Replace("Attribute", string.Empty)}] {q.GetType().Name} ");
+						Logger.Log($"载入的方法[{type.name.Replace("Attribute", string.Empty)}] {(type.type == typeof(SendMessageAttribute) ? $"[/{q.GetType().GetCustomAttribute<SendMessageAttribute>().command.TrimStart('/')}]" : "")} {q.GetType().Name} ");
 					}
 					return isEqual;
 				}));
