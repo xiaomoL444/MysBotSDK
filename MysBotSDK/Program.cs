@@ -16,14 +16,14 @@ using System.Runtime.Loader;
 
 namespace MysBotSDK;
 
-static class Program
+public static class Program
 {
 	internal static MysBot? mysBot;
 
 	internal static bool isUnload { get; set; } = false;
 
 	internal static WeakReference? weakReference { get; set; }
-	static async Task Main(string[] args)
+	public static async Task Main(string[] args)
 	{
 		string ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version!.ToString(3);
 		Logger.Log("=========================================================");
