@@ -59,12 +59,12 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
     "E:\\code\\MysBotSDK\\MysBotSDK\\MysBotSDK.csproj": {
-      "version": "1.6.5",
+      "version": "1.7.0",
       "restore": {
         "projectUniqueName": "E:\\code\\MysBotSDK\\MysBotSDK\\MysBotSDK.csproj",
         "projectName": "MysBotSDK",
@@ -132,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

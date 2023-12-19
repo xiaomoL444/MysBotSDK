@@ -57,7 +57,7 @@
           }
         }
       },
-      "MysBotSDK/1.6.5": {
+      "MysBotSDK/1.7.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -174,7 +174,7 @@
         "websocketsharp-netstandard.nuspec"
       ]
     },
-    "MysBotSDK/1.6.5": {
+    "MysBotSDK/1.7.0": {
       "type": "project",
       "path": "../MysBotSDK/MysBotSDK.csproj",
       "msbuildProject": "../MysBotSDK/MysBotSDK.csproj"
@@ -182,7 +182,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "MysBotSDK >= 1.6.5"
+      "MysBotSDK >= 1.7.0"
     ]
   },
   "packageFolders": {
@@ -243,7 +243,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
