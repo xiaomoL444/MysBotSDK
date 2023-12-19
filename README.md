@@ -2,6 +2,8 @@
 
 顾名思义,C#语言的米游社大别野BotSDK(.Net 7.0)
 
+（文档稍微有些过旧了...忘记写了）
+
 ## 使用
 
 先在Nuget安装以下包: Newtonsoft.Json WebSocketSharp-netstandard Google.Protobuf
