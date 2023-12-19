@@ -1,4 +1,5 @@
 ﻿using MysBotSDK.MessageHandle.Info;
+using MysBotSDK.MessageHandle.Receiver;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -165,6 +166,21 @@ namespace MysBotSDK.MessageHandle
 			quote.quoted_message_send_time = message_send_time;
 			quote.original_message_id = message_id;
 			quote.original_message_send_time = message_send_time;
+			return this;
+		}
+
+		/// <summary>
+		/// 引用一段消息
+		/// </summary>
+		/// <param name="sendMessageReceiver">sendMessage接收器</param>
+		/// <returns>消息链</returns>
+		public MessageChain Quote(SendMessageReceiver sendMessageReceiver)
+		{
+			quote = new QuoteInfo();
+			quote.quoted_message_id = sendMessageReceiver.Msg_ID;
+			quote.quoted_message_send_time = sendMessageReceiver.Send_Time;
+			quote.original_message_id = sendMessageReceiver.Msg_ID;
+			quote.original_message_send_time = sendMessageReceiver.Send_Time;
 			return this;
 		}
 

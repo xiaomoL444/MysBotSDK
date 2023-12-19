@@ -1,12 +1,7 @@
 ﻿using Google.Protobuf;
-using Google.Protobuf.WellKnownTypes;
-using MysBotSDK.Connection;
-using MysBotSDK.MessageHandle;
 using MysBotSDK.Tool;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System;
-using System.Linq;
 using System.Text;
 using VilaBot;
 
@@ -239,7 +234,7 @@ Content-Type:application/json");
 	}
 	private ulong uniqMsgType = 1;
 	public ulong UniqMsgType { get { return ++uniqMsgType; } }
-	public void SendMsg<T>(Command bizType, T protobufData, uint appid = 104, MsgType msgType = MsgType.Request) where T : IMessage
+	public void SendMsg<T>(VilaBot.Command bizType, T protobufData, uint appid = 104, MsgType msgType = MsgType.Request) where T : IMessage
 	{
 		try
 		{
@@ -269,7 +264,7 @@ Content-Type:application/json");
 			bytes.AddRange(wsMsg.BodyData.ToLittleEndian());
 
 			//发送
-			if (isConnectFail && !bizType.Equals(Command.Heartbeat))
+			if (isConnectFail && !bizType.Equals(VilaBot.Command.Heartbeat))
 			{
 				//心跳包发送失败，消息兜底
 				Logger.LogWarnning($"ws消息兜底 Flag [ {msgType} ]ID [ {UniqMsgType} ] ");
@@ -287,7 +282,7 @@ Content-Type:application/json");
 				Logger.LogWarnning("ws已关闭或不存活");
 				return;
 			}
-			if (bizType != Command.PHeartbeat)
+			if (bizType != VilaBot.Command.PHeartbeat)
 			{
 				Logger.Log($"ws发送BizType [ {bizType} ] ID [ {UniqMsgType} ]");
 			}
@@ -392,7 +387,7 @@ Content-Type:application/json");
 			Region = string.Empty   //?
 		};
 
-		SendMsg(Command.PLogin, pLogin, (uint)linkInfo.app_id, MsgType.Request);
+		SendMsg(VilaBot.Command.PLogin, pLogin, (uint)linkInfo.app_id, MsgType.Request);
 		return;
 	}
 	private void Logout()
@@ -404,7 +399,7 @@ Content-Type:application/json");
 			AppId = linkInfo.app_id,
 			DeviceId = linkInfo.device_id
 		};
-		SendMsg(Command.Logout, pLogout, (uint)linkInfo.app_id, MsgType.Request);
+		SendMsg(VilaBot.Command.Logout, pLogout, (uint)linkInfo.app_id, MsgType.Request);
 		return;
 	}
 	private void HeartBeat(Int32 app_id)
@@ -413,7 +408,7 @@ Content-Type:application/json");
 		{
 			ClientTimestamp = GetCurrentTime().ToString()
 		};
-		SendMsg(Command.PHeartbeat, pHeartBeat, (uint)app_id, MsgType.Request);
+		SendMsg(VilaBot.Command.PHeartbeat, pHeartBeat, (uint)app_id, MsgType.Request);
 	}
 	#endregion
 

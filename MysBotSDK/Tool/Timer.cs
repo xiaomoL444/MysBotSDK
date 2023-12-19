@@ -24,6 +24,7 @@ namespace MysBotSDK.Tool
 			if (timers_conf.Any(q => q.name == name))
 			{
 				Logger.LogWarnning($"已有同样的计时器时间创建{name}");
+				return;
 			}
 			timers_conf.Add((name, eventHandle, hour, minute));
 
@@ -36,6 +37,17 @@ namespace MysBotSDK.Tool
 			timers_startTime = file;
 
 		}
+
+		public static void Unregister(string name)
+		{
+			Logger.Log($"注销计时事件:{name}中");
+			if (!timers_conf.Any(q => q.name == name))
+			{
+				Logger.LogWarnning($"不存在事件{name}");
+				return;
+			}
+			timers_conf.Remove(timers_conf.First(e => e.name == name));
+		}
 		/// <summary>
 		/// 一被引用就开始计时(每三十秒便利一遍计时的事件)
 		/// </summary>
@@ -44,6 +56,7 @@ namespace MysBotSDK.Tool
 			System.Timers.Timer timer = new System.Timers.Timer(1000 * 1);
 			timer.Elapsed += (sender, e) =>
 			{
+				//Logger.Debug("Count");
 				foreach (var timer in timers_conf)
 				{
 					if (timers_startTime[timer.name] != DateTimeOffset.Now.DayOfYear.ToString())
