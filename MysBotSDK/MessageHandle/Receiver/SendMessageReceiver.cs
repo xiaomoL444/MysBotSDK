@@ -93,6 +93,11 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// </summary>
 		public string? User_ID_Str => sendMessage.quote_msg!.from_user_id_str;
 
+		/// <summary>
+		/// 消息中的图片url数组，支持图文消息、图片消息、自定义表情、avatar互动等消息类型
+		/// </summary>
+		public List<string> Images => sendMessage.quote_msg!.images;
+
 		internal SendMessage sendMessage { get; set; }
 		internal Quote_Msg quote_msg => sendMessage.quote_msg!;
 		/// <summary>

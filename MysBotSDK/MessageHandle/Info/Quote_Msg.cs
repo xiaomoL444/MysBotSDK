@@ -42,7 +42,10 @@ namespace MysBotSDK.MessageHandle.Info
 		{
 			文本 = 0,
 			图片 = 1,
-			帖子卡片 = 2
+			帖子卡片 = 2,
+			别野专属表情 = 3,
+			Avatar表情 = 4,
+			自定义表情 = 5
 		}
 
 		/// <summary>
@@ -59,6 +62,11 @@ namespace MysBotSDK.MessageHandle.Info
 		/// 发送者 id（字符串）可携带机器人发送者的id
 		/// </summary>
 		public string? from_user_id_str { get; set; }
+
+		/// <summary>
+		/// 消息中的图片url数组，支持图文消息、图片消息、自定义表情、avatar互动等消息类型
+		/// </summary>
+		public List<string> images { get; set; } = new();
 
 	}
 }
