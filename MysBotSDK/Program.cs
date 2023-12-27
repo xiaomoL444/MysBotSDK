@@ -1,18 +1,10 @@
 ﻿using MysBotSDK.MessageHandle;
-using MysBotSDK.MessageHandle.ExtendData;
 using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Modules;
 using MysBotSDK.Tool;
-using Newtonsoft;
 using Newtonsoft.Json;
-using System;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Net;
-using System.Net.Sockets;
 using System.Reactive.Linq;
 using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 
