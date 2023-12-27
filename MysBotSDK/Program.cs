@@ -393,6 +393,7 @@ public static class Program
 		if (taskReceiver.ContainsKey(pluginName))
 		{
 			taskReceiver[pluginName].ForEach(q => { q.Unload(); Logger.LogWarnning($"{q.GetType().Name}执行Task.Unload()操作"); });
+			taskReceiver.Remove(pluginName);//移除task任务
 		}
 
 		foreach (var item in receivers)
