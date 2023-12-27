@@ -214,7 +214,6 @@ CONTENT	TEXT	NOT NULL)";
 			createCommand.ExecuteNonQuery();
 			#endregion
 		}
-
 		#region 插入内容
 		lock (logLock)
 		{
