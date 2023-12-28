@@ -83,6 +83,8 @@ MessageSender更多用法请看[#实现的接口](#实现的接口)
 
 待...机...中
 
+#### 模块撰写
+
 同样的
 
 先在Nuget安装以下包: ```Newtonsoft.Json``` ```WebSocketSharp-netstandard``` ```Google.Protobuf``` ```Microsoft.Data.Sqlite``` ```System.Reactive```
@@ -96,7 +98,17 @@ using MysBotSDK.MessageHandle.Receiver;
 using MysBotSDK.Tool;
 ```
 
+[示例代码]()
 
+有两个接口，```IMysReceiverModule``` 与 ```IMysTaskModule```
+
+```IMysReceiverModule``` 消息接收模块，为模块添加特征以确认模块用途，目前七种[接收器](https://github.com/xiaomoL444/MysBotSDK/wiki/%E6%8E%A5%E6%94%B6%E5%99%A8)对应七种特征，模块内调用函数将传入接收器的基类，需要通过显示转换将其转换成对应的接收器，如示例代码所示
+
+```IMysTaskModule``` 任务模块，用于程序启动时与关闭时处理的任务(比如定时器之类的)，切记在Stop函数中终止所有线程与计时器任务，否则只是卸载方法会失败
+
+#### 模块调用
+
+启动MysBotSDK.exe，会生成Plugins文件与account.json文件，依据 ### 作为一份程序集使用 内填写account.json ，写好的模块生成后将dll文件放入Plugins文件夹中，程序会主动搜索Plugins下的dll文件，可在程序中输入help查看主动加载或者卸载插件的命令
 
 ### 注意!
 - MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```的一个重载为```SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```。在多Bot实例化的情况下，使用第一个方法会让最后被实例化的Bot发送消息，使用第二个方法则为指定Bot发送消息。若订阅消息类型为```SendMessageReceiver```时,传回的receiver含有与MessageSender相同的发送方法，使用receiver里的方法发送消息时不再需要填入```villa_id```与```room_id```，且发送的Bot为接收消息的Bot
