@@ -110,6 +110,10 @@ using MysBotSDK.Tool;
 
 启动MysBotSDK.exe，会生成Plugins文件与account.json文件，依据 ### 作为一份程序集使用 内填写account.json ，写好的模块生成后将dll文件放入Plugins文件夹中，程序会主动搜索Plugins下的dll文件，可在程序中输入help查看主动加载或者卸载插件的命令
 
+#### 便捷调试模块文件
+
+将模块文件的输出类型调成控制台应用类型，在Main函数中调用 ```await MysBotSDK.Program.Main(new string[] { "namespace name" });``` namespace name 填写含有模块类的命名空间，(要注意Nuget包要下载全，并且此状态下的控制台加载命名将对调试的模块不起效(卸载还是可以使用的))
+
 ### 注意!
 - MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```的一个重载为```SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```。在多Bot实例化的情况下，使用第一个方法会让最后被实例化的Bot发送消息，使用第二个方法则为指定Bot发送消息。若订阅消息类型为```SendMessageReceiver```时,传回的receiver含有与MessageSender相同的发送方法，使用receiver里的方法发送消息时不再需要填入```villa_id```与```room_id```，且发送的Bot为接收消息的Bot
 - http连接内置鉴权，ws连接不支持鉴权
