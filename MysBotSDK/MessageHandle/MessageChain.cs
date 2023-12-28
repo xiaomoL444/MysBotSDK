@@ -21,6 +21,10 @@ namespace MysBotSDK.MessageHandle
 			return Encoding.Unicode.GetString(Encoding.Convert(Encoding.UTF8, Encoding.Unicode, bytes));
 		}
 	}
+
+	/// <summary>
+	/// 构造消息链
+	/// </summary>
 	public class MessageChain
 	{
 		internal string text_ { get; set; }
@@ -30,14 +34,14 @@ namespace MysBotSDK.MessageHandle
 		private List<string> text { get; set; }
 		private List<(int index, Entity entity)> IDs { get; set; }
 
-		public UInt64 template_id { get; set; }
-		public List<List<Component_Group>> smallComponent { get; private set; } = new List<List<Component_Group>>();
-		public List<List<Component_Group>> midComponent { get; private set; } = new List<List<Component_Group>>();
-		public List<List<Component_Group>> bigComponent { get; private set; } = new List<List<Component_Group>>();
+		internal UInt64 template_id { get; set; }
+		internal List<List<Component_Group>> smallComponent { get; private set; } = new List<List<Component_Group>>();
+		internal List<List<Component_Group>> midComponent { get; private set; } = new List<List<Component_Group>>();
+		internal List<List<Component_Group>> bigComponent { get; private set; } = new List<List<Component_Group>>();
 
-		public List<PicContentInfo> images { get; set; } = new();
+		internal List<PicContentInfo> images { get; set; } = new();
 
-		public MessageChain()
+		MessageChain()
 		{
 			text_ = string.Empty;
 			entities_ = new List<Entity>();
@@ -326,10 +330,22 @@ namespace MysBotSDK.MessageHandle
 		}
 	}
 
+	/// <summary>
+	/// 面板组件大小
+	/// </summary>
 	public enum Component_Size
 	{
+		/// <summary>
+		/// 小型组件，即一行摆置3个组件，每个组件最多展示2个中文字符或4个英文字符
+		/// </summary>
 		small = 0,
+		/// <summary>
+		/// 中型组件，即一行摆置2个组件，每个组件最多展示4个中文字符或8个英文字符
+		/// </summary>
 		middle = 1,
+		/// <summary>
+		/// 大型组件，即一行摆置1个组件，每个组件最多展示10个中文字符或20个英文字符
+		/// </summary>
 		big = 2,
 	}
 }
