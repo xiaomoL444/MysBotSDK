@@ -41,7 +41,10 @@ namespace MysBotSDK.MessageHandle
 
 		internal List<PicContentInfo> images { get; set; } = new();
 
-		MessageChain()
+		/// <summary>
+		/// 消息链构造器
+		/// </summary>
+		public MessageChain()
 		{
 			text_ = string.Empty;
 			entities_ = new List<Entity>();
