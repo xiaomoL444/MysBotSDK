@@ -138,7 +138,7 @@ Content-Type: application/json";
 			msg_content = msg_content
 		});
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		Logger.Network(res.Content.ReadAsStringAsync().Result);
 
 		var AnonymousType = new
 		{
@@ -172,7 +172,7 @@ Content-Type: application/json";
 
 		httpRequestMessage.Content = JsonContent.Create(new { villa_id, room_id, object_name, msg_content = JsonConvert.SerializeObject(new { content = new PicContentInfo() { url = url, size = size, file_size = file_size } }) });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		Logger.Network(res.Content.ReadAsStringAsync().Result);
 
 		var AnonymousType = new
 		{
@@ -212,7 +212,7 @@ Content-Type: application/json";
 
 		httpRequestMessage.Content = JsonContent.Create(new { villa_id, room_id, object_name, msg_content = JsonConvert.SerializeObject(new { content = new { post_id = post_id } }) });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		Logger.Network(res.Content.ReadAsStringAsync().Result);
 
 		var AnonymousType = new
 		{
@@ -252,7 +252,7 @@ Content-Type: application/json";
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id, msg_time, msg_uid });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		Logger.Network(res.Content.ReadAsStringAsync().Result);
 
 		var AnonymousType = new
 		{
@@ -284,7 +284,7 @@ Content-Type: application/json";
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id, msg_time, msg_uid, is_cancel });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		Logger.Network(res.Content.ReadAsStringAsync().Result);
 
 		var AnonymousType = new
 		{
@@ -315,7 +315,7 @@ Content-Type: application/json";
 
 		httpRequestMessage.Content = JsonContent.Create(new { group_name });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		Logger.Network(res.Content.ReadAsStringAsync().Result);
 
 		var AnonymousType = new
 		{
@@ -344,7 +344,7 @@ Content-Type: application/json";
 
 		httpRequestMessage.Content = JsonContent.Create(new { group_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		Logger.Network(res.Content.ReadAsStringAsync().Result);
 
 		var AnonymousType = new
 		{
@@ -373,7 +373,7 @@ Content-Type: application/json";
 
 		httpRequestMessage.Content = JsonContent.Create(new { group_id, group_name = new_group_name });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		Logger.Network(res.Content.ReadAsStringAsync().Result);
 
 		var AnonymousType = new
 		{
@@ -402,7 +402,7 @@ Content-Type: application/json";
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id, room_name = new_room_name });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		Logger.Network(res.Content.ReadAsStringAsync().Result);
 
 		var AnonymousType = new
 		{
@@ -430,7 +430,7 @@ Content-Type: application/json";
 
 		httpRequestMessage.Content = JsonContent.Create(new { room_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug(res.Content.ReadAsStringAsync().Result);
+		Logger.Network(res.Content.ReadAsStringAsync().Result);
 
 		var AnonymousType = new
 		{
@@ -460,7 +460,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { uid });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取用户信息{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取用户信息{res.Content.ReadAsStringAsync().Result}");
 
 		var AnonymousType = new
 		{
@@ -489,7 +489,7 @@ Content-Type: application/json";
 		httpRequestMessage.Content = JsonContent.Create(new { villa_id = villa_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取大别野信息{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取大别野信息{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -518,7 +518,7 @@ Content-Type: application/json";
 		httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取房间信息{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取房间信息{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -553,7 +553,7 @@ Content-Type: application/json";
 			httpRequestMessage.Content = JsonContent.Create(new { size = 10, offset_str });
 
 			var res = await HttpClass.SendAsync(httpRequestMessage);
-			Logger.Debug($"获取大别野成员信息{res.Content.ReadAsStringAsync().Result}");
+			Logger.Network($"获取大别野成员信息{res.Content.ReadAsStringAsync().Result}");
 			var AnonymousType = new
 			{
 				retcode = 0,
@@ -595,7 +595,7 @@ Content-Type: application/json";
 		//httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取大别野分组列表信息{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取大别野分组列表信息{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -622,7 +622,7 @@ Content-Type: application/json";
 		//httpRequestMessage.Content = JsonContent.Create(new { room_id = room_id });
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取房间列表信息{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取房间列表信息{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -649,7 +649,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { token });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取用户凭证{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取用户凭证{res.Content.ReadAsStringAsync().Result}");
 
 		var AnonymousType = new
 		{
@@ -676,7 +676,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取表情{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取表情{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -706,7 +706,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { uid = user_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"踢出用户{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"踢出用户{res.Content.ReadAsStringAsync().Result}");
 
 		var AnonymousType = new
 		{
@@ -739,7 +739,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { uid = user_id, role_id, is_add });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取向身份组添加用户{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取向身份组添加用户{res.Content.ReadAsStringAsync().Result}");
 
 		var AnonymousType = new
 		{
@@ -769,7 +769,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { name, color, permissions = permission.ToString().Split(",") });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"创建身份组{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"创建身份组{res.Content.ReadAsStringAsync().Result}");
 
 		var AnonymousType = new
 		{
@@ -800,7 +800,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { id, name = new_name, color = new_color, permissions = new_permission.ToString().Split(",") });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"编辑身份组{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"编辑身份组{res.Content.ReadAsStringAsync().Result}");
 
 		var AnonymousType = new
 		{
@@ -828,7 +828,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"删除身份组{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"删除身份组{res.Content.ReadAsStringAsync().Result}");
 
 		var AnonymousType = new
 		{
@@ -856,7 +856,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { role_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取身份组{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取身份组{res.Content.ReadAsStringAsync().Result}");
 
 		var AnonymousType = new
 		{
@@ -883,7 +883,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取身份组列表{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取身份组列表{res.Content.ReadAsStringAsync().Result}");
 
 		var AnonymousType = new
 		{
@@ -918,7 +918,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { audit_content, uid, content_type = Enum.GetName(typeof(Content_Type), content_type), pass_through, room_id });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"审核{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"审核{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -948,7 +948,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { url });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"转换床图{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"转换床图{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -984,7 +984,7 @@ Content-Type: application/json";
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
 		httpRequestMessage.Content = JsonContent.Create(new { md5, ext });
 		var res = await HttpClass.SendAsync(httpRequestMessage);
-		Logger.Debug($"获取米游社阿里云 OSS 上传参数{res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"获取米游社阿里云 OSS 上传参数{res.Content.ReadAsStringAsync().Result}");
 		var AnonymousType = new
 		{
 			retcode = 0,
@@ -1034,7 +1034,7 @@ Content-Type: application/json";
 		var oss_res = await HttpClass.SendAsync(oss_httpRequestMessage);
 		fileStream.Close();
 
-		Logger.Debug($"调用阿里云对象存储 OSS 的 API 上传文件{oss_res.Content.ReadAsStringAsync().Result}");
+		Logger.Network($"调用阿里云对象存储 OSS 的 API 上传文件{oss_res.Content.ReadAsStringAsync().Result}");
 
 		var oss_AnonymousType = new
 		{

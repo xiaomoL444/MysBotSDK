@@ -212,7 +212,7 @@ namespace MysBotSDK.MessageHandle
 		/// 跳转外部链接
 		/// </summary>
 		/// <param name="url">url链接</param>
-		/// <param name="text">高亮文本</param>
+		/// <param name="highlight_text">高亮文本</param>
 		/// <param name="requires_bot_access_token">是否需要带上含有用户信息的token</param>
 		/// <returns></returns>
 		public MessageChain Url_Link(string url, bool requires_bot_access_token = false, string highlight_text = "")
@@ -230,6 +230,12 @@ namespace MysBotSDK.MessageHandle
 			return this;
 		}
 
+		/// <summary>
+		/// 增加按钮组件
+		/// </summary>
+		/// <param name="component_Size">按钮组件的大小</param>
+		/// <param name="component_Group">按钮组件列表(即一行放置的组件)</param>
+		/// <returns></returns>
 		public MessageChain ButtonComponent(Component_Size component_Size, List<Component_Group> component_Group)
 		{
 			switch (component_Size)
@@ -249,6 +255,14 @@ namespace MysBotSDK.MessageHandle
 
 			return this;
 		}
+
+		/// <summary>
+		/// 文本消息内插入图片
+		/// </summary>
+		/// <param name="url">图片链接</param>
+		/// <param name="size">图片尺寸</param>
+		/// <param name="file_size">图片储存空间大小</param>
+		/// <returns></returns>
 		public MessageChain Image(string url, PicContentInfo.Size size = null!, int file_size = 0)
 		{
 			images.Add(new PicContentInfo() { url = url, size = size, file_size = file_size });

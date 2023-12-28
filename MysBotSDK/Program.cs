@@ -10,12 +10,15 @@ using System.Runtime.Loader;
 
 namespace MysBotSDK;
 
+/// <summary>
+/// Program类
+/// </summary>
 public static class Program
 {
 	/// <summary>
 	/// Bot实例
 	/// </summary>
-	internal static MysBot? mysBot;
+	internal static MysBot mysBot = null!;
 
 	/// <summary>
 	/// 接收器们
@@ -26,6 +29,12 @@ public static class Program
 	/// Task任务的接收器们
 	/// </summary>
 	internal static Dictionary<string, List<IMysTaskModule>> taskReceiver { get; set; } = new();
+
+	/// <summary>
+	/// 主方法...
+	/// </summary>
+	/// <param name="args">参数填入命名空间，则会搜索命名空间下的MysModules进行加载指令</param>
+	/// <returns></returns>
 	public static async Task Main(string[] args)
 	{
 		string ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version!.ToString(3);
@@ -110,13 +119,13 @@ public static class Program
 			switch (receiverType)
 			{
 				case EventType.JoinVilla:
-					mysBot.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(messageReceiver =>
+					mysBot!.MessageReceiver.OfType<JoinVillaReceiver>().Subscribe(messageReceiver =>
 					{
 						TryExecuteModules(receivers[receiverName].Select(m => m.module).ToList(), messageReceiver);
 					});
 					break;
 				case EventType.SendMessage:
-					mysBot.MessageReceiver.OfType<SendMessageReceiver>().Subscribe(messageReceiver =>
+					mysBot!.MessageReceiver.OfType<SendMessageReceiver>().Subscribe(messageReceiver =>
 					{
 						bool isBlock = false;
 						receivers[receiver].ForEach(module =>
@@ -185,7 +194,7 @@ public static class Program
 		{
 			Logger.Debug($"读取插件集{assembly.GetName().Name}");
 
-			if (ContainPlugin(assembly.GetName().Name))
+			if (ContainPlugin(assembly.GetName().Name!))
 			{
 				Logger.LogError($"插件 {assembly.GetName().Name} 已存在");
 				return;
@@ -253,7 +262,7 @@ public static class Program
 					var isEqual = q.module.GetType().GetCustomAttribute(type.type) != null;
 					if (isEqual)
 					{
-						Logger.Log($"载入的方法[{type.name.Replace("Attribute", string.Empty)}] {(type.type == typeof(SendMessageAttribute) ? $"[/{q.module.GetType().GetCustomAttribute<SendMessageAttribute>().command.TrimStart('/')}]" : "")} {q.module.GetType().Name} ");
+						Logger.Log($"载入的方法[{type.name.Replace("Attribute", string.Empty)}] {(type.type == typeof(SendMessageAttribute) ? $"[/{q.module.GetType().GetCustomAttribute<SendMessageAttribute>()!.command.TrimStart('/')}]" : "")} {q.module.GetType().Name} ");
 					}
 					return isEqual;
 				})));
@@ -263,7 +272,7 @@ public static class Program
 
 		foreach (var detailReceiver in receivers)
 		{
-			receivers[detailReceiver.Key] = detailReceiver.Value.OrderByDescending(o => o.module.GetType().GetCustomAttribute<ExtendDataAttribute>().priority).ToList();
+			receivers[detailReceiver.Key] = detailReceiver.Value.OrderByDescending(o => o.module.GetType().GetCustomAttribute<ExtendDataAttribute>()!.priority).ToList();
 		}
 		#endregion
 
@@ -275,10 +284,9 @@ public static class Program
 	/// <summary>
 	/// 加载本地插件(./Plugins)
 	/// </summary>
-	/// <param name="isLoadSelfPlugins">是否要加载本地项目插件(开发插件时开启)</param>
 	/// <param name="args">命名空间名</param>
 	[MethodImpl(MethodImplOptions.NoInlining)]
-	internal static void LoadPluginsInDirectory(List<string> args = null)
+	internal static void LoadPluginsInDirectory(List<string> args = null!)
 	{
 		#region 通过本地路径加载程序集
 
@@ -592,17 +600,17 @@ static class Command
 		}
 		else
 		{
-			Program.LoadPluginsInDirectory(args.Where(arg => arg != "loadPlugins").ToList()!);
+			Program.LoadPluginsInDirectory(args!.Where(arg => arg != "loadPlugins").ToList()!);
 		}
 	}
 	[CommandDescribe("reloadPlugins\t--重载所有方法")]
-	public static async void reloadPlugins(string?[] args)
+	public static void reloadPlugins(string?[] args)
 	{
 		Program.UnloadPlugins();
 		Program.LoadPluginsInDirectory();
 	}
 	[CommandDescribe("listPlugins\t--显示已加载的插件集")]
-	public static async void listPlugins(string?[] args)
+	public static void listPlugins(string?[] args)
 	{
 		var pluginsName = new List<string>();
 		foreach (var item in Program.receivers.Values)
