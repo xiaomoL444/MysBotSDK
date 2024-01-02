@@ -282,7 +282,7 @@ Content-Type:application/json");
 			}
 			if (bizType != VilaBot.Command.PHeartbeat)
 			{
-				Logger.Log($"ws发送BizType [ {bizType} ] ID [ {UniqMsgType} ]");
+				Logger.Debug($"ws发送BizType [ {bizType} ] ID [ {UniqMsgType} ]");
 			}
 			webSocket!.Send(bytes.ToArray());
 		}
