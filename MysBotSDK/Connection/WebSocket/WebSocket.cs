@@ -97,7 +97,7 @@ internal class WsClient : IDisposable
 				await Task.Run(func);
 				return;
 			}
-			Logger.Debug($"返回值{wsInfo}");
+			Logger.Network($"wsInfo返回值{wsInfo}");
 			//若返回值不等于0，错误
 			if (wsInfo.retcode != 0)
 			{
@@ -141,7 +141,7 @@ internal class WsClient : IDisposable
 				Logger.LogWarnning("连接关闭，若不是伺服器请求的关闭，则五秒后尝试重连");
 				if (isForceDisConnect)
 				{
-					Logger.Log("伺服器强制关闭");
+					Logger.LogWarnning("伺服器强制关闭");
 					return;
 				}
 				await Task.Delay(5 * 1000);
@@ -165,9 +165,7 @@ internal class WsClient : IDisposable
 				await Task.Run(func);
 			}
 		});
-		Logger.Log("委托设置完成");
 		_ = Task.Run(func);
-		Logger.Log("委托运行");
 		return;
 	}
 
@@ -184,7 +182,7 @@ Content-Type:application/json");
 
 		var res = await HttpClass.SendAsync(httpRequestMessage);
 
-		Logger.Debug(await res.Content.ReadAsStringAsync());
+		Logger.Network(await res.Content.ReadAsStringAsync());
 
 		var AnonymousType = new
 		{
@@ -427,7 +425,7 @@ Content-Type:application/json");
 	{
 		RobotEvent robotEventMessage = RobotEvent.Parser.ParseFrom(wsMsg.BodyData);
 
-		Logger.Debug(robotEventMessage.ToString());
+		Logger.Network(robotEventMessage.ToString());
 
 		//组装一条json消息
 		var packMsg = new

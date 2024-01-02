@@ -31,7 +31,7 @@ public class MessageReceiverBase
 	/// <summary>
 	/// 事件类型
 	/// </summary>
-	public EventType EventType { get; private set; }
+	internal EventType EventType { get; private set; }
 
 	/// <summary>
 	/// 接收器
@@ -115,7 +115,7 @@ public class MessageReceiverBase
 /// <summary>
 /// 事件类型
 /// </summary>
-public enum EventType
+internal enum EventType
 {
 	JoinVilla = 1,
 	SendMessage = 2,

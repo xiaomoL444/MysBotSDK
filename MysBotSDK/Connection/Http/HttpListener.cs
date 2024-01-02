@@ -45,7 +45,7 @@ internal class HttpListener : IDisposable
 					var reader = new StreamReader(steam);
 					var data = reader.ReadToEnd();
 
-					Logger.Debug(data);
+					Logger.Network(data);
 
 					//处理消息
 					//校验伺服器请求头

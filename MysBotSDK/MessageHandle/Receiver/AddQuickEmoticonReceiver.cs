@@ -54,7 +54,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 			villa_id = addQuickEmoticon.villa_id;
 			room_id = addQuickEmoticon.room_id;
 
-			Logger.Log($"Receive [AddQuickEmotion] {Emoticon_Name} Form villa:{villa_id},room:{room_id}");
+			Logger.Debug($"Receive [AddQuickEmotion] {Emoticon_Name} Form villa:{villa_id},room:{room_id}");
 		}
 	}
 

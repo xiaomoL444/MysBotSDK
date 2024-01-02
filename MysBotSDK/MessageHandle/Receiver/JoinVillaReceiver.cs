@@ -36,7 +36,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 			joinVilla = GetExtendDataMsg<JoinVilla>(message);
 			villa_id = joinVilla.villa_id;
 
-			Logger.Log($"Receive [JoinVilla] @{NickName} Form villa:{villa_id},room:{room_id}");
+			Logger.Debug($"Receive [JoinVilla] @{NickName} Form villa:{villa_id},room:{room_id}");
 		}
 	}
 }

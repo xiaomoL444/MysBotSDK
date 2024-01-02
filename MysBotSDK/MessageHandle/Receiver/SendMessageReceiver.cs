@@ -119,7 +119,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 			args.RemoveRange(0, 2);
 			sendMessage.args = args;
 
-			Logger.Log($"Receive [SendMessage] {Text} Form villa:{villa_id},room:{room_id}");
+			Logger.Debug($"Receive [SendMessage] {Text} Form villa:{villa_id},room:{room_id}");
 		}
 
 		#region Method
