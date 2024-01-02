@@ -204,6 +204,10 @@ public static class Logger
 			_sqliteConnection.Open();
 
 			#region 创建表格
+
+			//若非开启状态，则返回
+			if (_sqliteConnection.State != System.Data.ConnectionState.Open) return;
+
 			var createCommand = _sqliteConnection.CreateCommand();
 
 			createCommand.CommandText = @"CREATE TABLE IF NOT EXISTS Log(
