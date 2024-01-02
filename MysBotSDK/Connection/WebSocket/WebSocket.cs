@@ -326,16 +326,16 @@ Content-Type:application/json");
 				wsMsg.BodyData = wsMsg.BodyData.Reverse().ToArray();
 			}
 
-			//相同序列ID且Flag字段相同的包应该被认为是同一个包
-			if (LastMsg == (wsMsg.ID, wsMsg.Flag))
-			{
-				Logger.Debug("收到相同的包，跳过");
-				return;
-			}
-
 			if (wsMsg.BizType != 6)
 			{
-				Logger.Log($"收到伺服器发送来的BizType为 [ {wsMsg.BizType} ] ID为 [ {wsMsg.ID} ] 的协议包");
+				Logger.Network($"收到伺服器发送来的BizType为 [ {wsMsg.BizType} ] ID为 [ {wsMsg.ID} ] 的协议包");
+
+				//相同序列ID且Flag字段相同的包应该被认为是同一个包
+				if (LastMsg == (wsMsg.ID, wsMsg.Flag))
+				{
+					Logger.LogWarnning("收到相同的ws包，跳过");
+					return;
+				}
 			}
 			//HandleMessage
 			switch (wsMsg.BizType)//唔姆唔姆...因为command里面没有RobotEvent所以用数字不用枚举了...
