@@ -291,11 +291,11 @@ namespace MysBotSDK.MessageHandle
 							entities_.Add(new Entity()
 							{
 								entity = new Entity_Detail() { type = Entity_Detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
-								length = (ulong)$"@{member.member.basic!.nickname!.ConvertUTF8ToUTF16()} ".Length,
+								length = (ulong)$"@{member.member?.basic!.nickname!.ConvertUTF8ToUTF16()} ".Length,
 								offset = (ulong)text_.Length
 							});
 
-							text_ += $"@{member.member.basic!.nickname!.ConvertUTF8ToUTF16()} ";
+							text_ += $"@{member.member?.basic!.nickname!.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity_Detail.EntityType.mentioned_all:
 							mentionType = MentionType.All;
