@@ -167,3 +167,8 @@ v1.4将图片转存Transferimage方法改名为TransferImage,将与以往插件�
 
 # MihoyoBBS_Bot
 嗯...一个个人的启动程序...?好像不用理会，有用的只有MysBotSDK
+123[《Love Forever》 ](https://c6.y.qq.com/base/fcgi-bin/u?__=OiNmTpwCpRmc)
+123
+[《Peace Forever》 ](https://c6.y.qq.com/base/fcgi-bin/u?__=lMOJmgwCpjVZ)
+123
+[《The Red Waltz》 ](https://c6.y.qq.com/base/fcgi-bin/u?__=qjl9pBwCpNpL)
