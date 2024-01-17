@@ -110,7 +110,9 @@ namespace MysBotSDK.MessageHandle.Receiver
 			villa_id = sendMessage.villa_id;
 			room_id = sendMessage.room_id;
 
-			var args = sendMessage!.content.content!.text!.Split(" ").ToList();
+			//var args = sendMessage!.content.content!.text!.Split(" ").ToList();
+
+			var args = System.Text.RegularExpressions.Regex.Split(sendMessage!.content.content!.text!, "\\s+", System.Text.RegularExpressions.RegexOptions.IgnoreCase).ToList();
 			commond = args[1];
 			if (!commond.StartsWith("/"))
 			{
