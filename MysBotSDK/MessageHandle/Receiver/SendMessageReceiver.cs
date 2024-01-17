@@ -119,6 +119,10 @@ namespace MysBotSDK.MessageHandle.Receiver
 				commond = "/" + commond;
 			}
 			args.RemoveRange(0, 2);
+			if (args.Count != 0 && string.IsNullOrEmpty(args[args.Count - 1]))
+			{
+				args.RemoveAt(args.Count - 1);
+			}
 			sendMessage.args = args;
 
 			Logger.Debug($"Receive [SendMessage] {Text} Form villa:{villa_id},room:{room_id}");
