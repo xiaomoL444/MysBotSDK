@@ -8,5 +8,5 @@ namespace MysBotSDK.MessageHandle.Info;
 
 public class GroupList : Group
 {
-	public List<Group> room_list { get; set; } = new();
+	public List<Room> room_list { get; set; } = new();
 }
