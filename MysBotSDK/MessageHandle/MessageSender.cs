@@ -611,11 +611,11 @@ Content-Type: application/json";
 	/// </summary>
 	/// <param name="villa_id">大别野ID</param>
 	/// <returns>message:返回消息,retcode:返回消息code,rooms:Room类型列表消息</returns>	
-	public static async Task<(string message, int retcode, List<Room> rooms)> GetRoomList(UInt64 villa_id)
+	public static async Task<(string message, int retcode, List<GroupList> rooms)> GetRoomList(UInt64 villa_id)
 	{
 		return await GetRoomList(mysBot[mysBot.Count - 1], villa_id);
 	}
-	public static async Task<(string message, int retcode, List<Room> rooms)> GetRoomList(MysBot mysBot, UInt64 villa_id)
+	public static async Task<(string message, int retcode, List<GroupList> rooms)> GetRoomList(MysBot mysBot, UInt64 villa_id)
 	{
 		HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Setting.GetRoomList);
 		httpRequestMessage.AddHeaders(FormatHeader(mysBot, villa_id));
@@ -627,7 +627,7 @@ Content-Type: application/json";
 		{
 			retcode = 0,
 			message = "",
-			data = new { list = new List<Room>() }
+			data = new { list = new List<GroupList>() }
 		};
 		var json = JsonConvert.DeserializeAnonymousType(res.Content.ReadAsStringAsync().Result, AnonymousType);
 		return new() { message = json!.message, retcode = json.retcode, rooms = json.data == null ? null : json.data.list };

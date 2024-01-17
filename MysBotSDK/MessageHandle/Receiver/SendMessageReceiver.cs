@@ -296,7 +296,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// 获取所有房间
 		/// </summary>
 		/// <returns>message:返回消息,retcode:返回消息code,rooms:Room类型列表消息</returns>	
-		public async Task<(string message, int retcode, List<Room> rooms)> GetRoomList()
+		public async Task<(string message, int retcode, List<GroupList> rooms)> GetRoomList()
 		{
 			return await MessageSender.GetRoomList(MessageSender.mysBot.FirstOrDefault(b => b.bot_id == robot!.template!.id)!, villa_id);
 		}
