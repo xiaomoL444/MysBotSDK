@@ -21,7 +21,7 @@ public class FileHandle
 		Dictionary<string, string> dic = new Dictionary<string, string>();
 		lock (locker)
 		{
-			StreamReader streamReader = new StreamReader(new FileStream(path, FileMode.OpenOrCreate));
+			StreamReader streamReader = new StreamReader(new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read, FileShare.ReadWrite));
 			try
 			{
 				dic = JsonConvert.DeserializeObject<Dictionary<string, string>>(streamReader.ReadToEnd())!;
@@ -54,7 +54,7 @@ public class FileHandle
 			{
 				File.Create(path).Close();
 			}
-			StreamWriter streamWriter = new StreamWriter(new FileStream(path, FileMode.Truncate, FileAccess.ReadWrite));
+			StreamWriter streamWriter = new StreamWriter(new FileStream(path, FileMode.Truncate, FileAccess.ReadWrite, FileShare.ReadWrite));
 			streamWriter.Write(JsonConvert.SerializeObject(dic));
 			streamWriter.Close();
 		}
