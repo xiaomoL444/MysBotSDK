@@ -3,12 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>unenable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Version>1.7.5</Version>
     <Authors>xiaomoL444</Authors>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <BaseOutputPath>E:\code\MysBotSDK\MysBotSDKBuild</BaseOutputPath>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,4 +20,6 @@
     <PackageReference Include="WebSocketSharp-netstandard" Version="1.0.1" />
   </ItemGroup>
 
+  
+  
 </Project>

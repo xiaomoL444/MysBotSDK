@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MysBotSDK.MessageHandle.ExtendData;
+namespace MysBotSDK.MessageHandle.ExtendData { 
 
 public interface IExtendData
 {
 
+}
 }

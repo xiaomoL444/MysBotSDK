@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MysBotSDK.MessageHandle.Info;
+namespace MysBotSDK.MessageHandle.Info { 
 
 public class GroupList : Group
 {
 	public List<Room> room_list { get; set; } = new();
+}
 }

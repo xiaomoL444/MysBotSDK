@@ -1,6 +1,7 @@
 ﻿using MysBotSDK.MessageHandle.ExtendData;
 using MysBotSDK.Tool;
 using Newtonsoft.Json;
+using System;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace MysBotSDK.MessageHandle.Receiver
