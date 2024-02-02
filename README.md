@@ -2,11 +2,11 @@
 
 顾名思义,C#语言的米游社大别野BotSDK(.Net 7.0)
 
-（文档稍微有些过旧了...忘记写了）
+（文档稍微有些过旧了...咕咕......）
 
-## 使用
+### 作为一份程序集使用
 
-先在Nuget安装以下包: Newtonsoft.Json WebSocketSharp-netstandard Google.Protobuf
+先在Nuget安装以下包: ```Newtonsoft.Json``` ```WebSocketSharp-netstandard``` ```Google.Protobuf``` ```Microsoft.Data.Sqlite``` ```System.Reactive```
 
 引用命名空间
 
@@ -19,8 +19,6 @@ using MysBotSDK.Tool;
 
 实例化Bot
 
-注意！此ws連接不支持官方的ws連接，只是個人用於反代，預計1.5更新支持官方的ws連接
-
 ```
 //开启http回调
 MysBot mysBot = new MysBot()
@@ -29,7 +27,7 @@ MysBot mysBot = new MysBot()
 	bot_id = "",//开发平台上显示的机器人ID :bot_******
 	secret = "",//开发平台上显示的secret
 	pub_key = "",//开发平台上显示的pub_key :-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY----- 此处原样复制即可，我写了删除\r。。。
-	loggerLevel = Logger.LoggerLevel.Log,//Log等级，Error>Warning>Log>Debug,不填写此项默认Log，但是Debug内容会记录到日志(.\log\yyyy-mm-dd.txt)里
+	loggerLevel = Logger.LoggerLevel.Log,//Log等级，Error>Warning>Log>Debug>Network,不填写此项默认Log，但是Debug与Network内容会记录到日志(.\log\yyyy-mm-dd.db)里
 };
 
 //开启ws连接
@@ -40,7 +38,7 @@ MysBot mysBot = new MysBot()
 	bot_id = "",//开发平台上显示的机器人ID :bot_******
 	secret = "",//开发平台上显示的secret
 	pub_key = "",//开发平台上显示的pub_key :-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY----- 此处原样复制即可，我写了删除\r。。。
-	loggerLevel = Logger.LoggerLevel.Log,//Log等级，Error>Warning>Log>Debug,不填写此项默认Log，但是Debug内容会记录到日志(.\log\yyyy-mm-dd.txt)里
+	loggerLevel = Logger.LoggerLevel.Log,//Log等级，Error>Warning>Log>Debug,不填写此项默认Log，但是Debug与Network内容会记录到日志(.\log\yyyy-mm-dd.db)里
 };
 ```
 
@@ -81,14 +79,49 @@ MessageSender.SendText(receiver.Villa_ID,receiver.Room_ID,messageChain);
 
 MessageSender更多用法请看[#实现的接口](#实现的接口)
 
+### 作为启动程序使用
+
+待...机...中(文档咕咕中...)
+
+#### 模块撰写
+
+同样的
+
+先在Nuget安装以下包: ```Newtonsoft.Json``` ```WebSocketSharp-netstandard``` ```Google.Protobuf``` ```Microsoft.Data.Sqlite``` ```System.Reactive```
+
+引用命名空间
+
+```
+using MysBotSDK;
+using MysBotSDK.MessageHandle;
+using MysBotSDK.MessageHandle.Receiver;
+using MysBotSDK.Tool;
+```
+
+[示例代码]()
+
+有两个接口，```IMysReceiverModule``` 与 ```IMysTaskModule```
+
+```IMysReceiverModule``` 消息接收模块，为模块添加特征以确认模块用途，目前七种[接收器](https://github.com/xiaomoL444/MysBotSDK/wiki/%E6%8E%A5%E6%94%B6%E5%99%A8)对应七种特征，模块内调用函数将传入接收器的基类，需要通过显示转换将其转换成对应的接收器，如示例代码所示
+
+```IMysTaskModule``` 任务模块，用于程序启动时与关闭时处理的任务(比如定时器之类的)，切记在Stop函数中终止所有线程与计时器任务，否则只是卸载方法会失败
+
+#### 模块调用
+
+启动MysBotSDK.exe，会生成Plugins文件与account.json文件，依据 ### 作为一份程序集使用 内填写account.json ，写好的模块生成后将dll文件放入Plugins文件夹中，程序会主动搜索Plugins下的dll文件，可在程序中输入help查看主动加载或者卸载插件的命令
+
+#### 便捷调试模块文件
+
+将模块文件的输出类型调成控制台应用类型，在Main函数中调用 ```await MysBotSDK.Program.Main(new string[] { "namespace name" });``` namespace name 填写含有模块类的命名空间，(要注意Nuget包要下载全，并且此状态下的控制台加载命名将对调试的模块不起效(卸载还是可以使用的))
+
 ### 注意!
 - MessageSender中每一个方法各有一个重载，例如```SendText(UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```的一个重载为```SendText(MysBot mysBot, UInt64 villa_id, UInt64 room_id, MessageChain msg_content)```。在多Bot实例化的情况下，使用第一个方法会让最后被实例化的Bot发送消息，使用第二个方法则为指定Bot发送消息。若订阅消息类型为```SendMessageReceiver```时,传回的receiver含有与MessageSender相同的发送方法，使用receiver里的方法发送消息时不再需要填入```villa_id```与```room_id```，且发送的Bot为接收消息的Bot
 - http连接内置鉴权，ws连接不支持鉴权
 
 ## 实现的接口
 (需要villa_id进行鉴权，所以大多接口都需要villa_id)
-- [ ] 鉴权
-  - [ ] 校验用户机器人访问凭证 //有但未测试过
+- [x] 鉴权
+  - [x] 校验用户机器人访问凭证
 - [x] 大别野
   - [x] 获取大别野信息 GetVillaInfo(UInt64 Villa_ID)
 - [ ] 用户
@@ -156,15 +189,3 @@ v1.4将图片转存Transferimage方法改名为TransferImage,将与以往插件�
 ## TO DO
 
 ~~将计划为SDK添加启动程序~~(好诶，已经完成惹)
-
-如果学到了更好的语句与方法就尝试重构一些方法
-
-消息返回readAsync要加上await...好多都没有加上
-
-有一些报错似乎也没有弄好...(要多实现几个类吗...?)(不是不知道哪里有bug，是一些类似网络断开等导致运行中断的这种，可能还需要大家自己写try...?要是写在SDK里面还是会throw错误)
-
-~~写了个ws重新连接，但是可能连接超时没有再次重新连接...?~~
-
-# MihoyoBBS_Bot
-嗯...一个个人的启动程序...?好像不用理会，有用的只有MysBotSDK
-

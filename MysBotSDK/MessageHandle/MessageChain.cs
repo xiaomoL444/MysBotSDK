@@ -21,6 +21,10 @@ namespace MysBotSDK.MessageHandle
 			return Encoding.Unicode.GetString(Encoding.Convert(Encoding.UTF8, Encoding.Unicode, bytes));
 		}
 	}
+
+	/// <summary>
+	/// 构造消息链
+	/// </summary>
 	public class MessageChain
 	{
 		internal string text_ { get; set; }
@@ -30,13 +34,16 @@ namespace MysBotSDK.MessageHandle
 		private List<string> text { get; set; }
 		private List<(int index, Entity entity)> IDs { get; set; }
 
-		public UInt64 template_id { get; set; }
-		public List<List<Component_Group>> smallComponent { get; private set; } = new List<List<Component_Group>>();
-		public List<List<Component_Group>> midComponent { get; private set; } = new List<List<Component_Group>>();
-		public List<List<Component_Group>> bigComponent { get; private set; } = new List<List<Component_Group>>();
+		internal UInt64 template_id { get; set; }
+		internal List<List<Component_Group>> smallComponent { get; private set; } = new List<List<Component_Group>>();
+		internal List<List<Component_Group>> midComponent { get; private set; } = new List<List<Component_Group>>();
+		internal List<List<Component_Group>> bigComponent { get; private set; } = new List<List<Component_Group>>();
 
-		public List<PicContentInfo> images { get; set; } = new();
+		internal List<PicContentInfo> images { get; set; } = new();
 
+		/// <summary>
+		/// 消息链构造器
+		/// </summary>
 		public MessageChain()
 		{
 			text_ = string.Empty;
@@ -208,7 +215,7 @@ namespace MysBotSDK.MessageHandle
 		/// 跳转外部链接
 		/// </summary>
 		/// <param name="url">url链接</param>
-		/// <param name="text">高亮文本</param>
+		/// <param name="highlight_text">高亮文本</param>
 		/// <param name="requires_bot_access_token">是否需要带上含有用户信息的token</param>
 		/// <returns></returns>
 		public MessageChain Url_Link(string url, bool requires_bot_access_token = false, string highlight_text = "")
@@ -226,6 +233,12 @@ namespace MysBotSDK.MessageHandle
 			return this;
 		}
 
+		/// <summary>
+		/// 增加按钮组件
+		/// </summary>
+		/// <param name="component_Size">按钮组件的大小</param>
+		/// <param name="component_Group">按钮组件列表(即一行放置的组件)</param>
+		/// <returns></returns>
 		public MessageChain ButtonComponent(Component_Size component_Size, List<Component_Group> component_Group)
 		{
 			switch (component_Size)
@@ -245,6 +258,14 @@ namespace MysBotSDK.MessageHandle
 
 			return this;
 		}
+
+		/// <summary>
+		/// 文本消息内插入图片
+		/// </summary>
+		/// <param name="url">图片链接</param>
+		/// <param name="size">图片尺寸</param>
+		/// <param name="file_size">图片储存空间大小</param>
+		/// <returns></returns>
 		public MessageChain Image(string url, PicContentInfo.Size size = null!, int file_size = 0)
 		{
 			images.Add(new PicContentInfo() { url = url, size = size, file_size = file_size });
@@ -270,11 +291,11 @@ namespace MysBotSDK.MessageHandle
 							entities_.Add(new Entity()
 							{
 								entity = new Entity_Detail() { type = Entity_Detail.EntityType.mentioned_user, user_id = entity.entity.entity.user_id },
-								length = (ulong)$"@{member.member.basic!.nickname!.ConvertUTF8ToUTF16()} ".Length,
+								length = (ulong)$"@{member.member?.basic!.nickname!.ConvertUTF8ToUTF16()} ".Length,
 								offset = (ulong)text_.Length
 							});
 
-							text_ += $"@{member.member.basic!.nickname!.ConvertUTF8ToUTF16()} ";
+							text_ += $"@{member.member?.basic!.nickname!.ConvertUTF8ToUTF16()} ";
 							break;
 						case Entity_Detail.EntityType.mentioned_all:
 							mentionType = MentionType.All;
@@ -326,10 +347,22 @@ namespace MysBotSDK.MessageHandle
 		}
 	}
 
+	/// <summary>
+	/// 面板组件大小
+	/// </summary>
 	public enum Component_Size
 	{
+		/// <summary>
+		/// 小型组件，即一行摆置3个组件，每个组件最多展示2个中文字符或4个英文字符
+		/// </summary>
 		small = 0,
+		/// <summary>
+		/// 中型组件，即一行摆置2个组件，每个组件最多展示4个中文字符或8个英文字符
+		/// </summary>
 		middle = 1,
+		/// <summary>
+		/// 大型组件，即一行摆置1个组件，每个组件最多展示10个中文字符或20个英文字符
+		/// </summary>
 		big = 2,
 	}
 }

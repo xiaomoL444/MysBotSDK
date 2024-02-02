@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Converters;
 using System.Text.Json.Serialization;
 
-namespace MysBotSDK.MessageHandle.Info;
+namespace MysBotSDK.MessageHandle.Info { 
 
 public class Entity
 {
@@ -19,4 +19,5 @@ public class Entity
 	/// 表示UTF-16编码下对应实体在 text 中的起始位置
 	/// </summary>
 	public ulong offset { get; set; }
+}
 }

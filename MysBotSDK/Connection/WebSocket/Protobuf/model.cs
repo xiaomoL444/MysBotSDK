@@ -34,60 +34,60 @@ namespace VilaBot {
             "cGFyYW1zGAMgAygLMh0udmlsYV9ib3QuUm9ib3RUZW1wbGF0ZS5QYXJhbRoq",
             "Cg1DdXN0b21TZXR0aW5nEgwKBG5hbWUYASABKAkSCwoDdXJsGAIgASgJIkQK",
             "BVJvYm90EikKCHRlbXBsYXRlGAEgASgLMhcudmlsYV9ib3QuUm9ib3RUZW1w",
-            "bGF0ZRIQCgh2aWxsYV9pZBgCIAEoBCK3AQoQUXVvdGVNZXNzYWdlSW5mbxIP",
+            "bGF0ZRIQCgh2aWxsYV9pZBgCIAEoBCLHAQoQUXVvdGVNZXNzYWdlSW5mbxIP",
             "Cgdjb250ZW50GAEgASgJEg8KB21zZ191aWQYAiABKAkSDwoHc2VuZF9hdBgD",
             "IAEoAxIQCghtc2dfdHlwZRgEIAEoCRISCgpib3RfbXNnX2lkGAUgASgJEhQK",
             "DGZyb21fdXNlcl9pZBgGIAEoBBIYChBmcm9tX3VzZXJfaWRfc3RyGAcgASgJ",
-            "EhoKEmZyb21fdXNlcl9uaWNrbmFtZRgIIAEoCSK9DwoKUm9ib3RFdmVudBIe",
-            "CgVyb2JvdBgBIAEoCzIPLnZpbGFfYm90LlJvYm90EiwKBHR5cGUYAiABKA4y",
-            "Hi52aWxhX2JvdC5Sb2JvdEV2ZW50LkV2ZW50VHlwZRI0CgtleHRlbmRfZGF0",
-            "YRgDIAEoCzIfLnZpbGFfYm90LlJvYm90RXZlbnQuRXh0ZW5kRGF0YRISCgpj",
-            "cmVhdGVkX2F0GAQgASgDEgoKAmlkGAUgASgJEg8KB3NlbmRfYXQYBiABKAMa",
-            "zwwKCkV4dGVuZERhdGESQwoKam9pbl92aWxsYRgBIAEoCzItLnZpbGFfYm90",
-            "LlJvYm90RXZlbnQuRXh0ZW5kRGF0YS5Kb2luVmlsbGFJbmZvSAASRwoMc2Vu",
-            "ZF9tZXNzYWdlGAIgASgLMi8udmlsYV9ib3QuUm9ib3RFdmVudC5FeHRlbmRE",
-            "YXRhLlNlbmRNZXNzYWdlSW5mb0gAEkcKDGNyZWF0ZV9yb2JvdBgDIAEoCzIv",
-            "LnZpbGFfYm90LlJvYm90RXZlbnQuRXh0ZW5kRGF0YS5DcmVhdGVSb2JvdElu",
-            "Zm9IABJHCgxkZWxldGVfcm9ib3QYBCABKAsyLy52aWxhX2JvdC5Sb2JvdEV2",
-            "ZW50LkV4dGVuZERhdGEuRGVsZXRlUm9ib3RJbmZvSAASUgoSYWRkX3F1aWNr",
-            "X2Vtb3RpY29uGAUgASgLMjQudmlsYV9ib3QuUm9ib3RFdmVudC5FeHRlbmRE",
-            "YXRhLkFkZFF1aWNrRW1vdGljb25JbmZvSAASSwoOYXVkaXRfY2FsbGJhY2sY",
-            "BiABKAsyMS52aWxhX2JvdC5Sb2JvdEV2ZW50LkV4dGVuZERhdGEuQXVkaXRD",
-            "YWxsYmFja0luZm9IABJUChNjbGlja19tc2dfY29tcG9uZW50GAcgASgLMjUu",
-            "dmlsYV9ib3QuUm9ib3RFdmVudC5FeHRlbmREYXRhLkNsaWNrTXNnQ29tcG9u",
-            "ZW50SW5mb0gAGmAKDUpvaW5WaWxsYUluZm8SEAoIam9pbl91aWQYASABKAQS",
-            "GgoSam9pbl91c2VyX25pY2tuYW1lGAIgASgJEg8KB2pvaW5fYXQYAyABKAMS",
-            "EAoIdmlsbGFfaWQYBCABKAQa/QEKD1NlbmRNZXNzYWdlSW5mbxIPCgdjb250",
-            "ZW50GAEgASgJEhQKDGZyb21fdXNlcl9pZBgCIAEoBBIPCgdzZW5kX2F0GAMg",
-            "ASgDEikKC29iamVjdF9uYW1lGAQgASgOMhQudmlsYV9ib3QuT2JqZWN0TmFt",
-            "ZRIPCgdyb29tX2lkGAUgASgEEhAKCG5pY2tuYW1lGAYgASgJEg8KB21zZ191",
-            "aWQYByABKAkSEgoKYm90X21zZ19pZBgIIAEoCRIQCgh2aWxsYV9pZBgJIAEo",
-            "BBItCglxdW90ZV9tc2cYCiABKAsyGi52aWxhX2JvdC5RdW90ZU1lc3NhZ2VJ",
-            "bmZvGiMKD0NyZWF0ZVJvYm90SW5mbxIQCgh2aWxsYV9pZBgBIAEoBBojCg9E",
-            "ZWxldGVSb2JvdEluZm8SEAoIdmlsbGFfaWQYASABKAQavAEKFEFkZFF1aWNr",
-            "RW1vdGljb25JbmZvEhAKCHZpbGxhX2lkGAEgASgEEg8KB3Jvb21faWQYAiAB",
-            "KAQSCwoDdWlkGAMgASgEEhMKC2Vtb3RpY29uX2lkGAQgASgNEhAKCGVtb3Rp",
-            "Y29uGAUgASgJEg8KB21zZ191aWQYBiABKAkSEQoJaXNfY2FuY2VsGAcgASgI",
-            "EhIKCmJvdF9tc2dfaWQYCCABKAkSFQoNZW1vdGljb25fdHlwZRgJIAEoDRqH",
-            "AgoRQXVkaXRDYWxsYmFja0luZm8SEAoIYXVkaXRfaWQYASABKAkSEgoKYm90",
-            "X3RwbF9pZBgCIAEoCRIQCgh2aWxsYV9pZBgDIAEoBBIPCgdyb29tX2lkGAQg",
-            "ASgEEg8KB3VzZXJfaWQYBSABKAQSFAoMcGFzc190aHJvdWdoGAYgASgJElMK",
-            "DGF1ZGl0X3Jlc3VsdBgHIAEoDjI9LnZpbGFfYm90LlJvYm90RXZlbnQuRXh0",
-            "ZW5kRGF0YS5BdWRpdENhbGxiYWNrSW5mby5BdWRpdFJlc3VsdCItCgtBdWRp",
-            "dFJlc3VsdBIICgROb25lEAASCAoEUGFzcxABEgoKBlJlamVjdBACGqYBChVD",
-            "bGlja01zZ0NvbXBvbmVudEluZm8SEAoIdmlsbGFfaWQYASABKAQSDwoHcm9v",
-            "bV9pZBgCIAEoBBIUCgxjb21wb25lbnRfaWQYAyABKAkSDwoHbXNnX3VpZBgE",
-            "IAEoCRILCgN1aWQYBSABKAQSEgoKYm90X21zZ19pZBgGIAEoCRITCgt0ZW1w",
-            "bGF0ZV9pZBgHIAEoBBINCgVleHRyYRgIIAEoCUIMCgpldmVudF9kYXRhIqcB",
-            "CglFdmVudFR5cGUSGAoUVW5rbm93Um9ib3RFdmVudFR5cGUQABINCglKb2lu",
-            "VmlsbGEQARIPCgtTZW5kTWVzc2FnZRACEg8KC0NyZWF0ZVJvYm90EAMSDwoL",
-            "RGVsZXRlUm9ib3QQBBIUChBBZGRRdWlja0Vtb3RpY29uEAUSEQoNQXVkaXRD",
-            "YWxsYmFjaxAGEhUKEUNsaWNrTXNnQ29tcG9uZW50EAcqYgoIUm9vbVR5cGUS",
-            "EwoPUm9vbVR5cGVJbnZhbGlkEAASFAoQUm9vbVR5cGVDaGF0Um9vbRABEhQK",
-            "EFJvb21UeXBlUG9zdFJvb20QAhIVChFSb29tVHlwZVNjZW5lUm9vbRADKjYK",
-            "Ck9iamVjdE5hbWUSFAoQVW5rbm93T2JqZWN0TmFtZRAAEggKBFRleHQQARII",
-            "CgRQb3N0EAJCNlo0Z29wa2cubWlob3lvLmNvbS92aWxhLWJvdC1nby9wcm90",
-            "by92aWxhX2JvdDt2aWxhX2JvdGIGcHJvdG8z"));
+            "EhoKEmZyb21fdXNlcl9uaWNrbmFtZRgIIAEoCRIOCgZpbWFnZXMYCSADKAki",
+            "vQ8KClJvYm90RXZlbnQSHgoFcm9ib3QYASABKAsyDy52aWxhX2JvdC5Sb2Jv",
+            "dBIsCgR0eXBlGAIgASgOMh4udmlsYV9ib3QuUm9ib3RFdmVudC5FdmVudFR5",
+            "cGUSNAoLZXh0ZW5kX2RhdGEYAyABKAsyHy52aWxhX2JvdC5Sb2JvdEV2ZW50",
+            "LkV4dGVuZERhdGESEgoKY3JlYXRlZF9hdBgEIAEoAxIKCgJpZBgFIAEoCRIP",
+            "CgdzZW5kX2F0GAYgASgDGs8MCgpFeHRlbmREYXRhEkMKCmpvaW5fdmlsbGEY",
+            "ASABKAsyLS52aWxhX2JvdC5Sb2JvdEV2ZW50LkV4dGVuZERhdGEuSm9pblZp",
+            "bGxhSW5mb0gAEkcKDHNlbmRfbWVzc2FnZRgCIAEoCzIvLnZpbGFfYm90LlJv",
+            "Ym90RXZlbnQuRXh0ZW5kRGF0YS5TZW5kTWVzc2FnZUluZm9IABJHCgxjcmVh",
+            "dGVfcm9ib3QYAyABKAsyLy52aWxhX2JvdC5Sb2JvdEV2ZW50LkV4dGVuZERh",
+            "dGEuQ3JlYXRlUm9ib3RJbmZvSAASRwoMZGVsZXRlX3JvYm90GAQgASgLMi8u",
+            "dmlsYV9ib3QuUm9ib3RFdmVudC5FeHRlbmREYXRhLkRlbGV0ZVJvYm90SW5m",
+            "b0gAElIKEmFkZF9xdWlja19lbW90aWNvbhgFIAEoCzI0LnZpbGFfYm90LlJv",
+            "Ym90RXZlbnQuRXh0ZW5kRGF0YS5BZGRRdWlja0Vtb3RpY29uSW5mb0gAEksK",
+            "DmF1ZGl0X2NhbGxiYWNrGAYgASgLMjEudmlsYV9ib3QuUm9ib3RFdmVudC5F",
+            "eHRlbmREYXRhLkF1ZGl0Q2FsbGJhY2tJbmZvSAASVAoTY2xpY2tfbXNnX2Nv",
+            "bXBvbmVudBgHIAEoCzI1LnZpbGFfYm90LlJvYm90RXZlbnQuRXh0ZW5kRGF0",
+            "YS5DbGlja01zZ0NvbXBvbmVudEluZm9IABpgCg1Kb2luVmlsbGFJbmZvEhAK",
+            "CGpvaW5fdWlkGAEgASgEEhoKEmpvaW5fdXNlcl9uaWNrbmFtZRgCIAEoCRIP",
+            "Cgdqb2luX2F0GAMgASgDEhAKCHZpbGxhX2lkGAQgASgEGv0BCg9TZW5kTWVz",
+            "c2FnZUluZm8SDwoHY29udGVudBgBIAEoCRIUCgxmcm9tX3VzZXJfaWQYAiAB",
+            "KAQSDwoHc2VuZF9hdBgDIAEoAxIpCgtvYmplY3RfbmFtZRgEIAEoDjIULnZp",
+            "bGFfYm90Lk9iamVjdE5hbWUSDwoHcm9vbV9pZBgFIAEoBBIQCghuaWNrbmFt",
+            "ZRgGIAEoCRIPCgdtc2dfdWlkGAcgASgJEhIKCmJvdF9tc2dfaWQYCCABKAkS",
+            "EAoIdmlsbGFfaWQYCSABKAQSLQoJcXVvdGVfbXNnGAogASgLMhoudmlsYV9i",
+            "b3QuUXVvdGVNZXNzYWdlSW5mbxojCg9DcmVhdGVSb2JvdEluZm8SEAoIdmls",
+            "bGFfaWQYASABKAQaIwoPRGVsZXRlUm9ib3RJbmZvEhAKCHZpbGxhX2lkGAEg",
+            "ASgEGrwBChRBZGRRdWlja0Vtb3RpY29uSW5mbxIQCgh2aWxsYV9pZBgBIAEo",
+            "BBIPCgdyb29tX2lkGAIgASgEEgsKA3VpZBgDIAEoBBITCgtlbW90aWNvbl9p",
+            "ZBgEIAEoDRIQCghlbW90aWNvbhgFIAEoCRIPCgdtc2dfdWlkGAYgASgJEhEK",
+            "CWlzX2NhbmNlbBgHIAEoCBISCgpib3RfbXNnX2lkGAggASgJEhUKDWVtb3Rp",
+            "Y29uX3R5cGUYCSABKA0ahwIKEUF1ZGl0Q2FsbGJhY2tJbmZvEhAKCGF1ZGl0",
+            "X2lkGAEgASgJEhIKCmJvdF90cGxfaWQYAiABKAkSEAoIdmlsbGFfaWQYAyAB",
+            "KAQSDwoHcm9vbV9pZBgEIAEoBBIPCgd1c2VyX2lkGAUgASgEEhQKDHBhc3Nf",
+            "dGhyb3VnaBgGIAEoCRJTCgxhdWRpdF9yZXN1bHQYByABKA4yPS52aWxhX2Jv",
+            "dC5Sb2JvdEV2ZW50LkV4dGVuZERhdGEuQXVkaXRDYWxsYmFja0luZm8uQXVk",
+            "aXRSZXN1bHQiLQoLQXVkaXRSZXN1bHQSCAoETm9uZRAAEggKBFBhc3MQARIK",
+            "CgZSZWplY3QQAhqmAQoVQ2xpY2tNc2dDb21wb25lbnRJbmZvEhAKCHZpbGxh",
+            "X2lkGAEgASgEEg8KB3Jvb21faWQYAiABKAQSFAoMY29tcG9uZW50X2lkGAMg",
+            "ASgJEg8KB21zZ191aWQYBCABKAkSCwoDdWlkGAUgASgEEhIKCmJvdF9tc2df",
+            "aWQYBiABKAkSEwoLdGVtcGxhdGVfaWQYByABKAQSDQoFZXh0cmEYCCABKAlC",
+            "DAoKZXZlbnRfZGF0YSKnAQoJRXZlbnRUeXBlEhgKFFVua25vd1JvYm90RXZl",
+            "bnRUeXBlEAASDQoJSm9pblZpbGxhEAESDwoLU2VuZE1lc3NhZ2UQAhIPCgtD",
+            "cmVhdGVSb2JvdBADEg8KC0RlbGV0ZVJvYm90EAQSFAoQQWRkUXVpY2tFbW90",
+            "aWNvbhAFEhEKDUF1ZGl0Q2FsbGJhY2sQBhIVChFDbGlja01zZ0NvbXBvbmVu",
+            "dBAHKmIKCFJvb21UeXBlEhMKD1Jvb21UeXBlSW52YWxpZBAAEhQKEFJvb21U",
+            "eXBlQ2hhdFJvb20QARIUChBSb29tVHlwZVBvc3RSb29tEAISFQoRUm9vbVR5",
+            "cGVTY2VuZVJvb20QAyo2CgpPYmplY3ROYW1lEhQKEFVua25vd09iamVjdE5h",
+            "bWUQABIICgRUZXh0EAESCAoEUG9zdBACQjZaNGdvcGtnLm1paG95by5jb20v",
+            "dmlsYS1ib3QtZ28vcHJvdG8vdmlsYV9ib3Q7dmlsYV9ib3RiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::VilaBot.RoomType), typeof(global::VilaBot.ObjectName), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -95,7 +95,7 @@ namespace VilaBot {
             new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.RobotTemplate.Types.Command), global::VilaBot.RobotTemplate.Types.Command.Parser, new[]{ "Name", "Desc", "Params" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.RobotTemplate.Types.CustomSetting), global::VilaBot.RobotTemplate.Types.CustomSetting.Parser, new[]{ "Name", "Url" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.Robot), global::VilaBot.Robot.Parser, new[]{ "Template", "VillaId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.QuoteMessageInfo), global::VilaBot.QuoteMessageInfo.Parser, new[]{ "Content", "MsgUid", "SendAt", "MsgType", "BotMsgId", "FromUserId", "FromUserIdStr", "FromUserNickname" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.QuoteMessageInfo), global::VilaBot.QuoteMessageInfo.Parser, new[]{ "Content", "MsgUid", "SendAt", "MsgType", "BotMsgId", "FromUserId", "FromUserIdStr", "FromUserNickname", "Images" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.RobotEvent), global::VilaBot.RobotEvent.Parser, new[]{ "Robot", "Type", "ExtendData", "CreatedAt", "Id", "SendAt" }, null, new[]{ typeof(global::VilaBot.RobotEvent.Types.EventType) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.RobotEvent.Types.ExtendData), global::VilaBot.RobotEvent.Types.ExtendData.Parser, new[]{ "JoinVilla", "SendMessage", "CreateRobot", "DeleteRobot", "AddQuickEmoticon", "AuditCallback", "ClickMsgComponent" }, new[]{ "EventData" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.RobotEvent.Types.ExtendData.Types.JoinVillaInfo), global::VilaBot.RobotEvent.Types.ExtendData.Types.JoinVillaInfo.Parser, new[]{ "JoinUid", "JoinUserNickname", "JoinAt", "VillaId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.RobotEvent.Types.ExtendData.Types.SendMessageInfo), global::VilaBot.RobotEvent.Types.ExtendData.Types.SendMessageInfo.Parser, new[]{ "Content", "FromUserId", "SendAt", "ObjectName", "RoomId", "Nickname", "MsgUid", "BotMsgId", "VillaId", "QuoteMsg" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VilaBot.RobotEvent.Types.ExtendData.Types.CreateRobotInfo), global::VilaBot.RobotEvent.Types.ExtendData.Types.CreateRobotInfo.Parser, new[]{ "VillaId" }, null, null, null, null),
@@ -1532,6 +1532,7 @@ namespace VilaBot {
       fromUserId_ = other.fromUserId_;
       fromUserIdStr_ = other.fromUserIdStr_;
       fromUserNickname_ = other.fromUserNickname_;
+      images_ = other.images_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1658,6 +1659,20 @@ namespace VilaBot {
       }
     }
 
+    /// <summary>Field number for the "images" field.</summary>
+    public const int ImagesFieldNumber = 9;
+    private static readonly pb::FieldCodec<string> _repeated_images_codec
+        = pb::FieldCodec.ForString(74);
+    private readonly pbc::RepeatedField<string> images_ = new pbc::RepeatedField<string>();
+    /// <summary>
+    /// 消息中的图片url数组，支持图文消息、图片消息、自定义表情、avatar互动等消息类型
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> Images {
+      get { return images_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1681,6 +1696,7 @@ namespace VilaBot {
       if (FromUserId != other.FromUserId) return false;
       if (FromUserIdStr != other.FromUserIdStr) return false;
       if (FromUserNickname != other.FromUserNickname) return false;
+      if(!images_.Equals(other.images_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1696,6 +1712,7 @@ namespace VilaBot {
       if (FromUserId != 0UL) hash ^= FromUserId.GetHashCode();
       if (FromUserIdStr.Length != 0) hash ^= FromUserIdStr.GetHashCode();
       if (FromUserNickname.Length != 0) hash ^= FromUserNickname.GetHashCode();
+      hash ^= images_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1746,6 +1763,7 @@ namespace VilaBot {
         output.WriteRawTag(66);
         output.WriteString(FromUserNickname);
       }
+      images_.WriteTo(output, _repeated_images_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1788,6 +1806,7 @@ namespace VilaBot {
         output.WriteRawTag(66);
         output.WriteString(FromUserNickname);
       }
+      images_.WriteTo(ref output, _repeated_images_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1822,6 +1841,7 @@ namespace VilaBot {
       if (FromUserNickname.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(FromUserNickname);
       }
+      size += images_.CalculateSize(_repeated_images_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1858,6 +1878,7 @@ namespace VilaBot {
       if (other.FromUserNickname.Length != 0) {
         FromUserNickname = other.FromUserNickname;
       }
+      images_.Add(other.images_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1905,6 +1926,10 @@ namespace VilaBot {
             FromUserNickname = input.ReadString();
             break;
           }
+          case 74: {
+            images_.AddEntriesFrom(input, _repeated_images_codec);
+            break;
+          }
         }
       }
     #endif
@@ -1950,6 +1975,10 @@ namespace VilaBot {
           }
           case 66: {
             FromUserNickname = input.ReadString();
+            break;
+          }
+          case 74: {
+            images_.AddEntriesFrom(ref input, _repeated_images_codec);
             break;
           }
         }

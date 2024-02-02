@@ -25,7 +25,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 			deleteRobot = GetExtendDataMsg<DeleteRobot>(message);
 			villa_id = deleteRobot.villa_id;
 
-			Logger.Log($"Receive [DeleteRobot] Form villa:{villa_id},room:{room_id}");
+			Logger.Debug($"Receive [DeleteRobot] Form villa:{villa_id},room:{room_id}");
 		}
 	}
 

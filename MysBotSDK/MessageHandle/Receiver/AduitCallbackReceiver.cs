@@ -50,7 +50,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 			villa_id = auditCallback.villa_id;
 			room_id = auditCallback.room_id;
 
-			Logger.Log($"Receive [AduitCallback] Aduit_ID:{Audit_ID}Pass_Through:{Pass_Through} Form villa:{villa_id},room:{room_id}");
+			Logger.Debug($"Receive [AduitCallback] Aduit_ID:{Audit_ID}Pass_Through:{Pass_Through} Form villa:{villa_id},room:{room_id}");
 		}
 	}
 }

@@ -20,7 +20,7 @@ namespace MysBotSDK.Tool
 		/// <param name="minute">触发时间在第几分钟(不包含第60分钟)</param>
 		public static void Register(string name, System.Timers.ElapsedEventHandler eventHandle, int hour, int minute)
 		{
-			Logger.Log($"注册计时事件:{name}");
+			Logger.Log($"注册计时事件:{name} ，时间:{hour}:{minute}");
 			if (timers_conf.Any(q => q.name == name))
 			{
 				Logger.LogWarnning($"已有同样的计时器时间创建{name}");

@@ -29,7 +29,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 			createRobot = GetExtendDataMsg<CreateRobot>(message);
 			villa_id = createRobot.villa_id;
 
-			Logger.Log($"Receive [CreateRobot] Form villa:{villa_id},room:{room_id}");
+			Logger.Debug($"Receive [CreateRobot] Form villa:{villa_id},room:{room_id}");
 		}
 	}
 }

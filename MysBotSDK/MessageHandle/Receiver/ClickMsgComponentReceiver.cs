@@ -54,7 +54,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 			villa_id = clickMsgComponent.villa_id;
 			room_id = clickMsgComponent.room_id;
 
-			Logger.Log($"Receive [ClickMsgComponent] ID:{Component_Id},Extra:{Extra} Form villa:{villa_id},room:{room_id}");
+			Logger.Debug($"Receive [ClickMsgComponent] ID:{Component_Id},Extra:{Extra} Form villa:{villa_id},room:{room_id}");
 		}
 	}
 }

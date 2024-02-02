@@ -1,6 +1,7 @@
 ﻿using MysBotSDK.MessageHandle.ExtendData;
 using MysBotSDK.Tool;
 using Newtonsoft.Json;
+using System;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace MysBotSDK.MessageHandle.Receiver
@@ -36,7 +37,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 			joinVilla = GetExtendDataMsg<JoinVilla>(message);
 			villa_id = joinVilla.villa_id;
 
-			Logger.Log($"Receive [JoinVilla] @{NickName} Form villa:{villa_id},room:{room_id}");
+			Logger.Debug($"Receive [JoinVilla] @{NickName} Form villa:{villa_id},room:{room_id}");
 		}
 	}
 }

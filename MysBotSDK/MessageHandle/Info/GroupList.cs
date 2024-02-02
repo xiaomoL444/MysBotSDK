@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MysBotSDK.MessageHandle.ExtendData { 
+namespace MysBotSDK.MessageHandle.Info { 
 
-public interface IExtendData
+public class GroupList : Group
 {
-
+	public List<Room> room_list { get; set; } = new();
 }
 }

@@ -93,6 +93,11 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// </summary>
 		public string? User_ID_Str => sendMessage.quote_msg!.from_user_id_str;
 
+		/// <summary>
+		/// 消息中的图片url数组，支持图文消息、图片消息、自定义表情、avatar互动等消息类型
+		/// </summary>
+		public List<string> Images => sendMessage.quote_msg!.images;
+
 		internal SendMessage sendMessage { get; set; }
 		internal Quote_Msg quote_msg => sendMessage.quote_msg!;
 		/// <summary>
@@ -105,16 +110,22 @@ namespace MysBotSDK.MessageHandle.Receiver
 			villa_id = sendMessage.villa_id;
 			room_id = sendMessage.room_id;
 
-			var args = sendMessage!.content.content!.text!.Split(" ").ToList();
+			//var args = sendMessage!.content.content!.text!.Split(" ").ToList();
+
+			var args = System.Text.RegularExpressions.Regex.Split(sendMessage!.content.content!.text!, "\\s+", System.Text.RegularExpressions.RegexOptions.IgnoreCase).ToList();
 			commond = args[1];
 			if (!commond.StartsWith("/"))
 			{
 				commond = "/" + commond;
 			}
 			args.RemoveRange(0, 2);
+			if (args.Count != 0 && string.IsNullOrEmpty(args[args.Count - 1]))
+			{
+				args.RemoveAt(args.Count - 1);
+			}
 			sendMessage.args = args;
 
-			Logger.Log($"Receive [SendMessage] {Text} Form villa:{villa_id},room:{room_id}");
+			Logger.Debug($"Receive [SendMessage] {Text} Form villa:{villa_id},room:{room_id}");
 		}
 
 		#region Method
@@ -285,7 +296,7 @@ namespace MysBotSDK.MessageHandle.Receiver
 		/// 获取所有房间
 		/// </summary>
 		/// <returns>message:返回消息,retcode:返回消息code,rooms:Room类型列表消息</returns>	
-		public async Task<(string message, int retcode, List<Room> rooms)> GetRoomList()
+		public async Task<(string message, int retcode, List<GroupList> rooms)> GetRoomList()
 		{
 			return await MessageSender.GetRoomList(MessageSender.mysBot.FirstOrDefault(b => b.bot_id == robot!.template!.id)!, villa_id);
 		}
