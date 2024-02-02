@@ -5,7 +5,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>unenable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.7.5</Version>
+    <Version>1.8.0</Version>
     <Authors>xiaomoL444</Authors>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <BaseOutputPath>E:\code\MysBotSDK\MysBotSDKBuild</BaseOutputPath>
