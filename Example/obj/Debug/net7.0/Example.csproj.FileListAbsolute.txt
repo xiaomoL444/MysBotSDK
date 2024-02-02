@@ -1,5 +1,0 @@
-E:\code\MysBotSDK\Example\obj\Debug\net7.0\Example.csproj.AssemblyReference.cache
-E:\code\MysBotSDK\Example\obj\Debug\net7.0\Example.GeneratedMSBuildEditorConfig.editorconfig
-E:\code\MysBotSDK\Example\obj\Debug\net7.0\Example.AssemblyInfoInputs.cache
-E:\code\MysBotSDK\Example\obj\Debug\net7.0\Example.AssemblyInfo.cs
-E:\code\MysBotSDK\Example\obj\Debug\net7.0\Example.csproj.CoreCompileInputs.cache
