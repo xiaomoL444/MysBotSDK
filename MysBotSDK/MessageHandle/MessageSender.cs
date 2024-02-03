@@ -19,15 +19,6 @@ using System.Threading.Tasks;
 
 namespace MysBotSDK.MessageHandle
 {
-
-	public static class Date
-	{
-		public static int retcode = 0;
-		public static string message = "";
-		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-		public static object data = new();
-	}
-
 	public static class MessageSender
 	{
 		internal static string GetHeader(MysBot mysBot)//没有x-rpc-bot_villa_id
